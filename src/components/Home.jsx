@@ -29,7 +29,10 @@ class Home extends Component {
     })
       .then(function(response) {
         console.log(response.data)
-        self.setState({ players: response.data.json() })
+        self.setState({ players: response.data})
+      })
+      .then(function() {
+        console.log(self.state.players)
       })
       .catch(function(error) {
         console.log(error)
@@ -39,7 +42,16 @@ class Home extends Component {
   render() {
       if (this.props.authToken) {
         return (
-          this.state.players
+          <div>
+            {this.state.players.map(player => (
+              <Player
+                key={player.id}
+                firstName={player.first_name}
+                ability={player.ability}
+                gender={player.gender}
+              />
+            ))}
+          </div>
         )
       } else {
         return(
