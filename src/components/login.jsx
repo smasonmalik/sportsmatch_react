@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import { createBrowserHistory } from 'history'; 
+import { createBrowserHistory } from 'history';
 
 class Login extends Component {
   constructor(props) {
@@ -27,7 +27,6 @@ class Login extends Component {
           response.data.jwt_token
         );
       })
-      .then(() => this.props.history.push("/"))
       .catch(function(error) {
         console.log(error);
       });
@@ -36,8 +35,6 @@ class Login extends Component {
   render() {
     if (this.props.authToken) {
       return <Redirect to="/home" />;
-    } else if (this.state.isLoggedIn) {
-      return <Redirect to='/home' />
     } else {
       return (
         <div className="form-container">

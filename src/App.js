@@ -26,10 +26,10 @@ class App extends Component {
       <div>
         <Router>
           <Route exact strict path="/login">
-            <Login updateAuthState={this.updateAuthState}/>
+            <Login updateAuthState={this.updateAuthState} authToken={this.state.authToken}/>
           </Route>
           <Route exact strict path="/home">
-            <Home authToken={this.state.authToken}/>
+            <Home authToken={this.state.authToken} blob="blob"/>
           </Route>
         </Router>
       </div>

@@ -36,7 +36,10 @@ class Home extends Component {
         )
       } else {
         return(
-        <Redirect to='/login' />
+          <div>
+            <Redirect to='/login' />
+            {this.props.blob}
+          </div>
         )
       }
   }
