@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
-import setAuthToken from '../setAuthToken'
 import Player from './Player'
 
 class Home extends Component {

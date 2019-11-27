@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import { createBrowserHistory } from 'history';
-import setAuthToken from '../setAuthToken'
 
 class Login extends Component {
   constructor(props) {
@@ -28,7 +26,6 @@ class Login extends Component {
           response.data.jwt_token
         );
         localStorage.setItem('jwtToken', response.data.jwt_token)
-        setAuthToken(response.data.jwt_token)
       })
       .catch(function(error) {
         console.log(error);
