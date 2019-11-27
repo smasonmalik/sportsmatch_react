@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/login';
@@ -22,9 +22,10 @@ class App extends Component {
   }
 
   render() {
-
     return (
-      <Login />
+      <div>
+        <Login updateAuthState={this.updateAuthState}/>
+      </div>
     );
   }
 }
