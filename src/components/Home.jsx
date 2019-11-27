@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import setAuthToken from '../setAuthToken'
+import Player from './Player'
 
 class Home extends Component {
   constructor(props) {
@@ -27,8 +28,8 @@ class Home extends Component {
       // headers: {`Authorization: Bearer ${token}`}
     })
       .then(function(response) {
-        console.log(response)
-        self.setState({ players: response.data })
+        console.log(response.data)
+        self.setState({ players: response.data.json() })
       })
       .catch(function(error) {
         console.log(error)
@@ -38,7 +39,7 @@ class Home extends Component {
   render() {
       if (this.props.authToken) {
         return (
-          this.props.authToken
+          this.state.players
         )
       } else {
         return(
