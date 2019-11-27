@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 //import { Test } from './Signup.styles';
 
-class Signup extends Component { 
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.handleSignup = this.handleSignup.bind(this);
@@ -14,7 +14,7 @@ class Signup extends Component {
     let password_confirm = document.getElementById("password-confirm-input").value
     if (password != password_confirm) {
       console.log("passwords don't match")
-    } 
+    }
   }
 
   handleSignup(e) {
@@ -51,7 +51,7 @@ class Signup extends Component {
     if (this.props.authToken) {
       return <Redirect to="/home" />;
     }
-    else { 
+    else {
       return (
       <div className="form-container">
           <h4>Sign Up</h4>
@@ -100,9 +100,9 @@ class Signup extends Component {
                 required="required"
                 className="form-control"
               >
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
               </select>
             </div>
             <div className="form-group">
