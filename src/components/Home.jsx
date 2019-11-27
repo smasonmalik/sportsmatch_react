@@ -24,7 +24,6 @@ class Home extends Component {
         "Content-Type": "application/json",
         "api-token": self.props.authToken
       }
-      // headers: {`Authorization: Bearer ${token}`}
     })
       .then(function(response) {
         console.log(response.data)
