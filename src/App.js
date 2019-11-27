@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
 import Home from './components/Home';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   constructor(props){
@@ -25,11 +26,12 @@ class App extends Component {
     return (
       <div>
         <Router>
+          <Navbar />
           <Route exact strict path="/login">
             <Login updateAuthState={this.updateAuthState} authToken={this.state.authToken}/>
           </Route>
           <Route exact strict path="/home">
-            <Home authToken={this.state.authToken} blob="blob"/>
+            <Home authToken={this.state.authToken} />
           </Route>
         </Router>
       </div>

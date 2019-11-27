@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
+import setAuthToken from '../setAuthToken'
 
 class Home extends Component {
   constructor(props) {
@@ -16,13 +17,18 @@ class Home extends Component {
   };
 
   getPlayers() {
+    let self = this;
     axios({
       url: "/api/v1/players",
-      mode: "no-cors"
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": self.props.authToken
+      }
+      // headers: {`Authorization: Bearer ${token}`}
     })
       .then(function(response) {
         console.log(response)
-        this.setState({ players: response })
+        self.setState({ players: response.data })
       })
       .catch(function(error) {
         console.log(error)
@@ -38,7 +44,6 @@ class Home extends Component {
         return(
           <div>
             <Redirect to='/login' />
-            {this.props.blob}
           </div>
         )
       }
