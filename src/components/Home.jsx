@@ -1,16 +1,37 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
+import axios from "axios";
+import Player from './Player'
 
-export default class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      players: []
+    };
+    this.getPlayers = this.getPlayers.bind(this);
   }
 
   componentDidMount() {
-    axios
-      .get("/api/v1/players")
+    this.getPlayers()
+  };
+
+  getPlayers() {
+    let self = this;
+    axios({
+      url: "/api/v1/players",
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": self.props.authToken
+      }
+      // headers: {`Authorization: Bearer ${token}`}
+    })
       .then(function(response) {
-        console.log(response)
+        console.log(response.data)
+        self.setState({ players: response.data})
+      })
+      .then(function() {
+        console.log(self.state.players)
       })
       .catch(function(error) {
         console.log(error)
@@ -18,13 +39,26 @@ export default class Home extends React.Component {
   }
 
   render() {
-      if ({this.props.authToken}) {
+      if (this.props.authToken) {
         return (
-          <Redirect to='/' />
+          <div>
+            {this.state.players.map(player => (
+              <Player
+                key={player.id}
+                firstName={player.first_name}
+                ability={player.ability}
+                gender={player.gender}
+              />
+            ))}
+          </div>
         )
       } else {
-        return
+        return(
+          <div>
+            <Redirect to='/login' />
+          </div>
+        )
       }
-    )
   }
 }
+export default Home;

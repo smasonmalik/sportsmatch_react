@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
@@ -6,6 +5,9 @@ import axios from "axios";
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLoggedIn: false
+    }
     this.handleLogin = this.handleLogin.bind(this);
   }
 
@@ -23,15 +25,16 @@ class Login extends Component {
         self.props.updateAuthState(
           response.data.jwt_token
         );
+        localStorage.setItem('jwtToken', response.data.jwt_token)
       })
       .catch(function(error) {
         console.log(error);
       });
-  }
+    }
 
   render() {
     if (this.props.authToken) {
-      return <Redirect to="/posts" />;
+      return <Redirect to="/home" />;
     } else {
       return (
         <div className="form-container">
