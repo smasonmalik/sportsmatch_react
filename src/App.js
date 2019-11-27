@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/login';
+import Login from './components/Login';
 
 class App extends Component {
   constructor(props){
@@ -15,7 +15,6 @@ class App extends Component {
   }
 
   updateAuthState(token) {
-    console.log(token)
     this.setState({
       authToken: token
     })
@@ -24,7 +23,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Login updateAuthState={this.updateAuthState}/>
+        <Router>
+          <Route exact strict path="/login">
+            <Login updateAuthState={this.updateAuthState}/>
+          </Route>
+        </Router>
       </div>
     );
   }
