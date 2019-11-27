@@ -1,11 +1,14 @@
-
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
+import { createBrowserHistory } from 'history'; 
 
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLoggedIn: false
+    }
     this.handleLogin = this.handleLogin.bind(this);
   }
 
@@ -24,14 +27,17 @@ class Login extends Component {
           response.data.jwt_token
         );
       })
+      .then(() => this.props.history.push("/"))
       .catch(function(error) {
         console.log(error);
       });
-  }
+    }
 
   render() {
     if (this.props.authToken) {
-      return <Redirect to="/posts" />;
+      return <Redirect to="/home" />;
+    } else if (this.state.isLoggedIn) {
+      return <Redirect to='/home' />
     } else {
       return (
         <div className="form-container">

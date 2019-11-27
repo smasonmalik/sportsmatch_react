@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
+import Home from './components/Home';
 
 class App extends Component {
   constructor(props){
@@ -26,6 +27,9 @@ class App extends Component {
         <Router>
           <Route exact strict path="/login">
             <Login updateAuthState={this.updateAuthState}/>
+          </Route>
+          <Route exact strict path="/home">
+            <Home authToken={this.state.authToken}/>
           </Route>
         </Router>
       </div>

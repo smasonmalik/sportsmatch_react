@@ -1,16 +1,28 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
+import axios from "axios";
 
-export default class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      players: []
+    };
+    this.getPlayers = this.getPlayers.bind(this);
   }
 
   componentDidMount() {
-    axios
-      .get("/api/v1/players")
+    this.getPlayers()
+  };
+
+  getPlayers() {
+    axios({
+      url: "/api/v1/players",
+      mode: "no-cors"
+    })
       .then(function(response) {
         console.log(response)
+        this.setState({ players: response })
       })
       .catch(function(error) {
         console.log(error)
@@ -18,13 +30,15 @@ export default class Home extends React.Component {
   }
 
   render() {
-      if ({this.props.authToken}) {
+      if (this.props.authToken) {
         return (
-          <Redirect to='/' />
+          this.props.authToken
         )
       } else {
-        return
+        return(
+        <Redirect to='/login' />
+        )
       }
-    )
   }
 }
+export default Home;
