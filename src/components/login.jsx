@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 
 class Login extends Component {
@@ -80,7 +80,7 @@ class Login extends Component {
             </div>
 
           </form>
-
+          <NavLink to='/signup'>Sign Up</NavLink>
         </div>
       );
     }
