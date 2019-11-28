@@ -24,14 +24,10 @@ class Home extends Component {
         "Content-Type": "application/json",
         "api-token": self.props.authToken
       }
-      // headers: {`Authorization: Bearer ${token}`}
     })
       .then(function(response) {
         console.log(response.data)
-        self.setState({ players: response.data})
-      })
-      .then(function() {
-        console.log(self.state.players)
+        self.setState({ players: response.data })
       })
       .catch(function(error) {
         console.log(error)
@@ -45,6 +41,7 @@ class Home extends Component {
             {this.state.players.map(player => (
               <Player
                 key={player.id}
+                id={player.id}
                 firstName={player.first_name}
                 ability={player.ability}
                 gender={player.gender}
