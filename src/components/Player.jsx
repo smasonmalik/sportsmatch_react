@@ -14,7 +14,7 @@ class Player extends React.Component {
           <h5 className="card-title">{this.props.firstName}</h5>
           <p className="card-text">{this.props.ability}</p>
           <p className="card-text">{this.props.gender}</p>
-          <NavLink className="btn btn-primary" to={`/player/${this.props.id}`}>View Profile</NavLink>
+          <NavLink className="view-profile btn btn-primary" to={`/player/${this.props.id}`}>View Profile</NavLink>
         </div>
       </div>
     )

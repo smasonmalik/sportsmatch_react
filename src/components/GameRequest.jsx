@@ -5,6 +5,9 @@ import axios from "axios";
 class GameRequest extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      gameRequest: false
+    }
     this.handleNewGame = this.handleNewGame.bind(this);
   }
 
@@ -26,17 +29,28 @@ class GameRequest extends Component {
         game_date: document.getElementById("date-input").value,
         game_time: document.getElementById("time-input").value
       }})
+
       .then(function(response) {
         console.log(response);
       })
+      .then(function() {
+        self.setState({
+          gameRequest: true
+        })
+      })
       .catch(function(error) {
-        console.log(error);
-      });
-    }
+        console.log(error)
+      })
+  }
+
 
   render() {
-
+    if (this.state.gameRequest) {
       return (
+        <Redirect to="/profile" />
+      )}
+      else {
+       return (
         <div className="form-container">
           <h4>Request Game</h4>
           <form
@@ -81,5 +95,7 @@ class GameRequest extends Component {
         </div>
       );
     }
+
   }
+}
 export default GameRequest;
