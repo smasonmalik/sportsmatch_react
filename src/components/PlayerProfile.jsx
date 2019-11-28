@@ -29,12 +29,17 @@ class PlayerProfile extends React.Component {
           player: response.data
         })
       })
+      .then(function() {
+        console.log(self.state.player.ability)
+      })
       .catch(function(error) {
         console.log(error)
       })
   }
 
   render() {
+    console.log(this.state.player)
+    console.log(this.state.player.ability)
     return (
         <h1></h1>
     )
