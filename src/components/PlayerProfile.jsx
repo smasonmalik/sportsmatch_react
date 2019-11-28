@@ -1,11 +1,12 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 class PlayerProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      player: null
+      player: []
     }
     this.getPlayer = this.getPlayer.bind(this)
   }
@@ -38,10 +39,18 @@ class PlayerProfile extends React.Component {
   }
 
   render() {
-    console.log(this.state.player)
-    console.log(this.state.player.ability)
     return (
-        <h1></h1>
+        <div className="card text-center">
+          <div className="card-header">
+            Player Profile
+          </div>
+          <div className="card-body">
+            <h5 className="card-title">{this.state.player.first_name}</h5>
+            <p className="card-text">{this.state.player.ability}</p>
+            <p className="card-text">{this.state.player.gender}</p>
+            <a href="" className="btn btn-primary">Request Game</a>
+          </div>
+        </div>
     )
   }
 }
