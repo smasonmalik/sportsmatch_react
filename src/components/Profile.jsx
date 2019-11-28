@@ -7,8 +7,10 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      player: []
+      player: [],
+      gameConfirmed: false
     }
+    this.handleGameRefresh = this.handleGameRefresh.bind(this)
   }
 
   componentDidMount() {
@@ -33,6 +35,12 @@ class Profile extends React.Component {
     })
   }
 
+  handleGameRefresh() {
+    this.setState(prevState => {
+      return {gameConfirmed: !prevState.gameConfirmed}
+    })
+  }
+
   render() {
     return (
       <div className="card" style={{width: '25rem', marginLeft:'20%'}}>
@@ -45,7 +53,7 @@ class Profile extends React.Component {
           <li className="list-group-item">{this.state.player.dob}</li>
         </ul>
         <div className="card-body">
-        <GameRequests/>
+        <GameRequests handleGameRefresh={this.handleGameRefresh}/>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Game request 1</li>
