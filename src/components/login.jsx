@@ -24,7 +24,7 @@ class Login extends Component {
         console.log(response.data.jwt_token)
         self.props.updateAuthState(
           response.data.jwt_token,
-          response.data.id
+          response.data.user_id
         );
         localStorage.setItem('jwtToken', response.data.jwt_token)
       })
