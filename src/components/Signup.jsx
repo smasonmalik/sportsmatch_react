@@ -37,7 +37,8 @@ class Signup extends Component {
           console.log(response);
           console.log(response.data.jwt_token)
           self.props.updateAuthState(
-            response.data.jwt_token
+            response.data.jwt_token,
+            response.data.user_id
           );
           localStorage.setItem('jwtToken', response.data.jwt_token)
         })
