@@ -22,7 +22,7 @@ class Navbar extends React.Component {
               <NavLink className="nav-link" id="login-link" to="/login">Login</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to={`/profile/${this.props.user_id}`}>Profile</NavLink>
+              <NavLink className="nav-link" id="profile-link" to={`/profile/${this.props.user_id}`}>Profile</NavLink>
             </li>
           </ul>
         </div>
