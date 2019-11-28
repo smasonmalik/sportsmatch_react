@@ -15,7 +15,12 @@ class Request extends React.Component {
             <p className="card-text">Opponent id: {this.props.opponent_id}</p>
             <p className="card-text">Game Date: {this.props.game_date}</p>
             <p className="card-text">Game Time: {this.props.game_time}</p>
-            <p className="card-text"><ConfirmGameButton id={this.props.id} confirmed={this.props.confirmed} handleGameRefresh={this.props.handleGameRefresh}/></p>
+            <ConfirmGameButton
+              id={this.props.id}
+              confirmed={this.props.confirmed}
+              handleGameRefresh={this.props.handleGameRefresh}
+              organiser_id={this.props.organiser_id}
+            />
           </div>
         </div>
     )

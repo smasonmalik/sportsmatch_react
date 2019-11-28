@@ -35,7 +35,9 @@ class ConfirmGameButton extends React.Component {
   }
 
   render() {
-    if (this.state.confirmed) {
+    if (this.props.organiser_id == localStorage.getItem('user_id')) {
+      return <span></span>
+    } else if (this.state.confirmed) {
       return (
         <div>
           <button className="btn btn-primary" onClick={this.handleConfirm}>Unconfirm Game</button>
@@ -50,5 +52,6 @@ class ConfirmGameButton extends React.Component {
     }
   }
 }
+
 
 export default ConfirmGameButton
