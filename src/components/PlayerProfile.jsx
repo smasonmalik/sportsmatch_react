@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
+import GamesRequest from './GameRequest'
 
 class PlayerProfile extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class PlayerProfile extends React.Component {
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
-            <a href="" className="btn btn-primary">Request Game</a>
+            <GamesRequest opponent_id={this.props.match.params.id}/>
           </div>
         </div>
     )

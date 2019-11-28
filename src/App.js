@@ -41,7 +41,7 @@ class App extends Component {
           <Route exact strict path="/home">
             <Home authToken={this.state.authToken} />
           </Route>
-          <Route exact strict path={`/profile/${this.state.user_id}`}>
+          <Route exact strict path="/profile">
             <Profile authToken={this.state.authToken} user_id={this.state.user_id} />
           </Route>
           <Route path="/player/:id" component={PlayerProfile}/>
