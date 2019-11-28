@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
-import GamesRequest from './GameRequest'
+import GamesRequest from './GameRequestForm'
 
 class PlayerProfile extends React.Component {
   constructor(props) {

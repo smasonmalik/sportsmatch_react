@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
+import GameRequests from './AllGameRequests'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -44,10 +45,7 @@ class Profile extends React.Component {
           <li className="list-group-item">{this.state.player.dob}</li>
         </ul>
         <div className="card-body">
-          <NavLink to="/" className="card-link">Request Game</NavLink>
-        </div>
-        <div className="card-body">
-          <h6 className="card-title">Game Requests</h6>
+        <GameRequests/>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Game request 1</li>
