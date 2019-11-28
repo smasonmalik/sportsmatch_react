@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import ConfirmGameButton from './ConfirmGameButton'
+import EditGameButton from './EditGameButton'
 
 class Request extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class Request extends React.Component {
                 confirmed={this.props.confirmed}
                 organiser_id={this.props.organiser_id}
               />
+              <EditGameButton />
           </div>
         </div>
       </li>
