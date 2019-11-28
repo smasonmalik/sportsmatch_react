@@ -1,4 +1,5 @@
 import React from 'react'
+import EditGameForm from './EditGameForm'
 
 class EditGameButton extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class EditGameButton extends React.Component {
       return (
         <div>
           <button className="btn btn-primary" onClick={this.handleClick}>Hide Form</button>
+          <EditGameForm id={this.props.id}/>
         </div>
       )
     } else {
