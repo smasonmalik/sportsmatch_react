@@ -18,6 +18,7 @@ class App extends Component {
       user_id: null
     }
     this.updateAuthState = this.updateAuthState.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   updateAuthState(token, id) {
@@ -27,11 +28,18 @@ class App extends Component {
     })
   }
 
+  handleLogout() {
+    this.setState({
+      authToken: null,
+      user_id: null
+    })
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <Navbar user_id={this.state.user_id}/>
+          <Navbar user_id={this.state.user_id} handleLogout={this.handleLogout}/>
           <Route exact strict path="/login">
             <Login updateAuthState={this.updateAuthState} authToken={this.state.authToken}/>
           </Route>
