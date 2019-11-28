@@ -27,6 +27,7 @@ class Login extends Component {
           response.data.user_id
         );
         localStorage.setItem('jwtToken', response.data.jwt_token)
+        localStorage.setItem('user_id', response.data.user_id)
       })
       .catch(function(error) {
         console.log(error);
