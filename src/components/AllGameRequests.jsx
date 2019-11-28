@@ -41,7 +41,8 @@ class GameRequests extends React.Component {
 
   render() {
     return (
-      <div>
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item">
         {this.state.requests.map(result => (
           <Request
             key={result.id}
@@ -53,7 +54,8 @@ class GameRequests extends React.Component {
             confirmed={result.confirmed}
           />
         ))}
-      </div>
+        </li>
+      </ul>
     )
   }
 }
