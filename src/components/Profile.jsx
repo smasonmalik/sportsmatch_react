@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { NavLink } from 'react-router-dom'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -33,19 +34,32 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div class="card" style={{width: '18rem'}}>
-        <div class="card-body">
-          <h5 class="card-title">{this.state.player.first_name}</h5>
-          <p class="card-text">{this.state.player.ability}</p>
+      <div className="card" style={{width: '25rem', marginLeft:'20%'}}>
+        <div className="card-body">
+          <h5 className="card-title">{this.state.player.first_name}</h5>
+          <p className="card-text">{this.state.player.ability}</p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">{this.state.player.gender}</li>
-          <li class="list-group-item">{this.state.player.dob}</li>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">{this.state.player.gender}</li>
+          <li className="list-group-item">{this.state.player.dob}</li>
         </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+        <div className="card-body">
+          <NavLink to="/" className="card-link">Request Game</NavLink>
         </div>
+        <div className="card-body">
+          <h6 className="card-title">Game Requests</h6>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">Game request 1</li>
+          <li className="list-group-item">Game request 2</li>
+        </ul>
+        <div className="card-body">
+          <h6 className="card-title">Game Results</h6>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">Result 1</li>
+          <li className="list-group-item">Result 2</li>
+        </ul>
       </div>
     )
   }

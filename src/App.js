@@ -7,7 +7,8 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Profile from './components/Profile'
+import Profile from './components/Profile';
+import PlayerProfile from './components/PlayerProfile'
 
 class App extends Component {
   constructor(props){
@@ -43,6 +44,7 @@ class App extends Component {
           <Route exact strict path={`/profile/${this.state.user_id}`}>
             <Profile authToken={this.state.authToken} user_id={this.state.user_id} />
           </Route>
+          <Route path="/player/:id" component={PlayerProfile}/>
         </Router>
       </div>
     );
