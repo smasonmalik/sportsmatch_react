@@ -7,7 +7,6 @@ class LogoutButton extends React.Component {
   }
 
   handleClick() {
-    this.props.handleLogout()
     localStorage.clear()
   }
 

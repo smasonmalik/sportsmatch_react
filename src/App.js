@@ -13,44 +13,24 @@ import PlayerProfile from './components/PlayerProfile'
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      authToken: null,
-      user_id: null
-    }
-    this.updateAuthState = this.updateAuthState.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
-  }
-
-  updateAuthState(token, id) {
-    this.setState({
-      authToken: token,
-      user_id: id
-    })
-  }
-
-  handleLogout() {
-    this.setState({
-      authToken: null,
-      user_id: null
-    })
   }
 
   render() {
     return (
       <div>
         <Router>
-          <Navbar user_id={this.state.user_id} handleLogout={this.handleLogout}/>
+          <Navbar handleLogout={this.handleLogout}/>
           <Route exact strict path="/login">
-            <Login updateAuthState={this.updateAuthState} authToken={this.state.authToken}/>
+            <Login updateAuthState={this.updateAuthState}/>
           </Route>
           <Route exact strict path="/signup">
-            <Signup updateAuthState={this.updateAuthState} authToken={this.state.authToken}/>
+            <Signup updateAuthState={this.updateAuthState}/>
           </Route>
           <Route exact strict path="/home">
-            <Home authToken={this.state.authToken} />
+            <Home />
           </Route>
           <Route exact strict path="/profile">
-            <Profile authToken={this.state.authToken} user_id={this.state.user_id} />
+            <Profile />
           </Route>
           <Route path="/player/:id" component={PlayerProfile}/>
         </Router>

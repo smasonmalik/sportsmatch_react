@@ -20,12 +20,13 @@ class Login extends Component {
           password: document.getElementById("password-input").value
       })
       .then(function(response) {
-        self.props.updateAuthState(
-          response.data.jwt_token,
-          response.data.user_id
-        );
         localStorage.setItem('jwtToken', response.data.jwt_token)
         localStorage.setItem('user_id', response.data.user_id)
+      })
+      .then(function() {
+        self.setState(prevState => {
+          return {isLoggedIn: !prevState.isLoggedIn}
+        })
       })
       .catch(function(error) {
         console.log(error);
@@ -33,7 +34,7 @@ class Login extends Component {
     }
 
   render() {
-    if (this.props.authToken) {
+    if (localStorage.getItem('jwtToken')) {
       return <Redirect to="/home" />;
     } else {
       return (
