@@ -4,15 +4,11 @@ import axios from 'axios'
 class EditGameForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      gameEdit: false
-    }
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
     let self = this;
-    this.props.handleEdit()
     axios({
       method: 'patch',
       url: `/api/v1/games/${this.props.id}`,
@@ -29,9 +25,7 @@ class EditGameForm extends React.Component {
         console.log(response);
       })
       .then(function() {
-        self.setState({
-          gameEdit: true
-        })
+        self.props.handleEdit()
       })
       .catch(function(error) {
         console.log(error)
