@@ -6,6 +6,9 @@ import axios from "axios";
 class Signup extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isSignedUp: false
+    }
     this.handleSignup = this.handleSignup.bind(this);
   }
 
@@ -34,13 +37,13 @@ class Signup extends Component {
             ability: document.getElementById("ability-input").value
         })
         .then(function(response) {
-          console.log(response);
-          console.log(response.data.jwt_token)
-          self.props.updateAuthState(
-            response.data.jwt_token,
-            response.data.user_id
-          );
           localStorage.setItem('jwtToken', response.data.jwt_token)
+          localStorage.setItem('user_id', response.data.user_id)
+        })
+        .then(function() {
+          self.setState(prevState => {
+            return {isSignedUp: !prevState.isSignedUp}
+          })
         })
         .catch(function(error) {
           console.log(error);
@@ -49,7 +52,7 @@ class Signup extends Component {
     }
 
   render () {
-    if (this.props.authToken) {
+    if (localStorage.getItem('jwtToken')) {
       return <Redirect to="/home" />;
     }
     else {

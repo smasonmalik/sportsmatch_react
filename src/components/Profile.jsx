@@ -19,10 +19,10 @@ class Profile extends React.Component {
   getPlayer() {
     let self = this;
     axios({
-      url: `/api/v1/players/${this.props.user_id}`,
+      url: `/api/v1/players/${localStorage.getItem('user_id')}`,
       headers: {
         "Content-Type": "application/json",
-        "api-token": self.props.authToken
+        "api-token": localStorage.getItem('jwtToken')
       }
     })
     .then(function(response) {
