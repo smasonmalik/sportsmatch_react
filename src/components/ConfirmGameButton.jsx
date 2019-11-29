@@ -24,7 +24,6 @@ class ConfirmGameButton extends React.Component {
       }
     })
     .then(function(response) {
-      console.log(response.data.confirmed)
       self.setState({
         confirmed: response.data.confirmed
       })

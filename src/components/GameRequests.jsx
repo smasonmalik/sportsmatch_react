@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
-import Request from './singleGameRequest'
+import SingleGameRequest from './SingleGameRequest'
 
 class GameRequests extends React.Component {
   constructor(props) {
@@ -34,13 +34,9 @@ class GameRequests extends React.Component {
       }
     })
       .then(function(response) {
-        console.log(response.data)
         self.setState({
           requests: response.data
         })
-      })
-      .then(function() {
-        console.log(self.state.requests.game_date)
       })
       .catch(function(error) {
         console.log(error)
@@ -57,7 +53,7 @@ class GameRequests extends React.Component {
     return (
       <ul className="list-group list-group-flush">
         {this.state.requests.map(result => (
-          <Request
+          <SingleGameRequest
             key={result.id}
             id={result.id}
             organiser_id={result.organiser_id}
@@ -68,7 +64,6 @@ class GameRequests extends React.Component {
             handleEdit={this.handleEdit}
           />
         ))}
-        {this.state.gameEdit ? "Yes" : "No"}
       </ul>
     )
   }

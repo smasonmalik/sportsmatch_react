@@ -20,8 +20,6 @@ class Login extends Component {
           password: document.getElementById("password-input").value
       })
       .then(function(response) {
-        console.log(response);
-        console.log(response.data.jwt_token)
         self.props.updateAuthState(
           response.data.jwt_token,
           response.data.user_id

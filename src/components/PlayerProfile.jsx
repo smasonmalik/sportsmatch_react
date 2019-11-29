@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Redirect } from 'react-router-dom'
 import axios from 'axios'
-import GamesRequest from './GameRequestForm'
+import GameRequestForm from './GameRequestForm'
 
 
 class PlayerProfile extends React.Component {
@@ -27,13 +27,9 @@ class PlayerProfile extends React.Component {
       }
     })
       .then(function(response) {
-        console.log(response.data)
         self.setState({
           player: response.data
         })
-      })
-      .then(function() {
-        console.log(self.state.player.ability)
       })
       .catch(function(error) {
         console.log(error)
@@ -50,7 +46,7 @@ class PlayerProfile extends React.Component {
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
-            <GamesRequest opponent_id={this.state.player.id} />
+            <GameRequestForm opponent_id={this.state.player.id} />
           </div>
         </div>
     )
