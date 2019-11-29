@@ -50,7 +50,7 @@ class PlayerProfile extends React.Component {
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
-            <a href="" className="btn btn-primary">Request Game</a>
+            <GamesRequest opponent_id={this.state.player.id} />
           </div>
         </div>
     )
