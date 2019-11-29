@@ -43,7 +43,6 @@ class GameRequest extends Component {
       })
   }
 
-
   render() {
     if (this.state.gameRequest) {
       return (
