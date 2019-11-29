@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
@@ -11,9 +9,6 @@ import Profile from './components/Profile';
 import PlayerProfile from './components/PlayerProfile'
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
 
   render() {
     return (

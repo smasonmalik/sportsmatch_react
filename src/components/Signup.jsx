@@ -15,7 +15,7 @@ class Signup extends Component {
   handlePasswordConfirm(e){
     let password = document.getElementById("password-input").value
     let password_confirm = document.getElementById("password-confirm-input").value
-    if (password != password_confirm) {
+    if (password !== password_confirm) {
       console.log("passwords don't match")
     }
   }

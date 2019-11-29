@@ -1,12 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
 
-class SingleGameRequest extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+class Request extends React.Component {
 
   render() {
     return (
@@ -29,6 +25,6 @@ class SingleGameRequest extends React.Component {
     )
   }
 }
-export default SingleGameRequest
+export default Request
 
 // {this.props.confirmed ? "Confirmed" : "Unconfirmed"}
