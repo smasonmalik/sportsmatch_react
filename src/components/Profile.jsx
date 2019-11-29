@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
-import GameRequests from './AllGameRequests'
+import GameRequests from './GameRequests'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -26,7 +26,6 @@ class Profile extends React.Component {
       }
     })
     .then(function(response) {
-      console.log(response.data)
       self.setState({player: response.data})
     })
     .then(function(error) {

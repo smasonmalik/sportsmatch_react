@@ -26,7 +26,6 @@ class Home extends Component {
       }
     })
       .then(function(response) {
-        console.log(response.data)
         self.setState({ players: response.data })
       })
       .catch(function(error) {
