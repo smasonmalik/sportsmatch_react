@@ -22,7 +22,7 @@ class Home extends Component {
       url: "/api/v1/players",
       headers: {
         "Content-Type": "application/json",
-        "api-token": self.props.authToken
+        "api-token": localStorage.getItem('jwtToken')
       }
     })
       .then(function(response) {
@@ -34,7 +34,7 @@ class Home extends Component {
   }
 
   render() {
-      if (this.props.authToken) {
+      if (localStorage.getItem('jwtToken')) {
         return (
           <div>
             {this.state.players.map(player => (
