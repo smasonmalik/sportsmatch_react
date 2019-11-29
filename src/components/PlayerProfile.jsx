@@ -44,12 +44,12 @@ class PlayerProfile extends React.Component {
   getAgeBracket() {
     if (this.state.playerAge > 16 && this.state.playerAge <= 19) {
       return (<p className="card-text">16 - 19 years</p>)
-    } else if (this.state.playerAge > 19 && this.state.playerAge <= 25) {
-      return (<p className="card-text">20 - 25 years</p>)
-    } else if (this.state.playerAge > 25 && this.state.playerAge <= 35) {
-      return (<p className="card-text">26 - 35 years</p>)
-    } else if (this.state.playerAge > 35 && this.state.playerAge <= 50) {
-      return (<p className="card-text">35 - 50 years</p>)
+    } else if (this.state.playerAge > 19 && this.state.playerAge <= 29) {
+      return (<p className="card-text">20 - 29 years</p>)
+    } else if (this.state.playerAge > 29 && this.state.playerAge <= 39) {
+      return (<p className="card-text">30 - 39 years</p>)
+    } else if (this.state.playerAge > 39 && this.state.playerAge <= 49) {
+      return (<p className="card-text">40 - 49 years</p>)
     } else if (this.state.playerAge > 50) {
       return (<p className="card-text">50+ years</p>)
     } else {

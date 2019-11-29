@@ -1,6 +1,7 @@
 import React from 'react'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
+import DeclineGameButton from './DeclineGameButton'
 
 class Request extends React.Component {
 
@@ -17,6 +18,11 @@ class Request extends React.Component {
                 id={this.props.id}
                 confirmed={this.props.confirmed}
                 organiser_id={this.props.organiser_id}
+              />
+              <DeclineGameButton
+                organiser_id={this.props.organiser_id}
+                handleDecline={this.props.handleDecline}
+                id={this.props.id}
               />
               <EditGameButton id={this.props.id} handleEdit={this.props.handleEdit}/>
           </div>

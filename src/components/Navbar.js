@@ -22,6 +22,7 @@ class Navbar extends React.Component {
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
             </li>
             <LogoutButton handleLogout={this.props.handleLogout} />
+
           </ul>
         </div>
       </nav>

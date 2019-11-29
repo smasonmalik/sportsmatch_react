@@ -18,6 +18,9 @@ class App extends Component {
           <Route exact strict path="/login">
             <Login />
           </Route>
+          <Route exact strict path="/">
+            <Login />
+          </Route>
           <Route exact strict path="/signup">
             <Signup />
           </Route>
@@ -25,7 +28,7 @@ class App extends Component {
             <Home />
           </Route>
           <Route exact strict path="/profile">
-            <Profile />
+            <Profile foo="foo"/>
           </Route>
           <Route path="/player/:id" component={PlayerProfile}/>
         </Router>
