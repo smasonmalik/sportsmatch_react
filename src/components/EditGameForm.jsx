@@ -12,6 +12,7 @@ class EditGameForm extends React.Component {
 
   handleClick() {
     let self = this;
+    this.props.handleEdit()
     axios({
       method: 'patch',
       url: `/api/v1/games/${this.props.id}`,

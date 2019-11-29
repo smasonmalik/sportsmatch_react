@@ -22,7 +22,7 @@ class Request extends React.Component {
                 confirmed={this.props.confirmed}
                 organiser_id={this.props.organiser_id}
               />
-              <EditGameButton id={this.props.id}/>
+              <EditGameButton id={this.props.id} handleEdit={this.props.handleEdit}/>
           </div>
         </div>
       </li>

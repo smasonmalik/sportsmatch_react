@@ -7,14 +7,22 @@ class GameRequests extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      requests: []
+      requests: [],
+      gameEdit: false
     }
     this.getRequest = this.getRequest.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
   componentDidMount() {
     this.getRequest()
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.gameEdit !== prevState.gameEdit) {
+      this.getRequest()
+    }
+  }
 
   getRequest() {
     let self = this;
@@ -39,10 +47,15 @@ class GameRequests extends React.Component {
       })
   }
 
+  handleEdit() {
+    this.setState(prevState => {
+      return {gameEdit: !prevState.gameEdit}
+    })
+  }
+
   render() {
     return (
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">
         {this.state.requests.map(result => (
           <Request
             key={result.id}
@@ -52,9 +65,10 @@ class GameRequests extends React.Component {
             game_date={result.game_date}
             game_time={result.game_time}
             confirmed={result.confirmed}
+            handleEdit={this.handleEdit}
           />
         ))}
-        </li>
+        {this.state.gameEdit ? "Yes" : "No"}
       </ul>
     )
   }
