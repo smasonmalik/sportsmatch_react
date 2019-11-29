@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 
 class Navbar extends React.Component {
-
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
