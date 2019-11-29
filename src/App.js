@@ -19,12 +19,12 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Navbar handleLogout={this.handleLogout}/>
+          <Navbar />
           <Route exact strict path="/login">
-            <Login updateAuthState={this.updateAuthState}/>
+            <Login />
           </Route>
           <Route exact strict path="/signup">
-            <Signup updateAuthState={this.updateAuthState}/>
+            <Signup />
           </Route>
           <Route exact strict path="/home">
             <Home />

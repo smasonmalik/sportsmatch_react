@@ -11,7 +11,7 @@ class EditGameForm extends React.Component {
     let self = this;
     axios({
       method: 'patch',
-      url: `/api/v1/games/${this.props.id}`,
+      url: `/api/v1/games/${this.props.id}/edit`,
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
