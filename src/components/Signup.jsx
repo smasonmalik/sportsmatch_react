@@ -133,6 +133,16 @@ class Signup extends Component {
               ></input>
             </div>
             <div className="form-group">
+              <label> Postcode </label>
+              <input
+                id="postcode-input"
+                name="postcode"
+                type="text"
+                required="required"
+                className="form-control"
+              ></input>
+            </div>
+            <div className="form-group">
               <input
                 id="password-input"
                 name="password"
