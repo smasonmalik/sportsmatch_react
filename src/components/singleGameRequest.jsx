@@ -4,6 +4,16 @@ import EditGameButton from './EditGameButton'
 import DeclineGameButton from './DeclineGameButton'
 
 class Request extends React.Component {
+  constructor(props) {
+    super(props)
+    this.showConfirmation = this.showConfirmation.bind(this)
+  }
+
+  showConfirmation() {
+    if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
+      return (this.props.confirmed ? "Game Confirmed..." : "Confirmation Pending...")
+    }
+  }
 
   render() {
     return (
@@ -24,7 +34,11 @@ class Request extends React.Component {
                 handleDecline={this.props.handleDecline}
                 id={this.props.id}
               />
-              <EditGameButton id={this.props.id} handleEdit={this.props.handleEdit}/>
+              <EditGameButton
+                id={this.props.id}
+                handleEdit={this.props.handleEdit}
+              />
+              {this.showConfirmation()}
           </div>
         </div>
       </li>
