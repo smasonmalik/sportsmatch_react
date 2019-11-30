@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-// import ResultForm from './ResultForm'
 import SingleResult from './SingleResult'
 
 class Results extends React.Component {
@@ -12,7 +11,6 @@ class Results extends React.Component {
     }
     this.getRequest = this.getRequest.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
-    // this.handleDecline = this.handleDecline.bind(this)
   }
 
   componentDidMount() {
@@ -50,12 +48,6 @@ class Results extends React.Component {
       return {resultEdit: !prevState.resultEdit}
     })
   }
-
-  // handleDecline() {
-  //   this.setState({
-  //     gameDecline: true
-  //   })
-  // }
 
   render() {
     return (

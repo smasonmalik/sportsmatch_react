@@ -5,10 +5,29 @@ class EditResultForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentResult: { },
       resultEdit: false
+
     }
     this.handleClick = this.handleClick.bind(this)
   }
+
+// Attempt to pass in winner/loser id data from database to return as placeholder for edit form.
+//   componentDidMount() {
+//     let self = this;
+//     axios({
+//       method: 'get',
+//       url: `/api/v1/results/${this.props.match.params.id}`,
+//       headers: {
+//         "Content-Type": "application/json",
+//         "api-token": localStorage.getItem('jwtToken')
+//       }
+//     })
+//     .then(response => this.setState({ currentResult: response.data }))
+//     .catch(function(error) {
+//       console.log(error)
+//     })
+// }
 
   handleClick() {
     let self = this;
@@ -26,6 +45,7 @@ class EditResultForm extends React.Component {
       }})
       .then(function() {
         self.props.handleEdit()
+        console.log(this.state.resultEdit)
       })
       .catch(function(error) {
         console.log(error)
@@ -47,6 +67,8 @@ class EditResultForm extends React.Component {
             name="winnerid"
             type="text"
             required="required"
+            placeholder="Winner ID"
+            // defaultValue={this.state.currentResult.winner_id}
             className="form-control"
           ></input>
           </div>
@@ -56,6 +78,7 @@ class EditResultForm extends React.Component {
             name="loserid"
             type="text"
             required="required"
+            placeholder="Loser ID"
             className="form-control"
           ></input>
           </div>

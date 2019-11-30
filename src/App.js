@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import Results from './components/Results';
 import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'
+import EditResultForm from './components/EditResultForm'
 
 class App extends Component {
 
@@ -38,6 +39,7 @@ class App extends Component {
           <Route exact strict path="/results">
             <Results />
           </Route>
+          <Route path="/results/:id" component={EditResultForm}/>
           <Route path="/player/:id" component={PlayerProfile}/>
         </Router>
       </div>
