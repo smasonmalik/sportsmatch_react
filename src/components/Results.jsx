@@ -7,10 +7,11 @@ class Results extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: []
+      results: [],
+      resultEdit: false
     }
     this.getRequest = this.getRequest.bind(this)
-    // this.handleEdit = this.handleEdit.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
     // this.handleDecline = this.handleDecline.bind(this)
   }
 
@@ -18,11 +19,11 @@ class Results extends React.Component {
     this.getRequest()
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.gameEdit !== prevState.gameEdit || this.state.gameDecline !== prevState.gameDecline) {
-  //     this.getRequest()
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.resultEdit !== prevState.resultEdit) {
+      this.getRequest()
+    }
+  }
 
   getRequest() {
     let self = this;
@@ -39,19 +40,16 @@ class Results extends React.Component {
         })
         console.log(response.data)
       })
-      // .then(
-      //   console.log(re)
-      // })
       .catch(function(error) {
         console.log(error)
       })
   }
 
-  // handleEdit() {
-  //   this.setState(prevState => {
-  //     return {gameEdit: !prevState.gameEdit}
-  //   })
-  // }
+  handleEdit() {
+    this.setState(prevState => {
+      return {resultEdit: !prevState.resultEdit}
+    })
+  }
 
   // handleDecline() {
   //   this.setState({
@@ -70,6 +68,7 @@ class Results extends React.Component {
             winner_id={result.winner_id}
             loser_id={result.loser_id}
             confirmed={result.confirmed}
+            handleEdit={this.handleEdit}
           />
         ))}
       </ul>

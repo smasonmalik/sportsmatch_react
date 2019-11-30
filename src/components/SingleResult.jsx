@@ -1,4 +1,5 @@
 import React from 'react'
+import EditResultButton from './EditResultButton'
 
 class SingleResult extends React.Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class SingleResult extends React.Component {
               <p className="card-text">Winner id: {this.props.winner_id}</p>
               <p className="card-text">Loser id: {this.props.loser_id}</p>
               <p className="card-text">Confirmed: {this.props.confirmed}</p>
+              <EditResultButton
+              id={this.props.id}
+              handleEdit={this.props.handleEdit}
+              />
           </div>
         </div>
       </li>
