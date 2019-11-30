@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import GameRequestForm from './GameRequestForm'
 
@@ -8,7 +7,8 @@ class PlayerProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      player: []
+      player: [],
+      playerAge: null
     }
     this.getPlayer = this.getPlayer.bind(this)
   }
@@ -27,13 +27,34 @@ class PlayerProfile extends React.Component {
       }
     })
       .then(function(response) {
+        let birthDate = response.data.dob
+        let birthYear = birthDate.substring(0,4)
+        let year = new Date().getFullYear()
+        let age = year - parseInt(birthYear)
         self.setState({
-          player: response.data
+          player: response.data,
+          playerAge: age
         })
       })
       .catch(function(error) {
         console.log(error)
       })
+  }
+
+  getAgeBracket() {
+    if (this.state.playerAge > 16 && this.state.playerAge <= 19) {
+      return (<p className="card-text">16 - 19 years</p>)
+    } else if (this.state.playerAge > 19 && this.state.playerAge <= 29) {
+      return (<p className="card-text">20 - 29 years</p>)
+    } else if (this.state.playerAge > 29 && this.state.playerAge <= 39) {
+      return (<p className="card-text">30 - 39 years</p>)
+    } else if (this.state.playerAge > 39 && this.state.playerAge <= 49) {
+      return (<p className="card-text">40 - 49 years</p>)
+    } else if (this.state.playerAge > 50) {
+      return (<p className="card-text">50+ years</p>)
+    } else {
+      return <span></span>
+    }
   }
 
   render() {
@@ -46,6 +67,7 @@ class PlayerProfile extends React.Component {
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
+            {this.getAgeBracket()}
             <GameRequestForm opponent_id={this.state.player.id} />
           </div>
         </div>

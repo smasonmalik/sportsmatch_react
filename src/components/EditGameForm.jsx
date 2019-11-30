@@ -4,6 +4,9 @@ import axios from 'axios'
 class EditGameForm extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      gameEdit: false
+    }
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -21,9 +24,6 @@ class EditGameForm extends React.Component {
         game_date: document.getElementById("date-input").value,
         game_time: document.getElementById("time-input").value
       }})
-      .then(function(response) {
-        console.log(response);
-      })
       .then(function() {
         self.props.handleEdit()
       })

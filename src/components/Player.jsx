@@ -1,12 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import PlayerProfile from './PlayerProfile'
 
 class Player extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div className="card" style={{width: '18rem'}}>

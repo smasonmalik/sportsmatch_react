@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import SingleGameRequest from './SingleGameRequest'
 
@@ -8,10 +7,12 @@ class GameRequests extends React.Component {
     super(props)
     this.state = {
       requests: [],
-      gameEdit: false
+      gameEdit: false,
+      gameDecline: false
     }
     this.getRequest = this.getRequest.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.handleDecline = this.handleDecline.bind(this)
   }
 
   componentDidMount() {
@@ -19,7 +20,7 @@ class GameRequests extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.gameEdit !== prevState.gameEdit) {
+    if (this.state.gameEdit !== prevState.gameEdit || this.state.gameDecline !== prevState.gameDecline) {
       this.getRequest()
     }
   }
@@ -34,6 +35,7 @@ class GameRequests extends React.Component {
       }
     })
       .then(function(response) {
+        console.log(response.data)
         self.setState({
           requests: response.data
         })
@@ -46,6 +48,12 @@ class GameRequests extends React.Component {
   handleEdit() {
     this.setState(prevState => {
       return {gameEdit: !prevState.gameEdit}
+    })
+  }
+
+  handleDecline() {
+    this.setState({
+      gameDecline: true
     })
   }
 
@@ -62,6 +70,7 @@ class GameRequests extends React.Component {
             game_time={result.game_time}
             confirmed={result.confirmed}
             handleEdit={this.handleEdit}
+            handleDecline={this.handleDecline}
           />
         ))}
       </ul>

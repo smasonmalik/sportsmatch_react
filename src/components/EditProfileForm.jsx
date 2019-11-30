@@ -1,61 +1,49 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from "axios";
+import React from 'react'
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 
-class Signup extends Component {
+class EditProfileForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      isSignedUp: false
+      isProfileEdited: false
     }
-    this.handleSignup = this.handleSignup.bind(this);
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
-  handlePasswordConfirm(e){
-    let password = document.getElementById("password-input").value
-    let password_confirm = document.getElementById("password-confirm-input").value
-    if (password !== password_confirm) {
-      console.log("passwords don't match")
-    }
-  }
-
-  handleSignup(e) {
-    e.preventDefault();
-    let password = document.getElementById("password-input").value
-    let password_confirm = document.getElementById("password-confirm-input").value
-    if (password === password_confirm) {
+  handleEdit() {
       let self = this;
-      axios
-        .post("/api/v1/players/new", {
-            email: document.getElementById("email-input").value,
-            password: document.getElementById("password-input").value,
-            first_name: document.getElementById("first-name-input").value,
-            last_name: document.getElementById("last-name-input").value,
-            gender: document.getElementById("gender-input").value,
-            dob: document.getElementById("dob-input").value,
-            ability: document.getElementById("ability-input").value
+      axios({
+        method: 'patch',
+        url: "/api/v1/players/my_profile",
+        headers: {
+          "Content-Type": "application/json",
+          "api-token": localStorage.getItem('jwtToken')
+        },
+        data: {
+          email: document.getElementById("email-input").value,
+          first_name: document.getElementById("first-name-input").value,
+          last_name: document.getElementById("last-name-input").value,
+          gender: document.getElementById("gender-input").value,
+          dob: document.getElementById("dob-input").value,
+          ability: document.getElementById("ability-input").value
+        }
+      })
+      .then(function() {
+        self.setState(prevState => {
+          return {isProfileEdited: !prevState.isProfileEdited}
         })
-        .then(function(response) {
-          localStorage.setItem('jwtToken', response.data.jwt_token)
-          localStorage.setItem('user_id', parseInt(response.data.user_id))
-        })
-        .then(function() {
-          self.setState(prevState => {
-            return {isSignedUp: !prevState.isSignedUp}
-          })
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-      }
-    }
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
 
-  render () {
-    if (localStorage.getItem('jwtToken')) {
-      return <Redirect to="/home" />;
-    }
-    else {
-      return (
+  render() {
+    if (this.state.isProfileEdited) {
+      return <Redirect to="/profile" />
+    } else {
+    return (
       <div className="form-container">
           <h4>Sign Up</h4>
           <form
@@ -132,37 +120,6 @@ class Signup extends Component {
                 className="email form-control"
               ></input>
             </div>
-            <div className="form-group">
-              <label> Postcode </label>
-              <input
-                id="postcode-input"
-                name="postcode"
-                type="text"
-                required="required"
-                className="form-control"
-              ></input>
-            </div>
-            <div className="form-group">
-              <input
-                id="password-input"
-                name="password"
-                placeholder="Password"
-                type="password"
-                className="password form-control"
-                required="required"
-              ></input>
-            </div>
-            <div className="form-group">
-              <input
-                id="password-confirm-input"
-                name="password-confirm"
-                placeholder="Confirm Password"
-                type="password"
-                className="password form-control"
-                required="required"
-                onChange={this.handlePasswordConfirm}
-              ></input>
-            </div>
             <div className='row'>
               <div className='col'>
                 <div className="form-group">
@@ -170,7 +127,7 @@ class Signup extends Component {
                     name="signup"
                     type="submit"
                     className="signup-button btn btn-primary"
-                    onClick={this.handleSignup}>
+                    onClick={this.handleEdit}>
                     Signup
                   </button>
                 </div>
@@ -178,9 +135,10 @@ class Signup extends Component {
             </div>
           </form>
         </div>
-    );
+      )
     }
+
   }
 }
 
-export default Signup;
+export default EditProfileForm

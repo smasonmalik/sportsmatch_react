@@ -1,36 +1,38 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import PlayerProfile from './components/PlayerProfile'
+import EditProfileForm from './components/EditProfileForm'
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
 
   render() {
     return (
       <div>
         <Router>
-          <Navbar handleLogout={this.handleLogout}/>
+          <Navbar />
           <Route exact strict path="/login">
-            <Login updateAuthState={this.updateAuthState}/>
+            <Login />
+          </Route>
+          <Route exact strict path="/">
+            <Login />
           </Route>
           <Route exact strict path="/signup">
-            <Signup updateAuthState={this.updateAuthState}/>
+            <Signup />
           </Route>
           <Route exact strict path="/home">
             <Home />
           </Route>
           <Route exact strict path="/profile">
-            <Profile />
+            <Profile foo="foo"/>
+          </Route>
+          <Route exact strict path="/profile/edit">
+            <EditProfileForm />
           </Route>
           <Route path="/player/:id" component={PlayerProfile}/>
         </Router>

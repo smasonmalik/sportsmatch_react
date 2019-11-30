@@ -1,11 +1,18 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
+import DeclineGameButton from './DeclineGameButton'
 
-class SingleGameRequest extends React.Component {
+class Request extends React.Component {
   constructor(props) {
     super(props)
+    this.showConfirmation = this.showConfirmation.bind(this)
+  }
+
+  showConfirmation() {
+    if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
+      return (this.props.confirmed ? "Game Confirmed..." : "Confirmation Pending...")
+    }
   }
 
   render() {
@@ -22,13 +29,22 @@ class SingleGameRequest extends React.Component {
                 confirmed={this.props.confirmed}
                 organiser_id={this.props.organiser_id}
               />
-              <EditGameButton id={this.props.id} handleEdit={this.props.handleEdit}/>
+              <DeclineGameButton
+                organiser_id={this.props.organiser_id}
+                handleDecline={this.props.handleDecline}
+                id={this.props.id}
+              />
+              <EditGameButton
+                id={this.props.id}
+                handleEdit={this.props.handleEdit}
+              />
+              {this.showConfirmation()}
           </div>
         </div>
       </li>
     )
   }
 }
-export default SingleGameRequest
+export default Request
 
 // {this.props.confirmed ? "Confirmed" : "Unconfirmed"}

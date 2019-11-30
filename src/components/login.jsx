@@ -21,7 +21,7 @@ class Login extends Component {
       })
       .then(function(response) {
         localStorage.setItem('jwtToken', response.data.jwt_token)
-        localStorage.setItem('user_id', response.data.user_id)
+        localStorage.setItem('user_id', parseInt(response.data.user_id))
       })
       .then(function() {
         self.setState(prevState => {

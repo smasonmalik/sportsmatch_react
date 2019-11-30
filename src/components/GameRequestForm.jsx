@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-class GameRequestForm extends Component {
+class GameRequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,6 +29,10 @@ class GameRequestForm extends Component {
         game_date: document.getElementById("date-input").value,
         game_time: document.getElementById("time-input").value
       }})
+
+      .then(function(response) {
+        console.log(response);
+      })
       .then(function() {
         self.setState({
           gameRequest: true
@@ -93,4 +97,4 @@ class GameRequestForm extends Component {
 
   }
 }
-export default GameRequestForm;
+export default GameRequest;

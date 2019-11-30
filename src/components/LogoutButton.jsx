@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, withRouter } from "react-router-dom";
 
 class LogoutButton extends React.Component {
   constructor(props) {
@@ -8,15 +9,16 @@ class LogoutButton extends React.Component {
 
   handleClick() {
     localStorage.clear()
+    this.props.history.push('/login');
   }
 
   render() {
     return(
       <div>
-        <button onClick={this.handleClick}>LogOut</button>
+        <Link onClick={this.handleClick}>Logout</Link>
       </div>
     )
   }
 }
 
-export default LogoutButton;
+export default withRouter (LogoutButton);

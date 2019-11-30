@@ -3,10 +3,6 @@ import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,9 +21,8 @@ class Navbar extends React.Component {
             <li className="nav-item">
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
             </li>
-            <button id="logout-button" type="button">
-              <LogoutButton handleLogout={this.props.handleLogout} />
-            </button>
+            <LogoutButton handleLogout={this.props.handleLogout} />
+
           </ul>
         </div>
       </nav>
