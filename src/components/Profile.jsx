@@ -36,26 +36,22 @@ class Profile extends React.Component {
   render() {
     if (localStorage.getItem('jwtToken')) {
       return (
-        <div className="card" style={{width: '25rem', marginLeft:'20%'}}>
+        <div className="card text-center">
+          <div className="card-header">
+            Profile Page
+          </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
+            <p className="card-text">{this.state.player.gender}</p>
+            <p className="card-text">{this.state.player.dob}</p>
+            <ul className="list-group list-group-flush">
+              <div>
+                <NavLink to="/profile/edit">Edit Profile</NavLink>
+              </div>
+            </ul>
+            <GameRequests handleGameRefresh={this.handleGameRefresh}/>
           </div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">{this.state.player.gender}</li>
-            <li className="list-group-item">{this.state.player.dob}</li>
-            <div>
-              <NavLink to="/profile/edit">Edit Profile</NavLink>
-            </div>
-          </ul>
-          <GameRequests handleGameRefresh={this.handleGameRefresh}/>
-          <div className="card-body">
-            <h6 className="card-title">Game Results</h6>
-          </div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">Result 1</li>
-            <li className="list-group-item">Result 2</li>
-          </ul>
         </div>
       )
     } else {

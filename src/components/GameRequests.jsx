@@ -35,6 +35,7 @@ class GameRequests extends React.Component {
       }
     })
       .then(function(response) {
+        console.log(response.data)
         self.setState({
           requests: response.data
         })
