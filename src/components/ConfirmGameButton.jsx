@@ -35,7 +35,7 @@ class ConfirmGameButton extends React.Component {
   }
 
   render() {
-    if (this.props.organiser_id == localStorage.getItem('user_id')) {
+    if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
       return <span></span>
     } else if (this.state.confirmed) {
       return (

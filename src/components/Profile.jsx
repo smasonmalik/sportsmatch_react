@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
 
 class Profile extends React.Component {
@@ -44,6 +44,9 @@ class Profile extends React.Component {
           <ul className="list-group list-group-flush">
             <li className="list-group-item">{this.state.player.gender}</li>
             <li className="list-group-item">{this.state.player.dob}</li>
+            <div>
+              <NavLink to="/profile/edit">Edit Profile</NavLink>
+            </div>
           </ul>
           <GameRequests handleGameRefresh={this.handleGameRefresh}/>
           <div className="card-body">
