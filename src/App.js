@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
+import Results from './components/Results';
 import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'
 
@@ -33,6 +34,9 @@ class App extends Component {
           </Route>
           <Route exact strict path="/profile/edit">
             <EditProfileForm />
+          </Route>
+          <Route exact strict path="/results">
+            <Results />
           </Route>
           <Route path="/player/:id" component={PlayerProfile}/>
         </Router>
