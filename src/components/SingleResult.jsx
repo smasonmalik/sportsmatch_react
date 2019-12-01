@@ -2,9 +2,6 @@ import React from 'react'
 import EditResultButton from './EditResultButton'
 
 class SingleResult extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return (

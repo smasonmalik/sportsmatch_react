@@ -13,7 +13,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.getPlayers()
+
+      this.getPlayers()
+
+    
   };
 
   getPlayers() {
@@ -51,7 +54,7 @@ class Home extends Component {
       } else {
         return(
           <div>
-            <Redirect to='/login' />
+            < Redirect to="/home" />
           </div>
         )
       }

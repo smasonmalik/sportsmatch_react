@@ -7,27 +7,30 @@ class EditResultForm extends React.Component {
     this.state = {
       currentResult: { },
       resultEdit: false
-
     }
     this.handleClick = this.handleClick.bind(this)
+    this.getCurrentResult = this.getCurrentResult.bind(this)
   }
 
 // Attempt to pass in winner/loser id data from database to return as placeholder for edit form.
-//   componentDidMount() {
-//     let self = this;
-//     axios({
-//       method: 'get',
-//       url: `/api/v1/results/${this.props.match.params.id}`,
-//       headers: {
-//         "Content-Type": "application/json",
-//         "api-token": localStorage.getItem('jwtToken')
-//       }
-//     })
-//     .then(response => this.setState({ currentResult: response.data }))
-//     .catch(function(error) {
-//       console.log(error)
-//     })
-// }
+  componentDidMount() {
+    this.getCurrentResult()
+  }
+
+  getCurrentResult(){
+      axios({
+        method: 'get',
+        url: `/api/v1/results/${this.props.id}`,
+        headers: {
+          "Content-Type": "application/json",
+          "api-token": localStorage.getItem('jwtToken')
+        }
+      })
+      .then(response => this.setState({ currentResult: response.data }))
+      .catch(function(error) {
+        console.log(error)
+      })
+  }
 
   handleClick() {
     let self = this;
@@ -62,23 +65,26 @@ class EditResultForm extends React.Component {
           className="form-result"
           >
           <div className="form-group">
+            Winner:
           <input
             id="winnerid-input"
             name="winnerid"
             type="text"
             required="required"
-            placeholder="Winner ID"
-            // defaultValue={this.state.currentResult.winner_id}
+            placeholder="Winner"
+            defaultValue={this.state.currentResult.winner_id}
             className="form-control"
           ></input>
           </div>
           <div className="form-group">
+            Loser:
           <input
             id="loserid-input"
             name="loserid"
             type="text"
             required="required"
-            placeholder="Loser ID"
+            placeholder="Loser"
+            defaultValue={this.state.currentResult.loser_id}
             className="form-control"
           ></input>
           </div>

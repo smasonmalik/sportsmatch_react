@@ -50,7 +50,7 @@ class Login extends Component {
               <input
                 id="email-input"
                 name="email"
-                placeholder="email"
+                placeholder="Email"
                 type="text"
                 required="required"
                 className="email form-control"
@@ -60,7 +60,7 @@ class Login extends Component {
               <input
                 id="password-input"
                 name="password"
-                placeholder="password"
+                placeholder="Password"
                 type="password"
                 className="password form-control"
                 required="required"
