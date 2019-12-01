@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from "react-router-dom";
 import GameRequests from './GameRequests'
 
 class Profile extends React.Component {
@@ -34,9 +33,6 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (!localStorage.getItem('jwtToken')) {
-      return <Redirect to="/home" />;
-    } else {
       return (
         <div className="card" style={{width: '25rem', marginLeft:'20%'}}>
           <div className="card-body">
@@ -58,8 +54,8 @@ class Profile extends React.Component {
         </div>
       )
     }
-    }
-    
 }
+    
+
 
 export default Profile

@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div>
         <Router>
-        {(localStorage.getItem('jwtToken')) ? null : <Navbar />}
+        <Navbar />
           <Route exact strict path="/login">
             <Login />
           </Route>

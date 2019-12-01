@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from "react-router-dom";
 import SingleResult from './SingleResult'
 
 class Results extends React.Component {
@@ -51,9 +50,6 @@ class Results extends React.Component {
   }
 
   render() {
-    if (!localStorage.getItem('jwtToken')) {
-      return <Redirect to="/home" />;
-    } else {
       return (
       <div>
       <h4>My Results</h4>
@@ -67,12 +63,12 @@ class Results extends React.Component {
             loser_id={result.loser_id}
             confirmed={result.confirmed}
             handleEdit={this.handleEdit}
-
           />
         ))}
       </ul>
       </div>
-      )}}
+      )
+    }
   }
 
 
