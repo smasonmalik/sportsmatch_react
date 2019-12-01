@@ -18,8 +18,7 @@ class CreateMessage extends React.Component {
       },
       data: {
         game_id: this.props.id,
-        sender_id: 2,
-        receiver_id: 1,
+        sender_id: localStorage.getItem('user_id'),
         content: document.getElementById("content-input").value
       }
     })

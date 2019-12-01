@@ -6,7 +6,7 @@ class SingleMessage extends React.Component {
   }
 
   render() {
-    if (this.props.sender_id === parseInt(localStorage.getItem('user_id')) || this.props.receiver_id === parseInt(localStorage.getItem('user_id')) ) {
+    if (this.props.sender_id === parseInt(localStorage.getItem('user_id'))) {
       return (
         <li className="list-group-item" style={{textAlign: 'left'}}>
           {this.props.content}
