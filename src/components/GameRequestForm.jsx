@@ -23,7 +23,7 @@ class GameRequest extends Component {
       },
       data:
       {
-        organiser_id: localStorage.getItem('user_id'),
+        organiser_id: parseInt(localStorage.getItem('user_id')),
         opponent_id: self.props.opponent_id,
         confirmed: "False",
         game_date: document.getElementById("date-input").value,

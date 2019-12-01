@@ -6,9 +6,11 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSignedUp: false
+      isSignedUp: false,
+      selectedFile: ''
     }
     this.handleSignup = this.handleSignup.bind(this);
+    this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
   }
 
   handlePasswordConfirm(e){
@@ -33,7 +35,9 @@ class Signup extends Component {
             last_name: document.getElementById("last-name-input").value,
             gender: document.getElementById("gender-input").value,
             dob: document.getElementById("dob-input").value,
-            ability: document.getElementById("ability-input").value
+            // profile_image: self.state.selectedFile,
+            ability: document.getElementById("ability-input").value,
+            postcode: document.getElementById("postcode-input").value
         })
         .then(function(response) {
           localStorage.setItem('jwtToken', response.data.jwt_token)
@@ -48,6 +52,18 @@ class Signup extends Component {
           console.log(error);
         });
       }
+    }
+
+    fileSelectedHandler(event) {
+      event.preventDefault();
+      let file = event.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        this.setState({
+          selectedFile: reader.result
+        });
+      };
     }
 
   render () {
@@ -131,6 +147,9 @@ class Signup extends Component {
                 required="required"
                 className="email form-control"
               ></input>
+            </div>
+            <div>
+              <input type="file" onChange={this.fileSelectedHandler} />
             </div>
             <div className="form-group">
               <label> Postcode </label>

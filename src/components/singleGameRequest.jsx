@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
 import DeclineGameButton from './DeclineGameButton'
@@ -39,6 +40,7 @@ class Request extends React.Component {
                 handleEdit={this.props.handleEdit}
               />
               {this.showConfirmation()}
+              <NavLink to={`/game/${this.props.id}/messages`}>View Messages</NavLink>
           </div>
         </div>
       </li>
