@@ -8,13 +8,16 @@ class PlayerProfile extends React.Component {
     super(props)
     this.state = {
       player: [],
-      playerAge: null
+      playerAge: null,
+      photo: ""
     }
-    this.getPlayer = this.getPlayer.bind(this)
+    this.getPlayer = this.getPlayer.bind(this);
+    this.getPhoto = this.getPhoto.bind(this);
   }
 
   componentDidMount() {
     this.getPlayer()
+    this.getPhoto()
   };
 
   getPlayer() {
@@ -36,6 +39,28 @@ class PlayerProfile extends React.Component {
           playerAge: age
         })
       })
+      .catch(function(error) {
+        console.log(error)
+      })
+  }
+
+  getPhoto() {
+    let self = this;
+    axios({
+      url: `/api/v1/players/${this.props.match.params.id}/image`,
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": localStorage.getItem('jwtToken')
+      }
+    })
+    .then(function(response) {
+      if (response.data.profile_image){
+        self.setState({ photo: response.data.profile_image })
+      }
+      else {
+        self.setState({ photo: "avatar.png" })
+      }
+    })
       .catch(function(error) {
         console.log(error)
       })
@@ -63,6 +88,7 @@ class PlayerProfile extends React.Component {
           <div className="card-header">
             Player Profile
           </div>
+          <img class="align-self-start mr-3" class="rounded mx-auto d-block" src={this.state.photo} alt="Profile" style={{width: '10rem'}}></img>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
