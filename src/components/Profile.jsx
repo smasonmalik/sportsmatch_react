@@ -9,14 +9,14 @@ class Profile extends React.Component {
     this.state = {
       player: [],
       gameConfirmed: false,
-      photo: ""
+      photo: "avatar.png"
     }
   }
 
   componentDidMount() {
     this.getPlayer()
-    this.getPhoto()
-  }
+    // this.getPhoto()
+  };
 
   getPlayer() {
     let self = this;
@@ -47,9 +47,6 @@ class Profile extends React.Component {
     .then(function(response) {
       if (response.data.profile_image){
         self.setState({ photo: response.data.profile_image })
-      }
-      else {
-        self.setState({ photo: "avatar.png" })
       }
     })
       .catch(function(error) {

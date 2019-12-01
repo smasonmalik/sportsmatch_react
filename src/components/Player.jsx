@@ -6,7 +6,7 @@ class Player extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photo: ""
+      photo: "avatar.png"
     };
     this.getPhoto = this.getPhoto.bind(this);
   }
@@ -26,11 +26,7 @@ class Player extends React.Component {
     })
       .then(function(response) {
         if (response.data.profile_image){
-          console.log(response.data.profile_image)
           self.setState({ photo: response.data.profile_image })
-        }
-        else {
-          self.setState({ photo: "avatar.png" })
         }
       })
       .catch(function(error) {
