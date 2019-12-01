@@ -51,6 +51,8 @@ class Results extends React.Component {
 
   render() {
     return (
+      <div>
+      <h1>My Results</h1>
       <ul className="list-group list-group-flush">
         {this.state.results.map(result => (
           <SingleResult
@@ -64,6 +66,7 @@ class Results extends React.Component {
           />
         ))}
       </ul>
+      </div>
     )
   }
 }
