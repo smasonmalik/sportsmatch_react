@@ -6,15 +6,10 @@ class SearchBar extends React.Component {
         super(props)
         // this.onPlusClick = this.onPlusClick.bind(this)
         this.onMinusClick = this.onMinusClick.bind(this)
-        this.onAbilityChange = this.onAbilityChange.bind(this);
       }
 
     onMinusClick(e){
         e.preventDefault();
-    }
-
-    onAbilityChange(){
-        this.props.onAbilityUpdate(document.getElementById("ability-select").value)
     }
 
   render() {
@@ -22,10 +17,10 @@ class SearchBar extends React.Component {
         <form>
             <div className="row">
                 <div className="col">
-                    <label class="label">Filter By Distance(km):</label>
+                    <label className="label">Filter By Distance(km):</label>
                     <div className="input-group">
                         <span className="input-group-btn">
-                            <button type="button" className="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="" onClick={this.props.onPlusClick}>
+                            <button type="button" className="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="" onClick={this.props.handleClick()}>
                                 +
                             </button>
                         </span>
@@ -39,7 +34,7 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="col">
                     <label className="label">Filter By Ability:</label>
-                    <select className="custom-select" id="ability-select" onChange={this.onAbilityChange}>
+                    <select className="custom-select" name="ability" id="ability-select" onChange={(e) => this.props.handleChange(e)}>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
                         <option value="Advanced">Advanced</option>
@@ -47,7 +42,7 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="col">
                     <label className="label">Filter By Age Group:</label>
-                    <select className="custom-select" id="age-select">
+                    <select className="custom-select" name="age_group" id="age-select" onChange={(e) => this.props.handleChange(e)}>
                         <option value="16-19">16-19</option>
                         <option value="20-29">20-29</option>
                         <option value="30-39">30-39</option>
