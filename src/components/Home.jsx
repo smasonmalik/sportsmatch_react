@@ -1,31 +1,84 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
-import Player from './Player'
+import SearchBar from './SearchBar';
+import Player from './Player';
 import Login from './Login'
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: []
+      players: [],
+      distance: 5,
+      ability: "Beginner",
+      age_group: "16 - 19"
     };
     this.getPlayers = this.getPlayers.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
+    this.getLoggedInPlayerInfo()
     this.getPlayers()
   };
 
-  getPlayers() {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.ability !== prevState.ability) {
+      this.getPlayers()
+    }
+    if (this.state.distance !== prevState.distance) {
+      this.getPlayers()
+    }
+  };
+
+    handleChange(event) {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })
+    console.log(this.state.ability)
+  }
+
+  handleClick(event) {
+    console.log(event.target.value)
+    let prev_distance = this.state.distance
+    this.setState({
+      distance: prev_distance + parseInt(event.target.value)
+    })
+  }
+
+  getLoggedInPlayerInfo() {
     let self = this;
     axios({
-      url: "/api/v1/players",
+      url: `/api/v1/players/${localStorage.getItem('user_id')}`,
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
       }
     })
+      .then(function(response) {
+        self.setState({
+          ability: response.data.ability
+        })
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  }
+
+  getPlayers() {
+    let self = this;
+    axios({
+        url: "/api/v1/players",
+        headers: {
+          "Content-Type": "application/json",
+          "api-token": localStorage.getItem('jwtToken'),
+          "ability": this.state.ability,
+          "distance": this.state.distance
+        },
+      })
       .then(function(response) {
         self.setState({ players: response.data })
       })
@@ -38,15 +91,26 @@ class Home extends Component {
       if (localStorage.getItem('jwtToken')) {
         return (
           <div>
-            {this.state.players.map(player => (
-              <Player
-                key={player.id}
-                id={player.id}
-                firstName={player.first_name}
-                ability={player.ability}
-                gender={player.gender}
+            <div>
+              <SearchBar
+                  distance={this.state.distance}
+                  ability={this.state.ability}
+                  handleChange={this.handleChange}
+                  handleClick={this.handleClick}
               />
-            ))}
+            </div>
+            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance}</p>
+            <div>
+              {this.state.players.map(player => (
+                <Player
+                  key={player.id}
+                  id={player.id}
+                  firstName={player.first_name}
+                  ability={player.ability}
+                  gender={player.gender}
+                />
+              ))}
+            </div>
           </div>
         )
       } else {
