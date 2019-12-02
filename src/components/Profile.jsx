@@ -67,6 +67,8 @@ class Profile extends React.Component {
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
             <p className="card-text">{this.state.player.dob}</p>
+            <p className="card-text">{this.state.player.bio}</p>
+            <p className="card-test">{this.state.player.sport}</p>
             <ul className="list-group list-group-flush">
               <div>
                 <NavLink to="/profile/edit">Edit Profile</NavLink>

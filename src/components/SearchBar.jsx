@@ -43,6 +43,17 @@ class SearchBar extends React.Component {
                         <option value="50+">50+</option>
                     </select>
                 </div>
+                <div className="col">
+                    <label className="label">Filter By Sport:</label>
+                    <select className="custom-select" name="sport" id="sport-select" onChange={(e) => this.props.handleChange(e)}>
+                        <option value="Tennis">Tennis</option>
+                        <option value="TableTennis">TableTennis</option>
+                        <option value="Squash">Squash</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Snooker">Snooker</option>
+                        <option value="Climbing">Climbing</option>
+                    </select>
+                </div>
             </div>
         </form>
     )

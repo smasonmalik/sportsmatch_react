@@ -47,6 +47,8 @@ class Signup extends Component {
             dob: document.getElementById("dob-input").value,
             ability: document.getElementById("ability-input").value,
             postcode: document.getElementById("postcode-input").value,
+            sport: document.getElementById("sport-input").value,
+            bio: document.getElementById("bio-input").value,
             profile_image: self.state.selectedFile
         })
         .then(function(response) {
@@ -111,6 +113,16 @@ class Signup extends Component {
               ></input>
             </div>
             <div className="form-group">
+              <input
+                id="bio-input"
+                name="bio"
+                placeholder="Write you bio here"
+                type="text"
+                required="required"
+                className="form-control"
+              ></input>
+            </div>
+            <div className="form-group">
               <label>Date of Birth</label>
               <input
                 id="dob-input"
@@ -119,6 +131,23 @@ class Signup extends Component {
                 required="required"
                 className="form-control"
               ></input>
+            </div>
+            <div className="form-group">
+              <select
+                id="sport-input"
+                name="sport"
+                placeholder="Sport"
+                type="text"
+                required="required"
+                className="form-control"
+              >
+                <option value="Tennis">Tennis</option>
+                <option value="TableTennis">TableTennis</option>
+                <option value="Squash">Squash</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Snooker">Snooker</option>
+                <option value="Climbing">Climbing</option>
+              </select>
             </div>
             <div className="form-group">
               <select
