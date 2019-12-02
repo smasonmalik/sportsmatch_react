@@ -2,6 +2,7 @@ import React from 'react'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
 import DeclineGameButton from './DeclineGameButton'
+import { NavLink } from 'react-router-dom'; 
 
 class Request extends React.Component {
   constructor(props) {
@@ -39,6 +40,10 @@ class Request extends React.Component {
                 handleEdit={this.props.handleEdit}
               />
               {this.showConfirmation()}
+              <NavLink
+                to={`/game/${this.props.id}/messages/${this.props.organiser_id}/${this.props.opponent_id}`}>
+                View Messages
+              </NavLink>
           </div>
         </div>
       </li>
