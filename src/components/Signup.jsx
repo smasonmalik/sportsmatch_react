@@ -44,7 +44,7 @@ class Signup extends Component {
             gender: document.getElementById("gender-input").value,
             dob: document.getElementById("dob-input").value,
             ability: document.getElementById("ability-input").value,
-            postcode: document.getElementById("postcode-input").value 
+            postcode: document.getElementById("postcode-input").value
         })
         .then(function(response) {
           localStorage.setItem('jwtToken', response.data.jwt_token)

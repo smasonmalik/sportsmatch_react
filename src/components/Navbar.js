@@ -3,7 +3,38 @@ import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 
 class Navbar extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      isLoggedIn: false
+    }
+    this.sessionButton = this.sessionButton.bind(this)
+    this.isLoggedIn = this.isLoggedIn.bind(this)
+  }
+
+  isLoggedIn() {
+      if (localStorage.getItem('jwtToken')) {
+        this.setState({isLoggedIn: true})
+    }
+  }
+
+  sessionButton() {
+    if (this.state.isLoggedIn === true) {
+      return (
+        <LogoutButton handleLogout={this.props.handleLogout} />
+      )
+    }
+  }
+
+
+  componentDidMount() {
+    this.isLoggedIn()
+  }
+
+
+
   render() {
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="navbar-brand" to="/home">SportsMatch</NavLink>
@@ -21,8 +52,7 @@ class Navbar extends React.Component {
             <li className="nav-item">
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
             </li>
-            <LogoutButton handleLogout={this.props.handleLogout} />
-
+            {this.sessionButton()}
           </ul>
         </div>
       </nav>

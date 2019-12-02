@@ -2,7 +2,7 @@ import React from 'react'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
 import DeclineGameButton from './DeclineGameButton'
-import { NavLink } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom';
 
 class Request extends React.Component {
   constructor(props) {

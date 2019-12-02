@@ -30,6 +30,7 @@ class Login extends Component {
       })
       .catch(function(error) {
         console.log(error);
+        return 'User and passwords do not match database'
       });
     }
 
