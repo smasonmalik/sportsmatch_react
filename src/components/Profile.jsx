@@ -57,7 +57,7 @@ class Profile extends React.Component {
     } else {
       return (
         <div>
-          <Redirect to='/login' />
+          <Redirect to='/' />
         </div>
       )
     }

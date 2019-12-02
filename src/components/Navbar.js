@@ -12,16 +12,18 @@ class Navbar extends React.Component {
     this.sessionButton = this.sessionButton.bind(this)
   }
 
-  forceUpdateHandler(){
-    this.forceUpdate();
-  };
+  componentDidUpdate() {
+    this.sessionButton()
+  }
 
   sessionButton() {
       if (localStorage.getItem('jwtToken')) {
-          return (
+        return (
           <LogoutButton handleLogout={this.props.handleLogout} />
         );
-    }
+      } else {
+        return ''
+      }
   }
 
 
@@ -36,10 +38,7 @@ class Navbar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <NavLink className="nav-link" to="/home">Home <span className="sr-only">(current)</span></NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" id="login-link" to="/login">Login</NavLink>
+              <NavLink className="nav-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>

@@ -9,7 +9,7 @@ class LogoutButton extends React.Component {
 
   handleClick() {
     localStorage.clear()
-    this.props.history.push('/login');
+    this.props.history.push('/');
   }
 
   render() {

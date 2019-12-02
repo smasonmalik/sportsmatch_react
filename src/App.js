@@ -17,16 +17,10 @@ class App extends Component {
       <div>
         <Router>
           <Navbar />
-          <Route exact strict path="/login">
-            <Login />
-          </Route>
-          <Route exact strict path="/">
-            <Login />
-          </Route>
           <Route exact strict path="/signup">
             <Signup />
           </Route>
-          <Route exact strict path="/home">
+          <Route exact strict path="/">
             <Home />
           </Route>
           <Route exact strict path="/profile">
