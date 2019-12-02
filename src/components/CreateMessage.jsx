@@ -46,4 +46,6 @@ class CreateMessage extends React.Component {
     )
   }
 }
-export default CreateMessage; 
+
+export default CreateMessage;
+
