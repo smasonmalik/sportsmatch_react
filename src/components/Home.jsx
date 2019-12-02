@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import Player from './Player'
 
@@ -13,10 +12,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-
-      this.getPlayers()
-
-    
+    this.getPlayers()
   };
 
   getPlayers() {
@@ -37,27 +33,19 @@ class Home extends Component {
   }
 
   render() {
-      if (localStorage.getItem('jwtToken')) {
-        return (
-          <div>
-            {this.state.players.map(player => (
-              <Player
-                key={player.id}
-                id={player.id}
-                firstName={player.first_name}
-                ability={player.ability}
-                gender={player.gender}
-              />
-            ))}
-          </div>
-        )
-      } else {
-        return(
-          <div>
-            < Redirect to="/home" />
-          </div>
-        )
-      }
+    return (
+      <div>
+        {this.state.players.map(player => (
+          <Player
+            key={player.id}
+            id={player.id}
+            firstName={player.first_name}
+            ability={player.ability}
+            gender={player.gender}
+          />
+        ))}
+      </div>
+    )
   }
 }
 export default Home;
