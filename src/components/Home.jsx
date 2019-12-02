@@ -24,20 +24,21 @@ class Home extends Component {
     this.getPlayers()
   };
 
-  // componentDidUpdate() {
-  //   if (this.state !== this.prevState) {
-  //     this.getPlayers()
-  //   }
-  // };
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.ability !== prevState.ability) {
+      this.getPlayers()
+    }
+    if (this.state.distance !== prevState.distance) {
+      this.getPlayers()
+    }
+  };
 
     handleChange(event) {
-    console.log(event.target.value)
     const {name, value} = event.target
     this.setState({
       [name]: value
     })
     console.log(this.state.ability)
-    this.getPlayers()
   } 
 
   handleClick(event) {
@@ -46,7 +47,6 @@ class Home extends Component {
     this.setState({
       distance: prev_distance + parseInt(event.target.value)
     })
-    this.getPlayers()
   }
 
   getLoggedInPlayerInfo() {
