@@ -12,20 +12,21 @@ class Navbar extends React.Component {
     this.sessionButton = this.sessionButton.bind(this)
   }
 
-  componentDidUpdate() {
-    this.sessionButton()
-  }
-
+  // componentDidUpdate() {
+  //   this.sessionButton()
+  // }
+  //
   sessionButton() {
+    console.log('jwt', localStorage.getItem('jwtToken'))
       if (localStorage.getItem('jwtToken')) {
         return (
           <LogoutButton handleLogout={this.props.handleLogout} />
         );
-      } else {
-        return ''
-      }
-  }
+      } }
 
+  componentDidMount(){
+    console.log('jwtmount', localStorage.getItem('jwtToken'))
+  }
 
   render() {
 

@@ -17,7 +17,7 @@ class SearchBar extends React.Component {
                                 +
                             </button>
                         </span>
-                        <input type="text" id="quantity" name="quantity" className="form-control input-number" value={this.props.distance} min="1" max="100"/>
+                        <input type="text" id="quantity" name="quantity" className="form-control input-number" defaultValue={this.props.distance} min="1" max="100"/>
                         <span className="input-group-btn">
                             <button type="button" className="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="" value="-1" onClick={(e) => this.props.handleClick(e)}>
                                 -
