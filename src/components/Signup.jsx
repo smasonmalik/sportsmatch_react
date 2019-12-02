@@ -19,6 +19,16 @@ class Signup extends Component {
     }
   }
 
+  handleSelectedFile(event) {
+    console.log(event)
+    console.log(event.target.files)
+    this.setState (
+      {
+      file: event.target.files[0]
+      }
+    )
+  }
+
   handleSignup(e) {
     e.preventDefault();
     let password = document.getElementById("password-input").value
@@ -33,7 +43,8 @@ class Signup extends Component {
             last_name: document.getElementById("last-name-input").value,
             gender: document.getElementById("gender-input").value,
             dob: document.getElementById("dob-input").value,
-            ability: document.getElementById("ability-input").value
+            ability: document.getElementById("ability-input").value,
+            postcode: document.getElementById("postcode-input").value 
         })
         .then(function(response) {
           localStorage.setItem('jwtToken', response.data.jwt_token)
@@ -83,6 +94,9 @@ class Signup extends Component {
                 required="required"
                 className="form-control"
               ></input>
+            </div>
+            <div>
+              <input type="file" onChange={this.handleSelectedFile}/>
             </div>
             <div className="form-group">
               <label>Date of Birth</label>

@@ -11,6 +11,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'
 import EditResultForm from './components/EditResultForm'
+import DisplayMessages from './components/DisplayMessages'
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
           <PrivateRoute exact strict path="/results" component={Results} />
           <Route path="/results/:id" component={EditResultForm}/>
           <Route path="/player/:id" component={PlayerProfile}/>
+          <Route path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
         </Router>
       </div>
     );
