@@ -10,30 +10,46 @@ class Home extends Component {
     super(props);
     this.state = {
       players: [],
-      distance: 5
+      distance: 5,
+      ability: "Beginner"
     };
     this.getPlayers = this.getPlayers.bind(this);
-    this.onPlusClick = this.onPlusClick.bind(this);
+    // this.onPlusClick = this.onPlusClick.bind(this);
+    this.onAbilityUpdate = this.onAbilityUpdate.bind(this);
   }
 
   componentDidMount() {
     this.getPlayers()
   };
 
-  onPlusClick(){
-    this.state.distance += 1
-    console.log(this.state.distance)
+  // onPlusClick(){
+  //   this.setState({
+  //     ability: this.state.distance + 1
+  //   })
+  // }
+
+  onAbilityUpdate(ability){
+    this.setState({
+      ability: ability
+    })
+    console.log(this.state.ability)
+    this.getPlayers()
   }
 
   getPlayers() {
     let self = this;
     axios({
-      url: "/api/v1/players",
-      headers: {
-        "Content-Type": "application/json",
-        "api-token": localStorage.getItem('jwtToken')
-      }
-    })
+        method: 'post',
+        url: "/api/v1/players",
+        headers: {
+          "Content-Type": "application/json",
+          "api-token": localStorage.getItem('jwtToken')
+        },
+        data:
+        {
+          ability: this.state.ability
+        }
+      })
       .then(function(response) {
         self.setState({ players: response.data })
       })
@@ -48,9 +64,10 @@ class Home extends Component {
           <div>
             <div>
               <SearchBar
+                  onAbilityUpdate={this.onAbilityUpdate} 
                   onPlusClick={this.onPlusClick} 
                   distance={this.state.distance}
-                  ability="Beginner"
+                  ability={this.state.ability}
                   gender="Any"
               />
             </div>

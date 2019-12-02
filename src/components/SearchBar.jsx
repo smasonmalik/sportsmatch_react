@@ -6,11 +6,16 @@ class SearchBar extends React.Component {
         super(props)
         // this.onPlusClick = this.onPlusClick.bind(this)
         this.onMinusClick = this.onMinusClick.bind(this)
+        this.onAbilityChange = this.onAbilityChange.bind(this);
       }
 
-      onMinusClick(e){
+    onMinusClick(e){
         e.preventDefault();
-      }
+    }
+
+    onAbilityChange(){
+        this.props.onAbilityUpdate(document.getElementById("ability-select").value)
+    }
 
   render() {
     return (
@@ -34,7 +39,7 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="col">
                     <label className="label">Filter By Ability:</label>
-                    <select className="custom-select">
+                    <select className="custom-select" id="ability-select" onChange={this.onAbilityChange}>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
                         <option value="Advanced">Advanced</option>
@@ -42,7 +47,7 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="col">
                     <label className="label">Filter By Age Group:</label>
-                    <select className="custom-select">
+                    <select className="custom-select" id="age-select">
                         <option value="16-19">16-19</option>
                         <option value="20-29">20-29</option>
                         <option value="30-39">30-39</option>
