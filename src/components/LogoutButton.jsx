@@ -9,14 +9,11 @@ class LogoutButton extends React.Component {
 
   handleClick() {
     localStorage.clear()
-    this.props.history.push('/profile');
   }
 
   render() {
     return(
-      <div>
-        <Link onClick={this.handleClick}>Logout</Link>
-      </div>
+      <Link onClick={this.handleClick} to={'/'}>Logout</Link>
     )
   }
 }
