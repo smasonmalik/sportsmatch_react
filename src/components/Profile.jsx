@@ -9,7 +9,7 @@ class Profile extends React.Component {
     this.state = {
       player: [],
       gameConfirmed: false,
-      photo: "avatar.png"
+      profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
   }
 
@@ -61,7 +61,7 @@ class Profile extends React.Component {
           <div className="card-header">
             Profile Page
           </div>
-          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.photo} alt="Profile" style={{width: '10rem'}}></img>
+          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>

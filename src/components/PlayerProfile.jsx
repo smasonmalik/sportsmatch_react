@@ -9,10 +9,9 @@ class PlayerProfile extends React.Component {
     this.state = {
       player: [],
       playerAge: null,
-      profile_photo: "/avatar.png"
+      profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
     this.getPlayer = this.getPlayer.bind(this);
-    this.displayPhoto = this.displayPhoto.bind(this);
     this.getPhoto = this.getPhoto.bind(this);
   }
 
@@ -64,13 +63,6 @@ class PlayerProfile extends React.Component {
     })
   }
 
-  displayPhoto(){
-    if (this.state.profile_photo === "/avatar.png"){
-      return ( 
-        process.env.PUBLIC_URL + this.state.profile_photo
-      )
-    }
-  }
 
   getAgeBracket() {
     if (this.state.playerAge > 16 && this.state.playerAge <= 19) {
@@ -95,7 +87,7 @@ class PlayerProfile extends React.Component {
             Player Profile
           </div>
           <div className="card-body">
-          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.displayPhoto()} alt="Profile" style={{width: '10rem'}}></img>
+          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
