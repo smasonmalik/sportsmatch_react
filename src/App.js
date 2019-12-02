@@ -12,7 +12,7 @@ import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'
 import EditResultForm from './components/EditResultForm'
 import DisplayMessages from './components/DisplayMessages'
-import PastGames from './components/PastGames'
+import Results from './components/Results'
 
 class App extends Component {
 
@@ -34,8 +34,7 @@ class App extends Component {
           <PrivateRoute exact strict path="/home" component={Home} />
           <PrivateRoute exact strict path="/profile" component={Profile} />
           <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
-          {/* <PrivateRoute exact strict path="/results" component={Results} /> */}
-          <PrivateRoute exact strict path="/results" component={PastGames} />
+          <PrivateRoute exact strict path="/results" component={Results} />
           <PrivateRoute path="/results/:id" component={EditResultForm}/>
           <PrivateRoute path="/player/:id" component={PlayerProfile}/>
           <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />

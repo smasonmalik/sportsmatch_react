@@ -12,6 +12,9 @@ class SingleResult extends React.Component {
               <p className="card-text">Winner id: {this.props.winner_id}</p>
               <p className="card-text">Loser id: {this.props.loser_id}</p>
               <p className="card-text">Confirmed: {this.props.confirmed}</p>
+              <p className="card-text">Organiser ID: {this.props.organiser_id}</p>
+              <p className="card-text">Opponent ID: {this.props.opponent_id}</p>
+              <p className="card-text">Game Date: {this.props.game_date}</p>
               <EditResultButton
               id={this.props.id}
               handleEdit={this.props.handleEdit}

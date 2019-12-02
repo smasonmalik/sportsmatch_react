@@ -1,23 +1,24 @@
 import React from 'react'
 import axios from 'axios'
 import PastGames from './PastGames'
+import Results from './Results'
 
-class Results extends React.Component {
+class GameResults extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-    
+
   }
 
   render() {
       return (
       <div>
         <PastGames />
-        ))}
-        </div>
+        <Results />
+      </div>
       )
     }
   }
 
 
-export default Results
+export default GameResults;

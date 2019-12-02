@@ -90,6 +90,9 @@ class Results extends React.Component {
                 winner_id={result.winner_id}
                 loser_id={result.loser_id}
                 confirmed={result.confirmed}
+                organiser_id={result.organiser_id}
+                opponent_id={result.opponent_id}
+                game_date={result.game_date}
                 handleEdit={this.handleEdit}
               />
               ))}
@@ -106,6 +109,9 @@ class Results extends React.Component {
                     winner_id={result.winner_id}
                     loser_id={result.loser_id}
                     confirmed={result.confirmed}
+                    organiser_id={result.organiser_id}
+                    opponent_id={result.opponent_id}
+                    game_date={result.game_date}
                     handleEdit={this.handleEdit}
                   />
                 ))}

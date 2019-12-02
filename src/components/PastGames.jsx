@@ -67,6 +67,7 @@ class PastGames extends React.Component {
   }
 
   render() {
+    
       return (
       <div>
         <h2 align="center">My Past Games</h2>
