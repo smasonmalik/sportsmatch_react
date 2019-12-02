@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import SearchBar from './SearchBar';
 import Player from './Player';
+import { throwStatement } from "@babel/types";
 
 class Home extends Component {
   constructor(props) {
@@ -15,21 +16,38 @@ class Home extends Component {
     };
     this.getPlayers = this.getPlayers.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.onPlusClick = this.onPlusClick.bind(this);
-    // this.onAbilityUpdate = this.onAbilityUpdate.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
+    this.getLoggedInPlayerInfo()
     this.getPlayers()
   };
 
-  // onAbilityUpdate(ability){
-  //   this.setState({
-  //     ability: ability
-  //   })
-  //   console.log(this.state.ability)
-  //   this.getPlayers()
-  // }
+  // componentDidUpdate() {
+  //   if (this.state !== this.prevState) {
+  //     this.getPlayers()
+  //   }
+  // };
+
+    handleChange(event) {
+    console.log(event.target.value)
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })
+    console.log(this.state.ability)
+    this.getPlayers()
+  } 
+
+  handleClick(event) {
+    console.log(event.target.value)
+    let prev_distance = this.state.distance
+    this.setState({
+      distance: prev_distance + parseInt(event.target.value)
+    })
+    this.getPlayers()
+  }
 
   getLoggedInPlayerInfo() {
     let self = this;
@@ -50,27 +68,15 @@ class Home extends Component {
       })
   }
 
-  handleChange(event) {
-    console.log(event.target.value)
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
-  } 
-
-  handleClick() {
-    this.setState(prevState => {
-      return {distance: prevState += 1}
-    })
-  }
-
   getPlayers() {
     let self = this;
     axios({
         url: "/api/v1/players",
         headers: {
           "Content-Type": "application/json",
-          "api-token": localStorage.getItem('jwtToken')
+          "api-token": localStorage.getItem('jwtToken'),
+          "ability": this.state.ability,
+          "distance": this.state.distance
         },
       })
       .then(function(response) {
@@ -87,13 +93,13 @@ class Home extends Component {
           <div>
             <div>
               <SearchBar
-                  // onAbilityUpdate={this.onAbilityUpdate} 
-                  // onPlusClick={this.onPlusClick} 
                   distance={this.state.distance}
                   ability={this.state.ability}
                   handleChange={this.handleChange}
+                  handleClick={this.handleClick}
               />
             </div>
+            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance}</p>
             <div>
               {this.state.players.map(player => (
                 <Player
@@ -105,7 +111,6 @@ class Home extends Component {
                 />
               ))}
             </div>
-            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance}</p>
           </div>
         )
       } else {
