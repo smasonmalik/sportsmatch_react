@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
+import CreateMessage from './CreateMessage';
 
 class DisplayMessages extends Component {
   constructor(props) {
