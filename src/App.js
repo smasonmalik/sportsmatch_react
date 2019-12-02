@@ -34,9 +34,9 @@ class App extends Component {
           <PrivateRoute exact strict path="/profile" component={Profile} />
           <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
           <PrivateRoute exact strict path="/results" component={Results} />
-          <Route path="/results/:id" component={EditResultForm}/>
-          <Route path="/player/:id" component={PlayerProfile}/>
-          <Route path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
+          <PrivateRoute path="/results/:id" component={EditResultForm}/>
+          <PrivateRoute path="/player/:id" component={PlayerProfile}/>
+          <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
         </Router>
       </div>
     );
