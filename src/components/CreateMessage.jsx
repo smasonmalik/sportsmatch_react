@@ -6,7 +6,6 @@ class CreateMessage extends React.Component {
     super(props)
     this.handleSend = this.handleSend.bind(this)
   }
-
   handleSend() {
     let self = this;
     axios({
@@ -32,7 +31,6 @@ class CreateMessage extends React.Component {
       console.log(error)
     })
   }
-
   render() {
     return (
         <form>
@@ -46,9 +44,7 @@ class CreateMessage extends React.Component {
             <button onClick={this.handleSend}>Send</button>
           </div>
         </form>
-
     )
   }
 }
-
-export default CreateMessage
+export default CreateMessage; 

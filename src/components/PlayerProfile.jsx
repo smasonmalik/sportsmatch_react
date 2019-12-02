@@ -1,30 +1,30 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequestForm from './GameRequestForm'
+import { NavLink } from 'react-router-dom'
 
 
 class PlayerProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: this.props.match.params.id,
       player: [],
       playerAge: null,
-      photo: "avatar.png"
+      profile_photo: "/avatar.png"
     }
     this.getPlayer = this.getPlayer.bind(this);
-    this.getPhoto = this.getPhoto.bind(this);
+    this.displayPhoto = this.displayPhoto.bind(this)
   }
 
   componentDidMount() {
     this.getPlayer()
-    this.getPhoto()
+    // this.getPhoto()
   };
 
   getPlayer() {
     let self = this;
     axios({
-      url: `/api/v1/players/${this.state.id}`,
+      url: `/api/v1/players/${this.props.match.params.id}`,
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
@@ -45,23 +45,29 @@ class PlayerProfile extends React.Component {
       })
   }
 
-  getPhoto() {
-    let self = this;
-    axios({
-      url: `/api/v1/players/${this.state.id}/image`,
-      headers: {
-        "Content-Type": "application/json",
-        "api-token": localStorage.getItem('jwtToken')
-      }
-    })
-    .then(function(response) {
-      if (response.data.profile_image){
-        self.setState({ photo: response.data.profile_image })
-      }
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
+  // getPhoto() {
+  //   let self = this;
+  //   axios({
+  //     url: `/api/v1/players/${self.props.match.params.id}/image`,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "api-token": localStorage.getItem('jwtToken')
+  //     }
+  //   })
+  //   .then(function(response) {
+  //     if (response.data.profile_image) {
+  //       self.setState({ profile_photo: response.data.profile_image })
+  //     }
+  //   })
+  //   .catch(function(error) {
+  //     console.log(error)
+  //   })
+  // }
+
+  displayPhoto(){
+    return ( 
+    <img src={process.env.PUBLIC_URL + "/avatar.png"}/>
+    )
   }
 
   getAgeBracket() {
@@ -87,7 +93,7 @@ class PlayerProfile extends React.Component {
             Player Profile
           </div>
           <div className="card-body">
-          <img class="align-self-start mr-3" class="rounded mx-auto d-block" src={this.state.photo} alt="Profile" style={{width: '10rem'}}></img>
+          {this.displayPhoto()}
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>

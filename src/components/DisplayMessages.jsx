@@ -1,22 +1,24 @@
-import React from 'react';
-import CreateMessage from './CreateMessage'
-import SingleMessage from './SingleMessage'
-import axios from 'axios'
+import React, { Component } from "react";
+import axios from "axios";
+import CreateMessage from './CreateMessage';
+import SingleMessage from './SingleMessage'; 
 
-class DisplayMessages extends React.Component {
+class DisplayMessages extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       game_id: props.match.params.id,
+      organiser_id: props.match.params.organiser_id,
+      opponent_id: props.match.params.opponent_id,
       messageSent: false,
-      messageData: []
+      messageData: [],
+      messageDetails: []
     }
   }
 
   componentDidMount() {
     this.getMessages()
   }
-
   getMessages() {
     let self = this;
     axios({
@@ -27,45 +29,59 @@ class DisplayMessages extends React.Component {
       }
     })
     .then(function(response) {
-      console.log(response.data)
+      let details = response.data.pop()
       self.setState({
-        messageData: response.data
+        messageData: response.data,
+        messageDetails: details
       })
     })
     .catch(function(error) {
       console.log(error)
     })
   }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.state.messageSent !== prevState.messageSent) {
       this.getMessages()
     }
   }
-
   handleSubmitMessage() {
     this.setState(prevState => {
       return { messageSent: !prevState.messageSent }
     })
   }
-
+  showOtherUserName() {
+    if (this.state.messageDetails.organiser_id === parseInt(localStorage.getItem('user_id'))) {
+      return this.state.messageDetails.opponent
+    } else {
+      return this.state.messageDetails.organiser
+    }
+  }
   render() {
     return (
       <div>
+      <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
+      <ul className="list-group list-group-flush">
         {this.state.messageData.map((message) => (
           <SingleMessage
             key={message.id}
             id={message.id}
             game_id={message.game_id}
             sender_id={message.sender_id}
-            receiver_id={message.receiver_id}
+            organiser_id={message.organiser_id}
+            opponent_id={message.opponent_id}
             content={message.content}
+            organiser={this.state.messageDetails.organiser}
+            opponent={this.state.messageDetails.opponent}
           />
         ))}
-        <CreateMessage id={this.state.game_id}/>
+        </ul>
+        <CreateMessage
+          id={this.state.game_id}
+          organiser_id={this.state.organiser_id}
+          opponent_id={this.state.opponent_id}
+        />
       </div>
     )
   }
 }
-
-export default DisplayMessages
+export default DisplayMessages;

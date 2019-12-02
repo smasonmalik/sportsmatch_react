@@ -36,7 +36,7 @@ class App extends Component {
             <EditProfileForm />
           </Route>
           <Route path="/player/:id" component={PlayerProfile}/>
-          <Route path="/game/:id/messages" component={DisplayMessages} />
+          <Route path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
         </Router>
       </div>
     );

@@ -40,7 +40,10 @@ class Request extends React.Component {
                 handleEdit={this.props.handleEdit}
               />
               {this.showConfirmation()}
-              <NavLink to={`/game/${this.props.id}/messages`}>View Messages</NavLink>
+              <NavLink
+                to={`/game/${this.props.id}/messages/${this.props.organiser_id}/${this.props.opponent_id}`}>
+                View Messages
+              </NavLink>
           </div>
         </div>
       </li>
