@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
+import './css/navbar.css'
 
 class Navbar extends React.Component {
   constructor() {
@@ -24,7 +25,7 @@ class Navbar extends React.Component {
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink className="navbar-brand" to="/home"><img src="../../sportsmatch.png" alt='SportsMatch'/></NavLink>
+        <NavLink className="navbar-brand" to="/home"><img className='main-logo' src="../../logo.png" alt='SportsMatch'/></NavLink>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
