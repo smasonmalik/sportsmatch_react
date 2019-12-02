@@ -1,35 +1,35 @@
 import React from 'react'
 import axios from 'axios'
 import './css/Results.css'
+import SinglePastGame from './SinglePastGame'
 
 class PastGames extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       opponentGames: [],
-      organiserResults: [],
-      resultEdit: false
+      organiserGames: []
     }
-    this.getOpponentResultsRequest = this.getOpponentResultsRequest.bind(this)
-    this.getOrganiserResultsRequest = this.getOrganiserResultsRequest.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
+    this.getOpponentGamesRequest = this.getOpponentGamesRequest.bind(this)
+    this.getOrganiserGamesRequest = this.getOrganiserGamesRequest.bind(this)
+    // this.handleEdit = this.handleEdit.bind(this)
   }
 
   componentDidMount() {
-    this.getOpponentResultsRequest()
-    this.getOrganiserResultsRequest()
+    this.getOpponentGamesRequest()
+    this.getOrganiserGamesRequest()
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.resultEdit !== prevState.resultEdit) {
-      this.getRequest()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.resultEdit !== prevState.resultEdit) {
+  //     this.getRequest()
+  //   }
+  // }
 
-  getOpponentResultsRequest() {
+  getOpponentGamesRequest() {
     let self = this;
     axios({
-      url: "/api/v1/results/opponent",
+      url: "/api/v1/games/opponent",
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
@@ -37,7 +37,7 @@ class PastGames extends React.Component {
     })
       .then(function(response) {
         self.setState({
-          opponentResults: response.data
+          opponentGames: response.data
         })
         console.log(response.data)
       })
@@ -46,10 +46,10 @@ class PastGames extends React.Component {
       })
   }
 
-  getOrganiserResultsRequest() {
+  getOrganiserGamesRequest() {
     let self = this;
     axios({
-      url: "/api/v1/results/organiser",
+      url: "/api/v1/games/organiser",
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
@@ -57,39 +57,32 @@ class PastGames extends React.Component {
     })
       .then(function(response) {
         self.setState({
-          organiserResults: response.data
+          organiserGames: response.data
         })
         console.log(response.data)
       })
       .catch(function(error) {
         console.log(error)
       })
-  }
-
-  handleEdit() {
-    this.setState(prevState => {
-      return {resultEdit: !prevState.resultEdit}
-    })
   }
 
   render() {
       return (
       <div>
-        <h2 align="center">My Results</h2>
+        <h2 align="center">My Past Games</h2>
         <div class="container">
           <div class="row">
             <div class="col-sm">
             <h3>I'm the organiser</h3>
             <ul className="list-group list-group-flush">
-              {this.state.organiserResults.map(result => (
-              <SingleResult
+              {this.state.organiserGames.map(result => (
+              <SinglePastGame
                 key={result.id}
-                id={result.id}
-                game_id={result.game_id}
-                winner_id={result.winner_id}
-                loser_id={result.loser_id}
-                confirmed={result.confirmed}
-                handleEdit={this.handleEdit}
+                game_id={result.id}
+                organiser_id={result.organiser_id}
+                opponent_id={result.opponent_id}
+                game_date={result.game_date}
+                game_time={result.game_time}
               />
               ))}
             </ul>
@@ -97,16 +90,15 @@ class PastGames extends React.Component {
             <div class="col-sm">
             <h3>I'm the opponent</h3>
               <ul className="list-group list-group-flush">
-                {this.state.opponentResults.map(result => (
-                  <SingleResult
-                    key={result.id}
-                    id={result.id}
-                    game_id={result.game_id}
-                    winner_id={result.winner_id}
-                    loser_id={result.loser_id}
-                    confirmed={result.confirmed}
-                    handleEdit={this.handleEdit}
-                  />
+                {this.state.opponentGames.map(result => (
+                  <SinglePastGame
+                  key={result.id}
+                  game_id={result.id}
+                  organiser_id={result.organiser_id}
+                  opponent_id={result.opponent_id}
+                  game_date={result.game_date}
+                  game_time={result.game_time}
+                />
                 ))}
               </ul>
             </div>
@@ -116,4 +108,5 @@ class PastGames extends React.Component {
       )
     }
   }
-export default PastGames
+
+export default PastGames;

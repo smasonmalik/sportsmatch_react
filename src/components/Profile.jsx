@@ -43,7 +43,7 @@ class Profile extends React.Component {
             <li className="list-group-item">{this.state.player.gender}</li>
             <li className="list-group-item">{this.state.player.dob}</li>
           </ul>
-          <GameRequests handleGameRefresh={this.handleGameRefresh}/>
+          <GameRequests />
           <div className="card-body">
             <h6 className="card-title">Game Results</h6>
           </div>
