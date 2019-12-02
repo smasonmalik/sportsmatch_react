@@ -6,7 +6,7 @@ class Player extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photo: "avatar.png"
+      profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     };
     this.getPhoto = this.getPhoto.bind(this);
   }
@@ -26,7 +26,7 @@ class Player extends React.Component {
     })
       .then(function(response) {
         if (response.data.profile_image){
-          self.setState({ photo: response.data.profile_image })
+          self.setState({ profile_photo: response.data.profile_image })
         }
       })
       .catch(function(error) {
@@ -38,7 +38,7 @@ class Player extends React.Component {
   render() {
     return (
       <div className="media">
-        <img class="align-self-start mr-3" src={this.state.photo} alt="Profile" style={{width: '10rem'}}></img>
+        <img class="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
         <div className="media-body">
           <h5 class="mt-0">{this.props.firstName}</h5>
           <p className="card-text">{this.props.ability}</p>
