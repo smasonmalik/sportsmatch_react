@@ -24,7 +24,7 @@ class App extends Component {
             <Home />
           </Route>
           <Route exact strict path="/profile">
-            <Profile foo="foo"/>
+            <Profile />
           </Route>
           <Route exact strict path="/profile/edit">
             <EditProfileForm />
