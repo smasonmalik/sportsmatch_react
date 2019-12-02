@@ -15,7 +15,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.getPlayer()
-    // this.getPhoto()
+    this.getPhoto()
   };
 
   getPlayer() {

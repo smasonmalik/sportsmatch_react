@@ -46,7 +46,8 @@ class Signup extends Component {
             gender: document.getElementById("gender-input").value,
             dob: document.getElementById("dob-input").value,
             ability: document.getElementById("ability-input").value,
-            postcode: document.getElementById("postcode-input").value 
+            postcode: document.getElementById("postcode-input").value,
+            profile_image: self.state.selectedFile
         })
         .then(function(response) {
           localStorage.setItem('jwtToken', response.data.jwt_token)
@@ -63,9 +64,9 @@ class Signup extends Component {
       }
     }
 
-    fileSelectedHandler(event) {
-      event.preventDefault();
-      let file = event.target.files[0];
+    fileSelectedHandler(e) {
+      let file = e.target.files[0];
+      console.log(e.target.files[0].size)
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
@@ -108,9 +109,6 @@ class Signup extends Component {
                 required="required"
                 className="form-control"
               ></input>
-            </div>
-            <div>
-              <input type="file" onChange={this.handleSelectedFile}/>
             </div>
             <div className="form-group">
               <label>Date of Birth</label>
@@ -161,13 +159,16 @@ class Signup extends Component {
               ></input>
             </div>
             <div>
+              <label>Add Image</label>
+              <br/>
               <input type="file" onChange={this.fileSelectedHandler} />
             </div>
+            <br/>
             <div className="form-group">
-              <label> Postcode </label>
               <input
                 id="postcode-input"
                 name="postcode"
+                placeholder="Postcode"
                 type="text"
                 required="required"
                 className="form-control"
