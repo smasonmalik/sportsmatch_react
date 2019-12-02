@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import SearchBar from './SearchBar';
 import Player from './Player';
-import { throwStatement } from "@babel/types";
 
 class Home extends Component {
   constructor(props) {
