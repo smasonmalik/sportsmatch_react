@@ -26,7 +26,8 @@ class EditProfileForm extends React.Component {
           last_name: document.getElementById("last-name-input").value,
           gender: document.getElementById("gender-input").value,
           dob: document.getElementById("dob-input").value,
-          ability: document.getElementById("ability-input").value
+          ability: document.getElementById("ability-input").value,
+          postcode: document.getElementById("postcode-input").value
         }
       })
       .then(function() {
@@ -73,7 +74,7 @@ class EditProfileForm extends React.Component {
               ></input>
             </div>
             <div className="form-group">
-              <label>Date of Birth</label>
+              <label> Date of Birth </label>
               <input
                 id="dob-input"
                 name="dob"
@@ -120,15 +121,25 @@ class EditProfileForm extends React.Component {
                 className="email form-control"
               ></input>
             </div>
+            <div className="form-group">
+              <input
+                id="postcode-input"
+                name="postcode"
+                placeholder="Postcode"
+                type="text"
+                required="required"
+                className="form-control"
+              ></input>
+            </div>
             <div className='row'>
               <div className='col'>
                 <div className="form-group">
                   <button
-                    name="signup"
+                    name="edit"
                     type="submit"
-                    className="signup-button btn btn-primary"
+                    className="edit-button btn btn-primary"
                     onClick={this.handleEdit}>
-                    Signup
+                    Edit
                   </button>
                 </div>
               </div>
