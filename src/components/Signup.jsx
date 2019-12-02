@@ -11,6 +11,7 @@ class Signup extends Component {
     }
     this.handleSignup = this.handleSignup.bind(this);
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
+    this.lastNameValidation = this.lastNameValidation.bind(this)
   }
 
   handlePasswordConfirm(e){
@@ -76,6 +77,16 @@ class Signup extends Component {
       };
     }
 
+    lastNameValidation(e){
+      console.log(e.target.value);
+  if(e.target.value.length > 10){
+    alert('last name must be less than 10 chars long')
+    var element = document.getElementById("last-name-input");
+    element.classList.add("form-control-error");
+  }
+}
+
+
   render () {
     if (localStorage.getItem('jwtToken')) {
       return <Redirect to="/" />;
@@ -108,6 +119,7 @@ class Signup extends Component {
                 type="text"
                 required="required"
                 className="form-control"
+                onChange={e => this.lastNameValidation(e)}
               ></input>
             </div>
             <div className="form-group">

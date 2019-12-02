@@ -12,10 +12,6 @@ class Navbar extends React.Component {
     this.sessionButton = this.sessionButton.bind(this)
   }
 
-  // componentDidUpdate() {
-  //   this.sessionButton()
-  // }
-  //
   sessionButton() {
     console.log('jwt', localStorage.getItem('jwtToken'))
       if (localStorage.getItem('jwtToken')) {
