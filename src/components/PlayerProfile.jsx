@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequestForm from './GameRequestForm'
-import { NavLink } from 'react-router-dom'
 
 
 class PlayerProfile extends React.Component {
@@ -13,12 +12,13 @@ class PlayerProfile extends React.Component {
       profile_photo: "/avatar.png"
     }
     this.getPlayer = this.getPlayer.bind(this);
-    this.displayPhoto = this.displayPhoto.bind(this)
+    this.displayPhoto = this.displayPhoto.bind(this);
+    this.getPhoto = this.getPhoto.bind(this);
   }
 
   componentDidMount() {
     this.getPlayer()
-    // this.getPhoto()
+    this.getPhoto()
   };
 
   getPlayer() {
@@ -45,29 +45,31 @@ class PlayerProfile extends React.Component {
       })
   }
 
-  // getPhoto() {
-  //   let self = this;
-  //   axios({
-  //     url: `/api/v1/players/${self.props.match.params.id}/image`,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "api-token": localStorage.getItem('jwtToken')
-  //     }
-  //   })
-  //   .then(function(response) {
-  //     if (response.data.profile_image) {
-  //       self.setState({ profile_photo: response.data.profile_image })
-  //     }
-  //   })
-  //   .catch(function(error) {
-  //     console.log(error)
-  //   })
-  // }
+  getPhoto() {
+    let self = this;
+    axios({
+      url: `/api/v1/players/${self.props.match.params.id}/image`,
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": localStorage.getItem('jwtToken')
+      }
+    })
+    .then(function(response) {
+      if (response.data.profile_image) {
+        self.setState({ profile_photo: response.data.profile_image })
+      }
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+  }
 
   displayPhoto(){
-    return ( 
-    <img src={process.env.PUBLIC_URL + "/avatar.png"}/>
-    )
+    if (this.state.profile_photo === "/avatar.png"){
+      return ( 
+        process.env.PUBLIC_URL + this.state.profile_photo
+      )
+    }
   }
 
   getAgeBracket() {
@@ -93,7 +95,7 @@ class PlayerProfile extends React.Component {
             Player Profile
           </div>
           <div className="card-body">
-          {this.displayPhoto()}
+          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.displayPhoto()} alt="Profile" style={{width: '10rem'}}></img>
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
