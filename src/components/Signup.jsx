@@ -7,22 +7,10 @@ class Signup extends Component {
     super(props);
     this.state = {
       isSignedUp: false,
-      selectedFile: ''
     }
     this.handleSignup = this.handleSignup.bind(this);
-    this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
     this.dobValidation = this.dobValidation.bind(this)
     this.validateEmail = this.validateEmail.bind(this)
-  }
-
-  handleSelectedFile(event) {
-    console.log(event)
-    console.log(event.target.files)
-    this.setState (
-      {
-      file: event.target.files[0]
-      }
-    )
   }
 
   handleSignup(e) {
@@ -59,18 +47,6 @@ class Signup extends Component {
         });
       }
     }
-
-  fileSelectedHandler(e) {
-    let file = e.target.files[0];
-    console.log(e.target.files[0].size)
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      this.setState({
-        selectedFile: reader.result
-      });
-    };
-  }
 
   dobValidation(e) {
     let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
@@ -138,16 +114,6 @@ class Signup extends Component {
               ></input>
             </div>
             <div className="form-group">
-              <input
-                id="bio-input"
-                name="bio"
-                placeholder="Write you bio here"
-                type="text"
-                required="required"
-                className="form-control"
-              ></input>
-            </div>
-            <div className="form-group">
               <label>Date of Birth</label>
               <input
                 id="dob-input"
@@ -168,12 +134,11 @@ class Signup extends Component {
                 required="required"
                 className="form-control"
               >
+                <option value="Tennis">-----select sport-----</option>
                 <option value="Tennis">Tennis</option>
                 <option value="TableTennis">TableTennis</option>
                 <option value="Squash">Squash</option>
                 <option value="Badminton">Badminton</option>
-                <option value="Snooker">Snooker</option>
-                <option value="Climbing">Climbing</option>
               </select>
             </div>
             <div className="form-group">
@@ -185,6 +150,7 @@ class Signup extends Component {
                 required="required"
                 className="form-control"
               >
+                <option value="Beginner">-----select ability-----</option>
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
@@ -199,6 +165,7 @@ class Signup extends Component {
                 required="required"
                 className="form-control"
               >
+                <option value="male">-----select gender-----</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="not_say">Rather Not Say</option>
@@ -214,11 +181,6 @@ class Signup extends Component {
                 className="email form-control"
                 onChange={e => this.validateEmail(e)}
               ></input>
-            </div>
-            <div>
-              <label>Add Image</label>
-              <br/>
-              <input type="file" onChange={this.fileSelectedHandler} />
             </div>
             <br/>
             <div className="form-group">
