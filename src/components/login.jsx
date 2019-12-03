@@ -30,7 +30,7 @@ class Login extends Component {
         })
       })
       .catch(function(error) {
-        console.log(error.response.data.error);
+        alert(error.response.data.error);
       });
     }
 

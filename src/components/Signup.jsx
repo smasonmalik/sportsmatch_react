@@ -70,12 +70,11 @@ class Signup extends Component {
     };
   }
 
-
   dobValidation(e) {
     let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
     var element = document.getElementById("dob-input");
     if(Date.parse(e.target.value) > min_dob) {
-      alert('minimum sign up age is 16')
+      alert('You must be at least 16 to register on SportsMatch')
       element.classList.add("form-control-error");
     } else {
       element.classList.remove("form-control-error");
@@ -86,7 +85,6 @@ class Signup extends Component {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var element = document.getElementById("email-input");
     if (!(e.target.value).match(mailformat)) {
-      console.log('email invalid')
       element.classList.add("form-control-error");
     }
     else { element.classList.remove("form-control-error");
