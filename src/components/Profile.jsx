@@ -4,6 +4,7 @@ import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
 import EditBioForm from './EditBioForm'
 
+
 class Profile extends React.Component {
   constructor(props) {
     super(props)
@@ -57,7 +58,7 @@ class Profile extends React.Component {
     })
     .then(function(response) {
       if (response.data.profile_image){
-        self.setState({ photo: response.data.profile_image })
+        self.setState({ profile_photo: response.data.profile_image })
       }
     })
       .catch(function(error) {
