@@ -46,6 +46,7 @@ class NewResult extends React.Component {
   }
 
   render() {
+    const { organiser_name, opponent_name, organiser_id, opponent_id } = this.props.location.state
       return (
       <div>
         <h2 align="center">My Results</h2>
@@ -54,33 +55,25 @@ class NewResult extends React.Component {
           <div class="row">
             <h3>Add a new result!</h3>
               <form onSubmit={this.onSubmit}>
-              <div className="form-group">
-              <label htmlFor="winnerName">Winner name</label>
-              <input
-                type="text"
-                name="winnerName"
-                id="winner_name"
-                className="form-control"
-                required
-                onChange={this.onChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="loserName">Loser Name</label>
-              <input
-                type="text"
-                name="loserName"
-                id="loser_name"
-                className="form-control"
-                required
-                onChange={this.onChange}
-              />
-            </div>
+                <div className="col">
+                    <label className="label">Winner:</label>
+                    <select className="custom-select" name="result" id="winner" onChange={this.onChange}>
+                        <option value="OrganiserName">{organiser_name}</option>
+                        <option value="OpponentName">{opponent_name}</option>
+                    </select>
+                </div>
+                <div className="col">
+                    <label className="label">Loser:</label>
+                    <select className="custom-select" name="result" id="loser" onChange={this.onChange}>
+                        <option value="OrganiserName">{organiser_name}</option>
+                        <option value="OpponentName">{opponent_name}</option>
+                    </select>
+                </div>
             <button type="submit" className="btn custom-button mt-3">
               Add Result
             </button>
             <Link to="/results" className="btn btn-link mt-3">
-              Back to results
+              Back to Results
             </Link>
             </form>
           </div>
