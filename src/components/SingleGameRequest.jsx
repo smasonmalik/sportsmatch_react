@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
-import DeclineGameButton from './DeclineGameButton'
+import DeclineGameButton from './futureComponents/DeclineGameButton'
 
 class SingleGameRequest extends React.Component {
   constructor(props) {
@@ -29,11 +29,6 @@ class SingleGameRequest extends React.Component {
                 status={this.props.status}
                 organiser_id={this.props.organiser_id}
                 opponent_id={this.props.opponent_id}
-              />
-              <DeclineGameButton
-                organiser_id={this.props.organiser_id}
-                handleDecline={this.props.handleDecline}
-                id={this.props.id}
               />
               <EditGameButton
                 id={this.props.id}

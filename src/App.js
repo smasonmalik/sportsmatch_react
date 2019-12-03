@@ -45,18 +45,19 @@ class App extends Component {
     return (
       <div>
         <Router>
-        <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
-        <Route exact strict path="/signup">
-          <Signup />
-        </Route>
-        <PrivateRoute exact strict path="/" component={Home} handleLoggedInState={this.handleLoggedInState}  />
-        <PrivateRoute exact strict path="/profile" component={Profile} />
-        <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
-        <PrivateRoute exact strict path="/results" component={Results} />
-        <PrivateRoute exact strict path="/results/:id" component={EditResultForm}/>
-        <PrivateRoute exact strict path="/results/:id/new" component={NewResult}/>
-        <PrivateRoute path="/player/:id" component={PlayerProfile}/>
-        <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
+          <Route exact strict path="/signup">
+            <Signup />
+          </Route>
+          <Route exact strict path="/">
+            <Home handleLoggedInState={this.handleLoggedInState} />
+          </Route>
+          <PrivateRoute exact strict path="/profile" component={Profile} />
+          <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
+          <PrivateRoute exact strict path="/results" component={Results} />
+          <PrivateRoute exact strict path="/results/:id/new" component={NewResult}/>
+          <PrivateRoute path="/player/:id" component={PlayerProfile}/>
+          <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
         </Router>
       </div>
     );

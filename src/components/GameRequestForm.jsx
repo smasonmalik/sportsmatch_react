@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import { isPending } from "q";
 
 class GameRequest extends Component {
   constructor(props) {
@@ -24,8 +25,8 @@ class GameRequest extends Component {
       data:
       {
         organiser_id: parseInt(localStorage.getItem('user_id')),
+        status: "pending",
         opponent_id: self.props.opponent_id,
-        confirmed: "False",
         game_date: document.getElementById("date-input").value,
         game_time: document.getElementById("time-input").value
       }})

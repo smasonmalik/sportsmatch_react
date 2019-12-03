@@ -5,19 +5,22 @@ class ConfirmGameButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      confirmed: this.props.status
+      status: this.props.status
     }
-    this.handleConfirm = this.handleConfirm.bind(this);
-    // this.handleCancel = this.handleCancel.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.updateGame = this.updateGame.bind(this);
   }
 
-  handleConfirm(event) {
+  handleClick(event) {
     this.setState({
-      confirmed: event.target.value
+      status: event.target.value
     })
+  }
+
+  componentDidUpdate(prevProps, prevStat){
+    if (this.state.status != prevStat.status){
     this.updateGame()
-    // .then{console.log(this.state.confirmed)}
+    }
   }
 
   updateGame(){
@@ -30,13 +33,13 @@ class ConfirmGameButton extends React.Component {
         "api-token": localStorage.getItem('jwtToken')
       },
       data: {
-        status: self.state.confirmed
+        status: self.state.status
       }
     })
     .then(function(response) {
-      console.log(response.data.confirmed)
+      console.log(response.data.status)
       self.setState({
-        confirmed: response.data.confirmed
+        confirmed: response.data.status
       })
     })
     .catch(function(error) {
@@ -45,22 +48,24 @@ class ConfirmGameButton extends React.Component {
   }
 
   render() {
-    if (this.state.confirmed === "confirmed" || this.props.organiser_id === localStorage.getItem('user_id') ) {
+    if (this.state.status === "confirmed" || this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
       return (
         <div>
-          <button className="btn btn-primary" value="cancelled" onClick={this.handleConfirm}>Cancel Game</button>
+          <button className="btn btn-primary" value="cancelled" onClick={this.handleClick}>Cancel Game</button>
         </div>
       )
-    } else if (this.state.confirmed === "pending" && this.props.opponenet_id === localStorage.getItem('user_id') ) {
+    } else if (this.state.status === "pending" && this.props.opponent_id === parseInt(localStorage.getItem('user_id'))) {
       return (
         <div>
-          <button className="btn btn-primary" value="confirmed" onClick={this.handleConfirm}>Confirm Game</button>
+          <button className="btn btn-primary" value="confirmed" onClick={this.handleClick}>Confirm Game</button>
+          <button className="btn btn-primary" value="declined" onClick={this.handleClick}>Decline Game</button>
         </div>
       )
-    } else {
-    return (
-      <span></span>
-    )
+    } 
+    else {
+      return(
+        <span></span>
+      )
     }
   }
 }

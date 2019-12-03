@@ -49,10 +49,10 @@ class Navbar extends React.Component {
             {this.sessionButton()}
           </ul>
         </div>
+        </nav>
       )
     }
     
-  }
 }
 
 export default Navbar;
