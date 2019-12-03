@@ -12,13 +12,14 @@ class ConfirmGameButton extends React.Component {
   }
 
   handleClick(event) {
+    this.props.updateStatus(event.target.value)
     this.setState({
       status: event.target.value
     })
   }
 
   componentDidUpdate(prevProps, prevStat){
-    if (this.state.status != prevStat.status){
+    if (this.state.status !== prevStat.status){
     this.updateGame()
     }
   }
@@ -27,7 +28,7 @@ class ConfirmGameButton extends React.Component {
     let self = this;
     axios({
       method: 'patch',
-      url: `/api/v1/games/${this.props.id}`,
+      url: `/api/v1/games/${this.props.id}/edit`,
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
@@ -48,7 +49,7 @@ class ConfirmGameButton extends React.Component {
   }
 
   render() {
-    if (this.state.status === "confirmed" || this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
+    if ((this.state.status === "confirmed") || (this.props.organiser_id === parseInt(localStorage.getItem('user_id')) && this.state.status === "pending")) {
       return (
         <div>
           <button className="btn btn-primary" value="cancelled" onClick={this.handleClick}>Cancel Game</button>

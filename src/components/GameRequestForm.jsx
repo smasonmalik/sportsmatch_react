@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { isPending } from "q";
 
 class GameRequest extends Component {
   constructor(props) {

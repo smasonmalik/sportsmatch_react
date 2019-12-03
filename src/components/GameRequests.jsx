@@ -7,23 +7,23 @@ class GameRequests extends React.Component {
     super(props)
     this.state = {
       requests: [],
-      gameEdit: false,
-      gameDecline: false
+      // gameEdit: false,
+      // gameDecline: false
     }
     this.getRequest = this.getRequest.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
-    this.handleDecline = this.handleDecline.bind(this)
+    // this.handleEdit = this.handleEdit.bind(this)
+    // this.handleDecline = this.handleDecline.bind(this)
   }
 
   componentDidMount() {
     this.getRequest()
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.gameEdit !== prevState.gameEdit || this.state.gameDecline !== prevState.gameDecline) {
-      this.getRequest()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.gameEdit !== prevState.gameEdit || this.state.gameDecline !== prevState.gameDecline) {
+  //     this.getRequest()
+  //   }
+  // }
 
   getRequest() {
     let self = this;
@@ -35,7 +35,6 @@ class GameRequests extends React.Component {
       }
     })
       .then(function(response) {
-        console.log(response.data)
         self.setState({
           requests: response.data
         })
@@ -45,20 +44,19 @@ class GameRequests extends React.Component {
       })
   }
 
-  handleEdit() {
-    this.setState(prevState => {
-      return {gameEdit: !prevState.gameEdit}
-    })
-  }
+  // handleEdit() {
+  //   this.setState(prevState => {
+  //     return {gameEdit: !prevState.gameEdit}
+  //   })
+  // }
 
-  handleDecline() {
-    this.setState({
-      gameDecline: true
-    })
-  }
+  // handleDecline() {
+  //   this.setState({
+  //     gameDecline: true
+  //   })
+  // }
 
   render() {
-    console.log(this.state.requests[0])
     return (
       <ul className="list-group list-group-flush">
         {this.state.requests.map(result => (
@@ -71,8 +69,8 @@ class GameRequests extends React.Component {
             game_date={result.game_date}
             game_time={result.game_time}
             status={result.status}
-            handleEdit={this.handleEdit}
-            handleDecline={this.handleDecline}
+            // handleEdit={this.handleEdit}
+            // handleDecline={this.handleDecline}
           />
         ))}
       </ul>
