@@ -69,7 +69,7 @@ class GameRequests extends React.Component {
             opponent_name={result.first_name}
             game_date={result.game_date}
             game_time={result.game_time}
-            confirmed={result.confirmed}
+            status={result.status}
             handleEdit={this.handleEdit}
             handleDecline={this.handleDecline}
           />

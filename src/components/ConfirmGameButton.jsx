@@ -5,7 +5,7 @@ class ConfirmGameButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      confirmed: props.confirmed
+      confirmed: this.props.status
     }
     this.handleConfirm = this.handleConfirm.bind(this)
   }
@@ -37,10 +37,10 @@ class ConfirmGameButton extends React.Component {
   render() {
     if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
       return <span></span>
-    } else if (this.state.confirmed) {
+    } else if (this.state.confirmed === "confirmed") {
       return (
         <div>
-          <button className="btn btn-primary" onClick={this.handleConfirm}>Unconfirm Game</button>
+          <button className="btn btn-primary" onClick={this.handleConfirm}>Cancel Game</button>
         </div>
       )
     } else {

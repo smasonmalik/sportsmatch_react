@@ -12,7 +12,7 @@ class Request extends React.Component {
 
   showConfirmation() {
     if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
-      return (this.props.confirmed ? "Game Confirmed..." : "Confirmation Pending...")
+      return (this.props.confirmed === "confirmed" ? "Game Confirmed..." : "Confirmation Pending...")
     }
   }
 
@@ -26,7 +26,7 @@ class Request extends React.Component {
               <p className="card-text"><strong>Game Time:</strong> {this.props.game_time}</p>
               <ConfirmGameButton
                 id={this.props.id}
-                confirmed={this.props.confirmed}
+                status={this.props.status}
                 organiser_id={this.props.organiser_id}
               />
               <DeclineGameButton
