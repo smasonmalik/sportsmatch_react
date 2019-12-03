@@ -28,12 +28,9 @@ class App extends Component {
   }
 
   handleLoggedInState() { 
-    console.log(this.state.isLoggedIn)
-
       this.setState(prevState => {
         return {isLoggedIn: !prevState.isLoggedIn}
       })
-
   }
 
   componentDidMount() {

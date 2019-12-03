@@ -13,7 +13,6 @@ class Navbar extends React.Component {
   }
 
   sessionButton() {
-    console.log(this.props.isLoggedIn)
       if (this.props.isLoggedIn === true){
         return (
           <li className="nav-item">
