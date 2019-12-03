@@ -30,7 +30,7 @@ class Results extends React.Component {
   getOpponentResultsRequest() {
     let self = this;
     axios({
-      url: "/api/v1/results/opponent",
+      url: "/api/v1/games/opponent",
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
@@ -50,7 +50,7 @@ class Results extends React.Component {
   getOrganiserResultsRequest() {
     let self = this;
     axios({
-      url: "/api/v1/results/organiser",
+      url: "/api/v1/games/organiser",
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
@@ -82,18 +82,18 @@ class Results extends React.Component {
             <div class="col-sm">
             <h3>I'm the organiser</h3>
             <ul className="list-group list-group-flush">
-              {this.state.organiserResults.map(result => (
+              {this.state.organiserResults.map(game => (
               <SingleResult
-                key={result.id}
-                id={result.id}
-                game_id={result.game_id}
-                winner_id={result.winner_id}
-                loser_id={result.loser_id}
-                confirmed={result.confirmed}
-                organiser_id={result.organiser_id}
-                opponent_id={result.opponent_id}
-                game_date={result.game_date}
-                handleEdit={this.handleEdit}
+                key={game.id}
+                id={game.id}
+                game_id={game.game_id}
+                winner_id={game.winner_id}
+                loser_id={game.loser_id}
+                confirmed={game.confirmed}
+                organiser_id={game.organiser_id}
+                opponent_id={game.opponent_id}
+                game_date={game.game_date}
+                handleEdit={game.handleEdit}
               />
               ))}
             </ul>
@@ -101,18 +101,18 @@ class Results extends React.Component {
             <div class="col-sm">
             <h3>I'm the opponent</h3>
               <ul className="list-group list-group-flush">
-                {this.state.opponentResults.map(result => (
+                {this.state.opponentResults.map(game => (
                   <SingleResult
-                    key={result.id}
-                    id={result.id}
-                    game_id={result.game_id}
-                    winner_id={result.winner_id}
-                    loser_id={result.loser_id}
-                    confirmed={result.confirmed}
-                    organiser_id={result.organiser_id}
-                    opponent_id={result.opponent_id}
-                    game_date={result.game_date}
-                    handleEdit={this.handleEdit}
+                    key={game.id}
+                    id={game.id}
+                    result_id={game.game_id}
+                    winner_id={game.winner_id}
+                    loser_id={game.loser_id}
+                    confirmed={game.confirmed}
+                    organiser_id={game.organiser_id}
+                    opponent_id={game.opponent_id}
+                    game_date={game.game_date}
+                    handleEdit={game.handleEdit}
                   />
                 ))}
               </ul>
