@@ -11,8 +11,8 @@ class Signup extends Component {
     }
     this.handleSignup = this.handleSignup.bind(this);
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
-    this.lastNameValidation = this.lastNameValidation.bind(this)
     this.dobValidation = this.dobValidation.bind(this)
+    this.validateEmail = this.validateEmail.bind(this)
   }
 
   handlePasswordConfirm(e){
@@ -79,23 +79,28 @@ class Signup extends Component {
     };
   }
 
-lastNameValidation(e){
-  if(e.target.value.length > 10 ){
-    alert('last name must be less than 10 chars long')
-    var element = document.getElementById("last-name-input");
-    element.classList.add("form-control-error");
-    }
-}
 
-dobValidation(e) {
-  let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
-  if(Date.parse(e.target.value) > min_dob) {
-    alert('minimum sign up age is 16')
+  dobValidation(e) {
+    let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
     var element = document.getElementById("dob-input");
-    element.classList.add("form-control-error");
+    if(Date.parse(e.target.value) > min_dob) {
+      alert('minimum sign up age is 16')
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error");
     }
-}
+  }
 
+  validateEmail(e) {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var element = document.getElementById("email-input");
+    if (!(e.target.value).match(mailformat)) {
+      console.log('email invalid')
+      element.classList.add("form-control-error");
+    }
+    else { element.classList.remove("form-control-error");
+    }
+  }
 
   render () {
     if (localStorage.getItem('jwtToken')) {
@@ -180,6 +185,7 @@ dobValidation(e) {
                 type="email"
                 required="required"
                 className="email form-control"
+                onChange={e => this.validateEmail(e)}
               ></input>
             </div>
             <div>
