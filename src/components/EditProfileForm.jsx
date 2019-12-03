@@ -99,6 +99,7 @@ class EditProfileForm extends React.Component {
             className="form-signup"
              >
             <div className="form-group">
+              <label>First Name</label>
               <input
                 id="first-name-input"
                 name="first_name"
@@ -109,6 +110,7 @@ class EditProfileForm extends React.Component {
               ></input>
             </div>
             <div className="form-group">
+              <label>Last Name</label>
               <input
                 id="last-name-input"
                 name="last_name"
@@ -119,6 +121,7 @@ class EditProfileForm extends React.Component {
               ></input>
             </div>
             <div className="form-group">
+              <label> Bio </label>
               <input
                 id="bio-name-input"
                 name="bio"
