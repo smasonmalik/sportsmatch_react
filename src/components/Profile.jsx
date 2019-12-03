@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequests from './GameRequests'
+import SingleResult from './SingleResult'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -44,18 +45,8 @@ class Profile extends React.Component {
             <li className="list-group-item">{this.state.player.dob}</li>
           </ul>
           <GameRequests />
-          <div className="card-body">
-            <h6 className="card-title">Game Results</h6>
-          </div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">Result 1</li>
-            <li className="list-group-item">Result 2</li>
-          </ul>
         </div>
       )
     }
 }
-    
-
-
 export default Profile

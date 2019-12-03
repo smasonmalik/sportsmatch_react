@@ -7,18 +7,21 @@ class Results extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      current_username: [],
       opponentResults: [],
       organiserResults: [],
       resultEdit: false
     }
     this.getOpponentResultsRequest = this.getOpponentResultsRequest.bind(this)
     this.getOrganiserResultsRequest = this.getOrganiserResultsRequest.bind(this)
+    this.getPlayer = this.getPlayer.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
   }
 
   componentDidMount() {
     this.getOpponentResultsRequest()
     this.getOrganiserResultsRequest()
+    this.getPlayer()
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,6 +70,23 @@ class Results extends React.Component {
       })
   }
 
+  getPlayer() {
+    let self = this;
+    axios({
+      url: `/api/v1/players/${localStorage.getItem('user_id')}`,
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": localStorage.getItem('jwtToken')
+      }
+    })
+    .then(function(response) {
+      self.setState({current_username: response.data.first_name})
+    })
+    .then(function(error) {
+      console.log(error)
+    })
+  }
+
   handleEdit() {
     this.setState(prevState => {
       return {resultEdit: !prevState.resultEdit}
@@ -89,6 +109,8 @@ class Results extends React.Component {
                 id={game.id}
                 winner_id={game.winner_id}
                 loser_id={game.loser_id}
+                opponent_name={game.first_name}
+                organiser_name={this.state.current_username}
                 organiser_id={game.organiser_id}
                 opponent_id={game.opponent_id}
                 game_date={game.game_date}
@@ -106,6 +128,8 @@ class Results extends React.Component {
                     id={game.id}
                     winner_id={game.winner_id}
                     loser_id={game.loser_id}
+                    organiser_name={game.first_name}
+                    opponent_name={this.state.current_username}
                     organiser_id={game.organiser_id}
                     opponent_id={game.opponent_id}
                     game_date={game.game_date}
