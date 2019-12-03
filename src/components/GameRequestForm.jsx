@@ -43,6 +43,17 @@ class GameRequest extends Component {
       })
   }
 
+  gameDateValidation(e) {
+    var element = document.getElementById("date-input");
+    if(Date.parse(e.target.value) < new Date()) {
+      // alert('Game date can\'t be in the past')
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error");
+    }
+  }
+
+
   render() {
     if (this.state.gameRequest) {
       return (
@@ -65,6 +76,7 @@ class GameRequest extends Component {
               type="date"
               required="required"
               className="form-control"
+              onChange={e => this.gameDateValidation(e)}
             ></input>
             </div>
             <div className="form-group">
