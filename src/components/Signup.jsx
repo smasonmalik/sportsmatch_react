@@ -12,13 +12,15 @@ class Signup extends Component {
     this.handleSignup = this.handleSignup.bind(this);
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
     this.lastNameValidation = this.lastNameValidation.bind(this)
+    this.dobValidation = this.dobValidation.bind(this)
   }
 
   handlePasswordConfirm(e){
     let password = document.getElementById("password-input").value
     let password_confirm = document.getElementById("password-confirm-input").value
     if (password !== password_confirm) {
-      console.log("passwords don't match")
+      var element = document.getElementById("password-confirm-input");
+      element.classList.add("form-control-error");
     }
   }
 
@@ -65,25 +67,33 @@ class Signup extends Component {
       }
     }
 
-    fileSelectedHandler(e) {
-      let file = e.target.files[0];
-      console.log(e.target.files[0].size)
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        this.setState({
-          selectedFile: reader.result
-        });
-      };
-    }
-
-    lastNameValidation(e){
-      console.log(e.target.value);
-  if(e.target.value.length > 10){
-    alert('last name must be less than 10 chars long')
-    var element = document.getElementById("last-name-input");
-    element.classList.add("form-control-error");
+  fileSelectedHandler(e) {
+    let file = e.target.files[0];
+    console.log(e.target.files[0].size)
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.setState({
+        selectedFile: reader.result
+      });
+    };
   }
+
+  lastNameValidation(e){
+    console.log(e.target.value);
+   if(e.target.value.length > 10 ){
+  alert('last name must be less than 10 chars long')
+  var element = document.getElementById("last-name-input");
+  element.classList.add("form-control-error");
+  }
+}
+
+dobValidation(e) {
+  if(Date.parse(e.target.value) > (Date.parse("2003-12-06"))) {
+    alert('minimum sign up age is 16')
+    var element = document.getElementById("dob-input");
+    element.classList.add("form-control-error");
+    }
 }
 
 
@@ -128,8 +138,10 @@ class Signup extends Component {
                 id="dob-input"
                 name="dob"
                 type="date"
+                max="2003-12-06"
                 required="required"
                 className="form-control"
+                onChange={e => this.dobValidation(e)}
               ></input>
             </div>
             <div className="form-group">
@@ -165,7 +177,7 @@ class Signup extends Component {
                 id="email-input"
                 name="email"
                 placeholder="Email"
-                type="text"
+                type="email"
                 required="required"
                 className="email form-control"
               ></input>
