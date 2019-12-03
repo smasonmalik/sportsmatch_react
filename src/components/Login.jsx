@@ -7,9 +7,7 @@ import Home from './Home'
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false
-    }
+
     this.handleLogin = this.handleLogin.bind(this);
   }
 
@@ -27,7 +25,7 @@ class Login extends Component {
       })
       .then(function() {
         self.setState(prevState => {
-          return {isLoggedIn: !prevState.isLoggedIn}
+          this.props.handleLogInState()
         })
       })
       .catch(function(error) {

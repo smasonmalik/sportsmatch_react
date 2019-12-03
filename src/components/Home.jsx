@@ -115,11 +115,11 @@ class Home extends Component {
       } else {
         return(
           <div>
-            <Login />
+            <Login isLoggedIn={this.props.isLoggedIn}/>
           </div>
         )
       }
   }
-  
+
 }
 export default Home;

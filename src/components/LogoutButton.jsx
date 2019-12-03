@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class LogoutButton extends React.Component {
   constructor(props) {
@@ -8,6 +8,7 @@ class LogoutButton extends React.Component {
   }
 
   handleClick() {
+    this.props.handleLogoutState()
     localStorage.clear()
   }
 

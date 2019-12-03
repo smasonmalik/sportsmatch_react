@@ -7,21 +7,40 @@ class Navbar extends React.Component {
   constructor() {
     super()
     this.state = {
-      isLoggedIn: false
+      toggleState: false
     }
-    this.sessionButton = this.sessionButton.bind(this)
+    this.sessionButton = this.sessionButton.bind(this);
+    // this.handleLogout = this.handleLogout.bind(this);
   }
 
   sessionButton() {
-    console.log('jwt', localStorage.getItem('jwtToken'))
-      if (localStorage.getItem('jwtToken')) {
+      if (this.props.isLoggedIn === true){
         return (
-          <LogoutButton handleLogout={this.props.handleLogout} />
+          <LogoutButton handleLogoutState={this.props.handleLogoutState} />
         );
-      } }
+      }
+    }
+
+  // handleLogout() {
+  //   console.log('handlelogout');
+  //   this.props.handleLogoutState()
+  // }
 
   componentDidMount(){
-    console.log('jwtmount', localStorage.getItem('jwtToken'))
+    console.log('jwtdid mount', localStorage.getItem('jwtToken'))
+      if (localStorage.getItem('jwtToken')) {
+        this.setState({
+          isLoggedIn: true
+        })
+      }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.isLoggedIn !== prevProps.isLoggedIn) {
+      this.setState(prevState => {
+        return {toggleState: !prevProps.toggleState}
+      })
+    }
   }
 
   render() {
