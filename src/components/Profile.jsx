@@ -15,7 +15,7 @@ class Profile extends React.Component {
       profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
     this.handleClick = this.handleClick.bind(this)
-    this.handleEditBio = this.handleEditBio.bind(this)
+    // this.handleEditBio = this.handleEditBio.bind(this)
   }
 
   componentDidMount() {
@@ -23,11 +23,11 @@ class Profile extends React.Component {
     this.getPhoto()
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.bioEdited !== prevState.bioEdited) {
-      this.getPlayer()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.bioEdited !== prevState.bioEdited) {
+  //     this.getPlayer()
+  //   }
+  // }
 
   getPlayer() {
     let self = this;
@@ -71,11 +71,11 @@ class Profile extends React.Component {
     })
   }
 
-  handleEditBio() {
-    this.setState(prevState => {
-      return { bioEdited: !prevState.bioEdited }
-    })
-  }
+  // handleEditBio() {
+  //   this.setState(prevState => {
+  //     return { bioEdited: !prevState.bioEdited }
+  //   })
+  // }
 
   render() {
     if (localStorage.getItem('jwtToken')) {
@@ -90,8 +90,6 @@ class Profile extends React.Component {
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
             <p className="card-text">{this.state.player.dob}</p>
-            <button onClick={this.handleClick} className="btn btn-primary">{this.state.showBio ? "Edit bio" : "Hide"}</button>
-            <p>{this.state.showBio ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
             <p className="card-text">{this.state.player.bio}</p>
             <p className="card-test">{this.state.player.sport}</p>
             <ul className="list-group list-group-flush">
@@ -112,6 +110,9 @@ class Profile extends React.Component {
     }
   }
 }
+
+// <button onClick={this.handleClick} className="btn btn-primary">{this.state.showBio ? "Edit bio" : "Hide"}</button>
+// <p>{this.state.showBio ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
 
 
 export default Profile

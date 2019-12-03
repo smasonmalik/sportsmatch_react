@@ -12,6 +12,7 @@ class EditProfileForm extends React.Component {
       ability: '',
       postcode: '',
       sport: '',
+      bio: '',
       isProfileEdited: false
     }
     this.handleEdit = this.handleEdit.bind(this)
@@ -39,7 +40,8 @@ class EditProfileForm extends React.Component {
         gender: response.data.gender,
         ability: response.data.ability,
         postcode: response.data.postcode,
-        sport: response.data.sport
+        sport: response.data.sport,
+        bio: response.data.bio
       })
     })
     .then(function(error) {
@@ -62,7 +64,8 @@ class EditProfileForm extends React.Component {
           last_name: this.state.last_name,
           gender: this.state.gender,
           ability: this.state.ability,
-          sport: this.state.sport
+          sport: this.state.sport,
+          bio: this.state.bio
         }
       })
       .then(function() {
@@ -110,6 +113,16 @@ class EditProfileForm extends React.Component {
                 id="last-name-input"
                 name="last_name"
                 placeholder={this.state.last_name}
+                type="text"
+                className="form-control"
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div className="form-group">
+              <input
+                id="bio-name-input"
+                name="bio"
+                placeholder={this.state.bio}
                 type="text"
                 className="form-control"
                 onChange={this.handleChange}
