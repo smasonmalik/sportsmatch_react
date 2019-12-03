@@ -64,8 +64,9 @@ class GameRequests extends React.Component {
           <SingleGameRequest
             key={result.id}
             id={result.id}
-            organiser_id={result.organiser_id}
+            organiser_id={result.organiser_}
             opponent_id={result.opponent_id}
+            opponent_name={result.first_name}
             game_date={result.game_date}
             game_time={result.game_time}
             confirmed={result.confirmed}

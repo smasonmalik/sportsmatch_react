@@ -92,9 +92,10 @@ class Profile extends React.Component {
             </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">{this.state.player.ability}</p>
-            <p className="card-text">{this.state.player.gender}</p>
-            <p className="card-text">{this.state.player.dob}</p>
+            <p className="card-text">Ability: {this.state.player.ability}</p>
+            <p className="card-text">F.R.E.D: {this.state.player.rank_points} points</p>
+            <p className="card-text">Gender: {this.state.player.gender}</p>
+            <p className="card-text">D.O.B: {this.state.player.dob}</p>
             <p className="card-text">{this.state.player.bio}</p>
             <p className="card-test">{this.state.player.sport}</p>
             <ul className="list-group list-group-flush">
