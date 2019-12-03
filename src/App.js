@@ -20,6 +20,9 @@ class App extends Component {
           <Route exact strict path="/signup">
             <Signup />
           </Route>
+          <Route exact strict path="/map">
+            <Signup />
+          </Route>
           <Route exact strict path="/">
             <Home />
           </Route>
