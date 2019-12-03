@@ -52,14 +52,13 @@ class App extends Component {
           <Route exact strict path="/">
             <Home handleLoggedInState={this.handleLoggedInState} />
           </Route>
-
-        <PrivateRoute exact strict path="/profile" component={Profile} />
-        <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
-        <PrivateRoute exact strict path="/results" component={Results} />
-        <PrivateRoute exact strict path="/results/:id" component={EditResultForm}/>
-        <PrivateRoute exact strict path="/results/:id/new" component={NewResult}/>
-        <PrivateRoute path="/player/:id" component={PlayerProfile}/>
-        <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
+          <PrivateRoute exact strict path="/profile" component={Profile} />
+          <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
+          <PrivateRoute exact strict path="/results" component={Results} />
+          <PrivateRoute exact strict path="/results/:id" component={EditResultForm}/>
+          <PrivateRoute exact strict path="/results/:id/new" component={NewResult}/>
+          <PrivateRoute path="/player/:id" component={PlayerProfile}/>
+          <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
         </Router>
       </div>
     );
