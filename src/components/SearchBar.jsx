@@ -41,8 +41,6 @@ class SearchBar extends React.Component {
                         <option value="TableTennis">TableTennis</option>
                         <option value="Squash">Squash</option>
                         <option value="Badminton">Badminton</option>
-                        <option value="Snooker">Snooker</option>
-                        <option value="Climbing">Climbing</option>
                     </select>
                 </div>
             </div>
