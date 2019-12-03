@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
-import DeclineGameButton from './futureComponents/DeclineGameButton'
 
 class SingleGameRequest extends React.Component {
   constructor(props) {
