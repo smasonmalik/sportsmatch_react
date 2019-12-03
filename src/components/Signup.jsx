@@ -15,15 +15,6 @@ class Signup extends Component {
     this.validateEmail = this.validateEmail.bind(this)
   }
 
-  handlePasswordConfirm(e){
-    let password = document.getElementById("password-input").value
-    let password_confirm = document.getElementById("password-confirm-input").value
-    if (password !== password_confirm) {
-      var element = document.getElementById("password-confirm-input");
-      element.classList.add("form-control-error");
-    }
-  }
-
   handleSelectedFile(event) {
     console.log(event)
     console.log(event.target.files)
@@ -102,6 +93,16 @@ class Signup extends Component {
     }
   }
 
+  handlePasswordConfirm(e){
+    let password = document.getElementById("password-input").value
+    var element = document.getElementById("password-confirm-input");
+    if (password !== e.target.value) {
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error")
+    }
+  }
+
   render () {
     if (localStorage.getItem('jwtToken')) {
       return <Redirect to="/" />;
@@ -134,7 +135,6 @@ class Signup extends Component {
                 type="text"
                 required="required"
                 className="form-control"
-                onChange={e => this.lastNameValidation(e)}
               ></input>
             </div>
             <div className="form-group">
@@ -222,7 +222,7 @@ class Signup extends Component {
                 type="password"
                 className="password form-control"
                 required="required"
-                onChange={this.handlePasswordConfirm}
+                onChange={e => this.handlePasswordConfirm(e)}
               ></input>
             </div>
             <div className='row'>

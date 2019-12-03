@@ -15,7 +15,3 @@ code {
 .form-control-error{
   border: 2px solid red;
 }
-
-.form-control-valid{
-  border: 2px solid green;
-}
