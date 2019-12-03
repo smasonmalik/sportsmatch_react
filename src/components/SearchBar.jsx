@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
         <form>
             <div className="row">
                 <div className="col">
-                    <label className="label">Filter By Ability:</label>
+                    <label className="label">Filter By F.R.E.D. Ability:</label>
                     <select className="custom-select" name="ability" id="ability-select" onChange={(e) => this.props.handleChange(e)}>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
@@ -25,8 +25,8 @@ class SearchBar extends React.Component {
                     <label className="label">Filter By Distance(km):</label>
                     <div>
                     <InputRange
-                        maxValue={20}
-                        minValue={0}
+                        maxValue={50}
+                        minValue={1}
                         formatLabel={value => `${value} km`}
                         value={this.state.distance}
                         onChange={value => this.setState({ distance: value })}
