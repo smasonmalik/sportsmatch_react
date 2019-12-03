@@ -46,7 +46,7 @@ class App extends Component {
         <Router>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
           <Route exact strict path="/signup">
-            <Signup />
+            <Signup handleLoggedInState={this.handleLoggedInState} />
           </Route>
           <Route exact strict path="/">
             <Home handleLoggedInState={this.handleLoggedInState} />
