@@ -43,11 +43,15 @@ class Navbar extends React.Component {
             <li className="nav-item">
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" id="results-link" to='/results'>Results</NavLink>
+            </li>
             {this.sessionButton()}
           </ul>
         </div>
-      </nav>
-    )
+      )
+    }
+    
   }
 }
 

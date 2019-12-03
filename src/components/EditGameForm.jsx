@@ -33,6 +33,16 @@ class EditGameForm extends React.Component {
   }
 
   render() {
+    var tempDate = new Date();
+    var dayOfMonth = tempDate.getDate()
+    if (dayOfMonth < 10) {
+      dayOfMonth = '0' + dayOfMonth
+    }
+    var monthOfYear = tempDate.getMonth()+1
+    if (monthOfYear < 10) {
+      monthOfYear = '0' + monthOfYear
+    }
+    var date = tempDate.getFullYear() + '-' + monthOfYear + '-' + dayOfMonth ;
     return (
       <div className="form-container">
         <form
@@ -47,6 +57,7 @@ class EditGameForm extends React.Component {
             name="date"
             type="date"
             required="required"
+            min={date}
             className="form-control"
           ></input>
           </div>

@@ -55,6 +55,17 @@ class GameRequest extends Component {
 
 
   render() {
+    var tempDate = new Date();
+    var dayOfMonth = tempDate.getDate()
+    if (dayOfMonth < 10) {
+      dayOfMonth = '0' + dayOfMonth
+    }
+    var monthOfYear = tempDate.getMonth()+1
+    if (monthOfYear < 10) {
+      monthOfYear = '0' + monthOfYear
+    }
+    var date = tempDate.getFullYear() + '-' + monthOfYear + '-' + dayOfMonth ;
+
     if (this.state.gameRequest) {
       return (
         <Redirect to="/profile" />
@@ -75,6 +86,7 @@ class GameRequest extends Component {
               name="date"
               type="date"
               required="required"
+              min={date}
               className="form-control"
               onChange={e => this.gameDateValidation(e)}
             ></input>

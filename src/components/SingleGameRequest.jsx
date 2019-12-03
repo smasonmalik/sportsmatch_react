@@ -4,7 +4,7 @@ import ConfirmGameButton from './ConfirmGameButton'
 import EditGameButton from './EditGameButton'
 import DeclineGameButton from './DeclineGameButton'
 
-class Request extends React.Component {
+class SingleGameRequest extends React.Component {
   constructor(props) {
     super(props)
     this.showConfirmation = this.showConfirmation.bind(this)
@@ -50,6 +50,6 @@ class Request extends React.Component {
     )
   }
 }
-export default Request
+export default SingleGameRequest
 
 // {this.props.confirmed ? "Confirmed" : "Unconfirmed"}
