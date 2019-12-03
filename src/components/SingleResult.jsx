@@ -47,7 +47,7 @@ class SingleResult extends React.Component {
                     opponent_id: this.props.opponent_id
                   }
                 }} className="btn custom-button">
-                Create New Result</Link>
+                Add Game Result</Link>
             </div>
           </div>
         </li>

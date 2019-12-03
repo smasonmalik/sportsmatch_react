@@ -12,7 +12,6 @@ class NewResult extends React.Component {
       game_id: props.id
     }
     this.onChangeWinner = this.onChangeWinner.bind(this)
-    this.onChangeLoser = this.onChangeLoser.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
 
@@ -44,38 +43,35 @@ class NewResult extends React.Component {
   }
 
   onChangeWinner(event){
-    this.setState({ winner_id: event.target.value })
-    console.log(event.target.value)
-  }
-
-  onChangeLoser(event){
-    this.setState({ loser_id: event.target.value })
+    if (event.target.value == this.props.location.state.organiser_id){
+      this.setState({
+        winner_id: event.target.value,
+        loser_id: this.props.location.state.opponent_id
+       })
+    } else if (event.target.value == this.props.location.state.opponent_id) {
+      this.setState({
+        winner_id: event.target.value,
+        loser_id: this.props.location.state.organiser_id
+       })
+       console.log(this.props.location.state.organiser_id)
+    }
   }
 
   render() {
     const { organiser_name, opponent_name, organiser_id, opponent_id } = this.props.location.state
       return (
-
       <div>
         <h2 align="center">My Results</h2>
-        {this.state.game_id}
         <div class="container">
           <div class="row">
             <h3>Add a new result!</h3>
               <form onSubmit={this.onSubmit}>
                 <div className="col">
                     <label className="label">Winner:</label>
-                    {this.state.winner_id}
                     <select className="custom-select" name="winner_result" id="winner" onChange={(event) => this.onChangeWinner(event)}>
+                        <option >Select winner...</option>
                         <option value={organiser_id}>{organiser_name}</option>
                         <option value={opponent_id}>{opponent_name}</option>
-                    </select>
-                </div>
-                <div className="col">
-                    <label className="label">Loser:</label>
-                    <select className="custom-select" name="loser_result" id="loser" onChange={(event) => this.onChangeLoser(event)}>
-                        <option value={organiser_id}>{organiser_name}</option>
-                        <option value={opponent_name}>{opponent_name}</option>
                     </select>
                 </div>
             <button type="submit" className="btn custom-button mt-3">
@@ -89,8 +85,6 @@ class NewResult extends React.Component {
         </div>
       </div>
     )
-    }
   }
-
-
+}
 export default NewResult
