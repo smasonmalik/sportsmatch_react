@@ -115,9 +115,4 @@ class Profile extends React.Component {
     }
   }
 }
-
-// <button onClick={this.handleClick} className="btn btn-primary">{this.state.showBio ? "Edit bio" : "Hide"}</button>
-// <p>{this.state.showBio ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
-
-
 export default Profile

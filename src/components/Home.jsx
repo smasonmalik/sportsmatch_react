@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
-import SearchBar from './SearchBar';
+import SearchBar from './FilterBar';
 import Player from './Player';
 import Login from './Login'
 
@@ -120,6 +120,6 @@ class Home extends Component {
         )
       }
   }
-  
+
 }
 export default Home;

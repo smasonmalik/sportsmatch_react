@@ -2,7 +2,7 @@ import React from 'react'
 import InputRange from "react-input-range"
 import 'react-input-range/lib/css/index.css'
 
-class SearchBar extends React.Component {
+class FilterBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = { distance: this.props.distance };
@@ -61,4 +61,4 @@ class SearchBar extends React.Component {
     )
   }
 }
-export default SearchBar
+export default FilterBar
