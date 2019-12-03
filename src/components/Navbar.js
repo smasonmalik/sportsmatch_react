@@ -7,22 +7,20 @@ class Navbar extends React.Component {
   constructor() {
     super()
     this.state = {
-      isLoggedIn: false
+      toggleState: false
     }
-    this.sessionButton = this.sessionButton.bind(this)
+    this.sessionButton = this.sessionButton.bind(this);
   }
 
   sessionButton() {
-    console.log('jwt', localStorage.getItem('jwtToken'))
-      if (localStorage.getItem('jwtToken')) {
+      if (this.props.isLoggedIn === true){
         return (
-          <LogoutButton handleLogout={this.props.handleLogout} />
+          <li className="nav-item">
+              <LogoutButton handleLoggedInState={this.props.handleLoggedInState}>Logout</LogoutButton>
+          </li>
         );
-      } }
-
-  componentDidMount(){
-    console.log('jwtmount', localStorage.getItem('jwtToken'))
-  }
+      }
+    }
 
   render() {
 
@@ -35,7 +33,7 @@ class Navbar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <NavLink className="nav-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
+              <NavLink className="nav-link" id="home-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>

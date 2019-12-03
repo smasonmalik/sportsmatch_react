@@ -30,7 +30,9 @@ class Login extends Component {
           return {isLoggedIn: !prevState.isLoggedIn}
         })
       })
+      .then(this.props.handleLogIn())
       .catch(function(error) {
+        console.log(error)
         alert(error.response.data.error);
       });
     }

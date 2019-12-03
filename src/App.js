@@ -11,17 +11,42 @@ import EditProfileForm from './components/EditProfileForm'
 import DisplayMessages from './components/DisplayMessages'
 
 class App extends Component {
+  constructor() {
+    super()
+  this.state = {
+    isLoggedIn: false
+  }
+  this.handleLoggedInState = this.handleLoggedInState.bind(this);
+  this.handleLogInState = this.handleLogInState.bind(this);
+}
+  handleLogInState() {
+    if (localStorage.getItem('jwtToken')) {
+      this.setState({
+        isLoggedIn: true
+      })
+    }
+  }
+
+  handleLoggedInState() { 
+      this.setState(prevState => {
+        return {isLoggedIn: !prevState.isLoggedIn}
+      })
+  }
+
+  componentDidMount() {
+    this.handleLogInState();
+  }
 
   render() {
     return (
       <div>
         <Router>
-          <Navbar />
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
           <Route exact strict path="/signup">
             <Signup />
           </Route>
           <Route exact strict path="/">
-            <Home />
+            <Home handleLoggedInState={this.handleLoggedInState} />
           </Route>
           <Route exact strict path="/profile">
             <Profile />
