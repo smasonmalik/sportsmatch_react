@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
 import EditImageForm from './EditImageForm'
+import EditBioForm from './EditBioForm'
 
 
 class Profile extends React.Component {
@@ -13,10 +14,14 @@ class Profile extends React.Component {
       gameConfirmed: false,
       showImageForm: false,
       imageEdited: false,
+      showBioForm: false,
+      bioEdited: false,
       profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClickImage = this.handleClickImage.bind(this)
     this.handleEditImage = this.handleEditImage.bind(this)
+    this.handleClickBio = this.handleClickBio.bind(this)
+    this.handleEditBio = this.handleEditBio.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +32,9 @@ class Profile extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.imageEdited !== prevState.imageEdited) {
       this.getPhoto()
+    }
+    if (this.state.bioEdited !== prevState.bioEdited) {
+      this.getPlayer()
     }
   }
 
@@ -66,9 +74,15 @@ class Profile extends React.Component {
       })
   }
 
-  handleClick() {
+  handleClickImage() {
     this.setState(prevState => {
       return { showImageForm: !prevState.showImageForm }
+    })
+  }
+
+  handleClickBio() {
+    this.setState(prevState => {
+      return { showBioForm: !prevState.showBioForm }
     })
   }
 
@@ -77,6 +91,13 @@ class Profile extends React.Component {
       return { imageEdited: !prevState.imageEdited }
     })
   }
+
+  handleEditBio() {
+    this.setState(prevState => {
+      return { bioEdited: !prevState.bioEdited }
+    })
+  }
+
 
   render() {
     if (localStorage.getItem('jwtToken')) {
@@ -87,14 +108,18 @@ class Profile extends React.Component {
           </div>
           <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <div>
-          <button onClick={this.handleClick} className="btn btn-primary">{this.state.showImageForm ? "Edit Image" : "Hide"}</button>
+            <button onClick={this.handleClickImage} className="btn btn-primary">{this.state.showImageForm ? "Edit Image" : "Hide"}</button>
             <p>{this.state.showImageForm ? '' : <EditImageForm handleEditImage={this.handleEditImage}/>}</p>
-            </div>
+          </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
             <p className="card-text">{this.state.player.dob}</p>
+            <div>
+              <button onClick={this.handleClickBio} className="btn btn-primary">{this.state.showBioForm ? "Edit Bio" : "Hide"}</button>
+              <p>{this.state.showBioForm ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
+            </div>
             <p className="card-text">{this.state.player.bio}</p>
             <p className="card-test">{this.state.player.sport}</p>
             <ul className="list-group list-group-flush">
@@ -115,9 +140,5 @@ class Profile extends React.Component {
     }
   }
 }
-
-// <button onClick={this.handleClick} className="btn btn-primary">{this.state.showBio ? "Edit bio" : "Hide"}</button>
-// <p>{this.state.showBio ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
-
 
 export default Profile
