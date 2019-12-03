@@ -1,11 +1,14 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 class EditBioForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      selectedFile: ''
+    }
     this.handleEditForm = this.handleEditForm.bind(this)
+    this.handleFileSelect = this.handleFileSelect.bind(this)
   }
 
   handleEditForm() {
@@ -19,14 +22,26 @@ class EditBioForm extends React.Component {
       },
       data:
       {
-        bio: document.getElementById("bio-input").value,
+        profile_image: self.state.selectedFile,
       }})
       .then(function() {
-        self.props.handleEditBio()
+        self.props.handleEditImage()
       })
       .catch(function(error) {
         console.log(error)
       })
+  }
+
+  handleFileSelect(e) {
+    let file = e.target.files[0];
+    console.log(e.target.files[0].size)
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.setState({
+        selectedFile: reader.result
+      });
+    };
   }
 
   render() {
@@ -39,14 +54,9 @@ class EditBioForm extends React.Component {
           className="form-game-request"
         >
           <div className="form-group">
-          <input
-            id="bio-input"
-            name="bio"
-            placeholder="Write a small description about yourself here..."
-            type="bio"
-            required="required"
-            className="form-control"
-          ></input>
+            <label>Update Image</label>
+            <br/>
+            <input type="file" onChange={this.handleFileSelect} required="required"/>
           </div>
           <div className='row'>
             <div className='col'>
