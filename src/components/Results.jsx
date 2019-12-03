@@ -74,6 +74,7 @@ class Results extends React.Component {
   }
 
   render() {
+
       return (
       <div>
         <h2 align="center">My Results</h2>
@@ -86,7 +87,6 @@ class Results extends React.Component {
               <SingleResult
                 key={game.id}
                 id={game.id}
-                game_id={game.game_id}
                 winner_id={game.winner_id}
                 loser_id={game.loser_id}
                 organiser_id={game.organiser_id}
@@ -104,7 +104,6 @@ class Results extends React.Component {
                   <SingleResult
                     key={game.id}
                     id={game.id}
-                    result_id={game.game_id}
                     winner_id={game.winner_id}
                     loser_id={game.loser_id}
                     organiser_id={game.organiser_id}

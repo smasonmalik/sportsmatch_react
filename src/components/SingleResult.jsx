@@ -1,16 +1,17 @@
 import React from 'react'
 import EditResultButton from './EditResultButton'
 import { Link } from "react-router-dom"
+import NewResult from "./NewResult"
 
 class SingleResult extends React.Component {
 
   render() {
+
     return (
       <li className="list-group-item">
         <div className="card" style={{width: '18rem'}}>
           <div className="card-body">
               <p className="card-text">Game id: {this.props.id}</p>
-              <p className="card-text">Result id: {this.props.result_id}</p>
               <p className="card-text">Winner id: {this.props.winner_id}</p>
               <p className="card-text">Loser id: {this.props.loser_id}</p>
               <p className="card-text">Organiser ID: {this.props.organiser_id}</p>
@@ -26,8 +27,3 @@ class SingleResult extends React.Component {
   }
 }
 export default SingleResult
-
-// <EditResultButton
-// id={this.props.id}
-// handleEdit={this.props.handleEdit}
-// />

@@ -6,9 +6,10 @@ class NewResult extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      winner_name: "",
-      loser_name: "",
-      result_confirmed: false
+      winner_id: "",
+      loser_id: "",
+      result_confirmed: false,
+      game_id: props.id
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -16,8 +17,7 @@ class NewResult extends React.Component {
 
   onSubmit(event){
     event.preventDefault();
-    const { winner_name, loser_name, result_confirmed, result_id } = this.state;
-    const body = { winner_name, loser_name, result_id }
+    const { winner_name, loser_name, result_confirmed, game_id } = this.state;
 
     let self = this;
     axios({
@@ -27,16 +27,14 @@ class NewResult extends React.Component {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
       },
-      // data:
-      // {
-      //   winner_name: document.getElementById("winner_name-input").value,
-      //   loser_name: document.getElementById("loser_name-input").value
-      // }
-      body: JSON.stringify(body)
+      data:
+      {
+        winner_id: parseInt(document.getElementById("winner_name").value),
+        loser_id: parseInt(document.getElementById("loser_name").value),
+        result_confirmed: true,
+        game_id: this.props.match.params.id
+      }
     })
-      .then(response => {
-        response.json()
-      })
       .then(response => this.props.history.push(`/results`))
       .catch(function(error) {
         console.log(error)
@@ -51,6 +49,7 @@ class NewResult extends React.Component {
       return (
       <div>
         <h2 align="center">My Results</h2>
+        {this.state.game_id}
         <div class="container">
           <div class="row">
             <h3>Add a new result!</h3>
