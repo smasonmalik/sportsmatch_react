@@ -8,6 +8,7 @@ class Navbar extends React.Component {
     super()
     this.state = {
       toggleState: false
+      
     }
     this.sessionButton = this.sessionButton.bind(this);
   }
@@ -20,6 +21,10 @@ class Navbar extends React.Component {
           </li>
         );
       }
+    }
+
+    activeWindow(){
+
     }
 
   render() {
