@@ -15,7 +15,7 @@ class Home extends Component {
     };
     this.getPlayers = this.getPlayers.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.updateDistance = this.updateDistance.bind(this);
   }
 
   componentDidMount() {
@@ -40,12 +40,8 @@ class Home extends Component {
     console.log(this.state.ability)
   } 
 
-  handleClick(event) {
-    console.log(event.target.value)
-    let prev_distance = this.state.distance
-    this.setState({
-      distance: prev_distance + parseInt(event.target.value)
-    })
+  updateDistance = (distance) => {
+    this.setState({distance: distance})
   }
 
   getLoggedInPlayerInfo() {
@@ -95,7 +91,7 @@ class Home extends Component {
                   distance={this.state.distance}
                   ability={this.state.ability}
                   handleChange={this.handleChange}
-                  handleClick={this.handleClick}
+                  updateDistance={this.updateDistance}
               />
             </div>
             <p>{this.state.ability} - {this.state.age_group} - {this.state.distance}</p>
