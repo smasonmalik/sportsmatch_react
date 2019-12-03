@@ -54,6 +54,7 @@ class Signup extends Component {
             return {isSignedUp: !prevState.isSignedUp}
           })
         })
+        .then(this.props.handleLoggedInState())
         .catch(function(error) {
           console.log(error);
         });
