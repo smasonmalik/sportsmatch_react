@@ -84,7 +84,7 @@ class Signup extends Component {
   }
 
   validateEmail(e) {
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     var element = document.getElementById("email-input");
     if (!(e.target.value).match(mailformat)) {
       element.classList.add("form-control-error");

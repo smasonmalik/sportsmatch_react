@@ -85,7 +85,7 @@ class Profile extends React.Component {
           <div className="card-header">
             Profile Page
           </div>
-          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <div>
           <button onClick={this.handleClick} className="btn btn-primary">{this.state.showImageForm ? "Edit Image" : "Hide"}</button>
             <p>{this.state.showImageForm ? '' : <EditImageForm handleEditImage={this.handleEditImage}/>}</p>

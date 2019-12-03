@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import SearchBar from './SearchBar';
 import Player from './Player';
