@@ -91,7 +91,7 @@ class Home extends Component {
                   distance={this.state.distance}
                   ability={this.state.ability}
                   handleChange={this.handleChange}
-                  handleClick={this.updateDistance}
+                  updateDistance={this.updateDistance}
               />
             </div>
             <p>{this.state.ability} - {this.state.age_group} - {this.state.distance}</p>

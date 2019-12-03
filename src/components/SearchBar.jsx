@@ -1,12 +1,11 @@
 import React from 'react'
-// import Slider from 'react'
 import InputRange from "react-input-range"
 import 'react-input-range/lib/css/index.css'
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
-        // this.state = { value: 10 };
+        this.state = { distance: this.props.distance };
       }
 
   render() {
@@ -15,28 +14,24 @@ class SearchBar extends React.Component {
         <form>
             <div className="row">
                 <div className="col">
-                    <label className="label">Filter By Distance(km):</label>
-                    <div className="input-group">
-                        <span className="input-group-btn">
-                            <button type="button" className="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="" value="1" onClick={(e) => this.props.handleClick(e)}>
-                                +
-                            </button>
-                        </span>
-                        <input type="text" id="quantity" name="quantity" className="form-control input-number" value={this.props.distance} min="1" max="100"/>
-                        <span className="input-group-btn">
-                            <button type="button" className="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="" value="-1" onClick={(e) => this.props.handleClick(e)}>
-                                -
-                            </button>
-                        </span>
-                    </div>
-                </div>
-                <div className="col">
                     <label className="label">Filter By Ability:</label>
                     <select className="custom-select" name="ability" id="ability-select" onChange={(e) => this.props.handleChange(e)}>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
                         <option value="Advanced">Advanced</option>
                     </select>
+                </div>
+                <div className="col">
+                    <label className="label">Filter By Distance(km):</label>
+                    <div>
+                    <InputRange
+                        maxValue={20}
+                        minValue={0}
+                        formatLabel={value => `${value} km`}
+                        value={this.state.distance}
+                        onChange={value => this.setState({ distance: value })}
+                        onChangeComplete={this.props.updateDistance}/>
+                    </div>
                 </div>
                 <div className="col">
                     <label className="label">Filter By Age Group:</label>
@@ -50,14 +45,6 @@ class SearchBar extends React.Component {
                 </div>
             </div>
         </form>
-        <div>
-            <InputRange
-                maxValue={20}
-                minValue={0}
-                value={this.props.distance}
-                onChange={this.props.updateDistance} />
-            />
-            </div>
         </div>
     )
   }
