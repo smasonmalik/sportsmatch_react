@@ -1,12 +1,17 @@
 import React from 'react'
+// import Slider from 'react'
+import InputRange from "react-input-range"
+import 'react-input-range/lib/css/index.css'
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
+        // this.state = { value: 10 };
       }
 
   render() {
     return (
+        <div>
         <form>
             <div className="row">
                 <div className="col">
@@ -45,6 +50,15 @@ class SearchBar extends React.Component {
                 </div>
             </div>
         </form>
+        <div>
+            <InputRange
+                maxValue={20}
+                minValue={0}
+                value={this.props.distance}
+                onChange={this.props.updateDistance} />
+            />
+            </div>
+        </div>
     )
   }
 }
