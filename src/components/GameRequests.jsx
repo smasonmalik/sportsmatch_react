@@ -58,6 +58,7 @@ class GameRequests extends React.Component {
   }
 
   render() {
+    console.log(this.state.requests[0])
     return (
       <ul className="list-group list-group-flush">
         {this.state.requests.map(result => (

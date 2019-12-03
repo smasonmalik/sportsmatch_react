@@ -28,6 +28,7 @@ class Request extends React.Component {
                 id={this.props.id}
                 status={this.props.status}
                 organiser_id={this.props.organiser_id}
+                opponent_id={this.props.opponent_id}
               />
               <DeclineGameButton
                 organiser_id={this.props.organiser_id}

@@ -7,10 +7,20 @@ class ConfirmGameButton extends React.Component {
     this.state = {
       confirmed: this.props.status
     }
-    this.handleConfirm = this.handleConfirm.bind(this)
+    this.handleConfirm = this.handleConfirm.bind(this);
+    // this.handleCancel = this.handleCancel.bind(this);
+    this.updateGame = this.updateGame.bind(this);
   }
 
-  handleConfirm() {
+  handleConfirm(event) {
+    this.setState({
+      confirmed: event.target.value
+    })
+    this.updateGame()
+    // .then{console.log(this.state.confirmed)}
+  }
+
+  updateGame(){
     let self = this;
     axios({
       method: 'patch',
@@ -20,7 +30,7 @@ class ConfirmGameButton extends React.Component {
         "api-token": localStorage.getItem('jwtToken')
       },
       data: {
-        confirmed: !this.state.confirmed
+        status: self.state.confirmed
       }
     })
     .then(function(response) {
@@ -35,20 +45,22 @@ class ConfirmGameButton extends React.Component {
   }
 
   render() {
-    if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
-      return <span></span>
-    } else if (this.state.confirmed === "confirmed") {
+    if (this.state.confirmed === "confirmed" || this.props.organiser_id === localStorage.getItem('user_id') ) {
       return (
         <div>
-          <button className="btn btn-primary" onClick={this.handleConfirm}>Cancel Game</button>
+          <button className="btn btn-primary" value="cancelled" onClick={this.handleConfirm}>Cancel Game</button>
+        </div>
+      )
+    } else if (this.state.confirmed === "pending" && this.props.opponenet_id === localStorage.getItem('user_id') ) {
+      return (
+        <div>
+          <button className="btn btn-primary" value="confirmed" onClick={this.handleConfirm}>Confirm Game</button>
         </div>
       )
     } else {
-      return (
-        <div>
-          <button className="btn btn-primary" onClick={this.handleConfirm}>Confirm Game</button>
-        </div>
-      )
+    return (
+      <span></span>
+    )
     }
   }
 }
