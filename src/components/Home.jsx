@@ -78,6 +78,7 @@ class Home extends Component {
         },
       })
       .then(function(response) {
+        console.log(response.data);
         self.setState({ players: response.data })
       })
       .catch(function(error) {
@@ -97,7 +98,7 @@ class Home extends Component {
                   updateDistance={this.updateDistance}
               />
             </div>
-            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance} - {this.state.sport}</p>
+
             <div>
               {this.state.players.map(player => (
                 <Player
@@ -105,6 +106,7 @@ class Home extends Component {
                   id={player.id}
                   firstName={player.first_name}
                   ability={player.ability}
+                  rank_points={player.rank_points}
                   gender={player.gender}
                 />
               ))}

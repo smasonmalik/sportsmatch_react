@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
+import EditImageForm from './EditImageForm'
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -9,18 +11,24 @@ class Profile extends React.Component {
     this.state = {
       player: [],
       gameConfirmed: false,
-      showBio: false,
-      bioEdited: false,
+      showImageForm: false,
+      imageEdited: false,
       profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
     this.handleClick = this.handleClick.bind(this)
-    // this.handleEditBio = this.handleEditBio.bind(this)
+    this.handleEditImage = this.handleEditImage.bind(this)
   }
 
   componentDidMount() {
     this.getPlayer()
     this.getPhoto()
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.imageEdited !== prevState.imageEdited) {
+      this.getPhoto()
+    }
+  }
 
   getPlayer() {
     let self = this;
@@ -60,15 +68,15 @@ class Profile extends React.Component {
 
   handleClick() {
     this.setState(prevState => {
-      return { showBio: !prevState.showBio }
+      return { showImageForm: !prevState.showImageForm }
     })
   }
 
-  // handleEditBio() {
-  //   this.setState(prevState => {
-  //     return { bioEdited: !prevState.bioEdited }
-  //   })
-  // }
+  handleEditImage() {
+    this.setState(prevState => {
+      return { imageEdited: !prevState.imageEdited }
+    })
+  }
 
   render() {
     if (localStorage.getItem('jwtToken')) {
@@ -78,11 +86,16 @@ class Profile extends React.Component {
             Profile Page
           </div>
           <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+          <div>
+          <button onClick={this.handleClick} className="btn btn-primary">{this.state.showImageForm ? "Edit Image" : "Hide"}</button>
+            <p>{this.state.showImageForm ? '' : <EditImageForm handleEditImage={this.handleEditImage}/>}</p>
+            </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">{this.state.player.ability}</p>
-            <p className="card-text">{this.state.player.gender}</p>
-            <p className="card-text">{this.state.player.dob}</p>
+            <p className="card-text">Ability: {this.state.player.ability}</p>
+            <p className="card-text">F.R.E.D: {this.state.player.rank_points} points</p>
+            <p className="card-text">Gender: {this.state.player.gender}</p>
+            <p className="card-text">D.O.B: {this.state.player.dob}</p>
             <p className="card-text">{this.state.player.bio}</p>
             <p className="card-test">{this.state.player.sport}</p>
             <ul className="list-group list-group-flush">
