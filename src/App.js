@@ -9,7 +9,6 @@ import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'
-import EditResultForm from './components/EditResultForm'
 import DisplayMessages from './components/DisplayMessages'
 import Results from './components/Results'
 import NewResult from './components/NewResult'
@@ -47,7 +46,7 @@ class App extends Component {
         <Router>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
           <Route exact strict path="/signup">
-            <Signup />
+            <Signup handleLoggedInState={this.handleLoggedInState} />
           </Route>
           <Route exact strict path="/">
             <Home handleLoggedInState={this.handleLoggedInState} />
