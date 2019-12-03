@@ -38,7 +38,7 @@ class Player extends React.Component {
   render() {
     return (
       <div className="media">
-        <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+        <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
         <div className="media-body">
           <h5 className="mt-0">{this.props.firstName}</h5>
           <p className="card-text">{this.props.ability}</p>

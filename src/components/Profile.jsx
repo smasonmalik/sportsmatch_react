@@ -2,8 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
-import EditBioForm from './EditBioForm'
-
 
 class Profile extends React.Component {
   constructor(props) {
@@ -23,12 +21,6 @@ class Profile extends React.Component {
     this.getPlayer()
     this.getPhoto()
   };
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.bioEdited !== prevState.bioEdited) {
-  //     this.getPlayer()
-  //   }
-  // }
 
   getPlayer() {
     let self = this;
@@ -85,7 +77,7 @@ class Profile extends React.Component {
           <div className="card-header">
             Profile Page
           </div>
-          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
