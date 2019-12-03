@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
@@ -16,30 +15,48 @@ import Results from './components/Results'
 import NewResult from './components/NewResult'
 
 class App extends Component {
+  constructor() {
+    super()
+  this.state = {
+    isLoggedIn: false
+  }
+  this.handleLoggedInState = this.handleLoggedInState.bind(this);
+  this.handleLogInState = this.handleLogInState.bind(this);
+}
+  handleLogInState() {
+    if (localStorage.getItem('jwtToken')) {
+      this.setState({
+        isLoggedIn: true
+      })
+    }
+  }
+
+  handleLoggedInState() {
+      this.setState(prevState => {
+        return {isLoggedIn: !prevState.isLoggedIn}
+      })
+  }
+
+  componentDidMount() {
+    this.handleLogInState();
+  }
 
   render() {
     return (
       <div>
         <Router>
-        <Navbar />
-          <Route exact strict path="/login">
-            <Login />
-          </Route>
-          <Route exact strict path="/">
-            <Login />
-          </Route>
-          <Route exact strict path="/signup">
-            <Signup />
-          </Route>
-
-          <PrivateRoute exact strict path="/home" component={Home} />
-          <PrivateRoute exact strict path="/profile" component={Profile} />
-          <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
-          <PrivateRoute exact strict path="/results" component={Results} />
-          <PrivateRoute exact strict path="/results/:id" component={EditResultForm}/>
-          <PrivateRoute exact strict path="/results/:id/new" component={NewResult}/>
-          <PrivateRoute path="/player/:id" component={PlayerProfile}/>
-          <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
+        <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
+        <Route exact strict path="/signup">
+          <Signup />
+        </Route>
+        <PrivateRoute exact strict path="/" component={Home} handleLoggedInState={this.handleLoggedInState}  />
+        <PrivateRoute exact strict path="/profile" component={Profile} />
+        <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
+        <PrivateRoute exact strict path="/results" component={Results} />
+        <PrivateRoute exact strict path="/results/:id" component={EditResultForm}/>
+        <PrivateRoute exact strict path="/results/:id/new" component={NewResult}/>
+        <PrivateRoute path="/player/:id" component={PlayerProfile}/>
+        <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
         </Router>
       </div>
     );

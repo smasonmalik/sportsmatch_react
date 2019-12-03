@@ -8,13 +8,16 @@ class PlayerProfile extends React.Component {
     super(props)
     this.state = {
       player: [],
-      playerAge: null
+      playerAge: null,
+      profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
-    this.getPlayer = this.getPlayer.bind(this)
+    this.getPlayer = this.getPlayer.bind(this);
+    this.getPhoto = this.getPhoto.bind(this);
   }
 
   componentDidMount() {
     this.getPlayer()
+    this.getPhoto()
   };
 
   getPlayer() {
@@ -41,6 +44,26 @@ class PlayerProfile extends React.Component {
       })
   }
 
+  getPhoto() {
+    let self = this;
+    axios({
+      url: `/api/v1/players/${self.props.match.params.id}/image`,
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": localStorage.getItem('jwtToken')
+      }
+    })
+    .then(function(response) {
+      if (response.data.profile_image) {
+        self.setState({ profile_photo: response.data.profile_image })
+      }
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+  }
+
+
   getAgeBracket() {
     if (this.state.playerAge > 16 && this.state.playerAge <= 19) {
       return (<p className="card-text">16 - 19 years</p>)
@@ -64,9 +87,12 @@ class PlayerProfile extends React.Component {
             Player Profile
           </div>
           <div className="card-body">
+          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
+            <p className="card-text">{this.state.player.bio}</p>
+            <p className="card-text">{this.state.player.sport}</p>
             {this.getAgeBracket()}
             <GameRequestForm opponent_id={this.state.player.id} />
           </div>
