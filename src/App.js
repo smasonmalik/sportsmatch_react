@@ -5,9 +5,14 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
+// import Results from './components/Results';
+import PrivateRoute from './components/PrivateRoute';
 import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'
+import EditResultForm from './components/EditResultForm'
 import DisplayMessages from './components/DisplayMessages'
+import Results from './components/Results'
+import NewResult from './components/NewResult'
 
 class App extends Component {
   constructor() {
@@ -26,7 +31,7 @@ class App extends Component {
     }
   }
 
-  handleLoggedInState() { 
+  handleLoggedInState() {
       this.setState(prevState => {
         return {isLoggedIn: !prevState.isLoggedIn}
       })
@@ -40,21 +45,18 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
-          <Route exact strict path="/signup">
-            <Signup />
-          </Route>
-          <Route exact strict path="/">
-            <Home handleLoggedInState={this.handleLoggedInState} />
-          </Route>
-          <Route exact strict path="/profile">
-            <Profile />
-          </Route>
-          <Route exact strict path="/profile/edit">
-            <EditProfileForm />
-          </Route>
-          <Route path="/player/:id" component={PlayerProfile}/>
-          <Route path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
+        <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
+        <Route exact strict path="/signup">
+          <Signup />
+        </Route>
+        <PrivateRoute exact strict path="/" component={Home} handleLoggedInState={this.handleLoggedInState}  />
+        <PrivateRoute exact strict path="/profile" component={Profile} />
+        <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
+        <PrivateRoute exact strict path="/results" component={Results} />
+        <PrivateRoute exact strict path="/results/:id" component={EditResultForm}/>
+        <PrivateRoute exact strict path="/results/:id/new" component={NewResult}/>
+        <PrivateRoute path="/player/:id" component={PlayerProfile}/>
+        <PrivateRoute path="/game/:id/messages/:organiser_id/:opponent_id" component={DisplayMessages} />
         </Router>
       </div>
     );
