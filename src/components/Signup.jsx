@@ -11,14 +11,8 @@ class Signup extends Component {
     }
     this.handleSignup = this.handleSignup.bind(this);
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
-  }
-
-  handlePasswordConfirm(e){
-    let password = document.getElementById("password-input").value
-    let password_confirm = document.getElementById("password-confirm-input").value
-    if (password !== password_confirm) {
-      console.log("passwords don't match")
-    }
+    this.dobValidation = this.dobValidation.bind(this)
+    this.validateEmail = this.validateEmail.bind(this)
   }
 
   handleSelectedFile(event) {
@@ -66,21 +60,52 @@ class Signup extends Component {
       }
     }
 
-    fileSelectedHandler(e) {
-      let file = e.target.files[0];
-      console.log(e.target.files[0].size)
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        this.setState({
-          selectedFile: reader.result
-        });
-      };
+  fileSelectedHandler(e) {
+    let file = e.target.files[0];
+    console.log(e.target.files[0].size)
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.setState({
+        selectedFile: reader.result
+      });
+    };
+  }
+
+  dobValidation(e) {
+    let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
+    var element = document.getElementById("dob-input");
+    if(Date.parse(e.target.value) > min_dob) {
+      alert('You must be at least 16 to register on SportsMatch')
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error");
     }
+  }
+
+  validateEmail(e) {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var element = document.getElementById("email-input");
+    if (!(e.target.value).match(mailformat)) {
+      element.classList.add("form-control-error");
+    }
+    else { element.classList.remove("form-control-error");
+    }
+  }
+
+  handlePasswordConfirm(e){
+    let password = document.getElementById("password-input").value
+    var element = document.getElementById("password-confirm-input");
+    if (password !== e.target.value) {
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error")
+    }
+  }
 
   render () {
     if (localStorage.getItem('jwtToken')) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
     else {
       return (
@@ -128,8 +153,10 @@ class Signup extends Component {
                 id="dob-input"
                 name="dob"
                 type="date"
+                max="2003-12-06"
                 required="required"
                 className="form-control"
+                onChange={e => this.dobValidation(e)}
               ></input>
             </div>
             <div className="form-group">
@@ -182,9 +209,10 @@ class Signup extends Component {
                 id="email-input"
                 name="email"
                 placeholder="Email"
-                type="text"
+                type="email"
                 required="required"
                 className="email form-control"
+                onChange={e => this.validateEmail(e)}
               ></input>
             </div>
             <div>
@@ -221,7 +249,7 @@ class Signup extends Component {
                 type="password"
                 className="password form-control"
                 required="required"
-                onChange={this.handlePasswordConfirm}
+                onChange={e => this.handlePasswordConfirm(e)}
               ></input>
             </div>
             <div className='row'>

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
+import Home from './Home'
+
 
 class Login extends Component {
   constructor(props) {
@@ -29,13 +31,13 @@ class Login extends Component {
         })
       })
       .catch(function(error) {
-        console.log(error);
+        alert(error.response.data.error);
       });
     }
 
   render() {
     if (localStorage.getItem('jwtToken')) {
-      return <Redirect to="/home" />;
+      return <Home />;
     } else {
       return (
         <div className="form-container">

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import SearchBar from './SearchBar';
 import Player from './Player';
+import Login from './Login'
 
 class Home extends Component {
   constructor(props) {
@@ -114,7 +115,7 @@ class Home extends Component {
       } else {
         return(
           <div>
-            <Redirect to='/login' />
+            <Login />
           </div>
         )
       }
