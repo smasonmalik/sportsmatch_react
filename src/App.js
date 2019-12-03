@@ -45,11 +45,14 @@ class App extends Component {
     return (
       <div>
         <Router>
-        <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
-        <Route exact strict path="/signup">
-          <Signup />
-        </Route>
-        <PrivateRoute exact strict path="/" component={Home} handleLoggedInState={this.handleLoggedInState}  />
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
+          <Route exact strict path="/signup">
+            <Signup />
+          </Route>
+          <Route exact strict path="/">
+            <Home handleLoggedInState={this.handleLoggedInState} />
+          </Route>
+
         <PrivateRoute exact strict path="/profile" component={Profile} />
         <PrivateRoute exact strict path="/profile/edit" component={EditProfileForm} />
         <PrivateRoute exact strict path="/results" component={Results} />
