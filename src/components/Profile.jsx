@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
+import { conditionalExpression } from '@babel/types';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -46,7 +47,8 @@ class Profile extends React.Component {
     })
     .then(function(response) {
       if (response.data.profile_image){
-        self.setState({ photo: response.data.profile_image })
+        self.setState({ profile_photo: response.data.profile_image })
+        console.log(self.state.profile_photo)
       }
     })
       .catch(function(error) {
