@@ -105,7 +105,7 @@ class Signup extends Component {
 
   render () {
     if (localStorage.getItem('jwtToken')) {
-      return <Redirect to="/" />;
+      return <Redirect to="/profile" />;
     }
     else {
       return (
