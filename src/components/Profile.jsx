@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequests from './GameRequests'
-import SingleResult from './SingleResult'
+// import SingleResult from './SingleResult'
 import EditImageForm from './EditImageForm'
 import { NavLink, Redirect } from 'react-router-dom'
 
