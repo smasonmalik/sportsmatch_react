@@ -35,16 +35,6 @@ class SearchBar extends React.Component {
                     </div>
                 </div>
                 <div className="col">
-                    <label className="label">Filter By Age Group:</label>
-                    {/* <select className="custom-select" name="age_group" id="age-select" onChange={(e) => this.props.handleChange(e)}>
-                        <option value="16-19">16-19</option>
-                        <option value="20-29">20-29</option>
-                        <option value="30-39">30-39</option>
-                        <option value="40-49">40-49</option>
-                        <option value="50+">50+</option>
-                    </select> */}
-                </div>
-                <div className="col">
                     <label className="label">Filter By Sport:</label>
                     <select className="custom-select" name="sport" id="sport-select" onChange={(e) => this.props.handleChange(e)}>
                         <option value="Tennis">Tennis</option>
