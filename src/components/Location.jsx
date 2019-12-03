@@ -2,72 +2,80 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import { Redirect } from 'react-router-dom'
 import Script from 'react-load-script';
-import SearchBar from 'material-ui-search-bar';
+import ReactGoogleMapLoader from "react-google-maps-loader";
+import ReactGooglePlacesSuggest from "react-google-places-suggest";
 
-export class Location extends Component {
+const MY_API_KEY = "AIzaSyCebk-zVczbBH1Q6lxdk8AQgvdScWJM2E8"
+
+class Location extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: '',
-      query: ''
-    }
-
-  }
-
-  handleScriptLoad = () => {
-    const options = {
-      types: ['(cities)'],
-    };
-
-    // this.autocomplete = new google.maps.places.Autocomplete(
-    //   document.getElementById('autocomplete'),
-    //   options,
-    // );
-
-    // Avoid paying for data that you don't need by restricting the set of
-    // place fields that are returned to just the address components and formatted
-    // address.
-    this.autocomplete.setFields(['address_components', 'formatted_address']);
-
-    this.autocomplete.addListener('place_changed', this.handlePlaceSelect);
-  }
-
-  handlePlaceSelect = () => {
-
-    // Extract City From Address Object
-    const addressObject = this.autocomplete.getPlace();
-    const address = addressObject.address_components;
-
-    // Check if address is valid
-    if (address) {
-      this.setState(
-        {
-          city: address[0].long_name,
-          query: addressObject.formatted_address,
-        }
-      );
+      search: '',
+      value: ''
     }
   }
 
-  render() {
-    return (
-      <div>
+    handleInputChange = e => {
+        this.setState({search: e.target.value, value: e.target.value})
+    }
+
+    handleSelectSuggest = (geocodedPrediction, originalPrediction) => {
+        console.log(geocodedPrediction, originalPrediction)
+        this.setState({search: "", value: geocodedPrediction.formatted_address})
+    }
+
+    handleNoResult = () => {
+        console.log('No results for ', this.state.search)
+    }
+
+    handleStatusUpdate = (status) => {
+        console.log(status)
+    }
 
 
-      </div>
-    );
-  }
+    render() {
+          const {search, value} = this.state
+          return (
+              <ReactGoogleMapLoader
+                  params={{
+                      key: MY_API_KEY,
+                      libraries: "places,geocode",
+                  }}
+                  render={googleMaps =>
+                      googleMaps && (
+                          <ReactGooglePlacesSuggest
+                              googleMaps={googleMaps}
+                              autocompletionRequest={{
+                                  input: search,
+                                  // Optional options
+                                  // https://developers.google.com/maps/documentation/javascript/reference?hl=fr#AutocompletionRequest
+                              }}
+                              // Optional props
+                              onNoResult={this.handleNoResult}
+                              onSelectSuggest={this.handleSelectSuggest}
+                              onStatusUpdate={this.handleStatusUpdate}
+                              textNoResults="My custom no results text" // null or "" if you want to disable the no results item
+                              customRender={prediction => (
+                                  <div className="customWrapper">
+                                      {prediction
+                                          ? prediction.description
+                                          : "My custom no results text"}
+                                  </div>
+                              )}
+                          >
+                              <input
+                                  type="text"
+                                  value={value}
+                                  placeholder="Search a location"
+                                  onChange={this.handleInputChange}
+                              />
+                          </ReactGooglePlacesSuggest>
+                      )
+                  }
+              />
+          )
+      }
 }
 
 export default Location;
-
-// <Script
-//   url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCebk-zVczbBH1Q6lxdk8AQgvdScWJM2E8&libraries=places"
-//   onLoad={this.handleScriptLoad}
-// />
-// <SearchBar id="autocomplete" placeholder="" hintText="Search City" value={this.state.query}
-//   style={{
-//     margin: '0 auto',
-//     maxWidth: 800,
-//   }}
-// />
