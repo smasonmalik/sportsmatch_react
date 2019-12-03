@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequests from './GameRequests'
-import SingleResult from './SingleResult'
+// import SingleResult from './SingleResult'
 import EditImageForm from './EditImageForm'
+import { NavLink, Redirect } from 'react-router-dom'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -78,6 +79,7 @@ class Profile extends React.Component {
   }
 
   render() {
+    if (localStorage.getItem('jwtToken')) {
       return (
         <div className="card text-center">
           <div className="card-header">
@@ -112,6 +114,7 @@ class Profile extends React.Component {
         </div>
       )
     }
+  }
 }
 
 // <button onClick={this.handleClick} className="btn btn-primary">{this.state.showBio ? "Edit bio" : "Hide"}</button>
