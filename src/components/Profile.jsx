@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
+import EditBioForm from './EditBioForm'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -9,14 +10,24 @@ class Profile extends React.Component {
     this.state = {
       player: [],
       gameConfirmed: false,
+      showBio: false,
+      bioEdited: false,
       profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
+    this.handleClick = this.handleClick.bind(this)
+    this.handleEditBio = this.handleEditBio.bind(this)
   }
 
   componentDidMount() {
     this.getPlayer()
     this.getPhoto()
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.bioEdited !== prevState.bioEdited) {
+      this.getPlayer()
+    }
+  }
 
   getPlayer() {
     let self = this;
@@ -54,6 +65,18 @@ class Profile extends React.Component {
       })
   }
 
+  handleClick() {
+    this.setState(prevState => {
+      return { showBio: !prevState.showBio }
+    })
+  }
+
+  handleEditBio() {
+    this.setState(prevState => {
+      return { bioEdited: !prevState.bioEdited }
+    })
+  }
+
   render() {
     if (localStorage.getItem('jwtToken')) {
       return (
@@ -67,6 +90,8 @@ class Profile extends React.Component {
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
             <p className="card-text">{this.state.player.dob}</p>
+            <button onClick={this.handleClick} className="btn btn-primary">{this.state.showBio ? "Edit bio" : "Hide"}</button>
+            <p>{this.state.showBio ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
             <p className="card-text">{this.state.player.bio}</p>
             <p className="card-test">{this.state.player.sport}</p>
             <ul className="list-group list-group-flush">
