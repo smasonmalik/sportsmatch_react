@@ -11,7 +11,8 @@ class Home extends Component {
       players: [],
       distance: 5,
       ability: "Beginner",
-      age_group: "16 - 19"
+      age_group: "16 - 19",
+      sport: "Tennis"
     };
     this.getPlayers = this.getPlayers.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -24,10 +25,11 @@ class Home extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.ability !== prevState.ability) {
-      this.getPlayers()
-    }
-    if (this.state.distance !== prevState.distance) {
+    if (
+      this.state.ability !== prevState.ability ||
+      this.state.distance !== prevState.distance ||
+      this.state.sport !== prevState.sport
+    ) {
       this.getPlayers()
     }
   };
@@ -38,7 +40,7 @@ class Home extends Component {
       [name]: value
     })
     console.log(this.state.ability)
-  } 
+  }
 
   updateDistance = (distance) => {
     this.setState({distance: distance})
@@ -71,7 +73,8 @@ class Home extends Component {
           "Content-Type": "application/json",
           "api-token": localStorage.getItem('jwtToken'),
           "ability": this.state.ability,
-          "distance": this.state.distance
+          "distance": this.state.distance,
+          "sport": this.state.sport
         },
       })
       .then(function(response) {
@@ -94,7 +97,7 @@ class Home extends Component {
                   updateDistance={this.updateDistance}
               />
             </div>
-            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance}</p>
+            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance} - {this.state.sport}</p>
             <div>
               {this.state.players.map(player => (
                 <Player
