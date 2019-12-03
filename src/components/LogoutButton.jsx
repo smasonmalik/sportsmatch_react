@@ -8,13 +8,13 @@ class LogoutButton extends React.Component {
   }
 
   handleClick() {
-    this.props.handleLogoutState()
+    this.props.handleLoggedInState()
     localStorage.clear()
   }
 
   render() {
     return(
-      <Link onClick={this.handleClick} to={'/'}>Logout</Link>
+      <Link className="nav-link" id="logout-link" onClick={this.handleClick} to={'/'}>Logout</Link>
     )
   }
 }

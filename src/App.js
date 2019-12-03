@@ -16,6 +16,7 @@ class App extends Component {
   this.state = {
     isLoggedIn: false
   }
+  this.handleLoggedInState = this.handleLoggedInState.bind(this);
   this.handleLogInState = this.handleLogInState.bind(this);
 }
   handleLogInState() {
@@ -26,29 +27,29 @@ class App extends Component {
     }
   }
 
-  handleLogoutState() {
-    this.setState({
-      isLoggedIn: false
-    })
-  }
-  componentDidMount() {
-    this.handleLogInState()
+  handleLoggedInState() { 
+    console.log(this.state.isLoggedIn)
+
+      this.setState(prevState => {
+        return {isLoggedIn: !prevState.isLoggedIn}
+      })
+
   }
 
-  // componentDidUpdate() {
-  //   this.handleLogInState()
-  // }
+  componentDidMount() {
+    this.handleLogInState();
+  }
 
   render() {
     return (
       <div>
         <Router>
-          <Navbar isLoggedIn={this.isLoggedIn} handleLogoutState={this.handleLogoutState}/>
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
           <Route exact strict path="/signup">
             <Signup />
           </Route>
           <Route exact strict path="/">
-            <Home />
+            <Home handleLoggedInState={this.handleLoggedInState} />
           </Route>
           <Route exact strict path="/profile">
             <Profile />

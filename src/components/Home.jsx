@@ -115,7 +115,7 @@ class Home extends Component {
       } else {
         return(
           <div>
-            <Login isLoggedIn={this.props.isLoggedIn}/>
+            <Login handleLogIn={this.props.handleLoggedInState}/>
           </div>
         )
       }
