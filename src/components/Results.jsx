@@ -107,6 +107,7 @@ class Results extends React.Component {
               <SingleResult
                 key={game.id}
                 id={game.id}
+                result_id={game.result_id}
                 winner_id={game.winner_id}
                 loser_id={game.loser_id}
                 opponent_name={game.first_name}
@@ -126,6 +127,7 @@ class Results extends React.Component {
                   <SingleResult
                     key={game.id}
                     id={game.id}
+                    result_id={game.result_id}
                     winner_id={game.winner_id}
                     loser_id={game.loser_id}
                     organiser_name={game.first_name}

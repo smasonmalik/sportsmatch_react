@@ -6,7 +6,7 @@ import NewResult from "./NewResult"
 class SingleResult extends React.Component {
 
   render() {
-    if (localStorage.getItem('user_id') == this.props.organiser_id) {
+    if ((localStorage.getItem('user_id') == this.props.organiser_id) && this.props.loser_id == null ) {
       return (
         <li className="list-group-item">
           <div className="card" style={{width: '18rem'}}>
