@@ -79,17 +79,17 @@ class Signup extends Component {
     };
   }
 
-  lastNameValidation(e){
-    console.log(e.target.value);
-   if(e.target.value.length > 10 ){
-  alert('last name must be less than 10 chars long')
-  var element = document.getElementById("last-name-input");
-  element.classList.add("form-control-error");
-  }
+lastNameValidation(e){
+  if(e.target.value.length > 10 ){
+    alert('last name must be less than 10 chars long')
+    var element = document.getElementById("last-name-input");
+    element.classList.add("form-control-error");
+    }
 }
 
 dobValidation(e) {
-  if(Date.parse(e.target.value) > (Date.parse("2003-12-06"))) {
+  let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
+  if(Date.parse(e.target.value) > min_dob) {
     alert('minimum sign up age is 16')
     var element = document.getElementById("dob-input");
     element.classList.add("form-control-error");
