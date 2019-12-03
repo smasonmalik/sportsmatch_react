@@ -18,9 +18,7 @@ class NewResult extends React.Component {
   onSubmit(event){
     event.preventDefault();
     console.log(event.target.loser_id)
-    const { winner_id, loser_id, result_confirmed, game_id } = this.state;
 
-    let self = this;
     axios({
       method: 'post',
       url: `/api/v1/results/${this.props.match.params.id}/new`,
@@ -43,12 +41,12 @@ class NewResult extends React.Component {
   }
 
   onChangeWinner(event){
-    if (event.target.value == this.props.location.state.organiser_id){
+    if (event.target.value === this.props.location.state.organiser_id){
       this.setState({
         winner_id: event.target.value,
         loser_id: this.props.location.state.opponent_id
        })
-    } else if (event.target.value == this.props.location.state.opponent_id) {
+    } else if (event.target.value === this.props.location.state.opponent_id) {
       this.setState({
         winner_id: event.target.value,
         loser_id: this.props.location.state.organiser_id
