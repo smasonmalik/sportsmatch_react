@@ -1,3 +1,45 @@
+body {
+  background-color: #DDDDDDDD;
+}
+
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: white;
+  outline: none;
+}
+
+input:focus, input:active, input:hover {
+  border-color: transparent;
+  border-bottom: 2px solid #1c87c9;
+  background-color: white;
+}
+
+label {
+  color: grey;
+  margin-left: 15px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px;
+  width: 60%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+}
+
+button:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.4);
+}
+
 .App {
   text-align: center;
 }

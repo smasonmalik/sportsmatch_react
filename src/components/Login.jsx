@@ -46,7 +46,7 @@ class Login extends Component {
             <div className="col-4 my-col" id="login_form">
               <div className="form-container">
                 <img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/>
-                <h5>Welcome Back, Please Login to Your Account</h5>
+                <h5 className='heading'>Welcome Back, Please Login to Your Account</h5>
                 <form
                   onSubmit={e => {
                     e.preventDefault();
@@ -60,7 +60,7 @@ class Login extends Component {
                       name="email"
                       type="text"
                       required="required"
-                      class="no-outline"
+                      class="input-field"
                     />
                   </div>
                   <div>
@@ -70,7 +70,7 @@ class Login extends Component {
                       name="password"
                       type="password"
                       required="required"
-                      class="no-outline"
+                      class="input-field"
                     />
                   </div>
                   <div className="form-group" style={{textAlign: 'center'}}>
