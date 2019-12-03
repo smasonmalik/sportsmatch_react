@@ -1,5 +1,6 @@
 import React from 'react'
 import EditResultButton from './EditResultButton'
+import { Link } from "react-router-dom"
 
 class SingleResult extends React.Component {
 
@@ -12,14 +13,12 @@ class SingleResult extends React.Component {
               <p className="card-text">Result id: {this.props.result_id}</p>
               <p className="card-text">Winner id: {this.props.winner_id}</p>
               <p className="card-text">Loser id: {this.props.loser_id}</p>
-              <p className="card-text">Confirmed: {this.props.confirmed}</p>
               <p className="card-text">Organiser ID: {this.props.organiser_id}</p>
               <p className="card-text">Opponent ID: {this.props.opponent_id}</p>
               <p className="card-text">Game Date: {this.props.game_date}</p>
-              <EditResultButton
-              id={this.props.id}
-              handleEdit={this.props.handleEdit}
-              />
+
+              <Link to={`/results/${this.props.id}/new`} className="btn custom-button">
+              Create New Results</Link>
           </div>
         </div>
       </li>
@@ -27,3 +26,8 @@ class SingleResult extends React.Component {
   }
 }
 export default SingleResult
+
+// <EditResultButton
+// id={this.props.id}
+// handleEdit={this.props.handleEdit}
+// />
