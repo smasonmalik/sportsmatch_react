@@ -12,11 +12,12 @@ class Home extends Component {
       players: [],
       distance: 5,
       ability: "Beginner",
-      age_group: "16 - 19"
+      age_group: "16 - 19",
+      sport: "Tennis"
     };
     this.getPlayers = this.getPlayers.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.updateDistance = this.updateDistance.bind(this);
   }
 
   componentDidMount() {
@@ -25,10 +26,11 @@ class Home extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.ability !== prevState.ability) {
-      this.getPlayers()
-    }
-    if (this.state.distance !== prevState.distance) {
+    if (
+      this.state.ability !== prevState.ability ||
+      this.state.distance !== prevState.distance ||
+      this.state.sport !== prevState.sport
+    ) {
       this.getPlayers()
     }
   };
@@ -41,12 +43,8 @@ class Home extends Component {
     console.log(this.state.ability)
   }
 
-  handleClick(event) {
-    console.log(event.target.value)
-    let prev_distance = this.state.distance
-    this.setState({
-      distance: prev_distance + parseInt(event.target.value)
-    })
+  updateDistance = (distance) => {
+    this.setState({distance: distance})
   }
 
   getLoggedInPlayerInfo() {
@@ -76,7 +74,8 @@ class Home extends Component {
           "Content-Type": "application/json",
           "api-token": localStorage.getItem('jwtToken'),
           "ability": this.state.ability,
-          "distance": this.state.distance
+          "distance": this.state.distance,
+          "sport": this.state.sport
         },
       })
       .then(function(response) {
@@ -96,10 +95,10 @@ class Home extends Component {
                   distance={this.state.distance}
                   ability={this.state.ability}
                   handleChange={this.handleChange}
-                  handleClick={this.handleClick}
+                  updateDistance={this.updateDistance}
               />
             </div>
-            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance}</p>
+            <p>{this.state.ability} - {this.state.age_group} - {this.state.distance} - {this.state.sport}</p>
             <div>
               {this.state.players.map(player => (
                 <Player
@@ -121,5 +120,6 @@ class Home extends Component {
         )
       }
   }
+  
 }
 export default Home;
