@@ -48,7 +48,6 @@ class Profile extends React.Component {
     .then(function(response) {
       if (response.data.profile_image){
         self.setState({ profile_photo: response.data.profile_image })
-        console.log(self.state.profile_photo)
       }
     })
       .catch(function(error) {
