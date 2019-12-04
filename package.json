@@ -35,6 +35,8 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^3.7.0"
+    "css-loader": "^3.2.1",
+    "cypress": "^3.7.0",
+    "style-loader": "^1.0.1"
   }
 }

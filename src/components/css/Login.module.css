@@ -1,4 +1,4 @@
-.main-logo {
+.mainLogo {
   margin-left: 15px
 }
 
@@ -10,25 +10,25 @@
   color: grey;
 }
 
-.input-field {
+.inputField {
   margin-bottom: 50px;
   margin-left: 15px;
   margin-right: 15px;
   width: 80%
 }
 
-.my-container {
+.myContainer {
   height: 500px;
   margin: 100px;
   background-color: #AAD4C9;
-  box-shadow: 1px 1px 30px 1px grey;
+  box-shadow: 2px 2px 40px 2px grey;
 }
 
-.my-row {
+.myRow {
   height: 500px
 }
 
-.my-col {
+.myCol {
   background-color: white;
   padding: 30px;
 }
@@ -39,10 +39,10 @@
 }
 
 .box:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  box-shadow: 0 0 11px rgba(33,33,33,.4);
 }
 
-#right-column {
+#rightColumn {
   /* background-image: url("https://ak5.picdn.net/shutterstock/videos/12319925/thumb/1.jpg") */
   background-image: url("https://live.staticflickr.com/5239/5911435807_82cd510fc0_b.jpg")
 }

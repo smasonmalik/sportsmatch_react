@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 import Home from './Home'
-import './css/login.css'
+import styles from './css/Login.module.css'
 
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
     }
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -41,18 +41,13 @@ class Login extends Component {
       return <Home />;
     } else {
       return (
-        <div className="container my-container">
-          <div className="row my-row">
-            <div className="col-4 my-col" id="login_form">
+        <div className={`container ${styles.myContainer}`}>
+          <div className={`row ${styles.myRow}`}>
+            <div className={`col-4 ${styles.myCol}`} id="login_form">
               <div className="form-container">
-                <img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/>
-                <h5 className='heading'>Welcome Back, Please Login to Your Account</h5>
-                <form
-                  onSubmit={e => {
-                    e.preventDefault();
-                  }}
-                  className="form-login"
-                >
+                <img className={styles.mainLogo} src="../../sportsmatchlogo.png" alt='SportsMatch'/>
+                <h5 className={styles.heading}>Welcome Back, Please Login to Your Account</h5>
+                <form onSubmit={e => {e.preventDefault();}} className="form-login">
                   <div>
                     <label>email</label><br/>
                     <input
@@ -60,7 +55,7 @@ class Login extends Component {
                       name="email"
                       type="text"
                       required="required"
-                      class="input-field"
+                      className={styles.inputField}
                     />
                   </div>
                   <div>
@@ -70,7 +65,7 @@ class Login extends Component {
                       name="password"
                       type="password"
                       required="required"
-                      class="input-field"
+                      className={styles.inputField}
                     />
                   </div>
                   <div className="form-group" style={{textAlign: 'center'}}>
@@ -88,7 +83,7 @@ class Login extends Component {
                 </div>
                 </div>
               </div>
-              <div className="col-8" id="right-column"></div>
+              <div className="col-8" id={styles.rightColumn}></div>
             </div>
           </div>
       );
