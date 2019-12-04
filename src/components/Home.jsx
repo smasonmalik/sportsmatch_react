@@ -84,7 +84,7 @@ class Home extends Component {
         return (
           <div>
             <div>
-              <SearchBar
+              <FilterBar
                   distance={this.state.distance}
                   ability={this.state.ability}
                   handleChange={this.handleChange}
