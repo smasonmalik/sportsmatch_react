@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import styles from './css/CreateMessage.module.css'
 
 class CreateMessage extends React.Component {
   constructor(props) {
@@ -35,17 +36,26 @@ class CreateMessage extends React.Component {
   }
   render() {
     return (
+      <div className={styles.formDiv}>
         <form>
           <div className="form-group">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Message..."
-              id="content-input"
-              name="content" />
-            <button onClick={this.handleSend}>Send</button>
+            <div className='row'>
+              <div className={`col-2`}>
+                <button onClick={this.handleSend} className={styles.send}>Send</button>
+              </div>
+              <div className={`col-10 ${styles.textBox}`}>
+                <input
+                  className={`form-control ${styles.text}`}
+                  type="text"
+                  placeholder="Message..."
+                  id="content-input"
+                  name="content"
+                />
+              </div>
+            </div>
           </div>
         </form>
+      </div>
     )
   }
 }
