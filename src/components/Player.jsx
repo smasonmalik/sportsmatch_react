@@ -41,7 +41,7 @@ class Player extends React.Component {
         <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
         <div className="media-body">
           <h5 className="mt-0">{this.props.firstName}</h5>
-          <p className="card-text">Ability: {this.props.ability}</p>
+          <p className="card-text">{this.props.ability}</p>
           <NavLink className="view-profile btn btn-primary" to={`/player/${this.props.id}`}>View Profile</NavLink>
         </div>
       </div>

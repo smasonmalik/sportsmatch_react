@@ -91,9 +91,8 @@ class PlayerProfile extends React.Component {
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
-            <p className="card-text">{this.state.player.bio}</p>
-            <p className="card-text">{this.state.player.sport}</p>
             {this.getAgeBracket()}
+            <p className="card-text">{this.state.player.bio}</p>
             <GameRequestForm opponent_id={this.state.player.id} />
           </div>
         </div>
