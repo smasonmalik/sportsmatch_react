@@ -7,6 +7,10 @@
   height: 500px;
 }
 
+.col:hover {
+  transform: scale(1.05);
+}
+
 .cardBody {
   text-align: center;
   bottom: 0;
@@ -52,4 +56,9 @@
 
 .bio {
   font-style: italic;
+}
+
+.cardLink {
+  color: black;
+  text-decoration: none;
 }
