@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
+import styles from './css/SignupForm.module.css'
 
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isSignedUp: false,
-      selectedFile: ''
     }
     this.handleSignup = this.handleSignup.bind(this);
-    this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
     this.dobValidation = this.dobValidation.bind(this)
     this.validateEmail = this.validateEmail.bind(this)
-  }
-
-  handleSelectedFile(event) {
-    console.log(event)
-    console.log(event.target.files)
-    this.setState (
-      {
-      file: event.target.files[0]
-      }
-    )
   }
 
   handleSignup(e) {
@@ -61,18 +50,6 @@ class Signup extends Component {
       }
     }
 
-  fileSelectedHandler(e) {
-    let file = e.target.files[0];
-    console.log(e.target.files[0].size)
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      this.setState({
-        selectedFile: reader.result
-      });
-    };
-  }
-
   dobValidation(e) {
     let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
     var element = document.getElementById("dob-input");
@@ -106,167 +83,156 @@ class Signup extends Component {
 
   render () {
     if (localStorage.getItem('jwtToken')) {
-      return <Redirect to="/" />;
+      return <Redirect to="/profile" />;
     }
     else {
       return (
-      <div className="form-container">
-          <h4>Sign Up</h4>
-          <form
-            onSubmit={e => {
-              e.preventDefault();
-            }}
-            className="form-signup"
-             >
-            <div className="form-group">
-              <input
-                id="first-name-input"
-                name="first-name"
-                placeholder="First Name"
-                type="text"
-                required="required"
-                className="form-control"
-              ></input>
-            </div>
-            <div className="form-group">
-              <input
-                id="last-name-input"
-                name="last-name"
-                placeholder="Last Name"
-                type="text"
-                required="required"
-                className="form-control"
-              ></input>
-            </div>
-            <div className="form-group">
-              <input
-                id="bio-input"
-                name="bio"
-                placeholder="Write you bio here"
-                type="text"
-                required="required"
-                className="form-control"
-              ></input>
-            </div>
-            <div className="form-group">
-              <label>Date of Birth</label>
-              <input
-                id="dob-input"
-                name="dob"
-                type="date"
-                max="2003-12-06"
-                required="required"
-                className="form-control"
-                onChange={e => this.dobValidation(e)}
-              ></input>
-            </div>
-            <div className="form-group">
-              <select
-                id="sport-input"
-                name="sport"
-                placeholder="Sport"
-                type="text"
-                required="required"
-                className="form-control"
-              >
-                <option value="Tennis">Tennis</option>
-                <option value="TableTennis">TableTennis</option>
-                <option value="Squash">Squash</option>
-                <option value="Badminton">Badminton</option>
-                <option value="Snooker">Snooker</option>
-                <option value="Climbing">Climbing</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <select
-                id="ability-input"
-                name="ability"
-                placeholder="Ability"
-                type="select"
-                required="required"
-                className="form-control"
-              >
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <select
-                id="gender-input"
-                name="gender"
-                placeholder="Gender"
-                type="text"
-                required="required"
-                className="form-control"
-              >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="not_say">Rather Not Say</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <input
-                id="email-input"
-                name="email"
-                placeholder="Email"
-                type="email"
-                required="required"
-                className="email form-control"
-                onChange={e => this.validateEmail(e)}
-              ></input>
-            </div>
-            <div>
-              <label>Add Image</label>
+      <div className={`container ${styles.myContainer}`}>
+        <div className="form-container">
+            <h5 className={styles.heading}>Welcome to SportsMatch, Create Your Account Here </h5>
+            <form
+              onSubmit={e => {e.preventDefault();}}
+              className="form-signup"
+            >
+              <div>
+                <label>first name</label><br />
+                <input
+                  id="first-name-input"
+                  name="first-name"
+                  type="text"
+                  required="required"
+                  className={styles.inputField}
+                ></input>
+              </div>
+              <div>
+                <label>last name</label><br />
+                <input
+                  id="last-name-input"
+                  name="last-name"
+                  type="text"
+                  required="required"
+                  className={styles.inputField}
+                ></input>
+              </div>
+              <div className="form-group">
+                <label>Date of Birth</label>
+                <input
+                  id="dob-input"
+                  name="dob"
+                  type="date"
+                  max="2003-12-06"
+                  required="required"
+                  className="form-control"
+                  onChange={e => this.dobValidation(e)}
+                ></input>
+              </div>
+              <div className="form-group">
+                <label>sport</label><br />
+                <select
+                  id="sport-input"
+                  name="sport"
+                  placeholder="Sport"
+                  type="text"
+                  required="required"
+                  className="form-control"
+                >
+                  <option value="Tennis">-----select sport-----</option>
+                  <option value="Tennis">Tennis</option>
+                  <option value="TableTennis">TableTennis</option>
+                  <option value="Squash">Squash</option>
+                  <option value="Badminton">Badminton</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>ability</label><br />
+                <select
+                  id="ability-input"
+                  name="ability"
+                  placeholder="Ability"
+                  type="select"
+                  required="required"
+                  className="form-control"
+                >
+                  <option value="Beginner">-----select ability-----</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>gender</label><br />
+                <select
+                  id="gender-input"
+                  name="gender"
+                  placeholder="Gender"
+                  type="text"
+                  required="required"
+                  className="form-control"
+                >
+                  <option value="male">-----select gender-----</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="not_say">Rather Not Say</option>
+                </select>
+              </div>
+              <div>
+                <label>email</label><br />
+                <input
+                  id="email-input"
+                  name="email"
+                  type="email"
+                  required="required"
+                  className={styles.inputField}
+                  onChange={e => this.validateEmail(e)}
+                ></input>
+              </div>
               <br/>
-              <input type="file" onChange={this.fileSelectedHandler} />
-            </div>
-            <br/>
-            <div className="form-group">
-              <input
-                id="postcode-input"
-                name="postcode"
-                placeholder="Postcode"
-                type="text"
-                required="required"
-                className="form-control"
-              ></input>
-            </div>
-            <div className="form-group">
-              <input
-                id="password-input"
-                name="password"
-                placeholder="Password"
-                type="password"
-                className="password form-control"
-                required="required"
-              ></input>
-            </div>
-            <div className="form-group">
-              <input
-                id="password-confirm-input"
-                name="password-confirm"
-                placeholder="Confirm Password"
-                type="password"
-                className="password form-control"
-                required="required"
-                onChange={e => this.handlePasswordConfirm(e)}
-              ></input>
-            </div>
-            <div className='row'>
-              <div className='col'>
-                <div className="form-group">
-                  <button
-                    name="signup"
-                    type="submit"
-                    className="signup-button btn btn-primary"
-                    onClick={this.handleSignup}>
-                    Signup
-                  </button>
+              <div>
+                <label>postcode</label><br />
+                <input
+                  id="postcode-input"
+                  name="postcode"
+                  type="text"
+                  required="required"
+                  className={styles.inputField}
+                ></input>
+              </div>
+              <div>
+                <label>password</label><br />
+                <input
+                  id="password-input"
+                  name="password"
+                  type="password"
+                  className={`password ${styles.inputField}`}
+                  required="required"
+                ></input>
+              </div>
+              <div>
+                <label>confirm password</label><br />
+                <input
+                  id="password-confirm-input"
+                  name="password-confirm"
+                  type="password"
+                  className={`password ${styles.inputField}`}
+                  required="required"
+                  onChange={e => this.handlePasswordConfirm(e)}
+                ></input>
+              </div>
+              <div className='row'>
+                <div className='col'>
+                  <div className="form-group">
+                    <button
+                      name="signup"
+                      type="submit"
+                      className="signup-button"
+                      onClick={this.handleSignup}>
+                      Signup
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
     );
     }

@@ -10,9 +10,8 @@ class Home extends Component {
     this.state = {
       players: [],
       distance: 5,
-      ability: "Beginner",
-      age_group: "16 - 19",
-      sport: "Tennis"
+      ability: '',
+      sport: ''
     };
     this.getPlayers = this.getPlayers.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,19 +20,16 @@ class Home extends Component {
 
   componentDidMount() {
     this.getLoggedInPlayerInfo()
-    this.getPlayers()
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (
       this.state.ability !== prevState.ability ||
-      this.state.distance !== prevState.distance ||
-      this.state.sport !== prevState.sport
+      this.state.distance !== prevState.distance
     ) {
       this.getPlayers()
     }
   };
-
     handleChange(event) {
     const {name, value} = event.target
     this.setState({
@@ -56,7 +52,7 @@ class Home extends Component {
     })
       .then(function(response) {
         self.setState({
-          ability: response.data.ability
+          ability: response.data.ability,
         })
       })
       .catch(function(error) {
@@ -73,7 +69,6 @@ class Home extends Component {
           "api-token": localStorage.getItem('jwtToken'),
           "ability": this.state.ability,
           "distance": this.state.distance,
-          "sport": this.state.sport
         },
       })
       .then(function(response) {
@@ -96,7 +91,6 @@ class Home extends Component {
                   updateDistance={this.updateDistance}
               />
             </div>
-
             <div>
               {this.state.players.map(player => (
                 <Player
