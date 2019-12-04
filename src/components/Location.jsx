@@ -5,6 +5,10 @@ import { Redirect } from 'react-router-dom'
 import Script from 'react-load-script';
 import ReactGoogleMapLoader from "react-google-maps-loader";
 import ReactGooglePlacesSuggest from "react-google-places-suggest";
+import PlacesAutocomplete,{
+  geocodeByAddress,
+  getLatLng
+} from 'react-places-autocomplete'
 
 const MY_API_KEY = "AIzaSyCebk-zVczbBH1Q6lxdk8AQgvdScWJM2E8"
 

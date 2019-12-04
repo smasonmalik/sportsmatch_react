@@ -4,6 +4,10 @@ import { withGoogleMap, GoogleMap, withScriptjs } from "react-google-maps";
 import Script from 'react-load-script';
 import Geocode from 'react-geocode';
 import Autocomplete from 'react-google-autocomplete';
+import PlacesAutocomplete,{
+  geocodeByAddress,
+  getLatLng
+} from 'react-places-autocomplete'
 
 
 Geocode.setApiKey("AIzaSyCebk-zVczbBH1Q6lxdk8AQgvdScWJM2E8");

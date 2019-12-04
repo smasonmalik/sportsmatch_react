@@ -22,3 +22,9 @@ yarn.lock
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#Nice to have
+Map.jsx
+.PlayerBioCard.jsx
+Avatar.css
+Avatar.jsx
