@@ -17,7 +17,7 @@ class GameRequests extends React.Component {
   componentDidMount() {
     this.getRequest()
   };
-  
+
   getRequest() {
     let self = this;
     axios({

@@ -11,9 +11,9 @@
 }
 
 .inputField {
-  margin-bottom: 50px;
+  margin-top: 35px;
   margin-left: 15px;
-  margin-right: 15px;
+  margin-bottom: 20px;
   width: 80%
 }
 
@@ -21,7 +21,7 @@
   height: 500px;
   margin: 100px;
   background-color: #AAD4C9;
-  box-shadow: 2px 2px 40px 2px grey;
+  box-shadow: 2px 2px 40px 2px #ECECEC;
   border-radius: 5px;
 }
 
