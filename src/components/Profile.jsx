@@ -5,13 +5,14 @@ import GameRequests from './GameRequests'
 import EditImageForm from './EditImageForm'
 import EditBioForm from './EditBioForm'
 import { NavLink, Redirect } from 'react-router-dom'
+import styles from './css/Profile.module.css'
 
 
 class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      player: [],
+      player: {},
       showImageForm: false,
       showBioForm: false,
       profile_photo: process.env.PUBLIC_URL + "/avatar.png"
@@ -108,6 +109,22 @@ class Profile extends React.Component {
     })
   }
 
+  mouseOverImage(){
+    var profile_image_style = `${styles.profileImage}`
+    document.getElementById("profile-image").classList.add(profile_image_style)
+    var edit_label_style = `${styles.textBlock}`
+    var edit_label_style_hide = `${styles.textBlockHide}`
+    document.getElementById("edit-profile-image-label").classList.add(edit_label_style)
+    document.getElementById("edit-profile-image-label").classList.remove(edit_label_style_hide)
+  }
+
+  mouseOutImage(){
+    var profile_image_style = `${styles.profileImage}`
+    document.getElementById("profile-image").classList.remove(profile_image_style)
+    var edit_label_style = `${styles.textBlock}`
+    var edit_label_style_hide = `${styles.textBlockHide}`
+    document.getElementById("edit-profile-image-label").classList.remove(edit_label_style)
+    document.getElementById("edit-profile-image-label").classList.add(edit_label_style_hide)  }
 
   render() {
     if (localStorage.getItem('jwtToken')) {
@@ -116,20 +133,23 @@ class Profile extends React.Component {
           <div className="card-header">
             Profile Page
           </div>
-          <img className="align-self-start mr-3 rounded mx-auto d-block" onClick={this.handleClickImage} src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+          <div id="profile-image-container" className = {`${styles.container}`} style={{width: '10rem'}}>
+            <img id="profile-image" className="align-self-start mr-3 rounded mx-auto d-block" onMouseOver={this.mouseOverImage} onMouseOut={this.mouseOutImage} onClick={this.handleClickImage} src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+            <div id="edit-profile-image-label" className = {`${styles.textBlockHide}`}>Click To Edit</div>
+          </div>
           <div>
-            {/* <button onClick={this.handleClickImage} className="btn btn-primary">{this.state.showImageForm ? "Hide" : "Edit Image" }</button> */}
             <div>{this.state.showImageForm ? <EditImageForm handleEditImage={this.handleEditImage}/> : '' }</div>
           </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
-            <div>
-              {this.state.player.bio ? '': <button onClick={this.handleClickBio} className="btn btn-primary">Add your bio</button>}
-              <div>{this.state.showBioForm ? <EditBioForm handleEditBio={this.handleEditBio}/>: '' }</div>
-            </div>
             <p className="card-text">{this.state.player.location}</p>
-            <p className="card-text">{this.state.player.bio}</p>
-            <p className="card-test">{this.state.player.sport}</p>
+            <div>
+              {this.state.player.bio ? '': <button className="btn btn-primary">Add your bio</button>}
+              <div>{this.state.showBioForm ? <EditBioForm handleEditBio={this.handleEditBio}/>: '' }</div>
+              <p className="card-text" onClick={this.handleClickBio}>Your Bio: {this.state.player.bio}</p>
+            </div>
+            <br/>
+            <p className="card-test">Preferred Sport: {this.state.player.sport}</p>
             <p className="card-text">Gender: {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
             <p className="card-text">{this.state.player.dob}</p>
             <p className="card-text">F.R.E.D. Ranking: {this.state.player.ability}</p>

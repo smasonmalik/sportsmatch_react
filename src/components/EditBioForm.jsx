@@ -1,5 +1,4 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 class EditBioForm extends React.Component {
