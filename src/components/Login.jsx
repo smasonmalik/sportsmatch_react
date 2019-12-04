@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from './Home'
+import FlashMessage from './FlashMessage'
 import styles from './css/Login.module.css'
 
 
@@ -10,6 +11,7 @@ class Login extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
+      errorMessage: ''
     }
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -33,8 +35,14 @@ class Login extends Component {
       })
       .then(this.props.handleLogIn())
       .catch(function(error) {
-        console.log(error)
-        alert(error.response.data.error);
+        self.setState({
+          errorMessage: error.response.data.error
+        });
+        setTimeout(() => {
+          self.setState({
+            errorMessage: ''
+          })
+        }, 3000)
       });
     }
 
@@ -69,6 +77,9 @@ class Login extends Component {
                       required="required"
                       className={styles.inputField}
                     />
+                  </div>
+                  <div>
+                    {this.state.errorMessage ? <FlashMessage message={this.state.errorMessage}/> : null }
                   </div>
                   <div className="form-group" style={{textAlign: 'center'}}>
                     <button
