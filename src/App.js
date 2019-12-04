@@ -11,7 +11,6 @@ import EditProfileForm from './components/EditProfileForm'
 import DisplayMessages from './components/DisplayMessages'
 import Results from './components/Results'
 import NewResult from './components/NewResult'
-import Location from './components/Location'
 
 class App extends Component {
   constructor() {
@@ -47,9 +46,6 @@ class App extends Component {
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLoggedInState={this.handleLoggedInState}/>
           <Route exact strict path="/signup">
             <Signup handleLoggedInState={this.handleLoggedInState} />
-          </Route>
-          <Route exact strict path="/map">
-            <Location />
           </Route>
           <Route exact strict path="/">
             <Home handleLoggedInState={this.handleLoggedInState} />
