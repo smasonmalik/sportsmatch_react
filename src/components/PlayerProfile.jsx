@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequestForm from './GameRequestForm'
-
+import styles from './css/PlayerProfile.module.css'
 
 class PlayerProfile extends React.Component {
   constructor(props) {
@@ -65,15 +65,15 @@ class PlayerProfile extends React.Component {
 
   getAgeBracket() {
     if (this.state.playerAge > 16 && this.state.playerAge <= 19) {
-      return (<p className="card-text">16 - 19 years</p>)
+      return (<p className={styles.profileText}>Age: 16 - 19 </p>)
     } else if (this.state.playerAge > 19 && this.state.playerAge <= 29) {
-      return (<p className="card-text">20 - 29 years</p>)
+      return (<p className={styles.profileText}>Age: 20 - 29 </p>)
     } else if (this.state.playerAge > 29 && this.state.playerAge <= 39) {
-      return (<p className="card-text">30 - 39 years</p>)
+      return (<p className={styles.profileText}>Age: 30 - 39 </p>)
     } else if (this.state.playerAge > 39 && this.state.playerAge <= 49) {
-      return (<p className="card-text">40 - 49 years</p>)
+      return (<p className={styles.profileText}>Age: 40 - 49</p>)
     } else if (this.state.playerAge > 50) {
-      return (<p className="card-text">50+ years</p>)
+      return (<p className={styles.profileText}>Age: 50+ years</p>)
     } else {
       return <span></span>
     }
@@ -81,7 +81,7 @@ class PlayerProfile extends React.Component {
 
   getGender() {
     if (this.state.player.gender === "Male" || this.state.player.gender === "Female")
-      return (<p className="card-text">{this.state.player.gender}</p>)
+      return (<p className={styles.profileText}>Gender: {this.state.player.gender}</p>)
       else {
         return <span></span>
       }
@@ -89,25 +89,43 @@ class PlayerProfile extends React.Component {
 
   render() {
     return (
-        <div className="card text-center">
-          <div className="card-header">
-            Player Profile
-          </div>
-          <div className="card-body">
-          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
-            <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">{this.state.player.ability}</p>
-            <p className="card-text">{this.state.player.bio}</p>
-            <p className="card-text">{this.state.player.location}</p>
-            <p className="card-text">{this.state.player.sport}</p>
-            {this.getGender()}
-            {this.getAgeBracket()}
-            <p className="card-text">{this.state.player.bio}</p>
-            <GameRequestForm opponent_id={this.state.player.id} />
-          </div>
+      <div className="container">
+      <div className="row">
+        <div className={`container col-lg-6 col-md-4 col-sm-6 ${styles.profileContainer}`}>
+          <h2 className={styles.title}>Profile Page</h2>
+          <h5 className={styles.profileNameText}>{this.state.player.first_name}</h5>
+          <img className={styles.profilePicture} src={this.state.profile_photo} alt="Profile" ></img>
+          {this.getAgeBracket()}
+          <p className={styles.profileText}>Skill Level: {this.state.player.ability}</p>
+          <p className={styles.profileText}>Location: {this.state.player.location}</p>
+          <p className={styles.profileText}>Sport: {this.state.player.sport}</p>
+          {this.getGender()}
+          <p className={styles.profileText}>Bio: {this.state.player.bio}</p>
         </div>
+        <div className={`col-lg-3 col-md-4 col-sm-6 ${styles.requestContainer}`}>
+          <GameRequestForm opponent_id={this.state.player.id} />
+        </div>
+    </div>
+    </div> 
     )
   }
 }
 
 export default PlayerProfile
+
+{/* <div className="container">
+  <div className="row">
+    <div className="col">
+      1 of 3
+    </div>
+    <div className="col-5">
+      2 of 3 (wider)
+    </div>
+    <div className="col">
+      3 of 3
+    </div>
+  </div>
+</div> */}
+
+
+ 

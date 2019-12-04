@@ -54,7 +54,7 @@ class Signup extends Component {
     let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
     var element = document.getElementById("dob-input");
     if(Date.parse(e.target.value) > min_dob) {
-      alert('You must be at least 16 to register on SportsMatch')
+      alert('You must be at least 16 years old to register on SportsMatch')
       element.classList.add("form-control-error");
     } else {
       element.classList.remove("form-control-error");
@@ -89,13 +89,13 @@ class Signup extends Component {
       return (
       <div className={`container ${styles.myContainer}`}>
         <div className="form-container">
-            <h5 className={styles.heading}>Welcome to SportsMatch, Create Your Account Here </h5>
+            <h5 className={styles.heading}>Welcome to SportsMatch!<br></br> Create Your Account Here </h5>
             <form
               onSubmit={e => {e.preventDefault();}}
               className="form-signup"
             >
               <div>
-                <label>first name</label><br />
+                <label>First name</label><br />
                 <input
                   id="first-name-input"
                   name="first-name"
@@ -105,7 +105,7 @@ class Signup extends Component {
                 ></input>
               </div>
               <div>
-                <label>last name</label><br />
+                <label>Last name</label><br />
                 <input
                   id="last-name-input"
                   name="last-name"
@@ -127,7 +127,7 @@ class Signup extends Component {
                 ></input>
               </div>
               <div className="form-group">
-                <label>sport</label><br />
+                <label>Sport</label><br />
                 <select
                   id="sport-input"
                   name="sport"
@@ -144,7 +144,7 @@ class Signup extends Component {
                 </select>
               </div>
               <div className="form-group">
-                <label>ability</label><br />
+                <label>Ability</label><br />
                 <select
                   id="ability-input"
                   name="ability"
@@ -160,7 +160,7 @@ class Signup extends Component {
                 </select>
               </div>
               <div className="form-group">
-                <label>gender</label><br />
+                <label>Gender</label><br />
                 <select
                   id="gender-input"
                   name="gender"
@@ -169,14 +169,14 @@ class Signup extends Component {
                   required="required"
                   className="form-control"
                 >
-                  <option value="male">-----select gender-----</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="Male">-----select gender-----</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                   <option value="not_say">Rather Not Say</option>
                 </select>
               </div>
               <div>
-                <label>email</label><br />
+                <label>Email</label><br />
                 <input
                   id="email-input"
                   name="email"
@@ -188,7 +188,7 @@ class Signup extends Component {
               </div>
               <br/>
               <div>
-                <label>postcode</label><br />
+                <label>Postcode</label><br />
                 <input
                   id="postcode-input"
                   name="postcode"
@@ -198,7 +198,7 @@ class Signup extends Component {
                 ></input>
               </div>
               <div>
-                <label>password</label><br />
+                <label>Password</label><br />
                 <input
                   id="password-input"
                   name="password"
@@ -208,7 +208,7 @@ class Signup extends Component {
                 ></input>
               </div>
               <div>
-                <label>confirm password</label><br />
+                <label>Confirm password</label><br />
                 <input
                   id="password-confirm-input"
                   name="password-confirm"
@@ -226,7 +226,7 @@ class Signup extends Component {
                       type="submit"
                       className="signup-button"
                       onClick={this.handleSignup}>
-                      Signup
+                      Sign up!
                     </button>
                   </div>
                 </div>

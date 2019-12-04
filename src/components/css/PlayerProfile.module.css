@@ -1,0 +1,43 @@
+.title {
+  margin-top: 25px;
+  /* margin-bottom:25px; */
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.profileContainer {
+  margin: 10px;
+  box-shadow: 2px 2px 40px 2px #ECECEC;
+  border-radius: 5px;
+  background-color: rgb(160, 209, 194);
+}
+
+
+.profilePicture {
+  border-radius: 5%;
+  width: 200px;
+  height:200px;
+}
+
+.profileText {
+  font-weight: bold;
+}
+
+.profileNameText {
+  font-style: italic;
+  color: lightslategray;
+}
+
+.requestContainer {
+  height: 500px;
+  margin: 50px;
+  padding-top: 150px;
+  box-shadow: 2px 2px 40px 2px #ECECEC;
+  border-radius: 5px;
+  /* width: 40%; */
+}
+
+.requestContainer:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.349);
+}
