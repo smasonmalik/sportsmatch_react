@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
+// import StyleSheet from 'react-style';
 
 class Signup extends Component {
   constructor(props) {
@@ -14,6 +15,23 @@ class Signup extends Component {
     this.dobValidation = this.dobValidation.bind(this)
     this.validateEmail = this.validateEmail.bind(this)
   }
+  // const styles = StyleSheet.create({
+  //   primary: {
+  //     background: 'green'
+  //   },
+  //   warning: {
+  //     background: 'yellow'
+  //   },
+  //   button: {
+  //     padding: '1em'
+  //   },
+  //   // media queries
+  //   '@media (max-width: 200px)': {
+  //     button: {
+  //       width: '100%'
+  //     }
+  //   }
+  // });
 
   handleSelectedFile(event) {
     console.log(event)
