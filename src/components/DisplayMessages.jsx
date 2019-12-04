@@ -57,6 +57,17 @@ class DisplayMessages extends Component {
       return this.state.messageDetails.organiser
     }
   }
+
+  renderMap(){
+    if (this.state.messageDetails.player_postcode){
+      return(
+        <div>
+          <Location postcode={this.state.messageDetails.player_postcode}/>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -81,9 +92,7 @@ class DisplayMessages extends Component {
           organiser_id={this.state.organiser_id}
           opponent_id={this.state.opponent_id}
         />
-      <Location/>
-      
-
+      {this.renderMap()}
       </div>
     )
   }
