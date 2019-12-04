@@ -86,34 +86,31 @@ class Signup extends Component {
     }
     else {
       return (
-      <div className="container my-container">
+      <div className={`container ${styles.myContainer}`}>
         <div className="form-container">
-            <h4>Sign Up</h4>
-            <p className={styles.test}>Test</p>
+            <h5 className={styles.heading}>Welcome to SportsMatch, Create Your Account Here </h5>
             <form
-              onSubmit={e => {
-                e.preventDefault();
-              }}
+              onSubmit={e => {e.preventDefault();}}
               className="form-signup"
-               >
-              <div className="form-group">
+            >
+              <div>
+                <label>first name</label><br />
                 <input
                   id="first-name-input"
                   name="first-name"
-                  placeholder="First Name"
                   type="text"
                   required="required"
-                  className="form-control"
+                  className={styles.inputField}
                 ></input>
               </div>
-              <div className="form-group">
+              <div>
+                <label>last name</label><br />
                 <input
                   id="last-name-input"
                   name="last-name"
-                  placeholder="Last Name"
                   type="text"
                   required="required"
-                  className="form-control"
+                  className={styles.inputField}
                 ></input>
               </div>
               <div className="form-group">
@@ -129,6 +126,7 @@ class Signup extends Component {
                 ></input>
               </div>
               <div className="form-group">
+                <label>sport</label><br />
                 <select
                   id="sport-input"
                   name="sport"
@@ -145,6 +143,7 @@ class Signup extends Component {
                 </select>
               </div>
               <div className="form-group">
+                <label>ability</label><br />
                 <select
                   id="ability-input"
                   name="ability"
@@ -160,6 +159,7 @@ class Signup extends Component {
                 </select>
               </div>
               <div className="form-group">
+                <label>gender</label><br />
                 <select
                   id="gender-input"
                   name="gender"
@@ -174,45 +174,45 @@ class Signup extends Component {
                   <option value="not_say">Rather Not Say</option>
                 </select>
               </div>
-              <div className="form-group">
+              <div>
+                <label>email</label><br />
                 <input
                   id="email-input"
                   name="email"
-                  placeholder="Email"
                   type="email"
                   required="required"
-                  className="email form-control"
+                  className={styles.inputField}
                   onChange={e => this.validateEmail(e)}
                 ></input>
               </div>
               <br/>
-              <div className="form-group">
+              <div>
+                <label>postcode</label><br />
                 <input
                   id="postcode-input"
                   name="postcode"
-                  placeholder="Postcode"
                   type="text"
                   required="required"
-                  className="form-control"
+                  className={styles.inputField}
                 ></input>
               </div>
-              <div className="form-group">
+              <div>
+                <label>password</label><br />
                 <input
                   id="password-input"
                   name="password"
-                  placeholder="Password"
                   type="password"
-                  className="password form-control"
+                  className={`password ${styles.inputField}`}
                   required="required"
                 ></input>
               </div>
-              <div className="form-group">
+              <div>
+                <label>confirm password</label><br />
                 <input
                   id="password-confirm-input"
                   name="password-confirm"
-                  placeholder="Confirm Password"
                   type="password"
-                  className="password form-control"
+                  className={`password ${styles.inputField}`}
                   required="required"
                   onChange={e => this.handlePasswordConfirm(e)}
                 ></input>
@@ -223,7 +223,7 @@ class Signup extends Component {
                     <button
                       name="signup"
                       type="submit"
-                      className="signup-button btn btn-primary"
+                      className="signup-button"
                       onClick={this.handleSignup}>
                       Signup
                     </button>
