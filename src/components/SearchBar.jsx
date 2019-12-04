@@ -5,7 +5,9 @@ import 'react-input-range/lib/css/index.css'
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { distance: this.props.distance };
+        this.state = {
+          distance: this.props.distance
+        };
       }
 
   render() {
@@ -17,6 +19,7 @@ class SearchBar extends React.Component {
 
                     <label className="label">Filter By F.R.E.D (Ability):</label>
                     <select className="custom-select" name="ability" id="ability-select" onChange={(e) => this.props.handleChange(e)}>
+                        <option value={this.props.ability}>{this.props.ability}</option>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
                         <option value="Advanced">Advanced</option>
@@ -33,15 +36,6 @@ class SearchBar extends React.Component {
                         onChange={value => this.setState({ distance: value })}
                         onChangeComplete={this.props.updateDistance}/>
                     </div>
-                </div>
-                <div className="col">
-                    <label className="label">Filter By Sport:</label>
-                    <select className="custom-select" name="sport" id="sport-select" onChange={(e) => this.props.handleChange(e)}>
-                        <option value="Tennis">Tennis</option>
-                        <option value="TableTennis">TableTennis</option>
-                        <option value="Squash">Squash</option>
-                        <option value="Badminton">Badminton</option>
-                    </select>
                 </div>
             </div>
         </form>
