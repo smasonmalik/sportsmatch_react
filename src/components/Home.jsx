@@ -3,6 +3,7 @@ import axios from "axios";
 import SearchBar from './SearchBar';
 import Player from './Player';
 import Login from './Login'
+import styles from './css/Home.module.css'
 
 class Home extends Component {
   constructor(props) {
@@ -92,7 +93,7 @@ class Home extends Component {
                   updateDistance={this.updateDistance}
               />
             </div>
-            <div>
+            <div className={`row ${styles.row}`}>
               {this.state.players.map(player => (
                 <Player
                   key={player.id}
@@ -102,6 +103,7 @@ class Home extends Component {
                   rank_points={player.rank_points}
                   gender={player.gender}
                   bio={player.bio}
+                  sport={player.sport}
                 />
               ))}
             </div>

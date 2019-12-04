@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
+import styles from './css/Player.module.css'
 
 class Player extends React.Component {
   constructor(props) {
@@ -47,13 +48,18 @@ class Player extends React.Component {
 
   render() {
     return (
-      <div className="media">
-        <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
-        <div className="media-body">
-          <h5 className="mt-0">{this.props.firstName}</h5>
-          <p className="card-text">{this.props.ability}</p>
-          {this.getBio()}
-          <NavLink className="view-profile btn btn-primary" to={`/player/${this.props.id}`}>View Profile</NavLink>
+      <div className={`col-lg-3 col-md-4 col-sm-6`}>
+        <div className={`card ${styles.col}`}>
+          <div className={styles.crop}>
+            <img src={this.state.profile_photo} alt="Profile"></img>
+          </div>
+          <div className={`card-body ${styles.cardBody}`}>
+            <h5 className="card-title">{this.props.firstName}</h5>
+            {this.getBio()}
+            <div class="card-body">
+              <NavLink className={styles.viewProfile} to={`/player/${this.props.id}`}>View Profile</NavLink>
+            </div>
+          </div>
         </div>
       </div>
     )
