@@ -63,7 +63,6 @@ class PlayerProfile extends React.Component {
     })
   }
 
-
   getAgeBracket() {
     if (this.state.playerAge > 16 && this.state.playerAge <= 19) {
       return (<p className="card-text">16 - 19 years</p>)
@@ -92,6 +91,7 @@ class PlayerProfile extends React.Component {
             <p className="card-text">{this.state.player.ability}</p>
             <p className="card-text">{this.state.player.gender}</p>
             <p className="card-text">{this.state.player.bio}</p>
+            <p className="card-text">{this.state.player.location}</p>
             <p className="card-text">{this.state.player.sport}</p>
             {this.getAgeBracket()}
             <GameRequestForm opponent_id={this.state.player.id} />
