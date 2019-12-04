@@ -21,6 +21,8 @@ import './commands'
 // require('./commands')
 
 beforeEach(function () {
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
     cy.server()  
     cy.route({
         method: 'POST',      // Route all POST requests
