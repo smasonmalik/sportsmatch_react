@@ -83,6 +83,7 @@ class DisplayMessages extends Component {
         />
       <Location/>
       
+
       </div>
     )
   }
