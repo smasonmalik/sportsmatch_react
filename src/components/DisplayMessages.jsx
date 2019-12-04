@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import CreateMessage from './CreateMessage';
 import SingleMessage from './SingleMessage';
+import Location from './Location';
 
 class DisplayMessages extends Component {
   constructor(props) {
@@ -56,6 +57,17 @@ class DisplayMessages extends Component {
       return this.state.messageDetails.organiser
     }
   }
+
+  renderMap(){
+    if (this.state.messageDetails.player_postcode){
+      return(
+        <div>
+          <Location postcode={this.state.messageDetails.player_postcode}/>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -80,6 +92,7 @@ class DisplayMessages extends Component {
           organiser_id={this.state.organiser_id}
           opponent_id={this.state.opponent_id}
         />
+      {this.renderMap()}
       </div>
     )
   }

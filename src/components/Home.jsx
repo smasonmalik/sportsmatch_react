@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import SearchBar from './SearchBar';
+import FilterBar from './FilterBar';
 import Player from './Player';
 import Login from './Login'
 
@@ -84,7 +84,7 @@ class Home extends Component {
         return (
           <div>
             <div>
-              <SearchBar
+              <FilterBar
                   distance={this.state.distance}
                   ability={this.state.ability}
                   handleChange={this.handleChange}

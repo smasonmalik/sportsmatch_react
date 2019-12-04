@@ -9,25 +9,25 @@ class SingleResult extends React.Component {
   }
 
   winnerName() {
-    if (this.props.winner_id == this.props.organiser_id) {
+    if (this.props.winner_id === this.props.organiser_id) {
       return (<p className="card-text">Winner: {this.props.organiser_name}</p>)
     }
-    if (this.props.winner_id == this.props.opponent_id) {
+    if (this.props.winner_id === this.props.opponent_id) {
       return (<p className="card-text">Winner: {this.props.opponent_name}</p>)
     }
   }
 
   loserName() {
-    if (this.props.loser_id == this.props.organiser_id) {
+    if (this.props.loser_id === this.props.organiser_id) {
       return (<p className="card-text">Loser: {this.props.organiser_name}</p>)
     }
-    if (this.props.loser_id == this.props.opponent_id) {
+    if (this.props.loser_id === this.props.opponent_id) {
       return (<p className="card-text">Loser: {this.props.opponent_name}</p>)
     }
   }
 
   render() {
-    if ((localStorage.getItem('user_id') == this.props.organiser_id) && (this.props.loser_id == null) ) {
+    if ((localStorage.getItem('user_id') === this.props.organiser_id) && (this.props.loser_id == null) ) {
       return (
         <li className="list-group-item">
           <div className="card" style={{width: '18rem'}}>
