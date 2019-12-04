@@ -12,13 +12,15 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+  background-color: #F1F1F1;
+  box-shadow: 1px 1px 4px 1px lightgrey;
+  border-radius: 6px;
 }
 
 .crop {
   overflow: hidden;
   text-align: center;
-  border-radius: 10px;
-  box-shadow: 2px 2px 15px 2px lightgrey;
+  box-shadow: 1px 1px 4px 1px lightgrey;
   background-color: lightgrey
 }
 
@@ -27,6 +29,7 @@
   max-width: 100%;
   margin: 0 0 0 0;
   box-shadow: 2px 2px 15px 2px lightgrey;
+  border-radius: 6px
 }
 
 .viewProfile {
