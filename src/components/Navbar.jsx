@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 import './css/navbar.css'
-import Map from './Map'
 
 class Navbar extends React.Component {
   constructor() {
@@ -43,9 +42,6 @@ class Navbar extends React.Component {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" id="location" to='/map'>Location</NavLink>
             </li>
             <li className="nav-item">
             <NavLink className="nav-link" id="results-link" to='/results'>Results</NavLink>

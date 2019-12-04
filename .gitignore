@@ -28,3 +28,6 @@ Map.jsx
 .PlayerBioCard.jsx
 Avatar.css
 Avatar.jsx
+
+#API
+.env

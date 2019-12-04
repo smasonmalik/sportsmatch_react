@@ -1,5 +1,5 @@
-import React from 'react'
-import Location from './Location'
+import React from 'react';
+
 
 class SingleMessage extends React.Component {
   constructor(props) {
