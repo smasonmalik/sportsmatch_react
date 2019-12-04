@@ -90,7 +90,7 @@ class Profile extends React.Component {
       value = process.env.PUBLIC_URL + "/avatar.png"
     }
     this.setState(prevState => {
-      return { 
+      return {
         profile_photo: value,
         showImageForm: !prevState.showImageForm
       }
@@ -104,7 +104,7 @@ class Profile extends React.Component {
     this.setState(prevState => {
       return {
         player: updated_player,
-        showBioForm: !prevState.showBioForm 
+        showBioForm: !prevState.showBioForm
       }
     })
   }
@@ -126,6 +126,14 @@ class Profile extends React.Component {
     document.getElementById("edit-profile-image-label").classList.remove(edit_label_style)
     document.getElementById("edit-profile-image-label").classList.add(edit_label_style_hide)  }
 
+  getBio() {
+    if (this.state.player.bio == null || this.state.player.bio.length == 0 ) {
+      return (<p>Click 'Edit Profile' below to add in your bio</p>)
+    } else {
+      return (<p className="card-text" onClick={this.handleClickBio}>Bio: {this.state.player.bio}</p>)
+    }
+  }
+
   render() {
     if (localStorage.getItem('jwtToken')) {
       return (
@@ -142,18 +150,13 @@ class Profile extends React.Component {
           </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">{this.state.player.location}</p>
-            <div>
-              {this.state.player.bio ? '': <button className="btn btn-primary">Add your bio</button>}
-              <div>{this.state.showBioForm ? <EditBioForm handleEditBio={this.handleEditBio}/>: '' }</div>
-              <p className="card-text" onClick={this.handleClickBio}>Your Bio: {this.state.player.bio}</p>
-            </div>
-            <br/>
-            <p className="card-test">Preferred Sport: {this.state.player.sport}</p>
+            <p className="card-text">Location: {this.state.player.location}</p>
+            <p className="card-test">Chosen Sport: {this.state.player.sport}</p>
             <p className="card-text">Gender: {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
-            <p className="card-text">{this.state.player.dob}</p>
-            <p className="card-text">F.R.E.D. Ranking: {this.state.player.ability}</p>
-            <p className="card-text">F.R.E.D. Points: {this.state.player.rank_points}</p>
+            <p className="card-text">DOB: {this.state.player.dob}</p>
+            <p className="card-text">Ranking: {this.state.player.ability}</p>
+            <p className="card-text">Ranking Points: {this.state.player.rank_points}</p>
+            {this.getBio()}
             <ul className="list-group list-group-flush">
               <div>
                 <NavLink to="/profile/edit">Edit Profile</NavLink>
