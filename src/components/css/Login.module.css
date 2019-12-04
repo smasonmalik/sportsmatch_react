@@ -22,6 +22,7 @@
   margin: 100px;
   background-color: #AAD4C9;
   box-shadow: 2px 2px 40px 2px grey;
+  border-radius: 5px;
 }
 
 .myRow {
@@ -44,5 +45,6 @@
 
 #rightColumn {
   /* background-image: url("https://ak5.picdn.net/shutterstock/videos/12319925/thumb/1.jpg") */
-  background-image: url("https://live.staticflickr.com/5239/5911435807_82cd510fc0_b.jpg")
+  /* background-image: url("https://live.staticflickr.com/5239/5911435807_82cd510fc0_b.jpg") */
+  background-image: url("https://www.lboro.ac.uk/media/wwwlboroacuk/external/content/research/sti/slide1.png")
 }

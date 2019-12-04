@@ -11,8 +11,8 @@ class Home extends Component {
     this.state = {
       players: [],
       distance: 5,
-      ability: "Beginner",
-      age_group: "16 - 19",
+      ability: '',
+      sport: ''
     };
     this.getPlayers = this.getPlayers.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +21,6 @@ class Home extends Component {
 
   componentDidMount() {
     this.getLoggedInPlayerInfo()
-    this.getPlayers()
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -32,13 +31,11 @@ class Home extends Component {
       this.getPlayers()
     }
   };
-
     handleChange(event) {
     const {name, value} = event.target
     this.setState({
       [name]: value
     })
-    console.log(this.state.ability)
   }
 
   updateDistance = (distance) => {
@@ -56,7 +53,7 @@ class Home extends Component {
     })
       .then(function(response) {
         self.setState({
-          ability: response.data.ability
+          ability: response.data.ability,
         })
       })
       .catch(function(error) {
