@@ -82,6 +82,7 @@ class DisplayMessages extends Component {
           opponent_id={this.state.opponent_id}
         />
       <Location/>
+      
       </div>
     )
   }
