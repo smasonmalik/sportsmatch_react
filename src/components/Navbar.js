@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 import './css/navbar.css'
-import Location from './Location'
+import Map from './Map'
 
 class Navbar extends React.Component {
   constructor() {
@@ -42,7 +42,7 @@ class Navbar extends React.Component {
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" id="map_location" to='/map'>Location</NavLink>
+              <NavLink className="nav-link" id="map_location" to='/map'>Map</NavLink>
             </li>
             {this.sessionButton()}
           </ul>

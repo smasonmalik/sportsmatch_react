@@ -9,7 +9,7 @@ import Profile from './components/Profile';
 import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'
 import DisplayMessages from './components/DisplayMessages'
-import Location from './components/Location'
+import Map from './components/Map'
 
 class App extends Component {
 
@@ -22,7 +22,7 @@ class App extends Component {
             <Signup />
           </Route>
           <Route exact strict path="/map">
-            <Location />
+            <Map />
           </Route>
           <Route exact strict path="/">
             <Home />
