@@ -1,3 +1,49 @@
 .row {
   padding: 5%;
 }
+
+.nextArrow {
+  display: block;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  outline: none;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 10%;
+  left: auto;
+  right: 15px;
+  color: grey;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 0px;
+}
+
+.nextArrow:hover {
+  box-shadow: 0 0 11px blue;
+}
+
+.prevArrow {
+  display: block;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  outline: none;
+  transform: translateY(-50%);
+  cursor: pointer;
+  left: 15px;
+  right: auto;
+  width: 10%;
+  color: grey;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 0px;
+}
+
+.prevArrow:hover {
+  box-shadow: 0 0 11px blue;
+}

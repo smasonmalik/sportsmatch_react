@@ -110,8 +110,8 @@ class Home extends Component {
             slidesToShow={4}
             scrollOnDevice={true}
             lazyLoad={true}
-            autoCycle={true}
-            animationDuration={1}
+            nextArrow={<button className={styles.nextArrow}>&#x203A;</button>}
+            prevArrow={<button className={styles.prevArrow}>&#x2039;</button>}
           >
           {this.state.players.map(player => (
             <Player
@@ -141,7 +141,7 @@ class Home extends Component {
                       handleChange={this.handleChange}
                       updateDistance={this.updateDistance}
                   />
-                </div>
+                </div><br/>
             {this.insertCarousel()}
             </div>
         )
