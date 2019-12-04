@@ -23,9 +23,9 @@ class GameRequest extends Component {
       },
       data:
       {
-        organiser_id: localStorage.getItem('user_id'),
+        organiser_id: parseInt(localStorage.getItem('user_id')),
+        status: "pending",
         opponent_id: self.props.opponent_id,
-        confirmed: "False",
         game_date: document.getElementById("date-input").value,
         game_time: document.getElementById("time-input").value
       }})
@@ -43,7 +43,29 @@ class GameRequest extends Component {
       })
   }
 
+  gameDateValidation(e) {
+    var element = document.getElementById("date-input");
+    if(Date.parse(e.target.value) < new Date()) {
+      // alert('Game date can\'t be in the past')
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error");
+    }
+  }
+
+
   render() {
+    var tempDate = new Date();
+    var dayOfMonth = tempDate.getDate()
+    if (dayOfMonth < 10) {
+      dayOfMonth = '0' + dayOfMonth
+    }
+    var monthOfYear = tempDate.getMonth()+1
+    if (monthOfYear < 10) {
+      monthOfYear = '0' + monthOfYear
+    }
+    var date = tempDate.getFullYear() + '-' + monthOfYear + '-' + dayOfMonth ;
+
     if (this.state.gameRequest) {
       return (
         <Redirect to="/profile" />
@@ -64,7 +86,9 @@ class GameRequest extends Component {
               name="date"
               type="date"
               required="required"
+              min={date}
               className="form-control"
+              onChange={e => this.gameDateValidation(e)}
             ></input>
             </div>
             <div className="form-group">

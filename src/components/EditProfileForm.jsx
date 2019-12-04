@@ -6,9 +6,47 @@ class EditProfileForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      first_name: '',
+      last_name: '',
+      gender: '',
+      ability: '',
+      postcode: '',
+      sport: '',
+      bio: '',
       isProfileEdited: false
     }
     this.handleEdit = this.handleEdit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.getPlayer()
+  }
+
+  getPlayer() {
+    let self = this;
+    axios({
+      url: `/api/v1/players/${localStorage.getItem('user_id')}`,
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": localStorage.getItem('jwtToken')
+      }
+    })
+    .then(function(response) {
+      self.setState({
+        first_name: response.data.first_name,
+        last_name: response.data.last_name,
+        email: response.data.email,
+        gender: response.data.gender,
+        ability: response.data.ability,
+        postcode: response.data.postcode,
+        sport: response.data.sport,
+        bio: response.data.bio
+      })
+    })
+    .then(function(error) {
+      console.log(error)
+    })
   }
 
   handleEdit() {
@@ -21,12 +59,13 @@ class EditProfileForm extends React.Component {
           "api-token": localStorage.getItem('jwtToken')
         },
         data: {
-          email: document.getElementById("email-input").value,
-          first_name: document.getElementById("first-name-input").value,
-          last_name: document.getElementById("last-name-input").value,
-          gender: document.getElementById("gender-input").value,
-          dob: document.getElementById("dob-input").value,
-          ability: document.getElementById("ability-input").value
+          email: this.state.email,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          gender: this.state.gender,
+          ability: this.state.ability,
+          sport: this.state.sport,
+          bio: this.state.bio
         }
       })
       .then(function() {
@@ -39,13 +78,20 @@ class EditProfileForm extends React.Component {
       });
   }
 
+  handleChange(event) {
+    const { name, value } = event.target
+    this.setState({
+      [name]: value
+    })
+  }
+
   render() {
     if (this.state.isProfileEdited) {
       return <Redirect to="/profile" />
     } else {
     return (
       <div className="form-container">
-          <h4>Sign Up</h4>
+          <h4>Edit Profile</h4>
           <form
             onSubmit={e => {
               e.preventDefault();
@@ -53,58 +99,85 @@ class EditProfileForm extends React.Component {
             className="form-signup"
              >
             <div className="form-group">
+              <label>First Name</label>
               <input
                 id="first-name-input"
-                name="first-name"
-                placeholder="First Name"
+                name="first_name"
+                placeholder={this.state.first_name}
                 type="text"
-                required="required"
                 className="form-control"
+                onChange={this.handleChange}
               ></input>
             </div>
             <div className="form-group">
+              <label>Last Name</label>
               <input
                 id="last-name-input"
-                name="last-name"
-                placeholder="Last Name"
+                name="last_name"
+                placeholder={this.state.last_name}
                 type="text"
-                required="required"
                 className="form-control"
+                onChange={this.handleChange}
               ></input>
             </div>
             <div className="form-group">
-              <label>Date of Birth</label>
+              <label> Bio </label>
               <input
-                id="dob-input"
-                name="dob"
-                type="date"
-                required="required"
+                id="bio-name-input"
+                name="bio"
+                placeholder={this.state.bio}
+                type="text"
                 className="form-control"
+                onChange={this.handleChange}
               ></input>
             </div>
             <div className="form-group">
+              <label>Select ability:</label>
               <select
                 id="ability-input"
                 name="ability"
-                placeholder="Ability"
+                placeholder={this.state.ability}
                 type="select"
-                required="required"
                 className="form-control"
+                onChange={this.handleChange}
               >
+                <option value={this.state.ability}>-----</option>
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
               </select>
             </div>
             <div className="form-group">
+              <label>Select main sport:</label>
               <select
-                id="gender-input"
-                name="gender"
-                placeholder="Gender"
+                id="sport-input"
+                name="sport"
+                placeholder={this.state.sport}
                 type="text"
                 required="required"
                 className="form-control"
+                onChange={this.handleChange}
               >
+                <option value={this.state.sport}>-----</option>
+                <option value="Tennis">Tennis</option>
+                <option value="TableTennis">TableTennis</option>
+                <option value="Squash">Squash</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Snooker">Snooker</option>
+                <option value="Climbing">Climbing</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Select gender:</label>
+              <select
+                id="gender-input"
+                name="gender"
+                placeholder={this.state.gender}
+                type="text"
+                className="form-control"
+                onChange={this.handleChange}
+              >
+                <option value={this.state.gender}>-----</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="not_say">Rather Not Say</option>
@@ -114,21 +187,21 @@ class EditProfileForm extends React.Component {
               <input
                 id="email-input"
                 name="email"
-                placeholder="Email"
+                placeholder={this.state.email}
                 type="text"
-                required="required"
                 className="email form-control"
+                onChange={this.handleChange}
               ></input>
             </div>
             <div className='row'>
               <div className='col'>
                 <div className="form-group">
                   <button
-                    name="signup"
+                    name="edit"
                     type="submit"
-                    className="signup-button btn btn-primary"
+                    className="edit-button btn btn-primary"
                     onClick={this.handleEdit}>
-                    Signup
+                    Edit
                   </button>
                 </div>
               </div>

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Home from './Home'
+
 
 class Login extends Component {
   constructor(props) {
@@ -28,14 +30,16 @@ class Login extends Component {
           return {isLoggedIn: !prevState.isLoggedIn}
         })
       })
+      .then(this.props.handleLogIn())
       .catch(function(error) {
-        console.log(error);
+        console.log(error)
+        alert(error.response.data.error);
       });
     }
 
   render() {
     if (localStorage.getItem('jwtToken')) {
-      return <Redirect to="/home" />;
+      return <Home />;
     } else {
       return (
         <div className="form-container">
@@ -50,7 +54,7 @@ class Login extends Component {
               <input
                 id="email-input"
                 name="email"
-                placeholder="email"
+                placeholder="Email"
                 type="text"
                 required="required"
                 className="email form-control"
@@ -60,7 +64,7 @@ class Login extends Component {
               <input
                 id="password-input"
                 name="password"
-                placeholder="password"
+                placeholder="Password"
                 type="password"
                 className="password form-control"
                 required="required"

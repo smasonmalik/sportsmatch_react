@@ -6,17 +6,13 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSignedUp: false
+      isSignedUp: false,
+      selectedFile: ''
     }
     this.handleSignup = this.handleSignup.bind(this);
-  }
-
-  handlePasswordConfirm(e){
-    let password = document.getElementById("password-input").value
-    let password_confirm = document.getElementById("password-confirm-input").value
-    if (password !== password_confirm) {
-      console.log("passwords don't match")
-    }
+    this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
+    this.dobValidation = this.dobValidation.bind(this)
+    this.validateEmail = this.validateEmail.bind(this)
   }
 
   handleSelectedFile(event) {
@@ -44,7 +40,10 @@ class Signup extends Component {
             gender: document.getElementById("gender-input").value,
             dob: document.getElementById("dob-input").value,
             ability: document.getElementById("ability-input").value,
-            postcode: document.getElementById("postcode-input").value 
+            postcode: document.getElementById("postcode-input").value,
+            sport: document.getElementById("sport-input").value,
+            bio: document.getElementById("bio-input").value,
+            profile_image: self.state.selectedFile
         })
         .then(function(response) {
           localStorage.setItem('jwtToken', response.data.jwt_token)
@@ -55,15 +54,59 @@ class Signup extends Component {
             return {isSignedUp: !prevState.isSignedUp}
           })
         })
+        .then(this.props.handleLoggedInState())
         .catch(function(error) {
           console.log(error);
         });
       }
     }
 
+  fileSelectedHandler(e) {
+    let file = e.target.files[0];
+    console.log(e.target.files[0].size)
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.setState({
+        selectedFile: reader.result
+      });
+    };
+  }
+
+  dobValidation(e) {
+    let min_dob = new Date(new Date().setFullYear(new Date().getFullYear() - 16))
+    var element = document.getElementById("dob-input");
+    if(Date.parse(e.target.value) > min_dob) {
+      alert('You must be at least 16 to register on SportsMatch')
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error");
+    }
+  }
+
+  validateEmail(e) {
+    var mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    var element = document.getElementById("email-input");
+    if (!(e.target.value).match(mailformat)) {
+      element.classList.add("form-control-error");
+    }
+    else { element.classList.remove("form-control-error");
+    }
+  }
+
+  handlePasswordConfirm(e){
+    let password = document.getElementById("password-input").value
+    var element = document.getElementById("password-confirm-input");
+    if (password !== e.target.value) {
+      element.classList.add("form-control-error");
+    } else {
+      element.classList.remove("form-control-error")
+    }
+  }
+
   render () {
     if (localStorage.getItem('jwtToken')) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
     else {
       return (
@@ -95,8 +138,15 @@ class Signup extends Component {
                 className="form-control"
               ></input>
             </div>
-            <div>
-              <input type="file" onChange={this.handleSelectedFile}/>
+            <div className="form-group">
+              <input
+                id="bio-input"
+                name="bio"
+                placeholder="Write you bio here"
+                type="text"
+                required="required"
+                className="form-control"
+              ></input>
             </div>
             <div className="form-group">
               <label>Date of Birth</label>
@@ -104,9 +154,28 @@ class Signup extends Component {
                 id="dob-input"
                 name="dob"
                 type="date"
+                max="2003-12-06"
                 required="required"
                 className="form-control"
+                onChange={e => this.dobValidation(e)}
               ></input>
+            </div>
+            <div className="form-group">
+              <select
+                id="sport-input"
+                name="sport"
+                placeholder="Sport"
+                type="text"
+                required="required"
+                className="form-control"
+              >
+                <option value="Tennis">Tennis</option>
+                <option value="TableTennis">TableTennis</option>
+                <option value="Squash">Squash</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Snooker">Snooker</option>
+                <option value="Climbing">Climbing</option>
+              </select>
             </div>
             <div className="form-group">
               <select
@@ -141,16 +210,23 @@ class Signup extends Component {
                 id="email-input"
                 name="email"
                 placeholder="Email"
-                type="text"
+                type="email"
                 required="required"
                 className="email form-control"
+                onChange={e => this.validateEmail(e)}
               ></input>
             </div>
+            <div>
+              <label>Add Image</label>
+              <br/>
+              <input type="file" onChange={this.fileSelectedHandler} />
+            </div>
+            <br/>
             <div className="form-group">
-              <label> Postcode </label>
               <input
                 id="postcode-input"
                 name="postcode"
+                placeholder="Postcode"
                 type="text"
                 required="required"
                 className="form-control"
@@ -174,7 +250,7 @@ class Signup extends Component {
                 type="password"
                 className="password form-control"
                 required="required"
-                onChange={this.handlePasswordConfirm}
+                onChange={e => this.handlePasswordConfirm(e)}
               ></input>
             </div>
             <div className='row'>

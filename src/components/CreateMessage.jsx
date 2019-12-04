@@ -17,11 +17,14 @@ class CreateMessage extends React.Component {
       },
       data: {
         game_id: this.props.id,
-        organiser_id: this.props.organiser_id,
-        opponent_id: this.props.opponent_id,
         sender_id: localStorage.getItem('user_id'),
-        content: document.getElementById("content-input").value
+        content: document.getElementById("content-input").value,
+        organiser_id: this.props.organiser_id,
+        opponent_id: this.props.opponent_id
       }
+    })
+    .then(function(response) {
+      console.log(response)
     })
     .then(function() {
       self.props.handleSubmitMessage()
@@ -46,4 +49,4 @@ class CreateMessage extends React.Component {
     )
   }
 }
-export default CreateMessage; 
+export default CreateMessage;
