@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import styles from './css/SignupForm.module.css'
+import FlashMessage from './FlashMessage'
 
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isSignedUp: false,
+      errorMessage: '',
     }
     this.handleSignup = this.handleSignup.bind(this);
     this.dobValidation = this.dobValidation.bind(this)
@@ -31,7 +33,6 @@ class Signup extends Component {
             ability: document.getElementById("ability-input").value,
             postcode: document.getElementById("postcode-input").value,
             sport: document.getElementById("sport-input").value,
-            bio: document.getElementById("bio-input").value,
             profile_image: self.state.selectedFile
         })
         .then(function(response) {
@@ -45,7 +46,14 @@ class Signup extends Component {
         })
         .then(this.props.handleLoggedInState())
         .catch(function(error) {
-          console.log(error);
+          self.setState({
+            errorMessage: error.response.data.error
+          });
+          setTimeout(() => {
+            self.setState({
+              errorMessage: ''
+            })
+          }, 3000)
         });
       }
     }
@@ -65,7 +73,7 @@ class Signup extends Component {
     var mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     var element = document.getElementById("email-input");
     if (!(e.target.value).match(mailformat)) {
-      element.classList.add("form-control-error");
+      element.classList.add("form-control-error")
     }
     else { element.classList.remove("form-control-error");
     }
@@ -217,6 +225,13 @@ class Signup extends Component {
                   required="required"
                   onChange={e => this.handlePasswordConfirm(e)}
                 ></input>
+                <div className={styles.inputField}>
+                  {this.state.errorMessage ?
+                    <FlashMessage
+                      message={this.state.errorMessage}
+                      type="error"
+                    /> : null }
+                </div>
               </div>
               <div className='row'>
                 <div className='col'>

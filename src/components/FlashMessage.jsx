@@ -7,16 +7,24 @@ class FlashMessage extends React.Component {
     super(props)
     this.state = {
       message: props.message,
+      type: props.type
     }
   }
 
   render() {
-    return (
-      <div className={styles.alert}>
-          <span className={styles.close}><strong>X</strong></span>
-          <p>{this.state.message}</p>
-      </div>
-    )
+    if (this.state.type === 'error') {
+      return (
+        <div className={styles.alert, styles.error}>
+            <span className={styles.close}><strong>X</strong> {this.state.message}</span>
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.alert, styles.success}>
+            <span className={styles.close}><strong>X</strong> {this.state.message}</span>
+        </div>
+      )
+    }
   }
 }
 
