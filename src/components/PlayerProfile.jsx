@@ -89,7 +89,15 @@ class PlayerProfile extends React.Component {
           <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
+<<<<<<< HEAD
             <p className="card-text">{this.state.player.gender}</p>
+=======
+            <p className="card-text">{this.state.player.bio}</p>
+            <p className="card-text">{this.state.player.location}</p>
+            <p className="card-text">{this.state.player.sport}</p>
+            {this.getGender()}
+            {this.getAgeBracket()}
+>>>>>>> 772e13a43333ad78667b2c9d3ebade2f4c7c7694
             <p className="card-text">{this.state.player.bio}</p>
             <p className="card-text">{this.state.player.sport}</p>
             {this.getAgeBracket()}
