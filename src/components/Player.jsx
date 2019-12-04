@@ -34,6 +34,16 @@ class Player extends React.Component {
       })
   }
 
+  getBio() {
+    if (this.props.bio === null || this.props.bio.length === 0) {
+      return <span></span>
+    } else if (this.props.bio.length < 20 ) {
+      return (<p className="card-text">{this.props.bio}</p>)
+    } else if (this.props.bio.length >= 20 ) {
+      return (<p className="card-text">{this.props.bio.substring(0,20)}...</p>)
+    }
+  }
+
 
   render() {
     return (
@@ -42,6 +52,7 @@ class Player extends React.Component {
         <div className="media-body">
           <h5 className="mt-0">{this.props.firstName}</h5>
           <p className="card-text">{this.props.ability}</p>
+          {this.getBio()}
           <NavLink className="view-profile btn btn-primary" to={`/player/${this.props.id}`}>View Profile</NavLink>
         </div>
       </div>
@@ -49,5 +60,3 @@ class Player extends React.Component {
   }
 }
 export default Player
-
-// <p className="card-text">{this.props.bio.substring(0,20)}...</p>

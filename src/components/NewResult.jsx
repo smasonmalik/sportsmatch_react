@@ -41,12 +41,12 @@ class NewResult extends React.Component {
   }
 
   onChangeWinner(event){
-    if (event.target.value === this.props.location.state.organiser_id){
+    if (event.target.value == this.props.location.state.organiser_id){
       this.setState({
         winner_id: event.target.value,
         loser_id: this.props.location.state.opponent_id
        })
-    } else if (event.target.value === this.props.location.state.opponent_id) {
+    } else if (event.target.value == this.props.location.state.opponent_id) {
       this.setState({
         winner_id: event.target.value,
         loser_id: this.props.location.state.organiser_id
