@@ -49,29 +49,35 @@ class Location extends Component {
   render() {
       const latitude = this.state.current_user_latitude
       const longitude = this.state.current_user_longitude
-    return (
-      <div>
-          <h2> Find a sports centre: </h2>
-        {console.log("lat", this.state.current_user_latitude)}
-        {console.log("long", this.state.current_user_longitude)}
-            <Map 
-            google={this.props.google} 
-            zoom={10}
-            initialCenter={{ lat: latitude, lng: longitude}}
-            >
 
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-          // <div>
-          {/* //   <h1>{this.state.selectedPlace.name}</h1> */}
-          // </div>
-        </InfoWindow>
-      </Map>
-    </div>
-
-    )
+      if (latitude && longitude) {
+        return (
+            <div>
+                <h2> Find a sports centre: </h2>
+                  <Map 
+                  google={this.props.google} 
+                  zoom={14}
+                  initialCenter={{ lat: latitude, lng: longitude}}
+                  >
+      
+              <Marker onClick={this.onMarkerClick}
+                      name={'Current location'} />
+      
+              <InfoWindow onClose={this.onInfoWindowClose}>
+                // <div>
+                {/* //   <h1>{this.state.selectedPlace.name}</h1> */}
+                // </div>
+              </InfoWindow>
+            </Map>
+          </div>
+      
+          )
+      } else {
+          return (
+              <div><h1>Map is loading...</h1></div>
+          )
+      }
+    
   }
 }
 export default GoogleApiWrapper({
