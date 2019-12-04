@@ -47,3 +47,11 @@
 .prevArrow:hover {
   box-shadow: 0 0 11px blue;
 }
+
+.myContainer {
+  margin-top: 3%;
+}
+
+.heading {
+  color: #646464;
+}

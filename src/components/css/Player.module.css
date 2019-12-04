@@ -4,7 +4,7 @@
   background-color: #FCFCFC;
   border: none;
   box-shadow: 1px 0px 6px 1px lightgrey;
-  height: 425px;
+  height: 500px;
 }
 
 .cardBody {
@@ -45,4 +45,8 @@
 
 .viewProfile:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.4);
+}
+
+.bio {
+  font-style: italic;
 }

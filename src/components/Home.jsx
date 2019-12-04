@@ -134,6 +134,9 @@ class Home extends Component {
       if (localStorage.getItem('jwtToken')) {
         return (
             <div>
+              <div className={`container ${styles.myContainer}`}>
+                <h2 className={styles.heading}>Find your next opponent here!</h2>
+              </div>
                 <div>
                   <SearchBar
                       distance={this.state.distance}
@@ -141,7 +144,8 @@ class Home extends Component {
                       handleChange={this.handleChange}
                       updateDistance={this.updateDistance}
                   />
-                </div><br/>
+                </div>
+              <hr/>
             {this.insertCarousel()}
             </div>
         )

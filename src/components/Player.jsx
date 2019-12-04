@@ -40,9 +40,9 @@ class Player extends React.Component {
     if (this.props.bio === null || this.props.bio.length === 0) {
       return <span></span>
     } else if (this.props.bio.length < 20 ) {
-      return (<p className="card-text">{this.props.bio}</p>)
+      return (<p className={`card-text ${styles.bio}`}>{this.props.bio}</p>)
     } else if (this.props.bio.length >= 20 ) {
-      return (<p className="card-text">{this.props.bio.substring(0,20)}...</p>)
+      return (<p className={`card-text ${styles.bio}`}>{this.props.bio.substring(0,20)}...</p>)
     }
   }
 
@@ -56,6 +56,8 @@ class Player extends React.Component {
           <div className={`card-body ${styles.cardBody}`}>
             <h5 className="card-title">{this.props.firstName}</h5>
             {this.getBio()}
+            <p className="card-text"><strong>{this.props.sport}</strong></p>
+            <p className="card-text">{this.props.ability}</p>
             <div class="card-body">
               <NavLink className={styles.viewProfile} to={`/player/${this.props.id}`}>View Profile</NavLink>
             </div>
