@@ -12,11 +12,8 @@ class Profile extends React.Component {
     super(props)
     this.state = {
       player: [],
-      gameConfirmed: false,
       showImageForm: false,
-      imageEdited: false,
       showBioForm: false,
-      bioEdited: false,
       profile_photo: process.env.PUBLIC_URL + "/avatar.png"
     }
     this.handleClickImage = this.handleClickImage.bind(this)
@@ -87,15 +84,27 @@ class Profile extends React.Component {
     })
   }
 
-  handleEditImage() {
+  handleEditImage(value) {
+    if (value === ""){
+      value = process.env.PUBLIC_URL + "/avatar.png"
+    }
     this.setState(prevState => {
-      return { imageEdited: !prevState.imageEdited }
+      return { 
+        profile_photo: value,
+        showImageForm: !prevState.showImageForm
+      }
     })
   }
 
-  handleEditBio() {
+  handleEditBio(value) {
+    var updated_player = this.state.player
+    updated_player.bio = value
+    console.log(updated_player)
     this.setState(prevState => {
-      return { bioEdited: !prevState.bioEdited }
+      return {
+        player: updated_player,
+        showBioForm: !prevState.showBioForm 
+      }
     })
   }
 
@@ -107,22 +116,24 @@ class Profile extends React.Component {
           <div className="card-header">
             Profile Page
           </div>
-          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+          <img className="align-self-start mr-3 rounded mx-auto d-block" onClick={this.handleClickImage} src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <div>
-            <button onClick={this.handleClickImage} className="btn btn-primary">{this.state.showImageForm ? "Edit Image" : "Hide"}</button>
-            <p>{this.state.showImageForm ? '' : <EditImageForm handleEditImage={this.handleEditImage}/>}</p>
+            {/* <button onClick={this.handleClickImage} className="btn btn-primary">{this.state.showImageForm ? "Hide" : "Edit Image" }</button> */}
+            <div>{this.state.showImageForm ? <EditImageForm handleEditImage={this.handleEditImage}/> : '' }</div>
           </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">{this.state.player.ability}</p>
-            <p className="card-text">{this.state.player.gender}</p>
-            <p className="card-text">{this.state.player.dob}</p>
             <div>
-              <button onClick={this.handleClickBio} className="btn btn-primary">{this.state.showBioForm ? "Edit Bio" : "Hide"}</button>
-              <p>{this.state.showBioForm ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
+              {this.state.player.bio ? '': <button onClick={this.handleClickBio} className="btn btn-primary">Add your bio</button>}
+              <div>{this.state.showBioForm ? <EditBioForm handleEditBio={this.handleEditBio}/>: '' }</div>
             </div>
+            <p className="card-text">{this.state.player.location}</p>
             <p className="card-text">{this.state.player.bio}</p>
             <p className="card-test">{this.state.player.sport}</p>
+            <p className="card-text">Gender: {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
+            <p className="card-text">{this.state.player.dob}</p>
+            <p className="card-text">F.R.E.D. Ranking: {this.state.player.ability}</p>
+            <p className="card-text">F.R.E.D. Points: {this.state.player.rank_points}</p>
             <ul className="list-group list-group-flush">
               <div>
                 <NavLink to="/profile/edit">Edit Profile</NavLink>

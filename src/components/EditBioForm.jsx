@@ -22,7 +22,7 @@ class EditBioForm extends React.Component {
         bio: document.getElementById("bio-input").value,
       }})
       .then(function() {
-        self.props.handleEditBio()
+        self.props.handleEditBio(document.getElementById("bio-input").value)
       })
       .catch(function(error) {
         console.log(error)

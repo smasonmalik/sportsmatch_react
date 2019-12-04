@@ -30,9 +30,7 @@ class Signup extends Component {
             dob: document.getElementById("dob-input").value,
             ability: document.getElementById("ability-input").value,
             postcode: document.getElementById("postcode-input").value,
-            sport: document.getElementById("sport-input").value,
-            bio: document.getElementById("bio-input").value,
-            profile_image: self.state.selectedFile
+            sport: document.getElementById("sport-input").value
         })
         .then(function(response) {
           localStorage.setItem('jwtToken', response.data.jwt_token)

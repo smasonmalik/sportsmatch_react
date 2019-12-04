@@ -10,7 +10,7 @@ class EditProfileForm extends React.Component {
       last_name: '',
       gender: '',
       ability: '',
-      postcode: '',
+      location: '',
       sport: '',
       bio: '',
       isProfileEdited: false
@@ -39,7 +39,7 @@ class EditProfileForm extends React.Component {
         email: response.data.email,
         gender: response.data.gender,
         ability: response.data.ability,
-        postcode: response.data.postcode,
+        location: response.data.location,
         sport: response.data.sport,
         bio: response.data.bio
       })
@@ -65,7 +65,8 @@ class EditProfileForm extends React.Component {
           gender: this.state.gender,
           ability: this.state.ability,
           sport: this.state.sport,
-          bio: this.state.bio
+          bio: this.state.bio,
+          postcode: this.state.postcode
         }
       })
       .then(function() {
