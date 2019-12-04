@@ -6,25 +6,18 @@ class GameRequests extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      requests: [],
-      // gameEdit: false,
-      // gameDecline: false
+      requests_organiser: [],
+      requests_challenger: []
+
     }
     this.getRequest = this.getRequest.bind(this)
-    // this.handleEdit = this.handleEdit.bind(this)
-    // this.handleDecline = this.handleDecline.bind(this)
+
   }
 
   componentDidMount() {
     this.getRequest()
   };
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.gameEdit !== prevState.gameEdit || this.state.gameDecline !== prevState.gameDecline) {
-  //     this.getRequest()
-  //   }
-  // }
-
+  
   getRequest() {
     let self = this;
     axios({
@@ -34,46 +27,61 @@ class GameRequests extends React.Component {
         "api-token": localStorage.getItem('jwtToken')
       }
     })
-      .then(function(response) {
-        self.setState({
-          requests: response.data
-        })
+    .then(function(response) {
+      console.log(response.data.challenger_games);
+      console.log(response.data.organiser_games);
+      self.setState({
+        requests_challenger: response.data.challenger_games,
+        requests_organiser: response.data.organiser_games
       })
+    })
       .catch(function(error) {
         console.log(error)
       })
   }
 
-  // handleEdit() {
-  //   this.setState(prevState => {
-  //     return {gameEdit: !prevState.gameEdit}
-  //   })
-  // }
-
-  // handleDecline() {
-  //   this.setState({
-  //     gameDecline: true
-  //   })
-  // }
-
   render() {
-    return (
-      <ul className="list-group list-group-flush">
-        {this.state.requests.map(result => (
-          <SingleGameRequest
-            key={result.id}
-            id={result.id}
-            organiser_id={result.organiser_id}
-            opponent_id={result.opponent_id}
-            opponent_name={result.first_name}
-            game_date={result.game_date}
-            game_time={result.game_time}
-            status={result.status}
-            // handleEdit={this.handleEdit}
-            // handleDecline={this.handleDecline}
-          />
-        ))}
-      </ul>
+    return (<div>
+      <h2 align="center">Game Requests</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+          <h3>Requests Made</h3>
+          <ul className="list-group list-group-flush">
+          {this.state.requests_organiser.map(result => (
+            <SingleGameRequest
+              key={result.id}
+              id={result.id}
+              organiser_id={result.organiser_id}
+              opponent_id={result.opponent_id}
+              opponent_name={result.first_name}
+              game_date={result.game_date}
+              game_time={result.game_time}
+              status={result.status}
+            />
+            ))}
+          </ul>
+          </div>
+          <div class="col-sm">
+          <h3>Challenges Recieved</h3>
+            <ul className="list-group list-group-flush">
+            {this.state.requests_challenger.map(result => (
+              <SingleGameRequest
+                key={result.id}
+                id={result.id}
+                organiser_id={result.organiser_id}
+                opponent_id={result.opponent_id}
+                opponent_name={result.first_name}
+                game_date={result.game_date}
+                game_time={result.game_time}
+                status={result.status}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     )
   }
 }
