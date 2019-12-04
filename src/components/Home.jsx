@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import SearchBar from './SearchBar';
 import Player from './Player';
@@ -73,6 +72,7 @@ class Home extends Component {
         },
       })
       .then(function(response) {
+        console.log(response.data);
         self.setState({ players: response.data })
       })
       .catch(function(error) {
@@ -99,6 +99,7 @@ class Home extends Component {
                   id={player.id}
                   firstName={player.first_name}
                   ability={player.ability}
+                  rank_points={player.rank_points}
                   gender={player.gender}
                 />
               ))}
@@ -108,7 +109,7 @@ class Home extends Component {
       } else {
         return(
           <div>
-            <Login />
+            <Login handleLogIn={this.props.handleLoggedInState}/>
           </div>
         )
       }

@@ -1,9 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect, NavLink } from 'react-router-dom';
 import GameRequests from './GameRequests'
+// import SingleResult from './SingleResult'
 import EditImageForm from './EditImageForm'
 import EditBioForm from './EditBioForm'
+import { NavLink, Redirect } from 'react-router-dom'
 
 
 class Profile extends React.Component {
@@ -106,7 +107,7 @@ class Profile extends React.Component {
           <div className="card-header">
             Profile Page
           </div>
-          <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <div>
             <button onClick={this.handleClickImage} className="btn btn-primary">{this.state.showImageForm ? "Edit Image" : "Hide"}</button>
             <p>{this.state.showImageForm ? '' : <EditImageForm handleEditImage={this.handleEditImage}/>}</p>

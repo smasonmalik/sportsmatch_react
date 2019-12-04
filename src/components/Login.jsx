@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from './Home'
 import styles from './css/Login.module.css'
@@ -31,7 +31,9 @@ class Login extends Component {
           return {isLoggedIn: !prevState.isLoggedIn}
         })
       })
+      .then(this.props.handleLogIn())
       .catch(function(error) {
+        console.log(error)
         alert(error.response.data.error);
       });
     }

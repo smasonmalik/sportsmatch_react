@@ -31,10 +31,10 @@ class DeclineGameButton extends React.Component {
   render() {
     if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
       return <span></span>
-    } else {
+    } else if (this.state.status != "confirmed") {
       return (
         <div>
-          <button className="btn btn-primary" onClick={this.handleClick}>Decline</button>
+          <button className="btn btn-primary" value="declined" onClick={this.handleClick}>Decline Game</button>
         </div>
       )
     }

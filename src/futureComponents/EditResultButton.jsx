@@ -1,7 +1,7 @@
 import React from 'react'
-import EditGameForm from './EditGameForm'
+import EditResultForm from './EditResultForm'
 
-class EditGameButton extends React.Component {
+class EditResultButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,17 +21,17 @@ class EditGameButton extends React.Component {
       return (
         <div>
           <button className="btn btn-primary" onClick={this.handleClick}>Hide Form</button>
-          <EditGameForm id={this.props.id} handleEdit={this.props.handleEdit}/>
+          <EditResultForm id={this.props.id} handleEdit={this.props.handleEdit}/>
         </div>
       )
     } else {
       return (
         <div>
-          <button className="btn btn-primary" onClick={this.handleClick}>Edit Game</button>
+          <button className="btn btn-primary" onClick={this.handleClick}>Edit</button>
         </div>
       )
     }
   }
 }
 
-export default EditGameButton
+export default EditResultButton

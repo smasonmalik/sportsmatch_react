@@ -24,8 +24,8 @@ class GameRequest extends Component {
       data:
       {
         organiser_id: parseInt(localStorage.getItem('user_id')),
+        status: "pending",
         opponent_id: self.props.opponent_id,
-        confirmed: "False",
         game_date: document.getElementById("date-input").value,
         game_time: document.getElementById("time-input").value
       }})
@@ -55,6 +55,17 @@ class GameRequest extends Component {
 
 
   render() {
+    var tempDate = new Date();
+    var dayOfMonth = tempDate.getDate()
+    if (dayOfMonth < 10) {
+      dayOfMonth = '0' + dayOfMonth
+    }
+    var monthOfYear = tempDate.getMonth()+1
+    if (monthOfYear < 10) {
+      monthOfYear = '0' + monthOfYear
+    }
+    var date = tempDate.getFullYear() + '-' + monthOfYear + '-' + dayOfMonth ;
+
     if (this.state.gameRequest) {
       return (
         <Redirect to="/profile" />
@@ -75,6 +86,7 @@ class GameRequest extends Component {
               name="date"
               type="date"
               required="required"
+              min={date}
               className="form-control"
               onChange={e => this.gameDateValidation(e)}
             ></input>
