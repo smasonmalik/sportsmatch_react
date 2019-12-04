@@ -4,7 +4,7 @@
   background-color: #FCFCFC;
   border: none;
   box-shadow: 1px 0px 6px 1px lightgrey;
-  height: 450px;
+  height: 425px;
 }
 
 .cardBody {
@@ -17,8 +17,9 @@
 .crop {
   overflow: hidden;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 10px;
   box-shadow: 2px 2px 8px 2px lightgrey;
+  background-color: lightgrey
 }
 
 .crop img {
@@ -32,7 +33,7 @@
   border: none;
   color: white;
   padding: 5px;
-  width: 90%;
+  width: 100%;
   text-align: center;
   text-decoration: none;
   display: inline-block;

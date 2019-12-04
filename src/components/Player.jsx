@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
+
 import styles from './css/Player.module.css'
 
 class Player extends React.Component {
@@ -48,7 +49,6 @@ class Player extends React.Component {
 
   render() {
     return (
-      <div className={`col-lg-3 col-md-4 col-sm-6`}>
         <div className={`card ${styles.col}`}>
           <div className={styles.crop}>
             <img src={this.state.profile_photo} alt="Profile"></img>
@@ -61,7 +61,6 @@ class Player extends React.Component {
             </div>
           </div>
         </div>
-      </div>
     )
   }
 }

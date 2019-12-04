@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import Player from './Player';
 import Login from './Login'
 import styles from './css/Home.module.css'
+import InfiniteCarousel from 'react-leaf-carousel'
 
 class Home extends Component {
   constructor(props) {
@@ -81,33 +82,68 @@ class Home extends Component {
       })
   }
 
+  insertCarousel() {
+    if (this.state.players[0]) {
+      return (
+        <InfiniteCarousel
+            breakpoints={[
+              {
+                breakpoint: 500,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                },
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                },
+              },
+            ]}
+            arrows={true}
+            showSides={true}
+            sidesOpacity={.3}
+            sideSize={.3}
+            slidesToScroll={4}
+            slidesToShow={4}
+            scrollOnDevice={true}
+            lazyLoad={true}
+            autoCycle={true}
+            animationDuration={1}
+          >
+          {this.state.players.map(player => (
+            <Player
+              key={player.id}
+              id={player.id}
+              firstName={player.first_name}
+              ability={player.ability}
+              rank_points={player.rank_points}
+              gender={player.gender}
+              bio={player.bio}
+              sport={player.sport}
+            />
+          ))}
+          </InfiniteCarousel>
+      )
+    }
+  }
+
   render() {
       if (localStorage.getItem('jwtToken')) {
         return (
-          <div>
             <div>
-              <SearchBar
-                  distance={this.state.distance}
-                  ability={this.state.ability}
-                  handleChange={this.handleChange}
-                  updateDistance={this.updateDistance}
-              />
+                <div>
+                  <SearchBar
+                      distance={this.state.distance}
+                      ability={this.state.ability}
+                      handleChange={this.handleChange}
+                      updateDistance={this.updateDistance}
+                  />
+                </div>
+            {this.insertCarousel()}
             </div>
-            <div className={`row ${styles.row}`}>
-              {this.state.players.map(player => (
-                <Player
-                  key={player.id}
-                  id={player.id}
-                  firstName={player.first_name}
-                  ability={player.ability}
-                  rank_points={player.rank_points}
-                  gender={player.gender}
-                  bio={player.bio}
-                  sport={player.sport}
-                />
-              ))}
-            </div>
-          </div>
         )
       } else {
         return(
@@ -117,6 +153,29 @@ class Home extends Component {
         )
       }
   }
-
 }
 export default Home;
+
+// //{this.state.players.map(player => (
+//   <Player
+//     key={player.id}
+//     id={player.id}
+//     firstName={player.first_name}
+//     ability={player.ability}
+//     rank_points={player.rank_points}
+//     gender={player.gender}
+//     bio={player.bio}
+//     sport={player.sport}
+//   />
+// ))}
+//
+// <div>
+//   <div>
+//     <SearchBar
+//         distance={this.state.distance}
+//         ability={this.state.ability}
+//         handleChange={this.handleChange}
+//         updateDistance={this.updateDistance}
+//     />
+//   </div>
+//   <div>
