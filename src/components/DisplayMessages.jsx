@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CreateMessage from './CreateMessage';
-import SingleMessage from './SingleMessage'; 
+import SingleMessage from './SingleMessage';
 
 class DisplayMessages extends Component {
   constructor(props) {

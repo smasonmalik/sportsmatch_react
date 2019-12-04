@@ -34,15 +34,25 @@ class Player extends React.Component {
       })
   }
 
+  getBio() {
+    if (this.props.bio === null || this.props.bio.length === 0) {
+      return <span></span>
+    } else if (this.props.bio.length < 20 ) {
+      return (<p className="card-text">{this.props.bio}</p>)
+    } else if (this.props.bio.length >= 20 ) {
+      return (<p className="card-text">{this.props.bio.substring(0,20)}...</p>)
+    }
+  }
+
 
   render() {
     return (
       <div className="media">
-        <img className="align-self-start mr-3" className="rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+        <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
         <div className="media-body">
           <h5 className="mt-0">{this.props.firstName}</h5>
           <p className="card-text">{this.props.ability}</p>
-          <p className="card-text">{this.props.gender}</p>
+          {this.getBio()}
           <NavLink className="view-profile btn btn-primary" to={`/player/${this.props.id}`}>View Profile</NavLink>
         </div>
       </div>

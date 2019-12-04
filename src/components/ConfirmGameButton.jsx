@@ -53,5 +53,4 @@ class ConfirmGameButton extends React.Component {
   }
 }
 
-
 export default ConfirmGameButton

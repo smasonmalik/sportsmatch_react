@@ -1,0 +1,16 @@
+.myContainer {
+  height:auto;
+  margin: 100px;
+  padding: 100px;
+  background-color: white;
+  box-shadow: 2px 2px 40px 2px grey;
+}
+
+.inputField {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.heading {
+  text-align: center;
+}
