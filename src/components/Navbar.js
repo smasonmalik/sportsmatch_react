@@ -42,7 +42,7 @@ class Navbar extends React.Component {
               <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" id="map_location" to='/map'>Map</NavLink>
+              <NavLink className="nav-link" id="location" to='/map'>Location</NavLink>
             </li>
             {this.sessionButton()}
           </ul>

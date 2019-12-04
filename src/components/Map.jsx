@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { withGoogleMap, GoogleMap, withScriptjs } from "react-google-maps";
-// import { Redirect } from 'react-router-dom'
 import Script from 'react-load-script';
 import Geocode from 'react-geocode';
 import Autocomplete from 'react-google-autocomplete';
-// import ReactGoogleMapLoader from "react-google-maps-loader";
-// import ReactGooglePlacesSuggest from "react-google-places-suggest";
+
 
 Geocode.setApiKey("AIzaSyCebk-zVczbBH1Q6lxdk8AQgvdScWJM2E8");
 Geocode.enableDebug();
