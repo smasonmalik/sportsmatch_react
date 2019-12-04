@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import SearchBar from './FilterBar';
+import FilterBar from './FilterBar';
 import Player from './Player';
 import Login from './Login'
 
