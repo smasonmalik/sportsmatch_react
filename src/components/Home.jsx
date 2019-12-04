@@ -101,6 +101,7 @@ class Home extends Component {
                   ability={player.ability}
                   rank_points={player.rank_points}
                   gender={player.gender}
+                  bio={player.bio}
                 />
               ))}
             </div>

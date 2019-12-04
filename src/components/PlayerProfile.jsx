@@ -80,6 +80,14 @@ class PlayerProfile extends React.Component {
     }
   }
 
+  getGender() {
+    if (this.state.player.gender === "Male" || this.state.player.gender === "Female")
+      return (<p className="card-text">{this.state.player.gender}</p>)
+      else {
+        return <span></span>
+      }
+  }
+
   render() {
     return (
         <div className="card text-center">
@@ -90,7 +98,7 @@ class PlayerProfile extends React.Component {
           <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">{this.state.player.ability}</p>
-            <p className="card-text">{this.state.player.gender}</p>
+            {this.getGender()}
             {this.getAgeBracket()}
             <p className="card-text">{this.state.player.bio}</p>
             <GameRequestForm opponent_id={this.state.player.id} />

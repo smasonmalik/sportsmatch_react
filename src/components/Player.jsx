@@ -49,3 +49,5 @@ class Player extends React.Component {
   }
 }
 export default Player
+
+// <p className="card-text">{this.props.bio.substring(0,20)}...</p>
