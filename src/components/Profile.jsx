@@ -87,9 +87,9 @@ class Profile extends React.Component {
           </div>
           <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <div>
-          <button onClick={this.handleClick} className="btn btn-primary">{this.state.showImageForm ? "Edit Image" : "Hide"}</button>
-            <p>{this.state.showImageForm ? '' : <EditImageForm handleEditImage={this.handleEditImage}/>}</p>
-            </div>
+            <button onClick={this.handleClick} className="btn btn-primary">{this.state.showImageForm ? "Hide" : "Edit Image"}</button>
+            <div>{this.state.showImageForm ?  <EditImageForm handleEditImage={this.handleEditImage}/> : ''}</div>
+          </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
             <p className="card-text">Ability: {this.state.player.ability}</p>
@@ -116,9 +116,5 @@ class Profile extends React.Component {
     }
   }
 }
-
-// <button onClick={this.handleClick} className="btn btn-primary">{this.state.showBio ? "Edit bio" : "Hide"}</button>
-// <p>{this.state.showBio ? '' : <EditBioForm handleEditBio={this.handleEditBio}/>}</p>
-
 
 export default Profile

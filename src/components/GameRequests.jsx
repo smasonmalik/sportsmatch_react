@@ -7,23 +7,23 @@ class GameRequests extends React.Component {
     super(props)
     this.state = {
       requests: [],
-      gameEdit: false,
-      gameDecline: false
+      // gameEdit: false,
+      // gameDecline: false
     }
     this.getRequest = this.getRequest.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
-    this.handleDecline = this.handleDecline.bind(this)
+    // this.handleEdit = this.handleEdit.bind(this)
+    // this.handleDecline = this.handleDecline.bind(this)
   }
 
   componentDidMount() {
     this.getRequest()
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.gameEdit !== prevState.gameEdit || this.state.gameDecline !== prevState.gameDecline) {
-      this.getRequest()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.gameEdit !== prevState.gameEdit || this.state.gameDecline !== prevState.gameDecline) {
+  //     this.getRequest()
+  //   }
+  // }
 
   getRequest() {
     let self = this;
@@ -35,7 +35,6 @@ class GameRequests extends React.Component {
       }
     })
       .then(function(response) {
-        console.log(response.data)
         self.setState({
           requests: response.data
         })
@@ -45,17 +44,17 @@ class GameRequests extends React.Component {
       })
   }
 
-  handleEdit() {
-    this.setState(prevState => {
-      return {gameEdit: !prevState.gameEdit}
-    })
-  }
+  // handleEdit() {
+  //   this.setState(prevState => {
+  //     return {gameEdit: !prevState.gameEdit}
+  //   })
+  // }
 
-  handleDecline() {
-    this.setState({
-      gameDecline: true
-    })
-  }
+  // handleDecline() {
+  //   this.setState({
+  //     gameDecline: true
+  //   })
+  // }
 
   render() {
     return (
@@ -64,14 +63,14 @@ class GameRequests extends React.Component {
           <SingleGameRequest
             key={result.id}
             id={result.id}
-            organiser_id={result.organiser_}
+            organiser_id={result.organiser_id}
             opponent_id={result.opponent_id}
             opponent_name={result.first_name}
             game_date={result.game_date}
             game_time={result.game_time}
-            confirmed={result.confirmed}
-            handleEdit={this.handleEdit}
-            handleDecline={this.handleDecline}
+            status={result.status}
+            // handleEdit={this.handleEdit}
+            // handleDecline={this.handleDecline}
           />
         ))}
       </ul>

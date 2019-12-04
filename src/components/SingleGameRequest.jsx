@@ -1,19 +1,33 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import ConfirmGameButton from './ConfirmGameButton'
+import GameStatusButton from './GameStatusButton'
 import EditGameButton from './EditGameButton'
-import DeclineGameButton from './DeclineGameButton'
 
 class SingleGameRequest extends React.Component {
   constructor(props) {
     super(props)
-    this.showConfirmation = this.showConfirmation.bind(this)
+    this.state = {
+      status: this.props.status
+    }
+    this.editGame = this.editGame.bind(this)
+    this.updateStatus = this.updateStatus.bind(this)
   }
 
-  showConfirmation() {
-    if (this.props.organiser_id === parseInt(localStorage.getItem('user_id'))) {
-      return (this.props.confirmed ? "Game Confirmed..." : "Confirmation Pending...")
-    }
+  updateStatus(value) {
+    this.setState({
+      status: value
+    })
+  }
+
+  editGame(){
+    if (this.state.status === "confirmed" || this.state.status === "pending"){
+      return(  
+        <EditGameButton
+            id={this.props.id}
+            handleEdit={this.props.handleEdit}
+        />
+      )
+    } 
   }
 
   render() {
@@ -24,21 +38,15 @@ class SingleGameRequest extends React.Component {
               <p className="card-text"><strong>Opponent:</strong> {this.props.opponent_name}</p>
               <p className="card-text"><strong>Game Date:</strong> {this.props.game_date}</p>
               <p className="card-text"><strong>Game Time:</strong> {this.props.game_time}</p>
-              <ConfirmGameButton
+              <p className="card-text"><strong>Game Status:</strong> {this.state.status.charAt(0).toUpperCase() + this.state.status.slice(1)}</p>
+              <GameStatusButton
                 id={this.props.id}
-                confirmed={this.props.confirmed}
+                status={this.props.status}
                 organiser_id={this.props.organiser_id}
+                opponent_id={this.props.opponent_id}
+                updateStatus={this.updateStatus}
               />
-              <DeclineGameButton
-                organiser_id={this.props.organiser_id}
-                handleDecline={this.props.handleDecline}
-                id={this.props.id}
-              />
-              <EditGameButton
-                id={this.props.id}
-                handleEdit={this.props.handleEdit}
-              />
-              {this.showConfirmation()}
+              {this.editGame()}
               <NavLink
                 to={`/game/${this.props.id}/messages/${this.props.organiser_id}/${this.props.opponent_id}`}>
                 View Messages
@@ -51,4 +59,3 @@ class SingleGameRequest extends React.Component {
 }
 export default SingleGameRequest
 
-// {this.props.confirmed ? "Confirmed" : "Unconfirmed"}
