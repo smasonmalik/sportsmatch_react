@@ -25,7 +25,7 @@ class EditBioForm extends React.Component {
         profile_image: self.state.selectedFile,
       }})
       .then(function() {
-        self.props.handleEditImage()
+        self.props.handleEditImage(self.state.selectedFile)
       })
       .catch(function(error) {
         console.log(error)
