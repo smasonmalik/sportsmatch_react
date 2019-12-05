@@ -1,0 +1,27 @@
+.alert {
+  border-radius: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  display: block;
+  align-items: left;
+  width: 100%;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.error {
+  color: red;
+  opacity: 0.8;
+}
+
+.success {
+  color: black;
+  opacity: 0.8;
+}
+
+.close {
+  cursor: pointer;
+  margin-right: 10px;
+}

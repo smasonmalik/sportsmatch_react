@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import styles from './css/GameRequestForm.module.css'
+import FlashMessage from './FlashMessage'
+
 
 class GameRequest extends Component {
   constructor(props) {
@@ -98,6 +100,13 @@ class GameRequest extends Component {
               required="required"
               className="form-control"
             ></input>
+            </div>
+            <div>
+              {this.state.errorMessage ?
+                <FlashMessage
+                  message={this.state.errorMessage}
+                  type="error"
+                /> : null }
             </div>
             <div className='row'>
               <div className='col'>

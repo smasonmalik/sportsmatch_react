@@ -59,7 +59,7 @@ class PlayerProfile extends React.Component {
       }
     })
     .catch(function(error) {
-      console.log(error)
+      console.log(error.description)
     })
   }
 
@@ -78,6 +78,7 @@ class PlayerProfile extends React.Component {
       return <span></span>
     }
   }
+
 
   getGender() {
     if (this.state.player.gender === "Male" || this.state.player.gender === "Female")
@@ -107,6 +108,7 @@ class PlayerProfile extends React.Component {
         </div>
     </div>
     </div> 
+
     )
   }
 }
