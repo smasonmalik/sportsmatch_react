@@ -38,26 +38,27 @@ class SingleResult extends React.Component {
           </div>
         </div>
       )
-    } else (this.props.loser_id === parseInt(localStorage.getItem('user_id'))) {
+    } else if (this.props.loser_id === parseInt(localStorage.getItem('user_id'))){
       return (
         <div className={styles.resultLose}>
           <div>
             <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
             <p>Game Date: {this.props.game_date}</p>
-            <p>You Lost!</p>
+            <p>Waiting for result confirmation...</p>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.resultUndecided}>
+          <div>
+            <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
+            <p>Game Date: {this.props.game_date}</p>
+            <p>Waiting for result confirmation...</p>
           </div>
         </div>
       )
     }
-    // } else {
-    //   <div className={styles.resultUndecided}>
-    //     <div>
-    //       <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
-    //       <p>Game Date: {this.props.game_date}</p>
-    //       <p>Waiting for result confirmation...</p>
-    //     </div>
-    //   </div>
-    // }
   }
 
   render() {
