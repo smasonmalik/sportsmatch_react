@@ -9,20 +9,21 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  overflow-y: scroll;
+  max-height: 100vh;
 }
 
 .pictureContainer {
   padding-left: 20px;
+
 }
-
-
 
 /* Bottom right text */
 .textBlock {
-  position: absolute;
+  position: relative;
   top: 0px;
   left: 0px;
-  /* background-color: black; */
+  background-color: black;
   /* color: black; */
   margin: auto;
   visibility: visible;
@@ -30,7 +31,7 @@
 }
 
 .textBlockHide {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0px;
   left: 0px;
   margin: auto;

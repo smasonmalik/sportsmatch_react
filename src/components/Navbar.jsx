@@ -23,10 +23,6 @@ class Navbar extends React.Component {
       }
     }
 
-    activeWindow(){
-
-    }
-
   render() {
 
     return (
@@ -46,8 +42,10 @@ class Navbar extends React.Component {
             <li className="nav-item">
             <NavLink className="nav-link" id="results-link" to='/results'>Results</NavLink>
             </li>
-            {this.sessionButton()}
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {this.sessionButton()}
+          </ul> 
         </div>
         </nav>
       )

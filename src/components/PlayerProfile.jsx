@@ -93,15 +93,18 @@ class PlayerProfile extends React.Component {
       <div className="container">
       <div className="row">
         <div className={`container col-lg-6 col-md-4 col-sm-6 ${styles.profileContainer}`}>
-          <h2 className={styles.title}>Profile Page</h2>
+          
           <h5 className={styles.profileNameText}>{this.state.player.first_name}</h5>
           <img className={styles.profilePicture} src={this.state.profile_photo} alt="Profile" ></img>
-          {this.getAgeBracket()}
-          <p className={styles.profileText}>Skill Level: {this.state.player.ability}</p>
-          <p className={styles.profileText}>Location: {this.state.player.location}</p>
-          <p className={styles.profileText}>Sport: {this.state.player.sport}</p>
-          {this.getGender()}
-          <p className={styles.profileText}>Bio: {this.state.player.bio}</p>
+          <div className={styles.profileTextContainer}>
+            {this.getAgeBracket()}
+            <p className={styles.profileText}>Skill Level: {this.state.player.ability}</p>
+            <p className={styles.profileText}>Location: {this.state.player.location}</p>
+            <p className={styles.profileText}>Sport: {this.state.player.sport}</p>
+            {this.getGender()}
+            <p className={styles.profileText}>Bio: {this.state.player.bio}</p>
+          </div>
+          
         </div>
         <div className={`col-lg-3 col-md-4 col-sm-6 ${styles.requestContainer}`}>
           <GameRequestForm opponent_id={this.state.player.id} />

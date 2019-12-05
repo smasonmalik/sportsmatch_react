@@ -114,7 +114,7 @@ class GameRequest extends Component {
               <button
                 name="requestGame"
                 type="submit"
-                className="request-button btn btn-primary"
+                className={`request-button btn ${styles.requestButton}`}
                 onClick={this.handleNewGame}>
                 Send Request
               </button>

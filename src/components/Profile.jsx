@@ -138,9 +138,11 @@ class Profile extends React.Component {
     if (localStorage.getItem('jwtToken')) {
       return (
         <div>
-        <div className = {`${styles.profileContainer}`}>
-          <h3 className={styles.header}>MY PROFILE</h3>
-          <div className = {`${styles.pictureContainer}`}>
+          <div className="container">
+            <div className="row">
+              <div className="col-4">
+              <h3 className={styles.header}>MY PROFILE</h3>
+              <div className = {`${styles.pictureContainer}`}>
             <img 
               id="profile-image" 
               className="align-self-start mr-3 rounded mx-auto d-block" 
@@ -167,13 +169,27 @@ class Profile extends React.Component {
             {this.getBio()}
             <ul className="list-group list-group-flush">
               <div>
-                <NavLink to="/profile/edit"><FaPencilAlt /> edit profile </NavLink>
+                <NavLink to="/profile/edit"><FaPencilAlt /> Edit profile </NavLink>
               </div>
             </ul>
             
           </div>
+
+
+              </div>
+              <div className="col-8">
+              <div className = {`container col-12 ${styles.gameRequestContainer}`}>
           <GameRequests handleGameRefresh={this.handleGameRefresh}/>
-        </div>
+          </div>
+
+              </div>
+            </div>
+
+
+
+          </div>
+         
+          
         </div>
       )
     } else {
@@ -187,3 +203,7 @@ class Profile extends React.Component {
 }
 
 export default Profile
+
+
+{/* <div className = {`container col-6 ${styles.profileContainer}`}>   
+</div> */}

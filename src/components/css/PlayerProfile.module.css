@@ -1,16 +1,9 @@
-.title {
-  margin-top: 25px;
-  /* margin-bottom:25px; */
-  margin-left: 15px;
-  font-weight: bold;
-  font-size: 40px;
-}
 
 .profileContainer {
   margin: 10px;
   box-shadow: 2px 2px 40px 2px #ECECEC;
   border-radius: 5px;
-  background-color: rgb(160, 209, 194);
+  background-color: #508D6D;
 }
 
 
@@ -18,15 +11,22 @@
   border-radius: 5%;
   width: 200px;
   height:200px;
+  
 }
 
 .profileText {
   font-weight: bold;
 }
 
+.profileTextContainer {
+  padding-top: 25px;
+}
+
 .profileNameText {
   font-style: italic;
-  color: lightslategray;
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .requestContainer {

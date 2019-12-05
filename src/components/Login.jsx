@@ -59,8 +59,6 @@ class Login extends Component {
                 <form onSubmit={e => {e.preventDefault();}} className="form-login">
 
                   <div className={styles.inputField}>
-                    <label>email</label><br/>
-
                     <input
                       id="email-input"
                       name="email"
@@ -70,7 +68,6 @@ class Login extends Component {
                     />
                   </div>
                   <div className={styles.inputField}>
-                    <label>password</label><br/>
                     <input
                       id="password-input"
                       name="password"
