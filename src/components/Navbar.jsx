@@ -21,13 +21,10 @@ class Navbar extends React.Component {
       }
     }
 
-    activeWindow(){
-
-    }
-
   render() {
 
     return (
+
       <div className={styles.navDiv}>
       <div className="row">
         <div className="col-4"></div>
@@ -58,6 +55,7 @@ class Navbar extends React.Component {
           </div>
           </nav>
           </div>
+
         </div>
       )
     }
