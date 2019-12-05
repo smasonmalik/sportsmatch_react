@@ -45,7 +45,7 @@ class GameRequests extends React.Component {
       <h2 className={styles.header}>Game Requests</h2>
 
       <div id="accordion">
-        <div class="card">
+        <div className = {`card ${styles.cardDrawer}`} >
           <div className = {`${styles.cardHeader}`}  >
             <h5 className = {`  ${styles.requestsHeader}`} >
               <button className = {`  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -54,24 +54,24 @@ class GameRequests extends React.Component {
             </h5>
           </div>
 
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 
-            <ul className="list-group list-group-flush">
-              {this.state.requests_organiser.map(result => (
-                <SingleGameRequest
-                  key={result.id}
-                  id={result.id}
-                  organiser_id={result.organiser_id}
-                  opponent_id={result.opponent_id}
-                  opponent_name={result.first_name}
-                  game_date={result.game_date}
-                  game_time={result.game_time}
-                  status={result.status}
-                />
-                ))}
-              </ul>
-          </div>
-        </div>
+        <ul className="list-group list-group-flush">
+          {this.state.requests_organiser.map(result => (
+            <SingleGameRequest
+              key={result.id}
+              id={result.id}
+              organiser_id={result.organiser_id}
+              opponent_id={result.opponent_id}
+              opponent_name={result.first_name}
+              game_date={result.game_date}
+              game_time={result.game_time}
+              status={result.status}
+            />
+            ))}
+          </ul>
+    </div>
+  </div>
   <div class="card">
     <div className = {`${styles.cardHeader}`} >
       <h5 className = {`  ${styles.requestsHeader}`}>
@@ -80,7 +80,7 @@ class GameRequests extends React.Component {
         </button>
       </h5>
     </div>
-    <div className = {` ${styles.cardBox}`} class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
       <ul className = {`list-group list-group-flush ${styles.cardBox}`}>
             {this.state.requests_challenger.map(result => (

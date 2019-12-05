@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import GameStatusButton from './GameStatusButton'
 import EditGameButton from './EditGameButton'
 import styles from './css/SingleGameRequest.module.css'
+import { IoIosMail } from 'react-icons/io'
 
 class SingleGameRequest extends React.Component {
   constructor(props) {
@@ -33,10 +34,13 @@ class SingleGameRequest extends React.Component {
   editGame(){
     if (this.state.status === "confirmed" || this.state.status === "pending"){
       return(
-        <EditGameButton
+        <div className={styles.editGameButton}>
+          <EditGameButton
             id={this.props.id}
             handleEdit={this.handleEdit}
-        />
+          />
+        </div>
+        
       )
     }
   }
@@ -50,17 +54,19 @@ class SingleGameRequest extends React.Component {
               <p className={styles.gameDate}><strong>Game Date:</strong> {this.state.game_date}</p>
               <p className={styles.gameDate}><strong>Game Time:</strong> {this.state.game_time}</p>
               <p className={styles.gameDate}><strong>Game Status:</strong> {this.state.status.charAt(0).toUpperCase() + this.state.status.slice(1)}</p>
-              <GameStatusButton
-                id={this.props.id}
-                status={this.props.status}
-                organiser_id={this.props.organiser_id}
-                opponent_id={this.props.opponent_id}
-                updateStatus={this.updateStatus}
-              />
+              <div className={styles.gameButtons}>
+                <GameStatusButton
+                  id={this.props.id}
+                  status={this.props.status}
+                  organiser_id={this.props.organiser_id}
+                  opponent_id={this.props.opponent_id}
+                  updateStatus={this.updateStatus}
+                />
+              </div>
               {this.editGame()}
               <NavLink
                 to={`/game/${this.props.id}/messages/${this.props.organiser_id}/${this.props.opponent_id}`}>
-                View Messages
+                <IoIosMail />  View Messages
               </NavLink>
           </div>
         </div>

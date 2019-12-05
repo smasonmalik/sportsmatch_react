@@ -42,8 +42,12 @@
   /* font-size: 100px; */
 }
 
+.cardDrawer {
+  margin-bottom: 10px
+}
+
 .cardBox {
   overflow: hidden;
-  background-color: black;
+  background-color: white;
 }
 

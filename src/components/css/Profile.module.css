@@ -1,5 +1,5 @@
 body {
-  font-family: 'Sulphur Point', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .profilePage {
@@ -69,4 +69,8 @@ body {
 
 .editLink:hover {
   background-color: rgb(88, 88, 88);
+}
+
+.gameButtons {
+
 }

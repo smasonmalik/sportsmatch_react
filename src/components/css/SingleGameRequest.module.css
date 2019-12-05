@@ -1,17 +1,16 @@
 
 .gameCard:hover {
-  transform: scale(1.025)
+  transform: scale(1.015)
 }
 
 .gameCardOutline {
   outline: none;
-  width: 36rem;
-  
+  /* width: 36rem; */
 }
 
 .gameCard {
-  background-color: #DAF1D4;
-  border-right: solid 10px #41924B;
+  background-color: rgb(206, 214, 221);
+  border-right: solid 10px slategray;
   padding-left: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -19,11 +18,17 @@
   
 }
 
+.gameButtons {
+  text-align: right;
+}
 
+.editGameButton {
+  text-align: right;
+}
 
 .gameDate {
-  color: grey;
-  font-size: small;
+  color: rgba(0, 0, 0, 0.568);
+  font-size: medium;
   text-align: right;
   margin-right: 10px;
 }
