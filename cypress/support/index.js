@@ -44,8 +44,24 @@ beforeEach(function () {
 
     cy.route({
         method: 'GET',      // Route all GET requests
+        url: '/api/v1/players/13',    // that have a URL that matches '/users/*'
+        response: 'fixture:opponent_player'      // and force the response to be: []
+    })
+
+    cy.route({
+        method: 'GET',      // Route all GET requests
         url: '/api/v1/players',    // that have a URL that matches '/users/*'
         response: 'fixture:players'
+    })
+
+    cy.route({
+        method: 'GET',      // Route all GET requests
+        url: '/api/v1/players',
+        response:'fixture:players',
+        headers: {
+            'ability': 'beginner',
+            'distance': 5
+            }
     })
 
   })
