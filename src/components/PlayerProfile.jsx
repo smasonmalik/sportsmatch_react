@@ -81,12 +81,13 @@ class PlayerProfile extends React.Component {
 
 
   getGender() {
-    if (this.state.player.gender === "Male" || this.state.player.gender === "Female")
-      return (<p className={styles.profileText}>Gender: {this.state.player.gender}</p>)
-      else {
-        return <span></span>
-      }
-  }
+     if (this.state.player.gender === "male" || this.state.player.gender === "female")
+       return (<p className={styles.profileText}>{this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1)}</p>)
+       else {
+         return <span></span>
+       }
+   }
+
 
   render() {
     return (
@@ -106,7 +107,9 @@ class PlayerProfile extends React.Component {
           </div>
           
         </div>
+
         <div className={`col-lg-3 col-md-4 col-sm-6 ${styles.requestContainer}`}>
+
           <GameRequestForm opponent_id={this.state.player.id} />
         </div>
     </div>

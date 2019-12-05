@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import SingleResult from './SingleResult'
-import './css/Results.css'
+import styles from './css/Results.module.css'
 
 class Results extends React.Component {
   constructor(props) {
@@ -10,12 +10,14 @@ class Results extends React.Component {
       current_username: [],
       opponentResults: [],
       organiserResults: [],
-      resultEdit: false
+      resultEdit: false,
+      newResult: false
     }
     this.getOpponentResultsRequest = this.getOpponentResultsRequest.bind(this)
     this.getOrganiserResultsRequest = this.getOrganiserResultsRequest.bind(this)
     this.getPlayer = this.getPlayer.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.handleAddResult = this.handleAddResult.bind(this)
   }
 
   componentDidMount() {
@@ -25,8 +27,12 @@ class Results extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.resultEdit !== prevState.resultEdit) {
-      this.getRequest()
+    if (
+      this.state.resultEdit !== prevState.resultEdit ||
+      this.state.newResult !== prevState.newResult
+    ) {
+      this.getOpponentResultsRequest()
+      this.getOrganiserResultsRequest()
     }
   }
 
@@ -93,16 +99,23 @@ class Results extends React.Component {
     })
   }
 
+  handleAddResult() {
+    this.setState(prevState => {
+      return {newResult: !prevState.newResult}
+    })
+  }
+
   render() {
 
       return (
       <div>
-        <h2 align="center">My Results</h2>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-            <h3>I'm the organiser</h3>
-            <ul className="list-group list-group-flush">
+        <h2 className={styles.mainHeader}>Check out your game result history!</h2>
+        <div className={`container ${styles.myContainer}`}>
+          <div className={`row ${styles.myRow}`}>
+            <div className={`col-lg-6 col-md-6 col-sm-12 ${styles.col}`}>
+            <h3 className={styles.heading}>Home</h3><hr/>
+            <p className={styles.info}>* These are the games that you have organised</p>
+            <p className={styles.info}>* Only you can submit the game results of your match</p>
               {this.state.organiserResults.map(game => (
               <SingleResult
                 key={game.id}
@@ -116,29 +129,30 @@ class Results extends React.Component {
                 opponent_id={game.opponent_id}
                 game_date={game.game_date}
                 handleEdit={game.handleEdit}
+                handleAddResult={this.handleAddResult}
               />
-              ))}
-            </ul>
+            ))}
             </div>
-            <div class="col-sm">
-            <h3>I'm the opponent</h3>
-              <ul className="list-group list-group-flush">
-                {this.state.opponentResults.map(game => (
-                  <SingleResult
-                    key={game.id}
-                    id={game.id}
-                    result_id={game.result_id}
-                    winner_id={game.winner_id}
-                    loser_id={game.loser_id}
-                    organiser_name={game.first_name}
-                    opponent_name={this.state.current_username}
-                    organiser_id={game.organiser_id}
-                    opponent_id={game.opponent_id}
-                    game_date={game.game_date}
-                    handleEdit={game.handleEdit}
-                  />
-                ))}
-              </ul>
+            <div className={`col-lg-6 col-md-6 col-sm-12 ${styles.myCol}`}>
+            <h3 className={styles.heading}>Away</h3><hr/>
+            <p className={styles.info}>* These are the games that your opponent organised</p>
+            <p className={styles.info}>* Your opponent will submit the results of your match</p>
+              {this.state.opponentResults.map(game => (
+                <SingleResult
+                  key={game.id}
+                  id={game.id}
+                  result_id={game.result_id}
+                  winner_id={game.winner_id}
+                  loser_id={game.loser_id}
+                  organiser_name={game.first_name}
+                  opponent_name={this.state.current_username}
+                  organiser_id={game.organiser_id}
+                  opponent_id={game.opponent_id}
+                  game_date={game.game_date}
+                  handleEdit={game.handleEdit}
+                  handleAddResult={this.handleAddResult}
+                />
+              ))}
             </div>
           </div>
         </div>

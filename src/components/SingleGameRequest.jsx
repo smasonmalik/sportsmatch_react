@@ -7,9 +7,12 @@ class SingleGameRequest extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      status: this.props.status
+      status: this.props.status,
+      game_date: this.props.game_date,
+      game_time: this.props.game_time
     }
     this.editGame = this.editGame.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
     this.updateStatus = this.updateStatus.bind(this)
   }
 
@@ -19,15 +22,22 @@ class SingleGameRequest extends React.Component {
     })
   }
 
+  handleEdit(date, time) {
+    this.setState({
+      game_date: date,
+      game_time: time
+    })
+  }
+
   editGame(){
     if (this.state.status === "confirmed" || this.state.status === "pending"){
-      return(  
+      return(
         <EditGameButton
             id={this.props.id}
-            handleEdit={this.props.handleEdit}
+            handleEdit={this.handleEdit}
         />
       )
-    } 
+    }
   }
 
   render() {
@@ -36,8 +46,8 @@ class SingleGameRequest extends React.Component {
         <div className="card" style={{width: '18rem'}}>
           <div className="card-body">
               <p className="card-text"><strong>Opponent:</strong> {this.props.opponent_name}</p>
-              <p className="card-text"><strong>Game Date:</strong> {this.props.game_date}</p>
-              <p className="card-text"><strong>Game Time:</strong> {this.props.game_time}</p>
+              <p className="card-text"><strong>Game Date:</strong> {this.state.game_date}</p>
+              <p className="card-text"><strong>Game Time:</strong> {this.state.game_time}</p>
               <p className="card-text"><strong>Game Status:</strong> {this.state.status.charAt(0).toUpperCase() + this.state.status.slice(1)}</p>
               <GameStatusButton
                 id={this.props.id}
@@ -58,4 +68,3 @@ class SingleGameRequest extends React.Component {
   }
 }
 export default SingleGameRequest
-
