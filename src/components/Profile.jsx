@@ -168,8 +168,12 @@ class Profile extends React.Component {
             <p className="card-text">Ranking Points: {this.state.player.rank_points}</p>
             {this.getBio()}
             <ul className="list-group list-group-flush">
-              <div>
-                <NavLink to="/profile/edit"><FaPencilAlt /> Edit profile </NavLink>
+              <div >
+                <NavLink  to="/profile/edit">
+                  <button className={`${styles.editLink}`}>
+                    <FaPencilAlt /> Edit profile 
+                  </button>
+                  </NavLink>
               </div>
             </ul>
             

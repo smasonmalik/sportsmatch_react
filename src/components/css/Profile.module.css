@@ -47,3 +47,10 @@
 .profilePic {
   width: 10rem;
 }
+
+.editLink {
+  color: #508D6D;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
