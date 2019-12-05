@@ -76,6 +76,13 @@ beforeEach(function () {
         response: 'fixture:games'
     })
 
+    cy.route({
+        method: 'PATCH',      // Route all GET requests
+        url: '/api/v1/games/1/edit',    // that have a URL that matches '/users/*'
+        response: 'fixture:edit_game'
+    })
+
+
 
 
   })

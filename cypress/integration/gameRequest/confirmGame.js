@@ -41,8 +41,10 @@ describe("Create a Game Request", function() {
     cy.visit('/profile')
     cy.get('.edit-game.btn').first().click()
     cy.get('.hide-form.btn').should('be.visible');
-    cy.get('#date-input').type('2021-12-12')
-    cy.get('#time-input').type('15:00')
+    cy.get('#date-input').type('2025-12-02')
+    cy.get('#time-input').type('00:00')
     cy.get('.edit-game-submit.btn').click()
+    cy.contains('Game Date: 2025-12-02').should('be.visible');
+    cy.contains('Game Time: 00:00:00').should('be.visible');
   })
 })
