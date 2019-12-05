@@ -10,3 +10,8 @@
   font-size: 40px;
   color: grey;
 }
+
+.opponent {
+  width: 100%;
+  background-color: lightgrey;
+}
