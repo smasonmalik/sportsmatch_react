@@ -1,0 +1,12 @@
+.emptyInbox {
+  top: 45%;
+  position: absolute;
+  left:0;
+  right:0;
+}
+
+.heading {
+  text-align: center;
+  font-size: 40px;
+  color: grey;
+}

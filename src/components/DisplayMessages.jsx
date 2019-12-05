@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import CreateMessage from './CreateMessage';
 import SingleMessage from './SingleMessage';
+import styles from './css/DisplayMessages.module.css'
 
 class DisplayMessages extends Component {
   constructor(props) {
@@ -57,31 +58,43 @@ class DisplayMessages extends Component {
     }
   }
   render() {
-    return (
-      <div>
-      <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
-      <ul className="list-group list-group-flush">
-        {this.state.messageData.map((message) => (
-          <SingleMessage
-            key={message.id}
-            id={message.id}
-            game_id={message.game_id}
-            sender_id={message.sender_id}
-            organiser_id={message.organiser_id}
-            opponent_id={message.opponent_id}
-            content={message.content}
-            organiser={this.state.messageDetails.organiser}
-            opponent={this.state.messageDetails.opponent}
+    if (this.state.messageData === []) {
+      return (
+        <div className={styles.emptyInbox}>
+          <h4 className={styles.heading}>No previous messages, send a message to start your conversation...</h4>
+          <CreateMessage
+            id={this.state.game_id}
+            organiser_id={this.state.organiser_id}
+            opponent_id={this.state.opponent_id}
           />
-        ))}
-        </ul>
-        <CreateMessage
-          id={this.state.game_id}
-          organiser_id={this.state.organiser_id}
-          opponent_id={this.state.opponent_id}
-        />
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <div>
+        <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
+          {this.state.messageData.map((message) => (
+            <SingleMessage
+              key={message.id}
+              id={message.id}
+              game_id={message.game_id}
+              sender_id={message.sender_id}
+              organiser_id={message.organiser_id}
+              opponent_id={message.opponent_id}
+              content={message.content}
+              organiser={this.state.messageDetails.organiser}
+              opponent={this.state.messageDetails.opponent}
+            />
+          ))}
+          <CreateMessage
+            id={this.state.game_id}
+            organiser_id={this.state.organiser_id}
+            opponent_id={this.state.opponent_id}
+          />
+        </div>
+      )
+    }
+
   }
 }
 export default DisplayMessages;

@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './css/SingleMessage.module.css'
 
 class SingleMessage extends React.Component {
   constructor(props) {
@@ -15,15 +16,18 @@ class SingleMessage extends React.Component {
   render() {
     if (this.props.sender_id === parseInt(localStorage.getItem('user_id'))) {
       return (
-        <li className="list-group-item" style={{textAlign: 'left'}}>
-          <p>{this.props.content}</p>
-          <p style={{color: 'grey'}}>{this.showName()}</p>
-        </li>
+        <div className={styles.speech}>
+          <div className={styles.speechBubbleUser}>
+            <p>{this.props.content}</p>
+
+          </div>
+          <p className={styles.name}>{this.showName()}</p>
+        </div>
       )
     } else {
       return (
         <li className="list-group-item" style={{textAlign: 'right'}}>
-          <p>{this.props.content}</p>
+          <p className={styles.speechBubbleOpponent}>{this.props.content}</p>
           <p style={{color: 'grey'}}>{this.showName()}</p>
         </li>
       )

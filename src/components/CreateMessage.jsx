@@ -37,6 +37,7 @@ class CreateMessage extends React.Component {
   render() {
     return (
       <div className={styles.formDiv}>
+        <hr/>
         <form>
           <div className="form-group">
             <div className='row'>
