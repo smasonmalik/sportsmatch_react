@@ -20,7 +20,7 @@ class SingleMessage extends React.Component {
           <div className={styles.speechBubbleUser}>
             <p>{this.props.content}</p>
           </div>
-          <p className={styles.name}>{this.showName()}</p>
+          <p className={styles.userName}>{this.showName()}</p>
         </div>
       )
     } else {
@@ -29,7 +29,9 @@ class SingleMessage extends React.Component {
           <div className={styles.speechBubbleOpponent}>
             <p>{this.props.content}</p>
           </div>
-          <p className={styles.name}>{this.showName()}</p>
+          <div>
+          <p className={styles.opponentName}>{this.showName()}</p>
+          </div>
         </div>
       )
     }
