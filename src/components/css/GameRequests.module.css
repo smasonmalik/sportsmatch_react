@@ -1,0 +1,22 @@
+.header {
+  font-family: times;
+}
+
+.requestsHeader {
+  color: white;
+  background-color: #508D6D;
+  text-decoration: none !important
+}
+
+.requestsHeader:hover {
+  color: white;
+  outline: none;
+}
+
+.cardHeader {
+  background-color: #508D6D;
+}
+
+.arrow {
+  justify-content: right;
+}
