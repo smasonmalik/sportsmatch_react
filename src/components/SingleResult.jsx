@@ -8,29 +8,24 @@ class SingleResult extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showAddResult: false,
-      updateToggle: false
+      showAddResult: true,
+      winner_id: this.props.winner_id,
+      loser_id: this.props.loser_id
     }
     this.result = this.result.bind(this);
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick() {
-    this.setState(prevState => {
-      return {showAddResult: !prevState.showAddResult}
+  handleClick(winner, loser) {
+    this.setState({
+      winner_id: winner,
+      loser_id: loser
     })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.newResult !== prevProps.newResult) {
-      this.setState(prevState => {
-        return {updateToggle: !prevState.updateToggle}
-      })
-    }
-  }
-
   result() {
-    if (this.props.winner_id === parseInt(localStorage.getItem('user_id'))) {
+    console.log(12345)
+    if (this.state.winner_id === parseInt(localStorage.getItem('user_id'))) {
       return (
         <div className={styles.resultWin}>
           <div>
@@ -57,7 +52,7 @@ class SingleResult extends React.Component {
         </div>
 
       )
-    } else if (this.props.loser_id === parseInt(localStorage.getItem('user_id'))) {
+    } else if (this.state.loser_id === parseInt(localStorage.getItem('user_id'))) {
       return (
         <div className={styles.resultLose}>
           <div>
@@ -113,7 +108,7 @@ class SingleResult extends React.Component {
   }
 
   render() {
-    if ((parseInt(localStorage.getItem('user_id')) === this.props.organiser_id) && (this.props.loser_id == null)) {
+    if ((parseInt(localStorage.getItem('user_id')) === this.props.organiser_id) && (this.state.loser_id == null)) {
       return (
         <div className={styles.resultUndecided}>
           <div>
@@ -130,9 +125,6 @@ class SingleResult extends React.Component {
           </div>
           <div className='row'>
             <div className='col-6'>
-            <button onClick={this.handleClick}>{this.state.showAddResult ? "Hide" : "Add Result"}</button>
-            </div>
-            <div className='col-6'>
               <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
             </div>
             </div>
@@ -143,7 +135,6 @@ class SingleResult extends React.Component {
                 organiser_id={this.props.organiser_id}
                 opponent_name={this.props.opponent_name}
                 opponent_id={this.props.opponent_id}
-                handleAddResult={this.props.handleAddResult}
                 handleClick={this.handleClick}
               /> :
               null}
