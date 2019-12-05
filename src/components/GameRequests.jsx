@@ -6,28 +6,18 @@ class GameRequests extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-<<<<<<< HEAD
-      requests: [],
-    }
-    this.getRequest = this.getRequest.bind(this)
-=======
       requests_organiser: [],
       requests_challenger: []
 
     }
     this.getRequest = this.getRequest.bind(this)
 
->>>>>>> master
   }
 
   componentDidMount() {
     this.getRequest()
   };
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> master
   getRequest() {
     let self = this;
     axios({
@@ -51,23 +41,6 @@ class GameRequests extends React.Component {
   }
 
   render() {
-<<<<<<< HEAD
-    return (
-      <ul className="list-group list-group-flush">
-        {this.state.requests.map(result => (
-          <SingleGameRequest
-            key={result.id}
-            id={result.id}
-            organiser_id={result.organiser_id}
-            opponent_id={result.opponent_id}
-            opponent_name={result.first_name}
-            game_date={result.game_date}
-            game_time={result.game_time}
-            status={result.status}
-          />
-        ))}
-      </ul>
-=======
     return (<div>
       <h2 align="center">Game Requests</h2>
       <div class="container">
@@ -109,7 +82,6 @@ class GameRequests extends React.Component {
         </div>
       </div>
     </div>
->>>>>>> master
     )
   }
 }
