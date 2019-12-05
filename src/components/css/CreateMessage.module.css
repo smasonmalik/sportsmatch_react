@@ -1,6 +1,7 @@
 .send {
   width: 100%;
   margin-left: 8%;
+  box-shadow: 1px 1px 5px #C7C7C7;
 }
 
 .text {

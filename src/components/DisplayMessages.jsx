@@ -86,7 +86,7 @@ class DisplayMessages extends Component {
       )
     } else {
       return (
-        <div>
+        <div className={styles.topDiv}>
         <div className={styles.opponent}>
           <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
         </div>

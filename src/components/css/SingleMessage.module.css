@@ -15,7 +15,8 @@
  color: white;
  font-family: times;
  position:relative;
- border-radius: 5px
+ border-radius: 5px;
+ box-shadow: 1px 1px 5px grey;
 }
 
 .speechBubbleUser:before {
@@ -34,7 +35,6 @@
 .speechBubbleOpponent {
  max-width: 40%;
  margin-left: 55%;
- /* background-color: #4875EF; */
  background-image: linear-gradient(to left, #4875EF, #A8C6F4);
  padding: 6px;
  padding-left: 30px;
@@ -43,7 +43,8 @@
  color: white;
  font-family: times;
  position:relative;
- border-radius: 5px
+ border-radius: 5px;
+ box-shadow: 1px 1px 5px grey;
 }
 
 .speechBubbleOpponent:before {
