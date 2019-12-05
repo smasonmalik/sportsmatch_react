@@ -41,9 +41,9 @@ class GameRequests extends React.Component {
   render() {
     return (<div>
       <h2 align="center">Game Requests</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm">
           <h3>Requests Made</h3>
           <ul className="list-group list-group-flush">
           {this.state.requests_organiser.map(result => (
@@ -60,7 +60,7 @@ class GameRequests extends React.Component {
             ))}
           </ul>
           </div>
-          <div class="col-sm">
+          <div className="col-sm">
           <h3>Challenges Recieved</h3>
             <ul className="list-group list-group-flush">
             {this.state.requests_challenger.map(result => (

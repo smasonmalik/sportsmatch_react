@@ -14,40 +14,42 @@ class GameRequest extends Component {
 
   handleNewGame(e) {
     e.preventDefault();
-    let self = this;
-    axios({
-      method: 'post',
-      url: "/api/v1/games/",
-      headers: {
-        "Content-Type": "application/json",
-        "api-token": localStorage.getItem('jwtToken')
-      },
-      data:
-      {
-        organiser_id: parseInt(localStorage.getItem('user_id')),
-        status: "pending",
-        opponent_id: self.props.opponent_id,
-        game_date: document.getElementById("date-input").value,
-        game_time: document.getElementById("time-input").value
-      }})
+    var element = document.getElementById("date-input").value;
+    if(Date.parse(element) >= new Date()) {
+      let self = this;
+      axios({
+        method: 'post',
+        url: "/api/v1/games/",
+        headers: {
+          "Content-Type": "application/json",
+          "api-token": localStorage.getItem('jwtToken')
+        },
+        data:
+        {
+          organiser_id: parseInt(localStorage.getItem('user_id')),
+          status: "pending",
+          opponent_id: self.props.opponent_id,
+          game_date: document.getElementById("date-input").value,
+          game_time: document.getElementById("time-input").value
+        }})
 
-      .then(function(response) {
-        console.log(response);
-      })
-      .then(function() {
-        self.setState({
-          gameRequest: true
+        .then(function(response) {
+          console.log(response);
         })
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
+        .then(function() {
+          self.setState({
+            gameRequest: true
+          })
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+      }
   }
 
   gameDateValidation(e) {
     var element = document.getElementById("date-input");
     if(Date.parse(e.target.value) < new Date()) {
-      // alert('Game date can\'t be in the past')
       element.classList.add("form-control-error");
     } else {
       element.classList.remove("form-control-error");
