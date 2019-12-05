@@ -59,7 +59,7 @@ class PlayerProfile extends React.Component {
       }
     })
     .catch(function(error) {
-      console.log(error)
+      console.log(error.description)
     })
   }
 
@@ -79,14 +79,6 @@ class PlayerProfile extends React.Component {
     }
   }
 
-  getGender() {
-    if (this.state.player.gender === "Male" || this.state.player.gender === "Female")
-      return (<p className="card-text">{this.state.player.gender}</p>)
-      else {
-        return <span></span>
-      }
-  }
-
   render() {
     return (
         <div className="card text-center">
@@ -102,7 +94,6 @@ class PlayerProfile extends React.Component {
             <p className="card-text">{this.state.player.sport}</p>
             {this.getGender()}
             {this.getAgeBracket()}
-            <p className="card-text">{this.state.player.bio}</p>
             <GameRequestForm opponent_id={this.state.player.id} />
           </div>
         </div>

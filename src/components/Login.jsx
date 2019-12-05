@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from './Home'
+import FlashMessage from './FlashMessage'
 import styles from './css/Login.module.css'
 
 
@@ -10,6 +11,7 @@ class Login extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
+      errorMessage: ''
     }
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -33,8 +35,14 @@ class Login extends Component {
       })
       .then(this.props.handleLogIn())
       .catch(function(error) {
-        console.log(error)
-        alert(error.response.data.error);
+        self.setState({
+          errorMessage: error.response.data.error
+        });
+        setTimeout(() => {
+          self.setState({
+            errorMessage: ''
+          })
+        }, 3000)
       });
     }
 
@@ -50,25 +58,30 @@ class Login extends Component {
                 <img className={styles.mainLogo} src="../../sportsmatchlogo.png" alt='SportsMatch'/>
                 <h5 className={styles.heading}>Welcome Back, Please Login to Your Account</h5>
                 <form onSubmit={e => {e.preventDefault();}} className="form-login">
-                  <div>
+                  <div className={styles.inputField}>
                     <label>email</label><br/>
                     <input
                       id="email-input"
                       name="email"
                       type="text"
                       required="required"
-                      className={styles.inputField}
                     />
                   </div>
-                  <div>
+                  <div className={styles.inputField}>
                     <label>password</label><br/>
                     <input
                       id="password-input"
                       name="password"
                       type="password"
                       required="required"
-                      className={styles.inputField}
                     />
+                  </div>
+                  <div className={styles.inputField}>
+                    {this.state.errorMessage ?
+                      <FlashMessage
+                        message={this.state.errorMessage}
+                        type="error"
+                      /> : null }
                   </div>
                   <div className="form-group" style={{textAlign: 'center'}}>
                     <button
