@@ -253,7 +253,6 @@ class EditProfileForm extends React.Component {
                 className="form-control"
                 onChange={this.handleChange}
               >
-                <option value={this.state.player.gender}>-----</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="not_say">Rather Not Say</option>
