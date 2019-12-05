@@ -91,7 +91,7 @@ class PlayerProfile extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className={`container ${styles.playerProfilePage}`}>
       <div className="row">
         <div className={`container col-lg-6 col-md-4 col-sm-6 ${styles.profileContainer}`}>
           

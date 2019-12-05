@@ -1,23 +1,49 @@
 .header {
-  font-family: times;
+  font-weight: bold;
+  font-size: 3rem;
+  font-family: 'Sulphur Point', sans-serif;
+  margin-bottom: 20px;
 }
 
 .requestsHeader {
   color: white;
   background-color: #508D6D;
-  text-decoration: none !important
+  text-decoration: none !important;
+  font-family: 'Sulphur Point', sans-serif;
+  /* display: flex;
+  justify-content: left; */
+  text-align: left;
 }
 
-.requestsHeader:hover {
+.requestsHeader:focus {
+  outline: 0;
+}
+
+/* .requestsHeader:hover {
   color: white;
   outline: none;
-}
+  padding: 0;
+  
+} */
 
 .cardHeader {
   background-color: #508D6D;
+  /* margin-bottom: 200px; */
+}
+
+.card {
+  overflow: none;
+  margin-bottom: 30px;
 }
 
 .arrow {
-  justify-content: right;
+  display: flex;
+  float: right;
+  /* font-size: 100px; */
+}
+
+.cardBox {
+  overflow: hidden;
+  background-color: black;
 }
 

@@ -42,47 +42,47 @@ class GameRequests extends React.Component {
 
   render() {
     return (<div>
-      <h2 className={styles.header}>Your Game Requests</h2>
+      <h2 className={styles.header}>Game Requests</h2>
 
       <div id="accordion">
         <div class="card">
-          <div className = {`card-header ${styles.cardHeader}`}  >
-            <h5 class="mb-0">
-              <button className = {`btn btn-link collapsed  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <div className = {`${styles.cardHeader}`}  >
+            <h5 className = {`  ${styles.requestsHeader}`} >
+              <button className = {`  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <h3>Requests Made <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
               </button>
             </h5>
           </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 
-        <ul className="list-group list-group-flush">
-          {this.state.requests_organiser.map(result => (
-            <SingleGameRequest
-              key={result.id}
-              id={result.id}
-              organiser_id={result.organiser_id}
-              opponent_id={result.opponent_id}
-              opponent_name={result.first_name}
-              game_date={result.game_date}
-              game_time={result.game_time}
-              status={result.status}
-            />
-            ))}
-          </ul>
-    </div>
-  </div>
+            <ul className="list-group list-group-flush">
+              {this.state.requests_organiser.map(result => (
+                <SingleGameRequest
+                  key={result.id}
+                  id={result.id}
+                  organiser_id={result.organiser_id}
+                  opponent_id={result.opponent_id}
+                  opponent_name={result.first_name}
+                  game_date={result.game_date}
+                  game_time={result.game_time}
+                  status={result.status}
+                />
+                ))}
+              </ul>
+          </div>
+        </div>
   <div class="card">
-    <div className = {`card-header ${styles.cardHeader}`} >
-      <h5 class="mb-0">
-        <button className = {`btn btn-link collapsed ${styles.requestsHeader}`} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        <h3>Challenges Received <IoIosArrowDown /> </h3>
+    <div className = {`${styles.cardHeader}`} >
+      <h5 className = {`  ${styles.requestsHeader}`}>
+        <button className = {`${styles.requestsHeader}`} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h3>Challenges Received <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
         </button>
       </h5>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div className = {` ${styles.cardBox}`} class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
-      <ul className="list-group list-group-flush">
+      <ul className = {`list-group list-group-flush ${styles.cardBox}`}>
             {this.state.requests_challenger.map(result => (
               <SingleGameRequest
                 key={result.id}
