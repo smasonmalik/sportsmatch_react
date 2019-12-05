@@ -8,7 +8,8 @@ class EditProfileForm extends React.Component {
     super(props)
     this.state = {
       player: {},
-      isProfileEdited: false
+      isProfileEdited: false,
+      bio: ''
     }
     this.handleEdit = this.handleEdit.bind(this)
     this.patchRequestBody = this.patchRequestBody.bind(this)
@@ -30,7 +31,8 @@ class EditProfileForm extends React.Component {
     })
     .then(function(response) {
       self.setState({
-        player: response.data
+        player: response.data,
+        bio: response.data.bio
       })
     })
     .then(function(error) {
@@ -180,7 +182,8 @@ class EditProfileForm extends React.Component {
               <input
                 id="bio-name-input"
                 name="bio"
-                placeholder={this.state.player.bio}
+                value={this.state.bio}
+                onChange={(e)=>{this.setState({bio: e.target.value})}}
                 type="text"
                 className="form-control"
                 onChange={this.handleChange}
@@ -218,7 +221,7 @@ class EditProfileForm extends React.Component {
                 className="form-control"
                 onChange={this.handleChange}
               >
-                <option value={this.state.player.ability}>{this.state.player.ability}</option>
+                <option disabled selected value>{this.state.player.ability}</option>
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
@@ -235,6 +238,7 @@ class EditProfileForm extends React.Component {
                 className="form-control"
                 onChange={this.handleChange}
               >
+                <option disabled selected value>{this.state.player.sport}</option>
                 <option value="Tennis">Tennis</option>
                 <option value="TableTennis">TableTennis</option>
                 <option value="Squash">Squash</option>
@@ -253,6 +257,7 @@ class EditProfileForm extends React.Component {
                 className="form-control"
                 onChange={this.handleChange}
               >
+                <option disabled selected value>{this.state.player.gender}</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="not_say">Rather Not Say</option>
