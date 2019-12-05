@@ -50,32 +50,33 @@ class Login extends Component {
       return <Home />;
     } else {
       return (
-        <div className={`container ${styles.myContainer}`}>
+
           <div className={`row ${styles.myRow}`}>
-            <div className={`col-4 ${styles.myCol}`} id="login_form">
-              <div className="form-container">
+            <div className={`col-4 ${styles.leftCol}`}>
+              <div className={styles.myFormContainer}>
                 <img className={styles.mainLogo} src="../../sportsmatchlogo.png" alt='SportsMatch'/>
                 <h5 className={styles.heading}>Welcome Back. Please Login to Your Account</h5>
-                <form onSubmit={e => {e.preventDefault();}} className="form-login">
+                <form onSubmit={e => {e.preventDefault();}} className="form-login" autocomplete="off">
 
-                  <div className={styles.inputField}>
+                  <div>
                     <input
                       id="email-input"
                       name="email"
                       type="text"
                       required="required"
                       placeholder="email"
+                      className={styles.inputField}
                     />
                   </div>
-                  <div className={styles.inputField}>
+                  <div>
                     <input
                       id="password-input"
                       name="password"
+                      autocomplete="false"
                       type="password"
                       required="required"
                       placeholder="password"
                       className={styles.inputField}
-
                     />
                   </div>
                   <div className={styles.inputField}>
@@ -85,11 +86,11 @@ class Login extends Component {
                         type="error"
                       /> : null }
                   </div>
-                  <div className="form-group" style={{textAlign: 'center'}}>
+                  <div style={{textAlign: 'center'}}>
                     <button
                       name="login"
                       type="submit"
-                      className="login-button"
+                      className={styles.loginButton}
                       onClick={this.handleLogin}>
                       Login
                     </button>
@@ -102,7 +103,6 @@ class Login extends Component {
               </div>
               <div className="col-8" id={styles.rightColumn}></div>
             </div>
-          </div>
       );
     }
   }

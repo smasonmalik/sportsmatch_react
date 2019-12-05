@@ -14,38 +14,47 @@
   margin-top: 35px;
   margin-left: 15px;
   margin-bottom: 20px;
-  width: 80%
+  width: 90%;
+  font-size: 15px;
+  height: 50px;
 }
 
-.myContainer {
-  height: 500px;
-  margin: 100px;
-  background-color: #AAD4C9;
-  box-shadow: 2px 2px 40px 2px #ECECEC;
-  border-radius: 5px;
-  width: 80%;
+.inputField:active,
+.inputField:focus,
+.inputField:hover {
+  background-color: white
+}
+
+.inputField::placeholder {
+  font-size: 20px;
 }
 
 .myRow {
-  height: 500px
+  height: 800px;
+  padding-top: 100px
 }
 
-.myCol {
+.leftCol {
   background-color: white;
   padding: 30px;
+
+  position: relative;
 }
 
-.my-form-container{
-  margin-top: 15%;
-  padding: 25px;
+.myFormContainer{
+  margin-top: 25%;
 }
 
 .box:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.4);
 }
 
+.loginButton:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.4);
+}
+
 #rightColumn {
-  /* background-image: url("https://ak5.picdn.net/shutterstock/videos/12319925/thumb/1.jpg") */
-  /* background-image: url("https://live.staticflickr.com/5239/5911435807_82cd510fc0_b.jpg") */
+  /* background-color: #AAD4C9; */
+  background-color: #2A2A2A;
   background-image: url("https://www.lboro.ac.uk/media/wwwlboroacuk/external/content/research/sti/slide1.png")
 }
