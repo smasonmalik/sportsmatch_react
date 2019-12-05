@@ -28,8 +28,6 @@ class GameRequests extends React.Component {
       }
     })
     .then(function(response) {
-      console.log(response.data.challenger_games);
-      console.log(response.data.organiser_games);
       self.setState({
         requests_challenger: response.data.challenger_games,
         requests_organiser: response.data.organiser_games

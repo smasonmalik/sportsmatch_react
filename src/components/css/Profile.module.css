@@ -1,0 +1,30 @@
+.profileImage {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bottom right text */
+.textBlock {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* background-color: black; */
+  color: black;
+  margin: auto;
+  visibility: visible;
+}
+
+.textBlockHide {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  visibility: hidden;
+}

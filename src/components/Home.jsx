@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import SearchBar from './SearchBar';
+import FilterBar from './FilterBar';
 import Player from './Player';
 import Login from './Login'
 import styles from './css/Home.module.css'
@@ -74,7 +74,6 @@ class Home extends Component {
         },
       })
       .then(function(response) {
-        console.log(response.data);
         self.setState({ players: response.data })
       })
       .catch(function(error) {
@@ -138,7 +137,7 @@ class Home extends Component {
                 <h2 className={styles.heading}>Find your next opponent here!</h2>
               </div>
                 <div>
-                  <SearchBar
+                  <FilterBar
                       distance={this.state.distance}
                       ability={this.state.ability}
                       handleChange={this.handleChange}
@@ -159,27 +158,3 @@ class Home extends Component {
   }
 }
 export default Home;
-
-// //{this.state.players.map(player => (
-//   <Player
-//     key={player.id}
-//     id={player.id}
-//     firstName={player.first_name}
-//     ability={player.ability}
-//     rank_points={player.rank_points}
-//     gender={player.gender}
-//     bio={player.bio}
-//     sport={player.sport}
-//   />
-// ))}
-//
-// <div>
-//   <div>
-//     <SearchBar
-//         distance={this.state.distance}
-//         ability={this.state.ability}
-//         handleChange={this.handleChange}
-//         updateDistance={this.updateDistance}
-//     />
-//   </div>
-//   <div>

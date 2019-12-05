@@ -45,6 +45,8 @@ class Signup extends Component {
         .catch(function(error) {
           console.log(error);
         });
+      } else {
+        alert('Passwords don\'t match')
       }
     }
 

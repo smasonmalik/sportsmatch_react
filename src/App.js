@@ -5,7 +5,6 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
-// import Results from './components/Results';
 import PrivateRoute from './components/PrivateRoute';
 import PlayerProfile from './components/PlayerProfile'
 import EditProfileForm from './components/EditProfileForm'

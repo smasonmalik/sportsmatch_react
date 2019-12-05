@@ -3,6 +3,7 @@ import axios from "axios";
 import CreateMessage from './CreateMessage';
 import SingleMessage from './SingleMessage';
 import styles from './css/DisplayMessages.module.css'
+import Location from './Location';
 
 class DisplayMessages extends Component {
   constructor(props) {
@@ -57,6 +58,17 @@ class DisplayMessages extends Component {
       return this.state.messageDetails.organiser
     }
   }
+
+  renderMap(){
+    if (this.state.messageDetails.player_postcode){
+      return(
+        <div>
+          <Location postcode={this.state.messageDetails.player_postcode}/>
+        </div>
+      )
+    }
+  }
+
   render() {
     if (this.state.messageData === []) {
       return (
@@ -88,6 +100,7 @@ class DisplayMessages extends Component {
               opponent={this.state.messageDetails.opponent}
             />
           ))}
+          {this.renderMap()}
           <CreateMessage
             id={this.state.game_id}
             organiser_id={this.state.organiser_id}
@@ -96,7 +109,6 @@ class DisplayMessages extends Component {
         </div>
       )
     }
-
   }
 }
 export default DisplayMessages;

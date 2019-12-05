@@ -1,5 +1,4 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 class EditBioForm extends React.Component {
@@ -22,7 +21,7 @@ class EditBioForm extends React.Component {
         bio: document.getElementById("bio-input").value,
       }})
       .then(function() {
-        self.props.handleEditBio()
+        self.props.handleEditBio(document.getElementById("bio-input").value)
       })
       .catch(function(error) {
         console.log(error)
