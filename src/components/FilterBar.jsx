@@ -35,7 +35,8 @@ class FilterBar extends React.Component {
                         formatLabel={value => `${value} km`}
                         value={this.state.distance}
                         onChange={value => this.setState({ distance: value })}
-                        onChangeComplete={this.props.updateDistance}/>
+                        onChangeComplete={this.props.updateDistance}
+                        />
                     </div>
                 </div>
             </div>

@@ -108,8 +108,10 @@ class Results extends React.Component {
   render() {
 
       return (
-      <div>
-        <h2 className={styles.mainHeader}>Check out your game result history!</h2>
+      <div className={styles.topDiv}>
+        <div className={styles.headingDiv}>
+          <h2 className={styles.mainHeader}>Check out your game result history!</h2>
+        </div>
         <div className={`container ${styles.myContainer}`}>
           <div className={`row ${styles.myRow}`}>
             <div className={`col-lg-6 col-md-6 col-sm-12 ${styles.col}`}>
