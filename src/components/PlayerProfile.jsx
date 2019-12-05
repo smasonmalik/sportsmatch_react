@@ -82,7 +82,7 @@ class PlayerProfile extends React.Component {
 
   getGender() {
      if (this.state.player.gender === "male" || this.state.player.gender === "female")
-       return (<p className="card-text">{this.state.player.gender}</p>)
+       return (<p className="card-text">{this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1)}</p>)
        else {
          return <span></span>
        }
