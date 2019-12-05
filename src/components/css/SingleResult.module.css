@@ -36,3 +36,12 @@
   text-align: right;
   margin-right: 10px;
 }
+
+.col {
+  text-align: center;
+}
+
+.player {
+  font-size: 20px;
+  font-weight: bold;
+}

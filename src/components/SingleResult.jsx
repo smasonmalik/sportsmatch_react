@@ -32,7 +32,17 @@ class SingleResult extends React.Component {
       return (
         <div className={styles.resultWin}>
           <div>
-            <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
+            <div className='row'>
+              <div className={`col-4 ${styles.col}`}>
+                <p className={styles.player}>{this.props.organiser_name}</p>
+              </div>
+              <div className={`col-4 ${styles.col}`}>
+                <p style={{fontSize: '12px', fontWeight: 'bold'}}>VS.</p>
+              </div>
+              <div className={`col-4 ${styles.col}`}>
+                <p className={styles.player}>{this.props.opponent_name}</p>
+              </div>
+            </div>
             <div className='row'>
               <div className='col-6'>
                 <p><strong>You Won!</strong></p>
@@ -49,7 +59,17 @@ class SingleResult extends React.Component {
       return (
         <div className={styles.resultLose}>
           <div>
-            <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
+            <div className='row'>
+              <div className={`col-4 ${styles.col}`}>
+                <p className={styles.player}>{this.props.organiser_name}</p>
+              </div>
+              <div className={`col-4 ${styles.col}`}>
+                <p style={{fontSize: '12px', fontWeight: 'bold'}}>VS.</p>
+              </div>
+              <div className={`col-4 ${styles.col}`}>
+                <p className={styles.player}>{this.props.opponent_name}</p>
+              </div>
+            </div>
             <div className='row'>
               <div className='col-6'>
                 <p><strong>You Lost!</strong></p>
@@ -65,14 +85,24 @@ class SingleResult extends React.Component {
       return (
         <div className={styles.resultUndecided}>
           <div>
-            <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
-            <div className='row'>
-              <div className='col-6'>
-                <p><strong>Confirmation pending...</strong></p>
-              </div>
-              <div className='col-6'>
-                <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
-              </div>
+          <div className='row'>
+            <div className={`col-4 ${styles.col}`}>
+              <p className={styles.player}>{this.props.organiser_name}</p>
+            </div>
+            <div className={`col-4 ${styles.col}`}>
+              <p style={{fontSize: '12px', fontWeight: 'bold'}}>VS.</p>
+            </div>
+            <div className={`col-4 ${styles.col}`}>
+              <p className={styles.player}>{this.props.opponent_name}</p>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-6'>
+              <p><strong>Confirmation pending...</strong></p>
+            </div>
+            <div className='col-6'>
+              <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
+            </div>
             </div>
           </div>
         </div>
