@@ -41,16 +41,19 @@ class DisplayMessages extends Component {
       console.log(error)
     })
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.messageSent !== prevState.messageSent) {
       this.getMessages()
     }
   }
+
   handleSubmitMessage() {
     this.setState(prevState => {
       return { messageSent: !prevState.messageSent }
     })
   }
+
   showOtherUserName() {
     if (this.state.messageDetails.organiser_id === parseInt(localStorage.getItem('user_id'))) {
       return this.state.messageDetails.opponent
@@ -84,7 +87,7 @@ class DisplayMessages extends Component {
     } else {
       return (
         <div>
-        <div className={styles.oponent}>
+        <div className={styles.opponent}>
           <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
         </div>
           {this.state.messageData.map((message) => (

@@ -79,13 +79,6 @@ class Login extends Component {
                       className={styles.inputField}
                     />
                   </div>
-                  <div className={styles.inputField}>
-                    {this.state.errorMessage ?
-                      <FlashMessage
-                        message={this.state.errorMessage}
-                        type="error"
-                      /> : null }
-                  </div>
                   <div style={{textAlign: 'center'}}>
                     <button
                       name="login"
@@ -97,7 +90,14 @@ class Login extends Component {
                   </div>
                 </form>
                 <div style={{textAlign: 'center'}}>
-                  <NavLink to='/signup'>Sign Up</NavLink>
+                  <NavLink to='/signup' style={{textDecoration: 'underline', fontSize: 'small'}}>Don't have an account yet? Create one now</NavLink>
+                </div>
+                <div className={styles.inputField}>
+                  {this.state.errorMessage ?
+                    <FlashMessage
+                      message={this.state.errorMessage}
+                      type="error"
+                    /> : null }
                 </div>
                 </div>
               </div>

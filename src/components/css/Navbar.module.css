@@ -24,6 +24,7 @@
 
 .innerDiv {
   background-color: #357151;
+  box-shadow: 2px 0px 5px black;
 }
 
 .navDiv img {
