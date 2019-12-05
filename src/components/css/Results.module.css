@@ -1,7 +1,24 @@
 .heading {
   text-align: center;
+  color: grey;
 }
 
 .col {
   border-right: solid 1px lightgrey;
+}
+
+.myContainer {
+  margin-top: 5%;
+}
+
+.mainHeader {
+  text-align: left;
+  color: grey;
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+.info {
+  color: grey;
+  font-size: 12px;
 }

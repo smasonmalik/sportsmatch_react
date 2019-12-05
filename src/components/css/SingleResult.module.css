@@ -4,6 +4,7 @@
   padding-left: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-top: 15px;
 }
 
 .resultWin:hover {
@@ -20,6 +21,7 @@
   padding-left: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-top: 15px;
 }
 
 .resultUndecided {
@@ -28,6 +30,7 @@
   padding-left: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-top: 15px;
 }
 
 .gameDate {

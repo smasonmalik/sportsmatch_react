@@ -9,24 +9,6 @@ class SingleResult extends React.Component {
     this.result = this.result.bind(this);
   }
 
-  // winnerName() {
-  //   if (this.props.winner_id === this.props.organiser_id) {
-  //     return (<p>Winner: {this.props.organiser_name}</p>)
-  //   }
-  //   if (this.props.winner_id === this.props.opponent_id) {
-  //     return (<p>Winner: {this.props.opponent_name}</p>)
-  //   }
-  // }
-  //
-  // loserName() {
-  //   if (this.props.loser_id === this.props.organiser_id) {
-  //     return (<p>Loser: {this.props.organiser_name}</p>)
-  //   }
-  //   if (this.props.loser_id === this.props.opponent_id) {
-  //     return (<p>Loser: {this.props.opponent_name}</p>)
-  //   }
-  // }
-
   result() {
     if (this.props.winner_id === parseInt(localStorage.getItem('user_id'))) {
       return (
@@ -113,10 +95,21 @@ class SingleResult extends React.Component {
   render() {
     if ((parseInt(localStorage.getItem('user_id')) === this.props.organiser_id) && (this.props.loser_id == null)) {
       return (
-        <div>
+        <div className={styles.resultUndecided}>
           <div>
-            <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
-            <p>Game Date: {this.props.game_date}</p>
+          <div className='row'>
+            <div className={`col-4 ${styles.col}`}>
+              <p className={styles.player}>{this.props.organiser_name}</p>
+            </div>
+            <div className={`col-4 ${styles.col}`}>
+              <p style={{fontSize: '12px', fontWeight: 'bold'}}>VS.</p>
+            </div>
+            <div className={`col-4 ${styles.col}`}>
+              <p className={styles.player}>{this.props.opponent_name}</p>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-6'>
             <Link to={{
               pathname: `/results/${this.props.id}/new`,
               state: {
@@ -127,6 +120,11 @@ class SingleResult extends React.Component {
               }
             }} className="btn custom-button">
             Add Game Result</Link>
+            </div>
+            <div className='col-6'>
+              <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
+            </div>
+            </div>
           </div>
         </div>
       )
