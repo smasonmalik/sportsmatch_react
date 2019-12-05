@@ -235,7 +235,6 @@ class EditProfileForm extends React.Component {
                 className="form-control"
                 onChange={this.handleChange}
               >
-                <option value={this.state.player.sport}>-----</option>
                 <option value="Tennis">Tennis</option>
                 <option value="TableTennis">TableTennis</option>
                 <option value="Squash">Squash</option>
