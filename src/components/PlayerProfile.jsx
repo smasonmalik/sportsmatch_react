@@ -81,22 +81,24 @@ class PlayerProfile extends React.Component {
 
   render() {
     return (
-        <div className="card text-center">
-          <div className="card-header">
-            Player Profile
-          </div>
-          <div className="card-body">
-          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
-            <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">{this.state.player.ability}</p>
-            <p className="card-text">{this.state.player.bio}</p>
-            <p className="card-text">{this.state.player.location}</p>
-            <p className="card-text">{this.state.player.sport}</p>
-            {this.getGender()}
-            {this.getAgeBracket()}
-            <GameRequestForm opponent_id={this.state.player.id} />
-          </div>
+      <div className="card text-center">
+        <div className="card-header">
+          Player Profile
         </div>
+        <div className="card-body">
+        <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+          <h5 className="card-title">{this.state.player.first_name}</h5>
+          <p className="card-text">{this.state.player.ability}</p>
+          <p className="card-text">{this.state.player.bio}</p>
+          <p className="card-text">{this.state.player.location}</p>
+          <p className="card-text">{this.state.player.sport}</p>
+          {this.getGender()}
+          {this.getAgeBracket()}
+          <p className="card-text">{this.state.player.bio}</p>
+          <GameRequestForm opponent_id={this.state.player.id} />
+        </div>
+      </div>
+
     )
   }
 }

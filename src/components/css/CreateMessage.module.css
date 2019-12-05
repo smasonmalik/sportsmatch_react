@@ -1,0 +1,15 @@
+.send {
+  width: 100%;
+  margin-left: 8%;
+}
+
+.text {
+  width: 98%;
+}
+
+.formDiv {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

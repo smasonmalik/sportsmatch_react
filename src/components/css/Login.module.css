@@ -21,8 +21,9 @@
   height: 500px;
   margin: 100px;
   background-color: #AAD4C9;
-  box-shadow: 2px 2px 40px 2px grey;
+  box-shadow: 2px 2px 40px 2px #ECECEC;
   border-radius: 5px;
+  width: 80%;
 }
 
 .myRow {
