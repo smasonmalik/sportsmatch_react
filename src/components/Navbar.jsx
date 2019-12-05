@@ -16,9 +16,7 @@ class Navbar extends React.Component {
   sessionButton() {
       if (this.props.isLoggedIn === true){
         return (
-              <button>
                 <LogoutButton handleLoggedInState={this.props.handleLoggedInState}>Logout</LogoutButton>
-              </button>
         );
       }
     }
