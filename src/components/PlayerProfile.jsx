@@ -79,6 +79,15 @@ class PlayerProfile extends React.Component {
     }
   }
 
+
+  getGender() {
+     if (this.state.player.gender === "male" || this.state.player.gender === "female")
+       return (<p className="card-text">{this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1)}</p>)
+       else {
+         return <span></span>
+       }
+   }
+
   render() {
     return (
       <div className="card text-center">
@@ -89,7 +98,6 @@ class PlayerProfile extends React.Component {
         <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
           <h5 className="card-title">{this.state.player.first_name}</h5>
           <p className="card-text">{this.state.player.ability}</p>
-          <p className="card-text">{this.state.player.bio}</p>
           <p className="card-text">{this.state.player.location}</p>
           <p className="card-text">{this.state.player.sport}</p>
           {this.getGender()}

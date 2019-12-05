@@ -25,7 +25,7 @@ class EditGameForm extends React.Component {
         game_time: document.getElementById("time-input").value
       }})
       .then(function() {
-        self.props.handleEdit()
+        self.props.handleEdit(document.getElementById("date-input").value, document.getElementById("time-input").value)
       })
       .catch(function(error) {
         console.log(error)
