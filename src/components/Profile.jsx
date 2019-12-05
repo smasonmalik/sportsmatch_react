@@ -6,7 +6,7 @@ import EditImageForm from './EditImageForm'
 import EditBioForm from './EditBioForm'
 import { NavLink, Redirect } from 'react-router-dom'
 import styles from './css/Profile.module.css'
-
+import { FaPencilAlt } from 'react-icons/fa'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -129,12 +129,20 @@ class Profile extends React.Component {
   render() {
     if (localStorage.getItem('jwtToken')) {
       return (
-        <div className="card text-center">
-          <div className="card-header">
-            Profile Page
-          </div>
-          <div id="profile-image-container" className = {`${styles.container}`} style={{width: '10rem'}}>
-            <img id="profile-image" className="align-self-start mr-3 rounded mx-auto d-block" onMouseOver={this.mouseOverImage} onMouseOut={this.mouseOutImage} onClick={this.handleClickImage} src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+        <div>
+        <div className = {`${styles.profileContainer}`}>
+          <h3 className={styles.header}>MY PROFILE</h3>
+          <div className = {`${styles.pictureContainer}`}>
+            <img 
+              id="profile-image" 
+              className="align-self-start mr-3 rounded mx-auto d-block" 
+              onMouseOver={this.mouseOverImage} 
+              onMouseOut={this.mouseOutImage} 
+              onClick={this.handleClickImage} 
+              src={this.state.profile_photo} 
+              alt="Profile" 
+              className = {`${styles.profilePic}`}>
+            </img>
             <div id="edit-profile-image-label" className = {`${styles.textBlockHide}`}>Click To Edit</div>
           </div>
           <div>
@@ -151,16 +159,18 @@ class Profile extends React.Component {
             <br/>
             <p className="card-test">Preferred Sport: {this.state.player.sport}</p>
             <p className="card-text">Gender: {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
-            <p className="card-text">{this.state.player.dob}</p>
+            <p className="card-text">Date of Birth: {this.state.player.dob}</p>
             <p className="card-text">F.R.E.D. Ranking: {this.state.player.ability}</p>
             <p className="card-text">F.R.E.D. Points: {this.state.player.rank_points}</p>
             <ul className="list-group list-group-flush">
               <div>
-                <NavLink to="/profile/edit">Edit Profile</NavLink>
+                <NavLink to="/profile/edit"><FaPencilAlt /> edit profile </NavLink>
               </div>
             </ul>
-            <GameRequests handleGameRefresh={this.handleGameRefresh}/>
+            
           </div>
+          <GameRequests handleGameRefresh={this.handleGameRefresh}/>
+        </div>
         </div>
       )
     } else {

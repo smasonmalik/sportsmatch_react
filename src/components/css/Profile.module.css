@@ -1,14 +1,21 @@
 .profileImage {
   opacity: 0.4;
   filter: alpha(opacity=40);
+  font-style: italics;
 }
 
 /* Container holding the image and the text */
-.container {
+.profileContainer {
   position: relative;
   margin-left: auto;
   margin-right: auto;
 }
+
+.pictureContainer {
+  padding-left: 20px;
+}
+
+
 
 /* Bottom right text */
 .textBlock {
@@ -16,9 +23,10 @@
   top: 0px;
   left: 0px;
   /* background-color: black; */
-  color: black;
+  /* color: black; */
   margin: auto;
   visibility: visible;
+  color: gray;
 }
 
 .textBlockHide {
@@ -27,4 +35,14 @@
   left: 0px;
   margin: auto;
   visibility: hidden;
+  
+}
+
+.header {
+  color:gray;
+  letter-spacing: 1px;
+}
+
+.profilePic {
+  width: 10rem;
 }

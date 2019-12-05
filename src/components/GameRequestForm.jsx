@@ -47,13 +47,11 @@ class GameRequest extends Component {
   gameDateValidation(e) {
     var element = document.getElementById("date-input");
     if(Date.parse(e.target.value) < new Date()) {
-      // alert('Game date can\'t be in the past')
       element.classList.add("form-control-error");
     } else {
       element.classList.remove("form-control-error");
     }
   }
-
 
   render() {
     var tempDate = new Date();
@@ -74,7 +72,7 @@ class GameRequest extends Component {
       else {
        return (
         <div className="form-container">
-          <h4>Request A Game</h4>
+          <h4 className={styles.title}>Request A Game</h4>
           <form
             onSubmit={e => {
               e.preventDefault();
@@ -103,7 +101,7 @@ class GameRequest extends Component {
             </div>
             <div className='row'>
               <div className='col'>
-              <div className="form-group">
+              <div className={styles.button}>
               <button
                 name="requestGame"
                 type="submit"
