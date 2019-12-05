@@ -1,16 +1,16 @@
-// Cypress.Commands.add("signup_response", () => {
-//   cy.route({
-//       method: 'POST',      // Route all POST requests
-//       url: '/api/v1/players/new',    // that have a URL that matches '/users/*'
-//       response: {
-//       "jwt_token": "iamatoken",
-//       "user_id": 10
-//   }        // and force the response to be: []
-//   })
-// })
+Cypress.Commands.add("signup_response", () => {
+  cy.route({
+      method: 'POST',
+      url: '/api/v1/players/new', 
+      response: {
+      "jwt_token": "iamatoken",
+      "user_id": 10
+  }       
+  })
+})
 
 Cypress.Commands.add("signup", () => {
-  cy.visit('localhost:3000/signup')
+  cy.visit('/signup')
   cy.get('#first-name-input').type('test')
   cy.get('#last-name-input').type('test')
   cy.get('#dob-input').type('1990-01-01')
@@ -25,7 +25,7 @@ Cypress.Commands.add("signup", () => {
 })
 
 Cypress.Commands.add("login", () => {
-  cy.visit('localhost:3000/login')
+  cy.visit('/')
 
   cy.get('#email-input').type('test@test.com')
   cy.get('#password-input').type('password')

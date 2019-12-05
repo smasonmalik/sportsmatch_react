@@ -56,6 +56,7 @@ class Signup extends Component {
     if(Date.parse(e.target.value) > min_dob) {
       alert('You must be at least 16 to register on SportsMatch')
       element.classList.add("form-control-error");
+      element.value = ''
     } else {
       element.classList.remove("form-control-error");
     }
