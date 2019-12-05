@@ -7,9 +7,7 @@ class NewResult extends React.Component {
     super(props)
     this.state = {
       winner_id: "",
-      loser_id: "",
-      result_confirmed: false,
-      game_id: props.id
+      loser_id: ""
     }
     this.onChangeWinner = this.onChangeWinner.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -34,8 +32,7 @@ class NewResult extends React.Component {
         game_id: this.props.id
       }
     })
-      .then(this.props.handleClick())
-      .then(this.props.handleAddResult())
+      .then(this.props.handleClick(parseInt(this.state.winner_id), parseInt(this.state.loser_id)))
       .catch(function(error) {
         console.log(error)
       })

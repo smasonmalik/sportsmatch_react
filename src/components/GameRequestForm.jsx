@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import styles from './css/GameRequestForm.module.css'
 import FlashMessage from './FlashMessage'
+
 
 class GameRequest extends Component {
   constructor(props) {
@@ -75,7 +77,7 @@ class GameRequest extends Component {
       else {
        return (
         <div className="form-container">
-          <h4>Request Game</h4>
+          <h4 className={styles.title}>Request A Game</h4>
           <form
             onSubmit={e => {
               e.preventDefault();
@@ -111,13 +113,13 @@ class GameRequest extends Component {
             </div>
             <div className='row'>
               <div className='col'>
-              <div className="form-group">
+              <div className={styles.button}>
               <button
                 name="requestGame"
                 type="submit"
-                className="request-button btn btn-primary"
+                className={`request-button btn ${styles.requestButton}`}
                 onClick={this.handleNewGame}>
-                Request Game
+                Send Request
               </button>
             </div>
               </div>

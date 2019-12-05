@@ -6,7 +6,7 @@ import EditImageForm from './EditImageForm'
 import EditBioForm from './EditBioForm'
 import { NavLink, Redirect } from 'react-router-dom'
 import styles from './css/Profile.module.css'
-
+import { FaPencilAlt } from 'react-icons/fa'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -137,12 +137,22 @@ class Profile extends React.Component {
   render() {
     if (localStorage.getItem('jwtToken')) {
       return (
-        <div className="card text-center">
-          <div className="card-header">
-            Profile Page
-          </div>
-          <div id="profile-image-container" className = {`${styles.container}`} style={{width: '10rem'}}>
-            <img id="profile-image" className="align-self-start mr-3 rounded mx-auto d-block" onMouseOver={this.mouseOverImage} onMouseOut={this.mouseOutImage} onClick={this.handleClickImage} src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+        <div>
+          <div className="container">
+            <div className="row">
+              <div className="col-4">
+              <h3 className={styles.header}>MY PROFILE</h3>
+              <div className = {`${styles.pictureContainer}`}>
+            <img 
+              id="profile-image" 
+              className="align-self-start mr-3 rounded mx-auto d-block" 
+              onMouseOver={this.mouseOverImage} 
+              onMouseOut={this.mouseOutImage} 
+              onClick={this.handleClickImage} 
+              src={this.state.profile_photo} 
+              alt="Profile" 
+              className = {`${styles.profilePic}`}>
+            </img>
             <div id="edit-profile-image-label" className = {`${styles.textBlockHide}`}>Click To Edit</div>
           </div>
           <div>
@@ -159,11 +169,27 @@ class Profile extends React.Component {
             {this.getBio()}
             <ul className="list-group list-group-flush">
               <div>
-                <NavLink to="/profile/edit">Edit Profile</NavLink>
+                <NavLink to="/profile/edit"><FaPencilAlt /> Edit profile </NavLink>
               </div>
             </ul>
-            <GameRequests handleGameRefresh={this.handleGameRefresh}/>
+            
           </div>
+
+
+              </div>
+              <div className="col-8">
+              <div className = {`container col-12 ${styles.gameRequestContainer}`}>
+          <GameRequests handleGameRefresh={this.handleGameRefresh}/>
+          </div>
+
+              </div>
+            </div>
+
+
+
+          </div>
+         
+          
         </div>
       )
     } else {
@@ -177,3 +203,7 @@ class Profile extends React.Component {
 }
 
 export default Profile
+
+
+{/* <div className = {`container col-6 ${styles.profileContainer}`}>   
+</div> */}

@@ -5,7 +5,6 @@ import Home from './Home'
 import FlashMessage from './FlashMessage'
 import styles from './css/Login.module.css'
 
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -56,24 +55,27 @@ class Login extends Component {
             <div className={`col-4 ${styles.myCol}`} id="login_form">
               <div className="form-container">
                 <img className={styles.mainLogo} src="../../sportsmatchlogo.png" alt='SportsMatch'/>
-                <h5 className={styles.heading}>Welcome Back, Please Login to Your Account</h5>
+                <h5 className={styles.heading}>Welcome Back. Please Login to Your Account</h5>
                 <form onSubmit={e => {e.preventDefault();}} className="form-login">
+
                   <div className={styles.inputField}>
-                    <label>email</label><br/>
                     <input
                       id="email-input"
                       name="email"
                       type="text"
                       required="required"
+                      placeholder="email"
                     />
                   </div>
                   <div className={styles.inputField}>
-                    <label>password</label><br/>
                     <input
                       id="password-input"
                       name="password"
                       type="password"
                       required="required"
+                      placeholder="password"
+                      className={styles.inputField}
+
                     />
                   </div>
                   <div className={styles.inputField}>

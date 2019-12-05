@@ -8,7 +8,7 @@
 }
 
 .myContainer {
-  margin-top: 5%;
+  margin-top: 7%;
 }
 
 .mainHeader {
@@ -21,4 +21,20 @@
 .info {
   color: grey;
   font-size: 12px;
+}
+
+.topDiv {
+  margin-top: 15%;
+  padding-top: 35px;
+
+}
+
+.headingDiv {
+  background-color: #F3F3F3;
+  padding-top:10%;
+  padding-bottom:25px;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
 }
