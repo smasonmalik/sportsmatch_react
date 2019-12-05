@@ -1,0 +1,59 @@
+.col {
+  margin-top: 20px;
+  padding: 10%;
+  background-color: #FCFCFC;
+  border: none;
+  box-shadow: 1px 0px 6px 1px lightgrey;
+  height: 500px;
+}
+
+.col:hover {
+  transform: scale(1.05);
+}
+
+.cardBody {
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #F1F1F1;
+  box-shadow: 1px 1px 4px 1px lightgrey;
+  border-radius: 6px;
+}
+
+.crop {
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 1px 1px 4px 1px lightgrey;
+  background-color: lightgrey
+}
+
+.crop img {
+  max-height: 250px;
+  max-width: 100%;
+  margin: 0 0 0 0;
+  box-shadow: 2px 2px 15px 2px lightgrey;
+  border-radius: 6px
+}
+
+.viewProfile {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 8px 2px lightgrey;
+}
+
+.viewProfile:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.4);
+}
+
+.bio {
+  font-style: italic;
+}

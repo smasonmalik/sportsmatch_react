@@ -1,0 +1,17 @@
+.emptyInbox {
+  top: 45%;
+  position: absolute;
+  left:0;
+  right:0;
+}
+
+.heading {
+  text-align: center;
+  font-size: 40px;
+  color: grey;
+}
+
+.opponent {
+  width: 100%;
+  background-color: lightgrey;
+}

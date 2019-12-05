@@ -39,6 +39,8 @@ class App extends Component {
     this.handleLogInState();
   }
 
+  // window.flash = (message, type="success") => Bus.emit('flash', ({message, type}));
+
   render() {
     return (
       <div>
