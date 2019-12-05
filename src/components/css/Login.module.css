@@ -13,7 +13,7 @@
 .inputField {
   margin-top: 35px;
   margin-left: 15px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   width: 90%;
   font-size: 15px;
   height: 50px;
@@ -55,6 +55,6 @@
 
 #rightColumn {
   /* background-color: #AAD4C9; */
-  background-color: #2A2A2A;
+  background-color: #2A2A2A ;
   background-image: url("https://www.lboro.ac.uk/media/wwwlboroacuk/external/content/research/sti/slide1.png")
 }

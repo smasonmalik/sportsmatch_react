@@ -38,7 +38,6 @@ class Home extends Component {
       [name]: value
     })
   }
-
   updateDistance = (distance) => {
     this.setState({distance: distance})
   }

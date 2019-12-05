@@ -7,8 +7,7 @@ class Navbar extends React.Component {
   constructor() {
     super()
     this.state = {
-      toggleState: false
-
+      currentPath: ''
     }
     this.sessionButton = this.sessionButton.bind(this);
   }
@@ -21,10 +20,19 @@ class Navbar extends React.Component {
       }
     }
 
+  handleClick(event) {
+    const { name, value} = event.target
+    this.setState({
+      [name]: value
+    })
+  }
+
   render() {
+    const homeClass = this.state.currentPath === 'home' ? styles.active : styles.option
+    const profileClass = this.state.currentPath === 'profile' ? styles.active : styles.option
+    const resultsClass = this.state.currentPath === 'results' ? styles.active : styles.option
 
     return (
-
       <div className={styles.navDiv}>
       <div className="row">
         <div className="col-4"></div>
@@ -39,14 +47,14 @@ class Navbar extends React.Component {
         <nav >
           <div>
             <div className="row">
-              <div className={`col-3 ${styles.option}`}>
-                <NavLink to='/'><button className={styles.button}><i class="fas fa-home"></i></button></NavLink>
+              <div className={`col-3 ${homeClass}`}>
+                <NavLink to='/'><button value='home' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-home"></i>{this.props.location}</button></NavLink>
               </div>
-              <div className={`col-3 ${styles.option}`}>
-                <NavLink to='/profile'><button className={styles.button}><i class="fas fa-user-alt"></i></button></NavLink>
+              <div className={`col-3 ${profileClass}`}>
+                <NavLink to='/profile'><button value='profile' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-user-alt"></i></button></NavLink>
               </div>
-              <div className={`col-3 ${styles.option}`}>
-                <NavLink to='/results'><button className={styles.button}><i class="fas fa-trophy"></i></button></NavLink>
+              <div className={`col-3 ${resultsClass}`}>
+                <NavLink to='/results'><button value='results' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-trophy"></i></button></NavLink>
               </div>
               <div className={`col-3 ${styles.option}`}>
               {this.sessionButton()}

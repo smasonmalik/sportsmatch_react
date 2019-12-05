@@ -17,7 +17,6 @@
   font-size: 18px;
 }
 
-
 .option:hover, .option:active, .option:focus {
   background-color: #508D6D;
   border-color: #508D6D;
@@ -43,4 +42,11 @@
 
 .button:hover, .button:active, .button:focus {
   outline: none;
+}
+
+.active {
+  background-color: #508D6D;
+  border-color: #508D6D;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
