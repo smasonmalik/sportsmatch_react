@@ -133,19 +133,22 @@ class Home extends Component {
       if (localStorage.getItem('jwtToken')) {
         return (
             <div>
-              <div className={`container ${styles.myContainer}`}>
-                <h2 className={styles.heading}>Find your next opponent here!</h2>
-              </div>
-                <div>
-                  <FilterBar
-                      distance={this.state.distance}
-                      ability={this.state.ability}
-                      handleChange={this.handleChange}
-                      updateDistance={this.updateDistance}
-                  />
+              <div className={styles.topDiv}>
+                <div className={`container ${styles.myContainer}`}>
+                  <h2 className={styles.heading}>Find your next opponent here!</h2>
+                  <div>
+                    <FilterBar
+                        distance={this.state.distance}
+                        ability={this.state.ability}
+                        handleChange={this.handleChange}
+                        updateDistance={this.updateDistance}
+                    />
+                  </div>
                 </div>
-              <hr/>
-            {this.insertCarousel()}
+              </div>
+              <div className={styles.carousel}>
+                {this.insertCarousel()}
+              </div>
             </div>
         )
       } else {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
-import './css/navbar.css'
+import styles from './css/Navbar.module.css'
 
 class Navbar extends React.Component {
   constructor() {
@@ -16,9 +16,7 @@ class Navbar extends React.Component {
   sessionButton() {
       if (this.props.isLoggedIn === true){
         return (
-          <li className="nav-item">
-              <LogoutButton handleLoggedInState={this.props.handleLoggedInState}>Logout</LogoutButton>
-          </li>
+                <LogoutButton handleLoggedInState={this.props.handleLoggedInState}>Logout</LogoutButton>
         );
       }
     }
@@ -26,28 +24,39 @@ class Navbar extends React.Component {
   render() {
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink className="navbar-brand" to="/"><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></NavLink>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <NavLink className="nav-link" id="home-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" id="profile-link" to='/profile'>Profile</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" id="results-link" to='/results'>Results</NavLink>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            {this.sessionButton()}
-          </ul> 
+
+      <div className={styles.navDiv}>
+      <div className="row">
+        <div className="col-4"></div>
+        <div className="col-4">
+          <div style={{textAlign: 'center'}}>
+          <NavLink to="/"><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></NavLink>
+          </div>
         </div>
-        </nav>
+        <div className="col-4"></div>
+      </div>
+        <div className={styles.innerDiv}>
+        <nav >
+          <div>
+            <div className="row">
+              <div className={`col-3 ${styles.option}`}>
+                <NavLink to='/'><button className={styles.button}>Home</button></NavLink>
+              </div>
+              <div className={`col-3 ${styles.option}`}>
+                <NavLink to='/profile'><button className={styles.button}>Profile</button></NavLink>
+              </div>
+              <div className={`col-3 ${styles.option}`}>
+                <NavLink to='/results'><button className={styles.button}>Results</button></NavLink>
+              </div>
+              <div className={`col-3 ${styles.option}`}>
+              {this.sessionButton()}
+              </div>
+            </div>
+          </div>
+          </nav>
+          </div>
+
+        </div>
       )
     }
 }
