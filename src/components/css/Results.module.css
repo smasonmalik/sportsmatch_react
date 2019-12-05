@@ -2,6 +2,6 @@
   text-align: center;
 }
 
-.myCol {
-  border: solid 1px red;
+.col {
+  border-right: solid 1px lightgrey;
 }

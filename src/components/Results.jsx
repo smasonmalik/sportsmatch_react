@@ -100,9 +100,8 @@ class Results extends React.Component {
         <h2 align="center">My Results</h2>
         <div class={`container ${styles.myContainer}`}>
           <div class={`row ${styles.myRow}`}>
-            <div class={`col-lg-6 col-md-6 col-sm-12 ${styles.myCol}`}>
-            <h3 className={styles.heading}>Home Games</h3>
-            <ul className="list-group list-group-flush">
+            <div class={`col-lg-6 col-md-6 col-sm-12 ${styles.col}`}>
+            <h3 className={styles.heading}>Home Games</h3><hr/>
               {this.state.organiserResults.map(game => (
               <SingleResult
                 key={game.id}
@@ -117,11 +116,10 @@ class Results extends React.Component {
                 game_date={game.game_date}
                 handleEdit={game.handleEdit}
               />
-              ))}
-            </ul>
+            ))}
             </div>
             <div class={`col-lg-6 col-md-6 col-sm-12 ${styles.myCol}`}>
-            <h3 className={styles.heading}>Away Games</h3>
+            <h3 className={styles.heading}>Away Games</h3><hr/>
               <ul className="list-group list-group-flush">
                 {this.state.opponentResults.map(game => (
                   <SingleResult
