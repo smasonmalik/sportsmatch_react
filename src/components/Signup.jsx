@@ -145,7 +145,7 @@ class Signup extends Component {
                   required="required"
                   className="form-control"
                 >
-                  <option value="Tennis">-----select sport-----</option>
+                  <option disabled selected value>-----select sport-----</option>
                   <option value="Tennis">Tennis</option>
                   <option value="TableTennis">TableTennis</option>
                   <option value="Squash">Squash</option>
@@ -162,7 +162,7 @@ class Signup extends Component {
                   required="required"
                   className="form-control"
                 >
-                  <option value="Beginner">-----select ability-----</option>
+                  <option disabled selected value>-----select ability-----</option>
                   <option value="Beginner">Beginner</option>
                   <option value="Intermediate">Intermediate</option>
                   <option value="Advanced">Advanced</option>
@@ -178,7 +178,7 @@ class Signup extends Component {
                   required="required"
                   className="form-control"
                 >
-                  <option value="Male">-----select gender-----</option>
+                  <option disabled selected value>-----select gender-----</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="not_say">Rather Not Say</option>
