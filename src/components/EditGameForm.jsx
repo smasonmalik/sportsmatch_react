@@ -73,7 +73,7 @@ class EditGameForm extends React.Component {
           <button
             name="requestGame"
             type="submit"
-            className="request-button btn btn-outline-primary"
+            className="edit-game-submit btn btn-outline-primary"
             onClick={this.handleClick}>
             Submit
           </button>
