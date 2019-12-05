@@ -23,7 +23,7 @@ import './commands'
 beforeEach(function () {
     const stub = cy.stub()
     cy.on('window:alert', stub)
-    cy.server({ force404: true })  
+    cy.server({ force404: true })
     cy.route({
         method: 'POST',      // Route all POST requests
         url: '/api/v1/players/new',    // that have a URL that matches '/users/*'
@@ -52,6 +52,12 @@ beforeEach(function () {
         method: 'GET',      // Route all GET requests
         url: '/api/v1/players',    // that have a URL that matches '/users/*'
         response: 'fixture:players'
+    })
+
+    cy.route({
+        method: 'POST',      // Route all GET requests
+        url: '/api/v1/games',    // that have a URL that matches '/users/*'
+        response: 'fixture:new_game'
     })
 
     cy.route({
