@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import SingleResult from './SingleResult'
-import './css/Results.css'
+import styles from './css/Results.module.css'
 
 class Results extends React.Component {
   constructor(props) {
@@ -98,10 +98,10 @@ class Results extends React.Component {
       return (
       <div>
         <h2 align="center">My Results</h2>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-            <h3>I'm the organiser</h3>
+        <div class={`container ${styles.myContainer}`}>
+          <div class={`row ${styles.myRow}`}>
+            <div class={`col-lg-6 col-md-6 col-sm-12 ${styles.myCol}`}>
+            <h3 className={styles.heading}>Home Games</h3>
             <ul className="list-group list-group-flush">
               {this.state.organiserResults.map(game => (
               <SingleResult
@@ -120,8 +120,8 @@ class Results extends React.Component {
               ))}
             </ul>
             </div>
-            <div class="col-sm">
-            <h3>I'm the opponent</h3>
+            <div class={`col-lg-6 col-md-6 col-sm-12 ${styles.myCol}`}>
+            <h3 className={styles.heading}>Away Games</h3>
               <ul className="list-group list-group-flush">
                 {this.state.opponentResults.map(game => (
                   <SingleResult
