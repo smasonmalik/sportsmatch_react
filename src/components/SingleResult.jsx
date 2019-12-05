@@ -33,18 +33,31 @@ class SingleResult extends React.Component {
         <div className={styles.resultWin}>
           <div>
             <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
-            <p>Game Date: {this.props.game_date}</p>
-            <p>You Won!</p>
+            <div className='row'>
+              <div className='col-6'>
+                <p><strong>You Won!</strong></p>
+              </div>
+              <div className='col-6'>
+                <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
+              </div>
+            </div>
           </div>
         </div>
+
       )
-    } else if (this.props.loser_id === parseInt(localStorage.getItem('user_id'))){
+    } else if (this.props.loser_id === parseInt(localStorage.getItem('user_id'))) {
       return (
         <div className={styles.resultLose}>
           <div>
             <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
-            <p>Game Date: {this.props.game_date}</p>
-            <p>Waiting for result confirmation...</p>
+            <div className='row'>
+              <div className='col-6'>
+                <p><strong>You Lost!</strong></p>
+              </div>
+              <div className='col-6'>
+                <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
+              </div>
+            </div>
           </div>
         </div>
       )
@@ -53,8 +66,14 @@ class SingleResult extends React.Component {
         <div className={styles.resultUndecided}>
           <div>
             <p>{this.props.organiser_name} VS. {this.props.opponent_name}</p>
-            <p>Game Date: {this.props.game_date}</p>
-            <p>Waiting for result confirmation...</p>
+            <div className='row'>
+              <div className='col-6'>
+                <p><strong>Confirmation pending...</strong></p>
+              </div>
+              <div className='col-6'>
+                <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
+              </div>
+            </div>
           </div>
         </div>
       )
