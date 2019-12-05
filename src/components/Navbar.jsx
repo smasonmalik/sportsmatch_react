@@ -40,13 +40,13 @@ class Navbar extends React.Component {
           <div>
             <div className="row">
               <div className={`col-3 ${styles.option}`}>
-                <NavLink to='/'><button className={styles.button}>Home</button></NavLink>
+                <NavLink to='/'><button className={styles.button}><i class="fas fa-home"></i></button></NavLink>
               </div>
               <div className={`col-3 ${styles.option}`}>
-                <NavLink to='/profile'><button className={styles.button}>Profile</button></NavLink>
+                <NavLink to='/profile'><button className={styles.button}><i class="fas fa-user-alt"></i></button></NavLink>
               </div>
               <div className={`col-3 ${styles.option}`}>
-                <NavLink to='/results'><button className={styles.button}>Results</button></NavLink>
+                <NavLink to='/results'><button className={styles.button}><i class="fas fa-trophy"></i></button></NavLink>
               </div>
               <div className={`col-3 ${styles.option}`}>
               {this.sessionButton()}
