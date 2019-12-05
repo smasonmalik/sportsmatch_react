@@ -27,7 +27,7 @@ class EditGameButton extends React.Component {
     } else {
       return (
         <div>
-          <button className="btn btn-primary" onClick={this.handleClick}>Edit Game</button>
+          <button className="edit-game btn btn-primary" onClick={this.handleClick}>Edit Game</button>
         </div>
       )
     }

@@ -58,11 +58,11 @@ class ConfirmGameButton extends React.Component {
     } else if (this.state.status === "pending" && this.props.opponent_id === parseInt(localStorage.getItem('user_id'))) {
       return (
         <div>
-          <button className="btn btn-primary" value="confirmed" onClick={this.handleClick}>Confirm Game</button>
-          <button className="btn btn-primary" value="declined" onClick={this.handleClick}>Decline Game</button>
+          <button className="confirm-game btn btn-primary" value="confirmed" onClick={this.handleClick}>Confirm Game</button>
+          <button className="decline-game btn btn-primary" value="declined" onClick={this.handleClick}>Decline Game</button>
         </div>
       )
-    } 
+    }
     else {
       return(
         <span></span>

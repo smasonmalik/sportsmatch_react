@@ -55,12 +55,6 @@ beforeEach(function () {
     })
 
     cy.route({
-        method: 'POST',      // Route all GET requests
-        url: '/api/v1/games',    // that have a URL that matches '/users/*'
-        response: 'fixture:new_game'
-    })
-
-    cy.route({
         method: 'GET',      // Route all GET requests
         url: '/api/v1/players',
         response:'fixture:players',
@@ -69,5 +63,19 @@ beforeEach(function () {
             'distance': 5
             }
     })
+
+    cy.route({
+        method: 'POST',      // Route all GET requests
+        url: '/api/v1/games',    // that have a URL that matches '/users/*'
+        response: 'fixture:new_game'
+    })
+
+    cy.route({
+        method: 'GET',      // Route all GET requests
+        url: '/api/v1/games',    // that have a URL that matches '/users/*'
+        response: 'fixture:games'
+    })
+
+
 
   })
