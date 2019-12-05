@@ -76,4 +76,21 @@ beforeEach(function () {
         response: 'fixture:organiser_result',
     })
 
+    cy.route({
+        method: 'GET',
+        url: '/api/v1/games/opponent',
+        response: 'fixture:opponent_result',
+    })
+
+    cy.route({
+        method: 'GET',
+        url: '/api/v1/games/organiser',
+        response: 'fixture:organiser_no_result',
+    })
+
+    cy.route({
+        method: 'PATCH',
+        url: '/api/v1/games/organiser',
+        response: 'fixture:organiser_add_result',
+    })
   })
