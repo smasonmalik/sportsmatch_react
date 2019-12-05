@@ -21,7 +21,7 @@ class NewResult extends React.Component {
 
     axios({
       method: 'post',
-      url: `/api/v1/results/${this.props.match.params.id}/new`,
+      url: `/api/v1/results/${this.props.id}/new`,
       headers: {
         "Content-Type": "application/json",
         "api-token": localStorage.getItem('jwtToken')
@@ -31,55 +31,51 @@ class NewResult extends React.Component {
         winner_id: parseInt(this.state.winner_id),
         loser_id: parseInt(this.state.loser_id),
         result_confirmed: true,
-        game_id: this.props.match.params.id
+        game_id: this.props.id
       }
     })
-      .then(response => this.props.history.push(`/results`))
+      .then(this.props.handleClick())
+      .then(this.props.handleAddResult())
       .catch(function(error) {
         console.log(error)
       })
   }
 
   onChangeWinner(event){
-    if (parseInt(event.target.value) === this.props.location.state.organiser_id){
+    if (parseInt(event.target.value) === this.props.organiser_id){
       this.setState({
         winner_id: event.target.value,
-        loser_id: this.props.location.state.opponent_id
+        loser_id: this.props.opponent_id
        })
-    } else if (parseInt(event.target.value) === this.props.location.state.opponent_id) {
+    } else if (parseInt(event.target.value) === this.props.opponent_id) {
       this.setState({
         winner_id: event.target.value,
-        loser_id: this.props.location.state.organiser_id
+        loser_id: this.props.organiser_id
        })
     }
   }
 
   render() {
-    const { organiser_name, opponent_name, organiser_id, opponent_id } = this.props.location.state
+    const { organiser_name, opponent_name, organiser_id, opponent_id } = this.props
       return (
-      <div>
-        <h2 align="center">My Results</h2>
-        <div class="container">
-          <div class="row">
-            <h3>Add a new result!</h3>
-              <form onSubmit={this.onSubmit}>
-                <div className="col">
-                    <label className="label">Winner:</label>
-                    <select className="custom-select" name="winner_result" id="winner" onChange={(event) => this.onChangeWinner(event)}>
-                        <option >Select winner...</option>
-                        <option value={organiser_id}>{organiser_name}</option>
-                        <option value={opponent_id}>{opponent_name}</option>
-                    </select>
-                </div>
-            <button type="submit" className="btn custom-button mt-3">
-              Add Result
-            </button>
-            <Link to="/results" className="btn btn-link mt-3">
-              Back to Results
-            </Link>
-            </form>
-          </div>
-        </div>
+        <div style={{marginTop: '8px'}}>
+          <form onSubmit={this.onSubmit}>
+            <div>
+              <select
+                className="custom-select"
+                name="winner_result"
+                id="winner"
+                style={{width: '90%'}}
+                onChange={(event) => this.onChangeWinner(event)}>
+                  <option >Select winner...</option>
+                  <option value={organiser_id}>{organiser_name}</option>
+                  <option value={opponent_id}>{opponent_name}</option>
+              </select>
+            </div>
+        <button type="submit" className="btn custom-button mt-3">
+          Add Result
+        </button>
+        </form>
       </div>
     )
   }

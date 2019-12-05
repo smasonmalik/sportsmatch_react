@@ -1,12 +1,32 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import styles from './css/SingleResult.module.css'
+import NewResult from './NewResult'
 
 
 class SingleResult extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      showAddResult: false,
+      updateToggle: false
+    }
     this.result = this.result.bind(this);
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.setState(prevState => {
+      return {showAddResult: !prevState.showAddResult}
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.newResult !== prevProps.newResult) {
+      this.setState(prevState => {
+        return {updateToggle: !prevState.updateToggle}
+      })
+    }
   }
 
   result() {
@@ -110,21 +130,23 @@ class SingleResult extends React.Component {
           </div>
           <div className='row'>
             <div className='col-6'>
-            <Link to={{
-              pathname: `/results/${this.props.id}/new`,
-              state: {
-                organiser_name: this.props.organiser_name,
-                organiser_id: this.props.organiser_id,
-                opponent_name: this.props.opponent_name,
-                opponent_id: this.props.opponent_id
-              }
-            }} className="btn custom-button">
-            Add Game Result</Link>
+            <button onClick={this.handleClick}>{this.state.showAddResult ? "Hide" : "Add Result"}</button>
             </div>
             <div className='col-6'>
               <p className={styles.gameDate}>Game Date: {this.props.game_date}</p>
             </div>
             </div>
+            {this.state.showAddResult ?
+              <NewResult
+                id={this.props.id}
+                organiser_name={this.props.organiser_name}
+                organiser_id={this.props.organiser_id}
+                opponent_name={this.props.opponent_name}
+                opponent_id={this.props.opponent_id}
+                handleAddResult={this.props.handleAddResult}
+                handleClick={this.handleClick}
+              /> :
+              null}
           </div>
         </div>
       )

@@ -10,12 +10,14 @@ class Results extends React.Component {
       current_username: [],
       opponentResults: [],
       organiserResults: [],
-      resultEdit: false
+      resultEdit: false,
+      newResult: false
     }
     this.getOpponentResultsRequest = this.getOpponentResultsRequest.bind(this)
     this.getOrganiserResultsRequest = this.getOrganiserResultsRequest.bind(this)
     this.getPlayer = this.getPlayer.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.handleAddResult = this.handleAddResult.bind(this)
   }
 
   componentDidMount() {
@@ -25,8 +27,12 @@ class Results extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.resultEdit !== prevState.resultEdit) {
-      this.getRequest()
+    if (
+      this.state.resultEdit !== prevState.resultEdit ||
+      this.state.newResult !== prevState.newResult
+    ) {
+      this.getOpponentResultsRequest()
+      this.getOrganiserResultsRequest()
     }
   }
 
@@ -93,6 +99,12 @@ class Results extends React.Component {
     })
   }
 
+  handleAddResult() {
+    this.setState(prevState => {
+      return {newResult: !prevState.newResult}
+    })
+  }
+
   render() {
 
       return (
@@ -117,6 +129,7 @@ class Results extends React.Component {
                 opponent_id={game.opponent_id}
                 game_date={game.game_date}
                 handleEdit={game.handleEdit}
+                handleAddResult={this.handleAddResult}
               />
             ))}
             </div>
@@ -137,6 +150,7 @@ class Results extends React.Component {
                   opponent_id={game.opponent_id}
                   game_date={game.game_date}
                   handleEdit={game.handleEdit}
+                  handleAddResult={this.handleAddResult}
                 />
               ))}
             </div>
