@@ -1,11 +1,11 @@
 body {
-
+  font-family: times;
 }
 
 h5 {
-  margin-top: 25px;
+  /* margin-top: 25px;
   margin-bottom:25px;
-  margin-left: 15px;
+  margin-left: 15px; */
   font-weight: bold;
   color: grey;
 }
@@ -38,7 +38,6 @@ select:hover {
 
 label {
   color: grey;
-  margin-left: 15px;
 }
 
 button {
