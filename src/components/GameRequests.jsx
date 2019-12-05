@@ -61,7 +61,7 @@ class GameRequests extends React.Component {
           </ul>
           </div>
           <div class="col-sm">
-          <h3>Challenges Recieved</h3>
+          <h3>Challenges Received</h3>
             <ul className="list-group list-group-flush">
             {this.state.requests_challenger.map(result => (
               <SingleGameRequest
