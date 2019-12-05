@@ -70,4 +70,10 @@ beforeEach(function () {
             }
     })
 
+    cy.route({
+        method: 'GET',
+        url: '/api/v1/games/organiser',
+        response: 'fixture:organiser_result',
+    })
+
   })
