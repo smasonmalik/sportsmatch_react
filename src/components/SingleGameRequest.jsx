@@ -35,6 +35,8 @@ class SingleGameRequest extends React.Component {
         <EditGameButton
             id={this.props.id}
             handleEdit={this.handleEdit}
+            gameTime={this.props.game_time}
+            gameDate={this.props.game_date}
         />
       )
     }
