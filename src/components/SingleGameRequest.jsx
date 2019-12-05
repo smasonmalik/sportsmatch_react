@@ -54,7 +54,10 @@ class SingleGameRequest extends React.Component {
                   {this.state.game_date}
                 </Moment>
               </p>
-              <p className="card-text"><strong>Game Time:</strong> {this.state.game_time.slice(0,-3)}</p>
+              <p className="card-text"><strong>Game Time:</strong> {
+               (this.state.game_time.length === 8) ? 
+               this.state.game_time.slice(0, -3) : this.state.game_time
+               }</p>
               <p className="card-text"><strong>Game Status:</strong> {this.state.status.charAt(0).toUpperCase() + this.state.status.slice(1)}</p>
               <GameStatusButton
                 id={this.props.id}
