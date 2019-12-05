@@ -16,7 +16,9 @@ class Navbar extends React.Component {
   sessionButton() {
       if (this.props.isLoggedIn === true){
         return (
-              <LogoutButton handleLoggedInState={this.props.handleLoggedInState}>Logout</LogoutButton>
+              <button>
+                <LogoutButton handleLoggedInState={this.props.handleLoggedInState}>Logout</LogoutButton>
+              </button>
         );
       }
     }
@@ -33,7 +35,7 @@ class Navbar extends React.Component {
         <div className="col-4"></div>
         <div className="col-4">
           <div style={{textAlign: 'center'}}>
-          <NavLink className="" to="/"><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></NavLink>
+          <NavLink to="/"><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></NavLink>
           </div>
         </div>
         <div className="col-4"></div>
