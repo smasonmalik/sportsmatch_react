@@ -59,7 +59,7 @@ class PlayerProfile extends React.Component {
       }
     })
     .catch(function(error) {
-      console.log(error)
+      console.log(error.description)
     })
   }
 
@@ -77,14 +77,6 @@ class PlayerProfile extends React.Component {
     } else {
       return <span></span>
     }
-  }
-
-  getGender() {
-    if (this.state.player.gender === "Male" || this.state.player.gender === "Female")
-      return (<p className="card-text">{this.state.player.gender}</p>)
-      else {
-        return <span></span>
-      }
   }
 
   render() {
