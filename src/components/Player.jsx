@@ -49,20 +49,17 @@ class Player extends React.Component {
 
   render() {
     return (
-      <div className={`card ${styles.col}`}>
-        <div className={styles.crop}>
-          <img src={this.state.profile_photo} alt="Profile"></img>
-        </div>
-        <div className={`card-body ${styles.cardBody}`}>
-          <h5 className="card-title">{this.props.firstName}</h5>
-          {this.getBio()}
-          <p className="card-text"><strong>{this.props.sport}</strong></p>
-          <p className="card-text">{this.props.ability}</p>
-          <div class="card-body">
-            <NavLink to={`/player/${this.props.id}`}><button className={styles.viewProfile}>View Profile</button></NavLink>
-          </div>
+
+      <div class="card">
+        <img src={this.state.profile_photo} alt="Profile" style={{height: '16rem'}}></img>
+        <div class="card-body">
+        <h5 class="card-title">{this.props.firstName.charAt(0).toUpperCase() + this.props.firstName.slice(1)}</h5>
+        <p class="card-text"><strong>{this.props.ability}</strong></p>
+        <p class="card-text">{this.props.sport}</p>
         </div>
       </div>
+
+
     )
   }
 }
