@@ -3,8 +3,10 @@
   transform: scale(1.015)
 }
 
+
 .gameCardOutline {
   outline: none;
+  z-index: -1;
 }
 
 .gameConfirmed {
@@ -18,7 +20,7 @@
 
 .gameUnconfirmed {
   background-color: #F4F5CB;
-  border-left: solid 10px #EEBF68;
+  border-right: solid 10px #EEBF68;
   padding-left: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
