@@ -48,7 +48,7 @@ class SingleGameRequest extends React.Component {
   render() {
     if (this.state.status == "confirmed"){
       return (
-        <li className="list-group-item" >
+        <li className="" >
           <div className={`${styles.gameCardOutline}`}>
             <div className={` ${styles.gameConfirmed}`}>
                 <p className={styles.player}><strong>Opponent:</strong> {this.props.opponent_name}</p>
@@ -76,7 +76,7 @@ class SingleGameRequest extends React.Component {
 
     } else {
       return (
-        <li className="list-group-item" >
+        <li className="" >
           <div className={`${styles.gameCardOutline}`}>
             <div className={` ${styles.gameUnconfirmed}`}>
                 <p className={styles.player}><strong>Opponent:</strong> {this.props.opponent_name}</p>

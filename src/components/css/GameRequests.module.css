@@ -32,7 +32,7 @@
 }
 
 .cardDrawer {
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .cardBox {
@@ -40,3 +40,6 @@
   background-color: white;
 }
 
+ul {
+  list-style: none;
+}
