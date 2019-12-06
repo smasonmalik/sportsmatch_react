@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import styles from './css/NewResult.module.css'
 
 class NewResult extends React.Component {
   constructor(props) {
@@ -69,7 +70,7 @@ class NewResult extends React.Component {
                   <option value={opponent_id}>{opponent_name}</option>
               </select>
             </div>
-        <button type="submit" className="btn custom-button mt-3">
+        <button type="submit" className={`btn custom-button mt-3 ${styles.newResultButton}`} >
           Add Result
         </button>
         </form>
