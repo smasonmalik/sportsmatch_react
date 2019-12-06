@@ -12,7 +12,7 @@ class Home extends Component {
     this.state = {
       players: [],
       distance: 5,
-      ability: '',
+      ability: 'Beginner',
       sport: ''
     };
     this.getPlayers = this.getPlayers.bind(this);
@@ -22,6 +22,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.getLoggedInPlayerInfo()
+    this.getPlayers()
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -80,53 +81,53 @@ class Home extends Component {
       })
   }
 
-  insertCarousel() {
-    if (this.state.players[0]) {
-      return (
-        <InfiniteCarousel
-            breakpoints={[
-              {
-                breakpoint: 500,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                },
-              },
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 3,
-                },
-              },
-            ]}
-            arrows={true}
-            showSides={true}
-            sidesOpacity={.3}
-            sideSize={.3}
-            slidesToScroll={4}
-            slidesToShow={4}
-            scrollOnDevice={true}
-            lazyLoad={true}
-            nextArrow={<button className={styles.nextArrow}>&#x203A;</button>}
-            prevArrow={<button className={styles.prevArrow}>&#x2039;</button>}
-          >
-          {this.state.players.map(player => (
-            <Player
-              key={player.id}
-              id={player.id}
-              firstName={player.first_name}
-              ability={player.ability}
-              rank_points={player.rank_points}
-              gender={player.gender}
-              bio={player.bio}
-              sport={player.sport}
-            />
-          ))}
-          </InfiniteCarousel>
-      )
-    }
-  }
+  // insertCarousel() {
+  //   if (this.state.players[0]) {
+  //     return (
+  //       <InfiniteCarousel
+  //           breakpoints={[
+  //             {
+  //               breakpoint: 500,
+  //               settings: {
+  //                 slidesToShow: 2,
+  //                 slidesToScroll: 2,
+  //               },
+  //             },
+  //             {
+  //               breakpoint: 768,
+  //               settings: {
+  //                 slidesToShow: 3,
+  //                 slidesToScroll: 3,
+  //               },
+  //             },
+  //           ]}
+  //           arrows={true}
+  //           showSides={true}
+  //           sidesOpacity={.3}
+  //           sideSize={.3}
+  //           slidesToScroll={4}
+  //           slidesToShow={4}
+  //           scrollOnDevice={true}
+  //           lazyLoad={true}
+  //           nextArrow={<button className={styles.nextArrow}>&#x203A;</button>}
+  //           prevArrow={<button className={styles.prevArrow}>&#x2039;</button>}
+  //         >
+  //         {this.state.players.map(player => (
+  //           <Player
+  //             key={player.id}
+  //             id={player.id}
+  //             firstName={player.first_name}
+  //             ability={player.ability}
+  //             rankPoints={player.rank_points}
+  //             gender={player.gender}
+  //             bio={player.bio}
+  //             sport={player.sport}
+  //           />
+  //         ))}
+  //         </InfiniteCarousel>
+  //     )
+  //   }
+  // }
 
   render() {
       if (localStorage.getItem('jwtToken')) {
@@ -145,9 +146,22 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className={styles.carousel}>
-                {this.insertCarousel()}
-              </div>
+              <div className={`row ${styles.row}`}>
+              {this.state.players.map(player => (
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                <Player
+                  key={player.id}
+                  id={player.id}
+                  firstName={player.first_name}
+                  ability={player.ability}
+                  rank_points={player.rank_points}
+                  gender={player.gender}
+                  bio={player.bio}
+                  sport={player.sport}
+                />
+                </div>
+              ))}
+            </div>
             </div>
         )
       } else {
