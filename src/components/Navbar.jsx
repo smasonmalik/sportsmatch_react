@@ -38,7 +38,7 @@ class Navbar extends React.Component {
         <div className="col-4"></div>
         <div className="col-4">
           <div style={{textAlign: 'center'}}>
-          <NavLink to="/"><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></NavLink>
+            <NavLink to="/"><button value='home' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></button></NavLink>
           </div>
         </div>
         <div className="col-4"></div>
@@ -63,7 +63,6 @@ class Navbar extends React.Component {
           </div>
           </nav>
           </div>
-
         </div>
       )
     }

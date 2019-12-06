@@ -39,7 +39,7 @@ label {
 }
 
 button {
-  background-color: #4CAF50;
+  background-image: linear-gradient(to right, #4CAF50, #59C657);
   border: none;
   color: white;
   padding: 5px;
