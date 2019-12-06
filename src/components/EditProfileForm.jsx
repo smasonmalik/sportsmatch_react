@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import styles from './css/SignupForm.module.css'
+import FlashMessage from './FlashMessage'
 
 class EditProfileForm extends React.Component {
   constructor(props) {
@@ -135,7 +136,9 @@ class EditProfileForm extends React.Component {
       return <Redirect to="/profile" />
     } else {
     return (
-      <div className="form-container">
+      <div className={styles.topDiv}>
+        <div className={`container ${styles.myContainer}`}>
+        <div className="form-container">
           <h4>Edit Profile</h4>
           <form
             onSubmit={e => {
@@ -143,166 +146,190 @@ class EditProfileForm extends React.Component {
             }}
             className="form-signup"
              >
-            <div className="form-group">
-              <label>First Name</label>
-              <input
-                id="first-name-input"
-                name="first_name"
-                placeholder={this.state.player.first_name}
-                type="text"
-                className="form-control"
-                onChange={this.handleChange}
-              ></input>
+             <div className="row">
+               <div className='col-6'>
+                 <label>First name</label><br />
+                 <input
+                   id="first-name-input"
+                   name="first-name"
+                   placeholder="First name"
+                   type="text"
+                   required="required"
+                   className={styles.inputField}
+                 ></input>
+               </div>
+               <div className='col-6'>
+                 <label>Last name</label><br />
+                 <input
+                   id="last-name-input"
+                   name="last-name"
+                   placeholder="Last name"
+                   type="text"
+                   required="required"
+                   className={styles.inputField}
+                 ></input>
+               </div>
+             </div>
+             <div className='row'>
+               <div className="col-12">
+                 <label> Bio </label>
+                 <input
+                   id="bio-name-input"
+                   name="bio"
+                   value={this.state.bio}
+                   onChange={(e)=>{this.setState({bio: e.target.value})}}
+                   type="text"
+                   className="form-control"
+                   onChange={this.handleChange}
+                 ></input>
+               </div>
+             </div>
+             <div className="row">
+               <div className="col-12">
+                 <label>Date of Birth</label>
+                 <input
+                   id="dob-input"
+                   name="dob"
+                   type="date"
+                   max="2003-12-06"
+                   required="required"
+                   className="form-control"
+                   onChange={e => this.dobValidation(e)}
+                 ></input>
+               </div>
+             </div>
+             <div className='row'>
+               <div className="col-4">
+                 <label>Sport</label><br />
+                 <select
+                   id="sport-input"
+                   name="sport"
+                   placeholder="Sport"
+                   type="text"
+                   required="required"
+                   className="form-control"
+                 >
+                   <option value="Tennis">-----select sport-----</option>
+                   <option value="Tennis">Tennis</option>
+                   <option value="TableTennis">TableTennis</option>
+                   <option value="Squash">Squash</option>
+                   <option value="Badminton">Badminton</option>
+                 </select>
+               </div>
+               <div className="col-4">
+                 <label>Ability</label><br />
+                 <select
+                   id="ability-input"
+                   name="ability"
+                   placeholder="Ability"
+                   type="select"
+                   required="required"
+                   className="form-control"
+                 >
+                   <option value="Beginner">-----select ability-----</option>
+                   <option value="Beginner">Beginner</option>
+                   <option value="Intermediate">Intermediate</option>
+                   <option value="Advanced">Advanced</option>
+                 </select>
+               </div>
+               <div className="col-4">
+                 <label>Gender</label><br />
+                 <select
+                   id="gender-input"
+                   name="gender"
+                   placeholder="Gender"
+                   type="text"
+                   required="required"
+                   className="form-control"
+                 >
+                   <option value="Male">-----select gender-----</option>
+                   <option value="Male">Male</option>
+                   <option value="Female">Female</option>
+                   <option value="not_say">Rather Not Say</option>
+                 </select>
+               </div>
+             </div>
+             <div className='row'>
+               <div className='col-6'>
+                 <label>Email</label><br />
+                 <input
+                   id="email-input"
+                   name="email"
+                   type="email"
+                   placeholder="Email"
+                   required="required"
+                   className={styles.inputField}
+                   onChange={e => this.validateEmail(e)}
+                 ></input>
+               </div>
+               <br/>
+               <div className='col-6'>
+                 <label>Postcode</label><br />
+                 <input
+                   id="postcode-input"
+                   name="postcode"
+                   placeholder="Postcode"
+                   type="text"
+                   required="required"
+                   className={styles.inputField}
+                 ></input>
+               </div>
+             </div>
+             <div className='row'>
+               <div className='col-12'>
+                 <label>Password</label><br />
+                 <input
+                   id="password-input"
+                   name="password"
+                   placeholder="Password"
+                   type="password"
+                   className={`password ${styles.inputField}`}
+                   required="required"
+                 ></input>
+               </div>
             </div>
-            <div className="form-group">
-              <label>Last Name</label>
-              <input
-                id="last-name-input"
-                name="last_name"
-                placeholder={this.state.player.last_name}
-                type="text"
-                className="form-control"
-                onChange={this.handleChange}
-              ></input>
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                id="email-input"
-                name="email"
-                placeholder={this.state.player.email}
-                type="text"
-                className="email form-control"
-                // onChange={this.handleChange}
-                onChange={e => this.validateEmail(e)}
-              ></input>
-            </div>
-            <div className="form-group">
-              <label> Bio </label>
-              <input
-                id="bio-name-input"
-                name="bio"
-                value={this.state.bio}
-                onChange={(e)=>{this.setState({bio: e.target.value})}}
-                type="text"
-                className="form-control"
-                onChange={this.handleChange}
-              ></input>
-            </div>
-            <div className="form-group">
-              <label> DOB </label>
-              <input
-                id="dob-input"
-                name="dob"
-                placeholder={this.state.player.dob}
-                type="date"
-                className="form-control"
-                onChange={e => this.dobValidation(e)}
-              ></input>
-            </div>
-            <div className="form-group">
-              <label> Postcode </label>
-              <input
-                id="postcode-input"
-                name="postcode"
-                placeholder={this.state.player.postcode}
-                type="text"
-                className="form-control"
-                onChange={this.handleChange}
-              ></input>
-            </div>
-            <div className="form-group">
-              <label>Select ability:</label>
-              <select
-                id="ability-input"
-                name="ability"
-                placeholder={this.state.player.ability}
-                type="select"
-                className="form-control"
-                onChange={this.handleChange}
-              >
-                <option disabled selected value>{this.state.player.ability}</option>
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Select main sport:</label>
-              <select
-                id="sport-input"
-                name="sport"
-                placeholder={this.state.player.sport}
-                type="text"
-                required="required"
-                className="form-control"
-                onChange={this.handleChange}
-              >
-                <option disabled selected value>{this.state.player.sport}</option>
-                <option value="Tennis">Tennis</option>
-                <option value="TableTennis">TableTennis</option>
-                <option value="Squash">Squash</option>
-                <option value="Badminton">Badminton</option>
-                <option value="Snooker">Snooker</option>
-                <option value="Climbing">Climbing</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Select gender:</label>
-              <select
-                id="gender-input"
-                name="gender"
-                placeholder={this.state.player.gender}
-                type="text"
-                className="form-control"
-                onChange={this.handleChange}
-              >
-                <option disabled selected value>{this.state.player.gender}</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="not_say">Rather Not Say</option>
-              </select>
-            </div>
-            <div>
-                <label>Password</label><br />
-                <input
-                  id="password-input"
-                  name="password"
-                  type="password"
-                  className={`password ${styles.inputField}`}
-                  required="required"
-                  onChange={this.handleChange}
-                ></input>
-              </div>
-              <div>
-                <label>Confirm password</label><br />
-                <input
-                  id="password-confirm-input"
-                  name="password-confirm"
-                  type="password"
-                  className={`password ${styles.inputField}`}
-                  required="required"
-                  onChange={e => this.handlePasswordConfirm(e)}
-                ></input>
-              </div>
             <div className='row'>
+               <div className='col-12'>
+                 <label>Confirm password</label><br />
+                 <input
+                   id="password-confirm-input"
+                   name="password-confirm"
+                   placeholder="Confirm Password"
+                   type="password"
+                   className={`password ${styles.inputField}`}
+                   required="required"
+                   onChange={e => this.handlePasswordConfirm(e)}
+                 ></input>
+                 <div className={styles.inputField}>
+                   {this.state.errorMessage ?
+                     <FlashMessage
+                       message={this.state.errorMessage}
+                       type="error"
+                     /> : null }
+                 </div>
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col'></div>
               <div className='col'>
                 <div className="form-group">
                   <button
                     name="edit"
                     type="submit"
-                    className="edit-button btn btn-primary"
-                    onClick={this.handleEdit}>
+                    onClick={this.handleEdit}
+                    style={{width: '100%'}}>
                     Edit
                   </button>
                 </div>
               </div>
+              <div className='col'></div>
             </div>
           </form>
         </div>
+      </div>
+    </div>
       )
     }
-
   }
 }
 
