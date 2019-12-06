@@ -4,6 +4,7 @@ import GameStatusButton from './GameStatusButton'
 import EditGameButton from './EditGameButton'
 import styles from './css/SingleGameRequest.module.css'
 import { IoIosMail } from 'react-icons/io'
+import Moment from 'react-moment';
 
 class SingleGameRequest extends React.Component {
   constructor(props) {
@@ -38,9 +39,10 @@ class SingleGameRequest extends React.Component {
           <EditGameButton
             id={this.props.id}
             handleEdit={this.handleEdit}
+            gameTime={this.props.game_time}
+            gameDate={this.props.game_date}
           />
         </div>
-        
       )
     }
   }
@@ -52,8 +54,12 @@ class SingleGameRequest extends React.Component {
           <div className={`${styles.gameCardOutline}`}>
             <div className={` ${styles.gameConfirmed}`}>
                 <p className={styles.player}><strong>Opponent:</strong> {this.props.opponent_name}</p>
-                <p className={styles.gameDate}><strong>Game Date:</strong> {this.state.game_date}</p>
-                <p className={styles.gameDate}><strong>Game Time:</strong> {this.state.game_time}</p>
+                <p className={styles.gameDate}><strong>Game Date:</strong> 
+                  <Moment format="ddd Do MMM YYYY">
+                  {this.state.game_date}
+                </Moment></p>
+                <p className={styles.gameDate}><strong>Game Time:</strong> {this.state.game_time}
+               </p>
                 <p className={styles.gameDate}><strong>Game Status:</strong> {this.state.status.charAt(0).toUpperCase() + this.state.status.slice(1)}</p>
                 <div className={styles.gameButtons}>
                   <GameStatusButton
@@ -80,7 +86,10 @@ class SingleGameRequest extends React.Component {
           <div className={`${styles.gameCardOutline}`}>
             <div className={` ${styles.gameUnconfirmed}`}>
                 <p className={styles.player}><strong>Opponent:</strong> {this.props.opponent_name}</p>
-                <p className={styles.gameDate}><strong>Game Date:</strong> {this.state.game_date}</p>
+                <p className={styles.gameDate}><strong>Game Date:</strong> 
+                  <Moment format="ddd Do MMM YYYY">
+                  {this.state.game_date}
+                </Moment></p>
                 <p className={styles.gameDate}><strong>Game Time:</strong> {this.state.game_time}</p>
                 <p className={styles.gameDate}><strong>Game Status:</strong> {this.state.status.charAt(0).toUpperCase() + this.state.status.slice(1)}</p>
                 <div className={styles.gameButtons}>
