@@ -3,7 +3,7 @@
     position: relative;
 }
 
-.speechBubbleOpponent {
+.speechBubbleUser {
  max-width: 40%;
  margin-left: 5%;
  background-color: ;
@@ -19,7 +19,7 @@
  box-shadow: 1px 1px 5px grey;
 }
 
-.speechBubbleOpponent:before {
+.speechBubbleUser:before {
   content: "";
   width: 0px;
   height: 0px;
@@ -32,7 +32,7 @@
   top: 6px;
 }
 
-.speechBubbleUser {
+.speechBubbleOpponent {
  max-width: 40%;
  margin-left: 55%;
  background-image: linear-gradient(to left, #4875EF, #A8C6F4);
@@ -47,7 +47,7 @@
  box-shadow: 1px 1px 5px grey;
 }
 
-.speechBubbleUser:before {
+.speechBubbleOpponent:before {
   content: "";
   width: 0px;
   height: 0px;

@@ -20,7 +20,7 @@ class FilterBar extends React.Component {
                 <div className={`col-lg-5 col-md-5 col-sm-12 ${styles.col}`}>
                     <label className={`label ${styles.label}`}>Ability</label>
                     <select className="custom-select" name="ability" id="ability-select" onChange={(e) => this.props.handleChange(e)}>
-                        <option value={this.props.ability}>{this.props.ability}</option>
+                        <option disabled selected value>Your ability: {this.props.ability}</option>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
                         <option value="Advanced">Advanced</option>
