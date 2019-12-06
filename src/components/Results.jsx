@@ -9,15 +9,11 @@ class Results extends React.Component {
     this.state = {
       current_username: [],
       opponentResults: [],
-      organiserResults: [],
-      resultEdit: false,
-      newResult: false
+      organiserResults: []
     }
     this.getOpponentResultsRequest = this.getOpponentResultsRequest.bind(this)
     this.getOrganiserResultsRequest = this.getOrganiserResultsRequest.bind(this)
     this.getPlayer = this.getPlayer.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
-    this.handleAddResult = this.handleAddResult.bind(this)
   }
 
   componentDidMount() {
@@ -25,16 +21,6 @@ class Results extends React.Component {
     this.getOrganiserResultsRequest()
     this.getPlayer()
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      this.state.resultEdit !== prevState.resultEdit ||
-      this.state.newResult !== prevState.newResult
-    ) {
-      this.getOpponentResultsRequest()
-      this.getOrganiserResultsRequest()
-    }
-  }
 
   getOpponentResultsRequest() {
     let self = this;
@@ -93,18 +79,6 @@ class Results extends React.Component {
     })
   }
 
-  handleEdit() {
-    this.setState(prevState => {
-      return {resultEdit: !prevState.resultEdit}
-    })
-  }
-
-  handleAddResult() {
-    this.setState(prevState => {
-      return {newResult: !prevState.newResult}
-    })
-  }
-
   render() {
 
       return (
@@ -130,8 +104,8 @@ class Results extends React.Component {
                 organiser_id={game.organiser_id}
                 opponent_id={game.opponent_id}
                 game_date={game.game_date}
-                handleEdit={game.handleEdit}
-                handleAddResult={this.handleAddResult}
+                // handleEdit={this.handleEdit}
+                // handleAddResult={this.handleAddResult}
               />
             ))}
             </div>
@@ -151,8 +125,8 @@ class Results extends React.Component {
                   organiser_id={game.organiser_id}
                   opponent_id={game.opponent_id}
                   game_date={game.game_date}
-                  handleEdit={game.handleEdit}
-                  handleAddResult={this.handleAddResult}
+                  // handleEdit={this.handleEdit}
+                  // handleAddResult={this.handleAddResult}
                 />
               ))}
             </div>

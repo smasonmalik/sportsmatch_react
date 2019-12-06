@@ -73,6 +73,8 @@ class DisplayMessages extends Component {
   }
 
   render() {
+
+
     if (this.state.messageData === []) {
       return (
         <div className={styles.emptyInbox}>
@@ -88,7 +90,7 @@ class DisplayMessages extends Component {
       return (
         <div className={styles.topDiv}>
         <div className={styles.opponent}>
-          <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
+          <h3 style={{textAlign: 'center'}}>Your conversation with {this.showOtherUserName()}</h3>
         </div>
           {this.state.messageData.map((message) => (
             <SingleMessage
@@ -99,6 +101,7 @@ class DisplayMessages extends Component {
               organiser_id={message.organiser_id}
               opponent_id={message.opponent_id}
               content={message.content}
+              created_at={message.created_at}
               organiser={this.state.messageDetails.organiser}
               opponent={this.state.messageDetails.opponent}
             />
@@ -115,3 +118,5 @@ class DisplayMessages extends Component {
   }
 }
 export default DisplayMessages;
+
+// <div className={styles.messages}>

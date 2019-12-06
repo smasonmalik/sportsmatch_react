@@ -1,0 +1,46 @@
+
+.gameCard:hover {
+  transform: scale(1.015)
+}
+
+.gameCardOutline {
+  outline: none;
+}
+
+.gameConfirmed {
+  background-color: rgb(206, 214, 221);
+  border-right: solid 10px slategray;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+}
+
+.gameUnconfirmed {
+  background-color: #F4F5CB;
+  border-left: solid 10px #EEBF68;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+}
+
+.gameButtons {
+  text-align: right;
+}
+
+.editGameButton {
+  text-align: right;
+}
+
+.gameDate {
+  color: rgba(0, 0, 0, 0.568);
+  font-size: medium;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.player {
+  font-size: 20px;
+  font-weight: bold;
+}

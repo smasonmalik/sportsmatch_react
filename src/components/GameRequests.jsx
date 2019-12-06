@@ -42,19 +42,19 @@ class GameRequests extends React.Component {
 
   render() {
     return (<div>
-      <h2 className={styles.header}>Your Game Requests</h2>
+      <h2 className={styles.header}>Game Requests</h2>
 
       <div id="accordion">
-        <div class="card">
-          <div className = {`card-header ${styles.cardHeader}`}  >
-            <h5 class="mb-0">
-              <button className = {`btn btn-link collapsed  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <div className = {`card ${styles.cardDrawer}`} >
+          <div className = {`${styles.cardHeader}`}  >
+            <h5 className = {`  ${styles.requestsHeader}`} >
+              <button className = {`  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <h3>Requests Made <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
               </button>
             </h5>
           </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 
         <ul className="list-group list-group-flush">
           {this.state.requests_organiser.map(result => (
@@ -73,16 +73,16 @@ class GameRequests extends React.Component {
     </div>
   </div>
   <div class="card">
-    <div className = {`card-header ${styles.cardHeader}`} >
-      <h5 class="mb-0">
-        <button className = {`btn btn-link collapsed ${styles.requestsHeader}`} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        <h3>Challenges Received <IoIosArrowDown /> </h3>
+    <div className = {`${styles.cardHeader}`} >
+      <h5 className = {`  ${styles.requestsHeader}`}>
+        <button className = {`${styles.requestsHeader}`} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h3>Challenges Received <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
         </button>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
-      <ul className="list-group list-group-flush">
+      <ul className = {`list-group list-group-flush ${styles.cardBox}`}>
             {this.state.requests_challenger.map(result => (
               <SingleGameRequest
                 key={result.id}
