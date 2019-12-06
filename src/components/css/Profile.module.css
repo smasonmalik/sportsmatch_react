@@ -3,7 +3,7 @@ body {
 }
 
 .profilePage {
-  margin-top: 170px;
+  margin-top: 15%;
 }
 
 .profileImage {
@@ -45,7 +45,7 @@ body {
   left: 0px;
   /* margin: auto; */
   visibility: hidden;
-  
+
 }
 
 .header {
@@ -70,5 +70,3 @@ body {
 .editLink:hover {
   background-color: rgb(88, 88, 88);
 }
-
-
