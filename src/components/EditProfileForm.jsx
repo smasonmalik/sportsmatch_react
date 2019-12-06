@@ -316,6 +316,7 @@ class EditProfileForm extends React.Component {
                   <button
                     name="edit"
                     type="submit"
+                    className={styles.signupButton}
                     onClick={this.handleEdit}
                     style={{width: '100%'}}>
                     Edit
