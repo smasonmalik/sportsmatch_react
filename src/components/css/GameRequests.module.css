@@ -19,6 +19,13 @@
 
 .cardHeader {
   background-color: #508D6D;
+  box-shadow: 2px 2px 5px grey;
+  
+}
+
+.cardHeader:hover {
+  transform: scale(1.025);
+  box-shadow: 4px 4px 5px grey;
 }
 
 .card {

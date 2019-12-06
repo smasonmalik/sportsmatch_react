@@ -59,3 +59,12 @@
 .bio {
   font-style: italic;
 }
+
+.card {
+  box-shadow: 1px 1px 4px grey;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 6px grey;
+  transform: scale(1.025)
+}

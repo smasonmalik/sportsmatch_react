@@ -18,7 +18,6 @@ class Home extends Component {
     this.getPlayers = this.getPlayers.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.updateDistance = this.updateDistance.bind(this);
-    this.insertCarousel = this.insertCarousel.bind(this)
   }
 
   componentDidMount() {
