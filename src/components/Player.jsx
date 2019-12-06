@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
-
 import styles from './css/Player.module.css'
 
 class Player extends React.Component {
@@ -50,7 +49,7 @@ class Player extends React.Component {
   render() {
     return (
 
-      <div class="card">
+      <div class={`${styles.card} card`}>
         <img src={this.state.profile_photo} alt="Profile" style={{height: '16rem'}}></img>
         <div class="card-body">
         <h5 class="card-title">{this.props.firstName.charAt(0).toUpperCase() + this.props.firstName.slice(1)}</h5>
