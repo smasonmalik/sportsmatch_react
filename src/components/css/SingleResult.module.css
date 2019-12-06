@@ -5,6 +5,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 15px;
+  box-shadow: 1px 1px 5px grey;
 }
 
 .resultWin:hover {
@@ -12,7 +13,8 @@
 }
 
 .resultWin:hover, .resultLose:hover, .resultUndecided:hover {
-  transform: scale(1.025)
+  transform: scale(1.025);
+  box-shadow: 3px 3px 5px grey;
 }
 
 .resultLose {
@@ -22,6 +24,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 15px;
+  box-shadow: 1px 1px 5px grey;
 }
 
 .resultUndecided {
@@ -31,6 +34,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 15px;
+  box-shadow: 1px 1px 5px grey;
 }
 
 .gameDate {

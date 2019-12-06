@@ -41,16 +41,19 @@ class DisplayMessages extends Component {
       console.log(error)
     })
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.messageSent !== prevState.messageSent) {
       this.getMessages()
     }
   }
+
   handleSubmitMessage() {
     this.setState(prevState => {
       return { messageSent: !prevState.messageSent }
     })
   }
+
   showOtherUserName() {
     if (this.state.messageDetails.organiser_id === parseInt(localStorage.getItem('user_id'))) {
       return this.state.messageDetails.opponent
@@ -70,8 +73,8 @@ class DisplayMessages extends Component {
   }
 
   render() {
-    
-    
+
+
     if (this.state.messageData === []) {
       return (
         <div className={styles.emptyInbox}>
@@ -85,7 +88,7 @@ class DisplayMessages extends Component {
       )
     } else {
       return (
-        <div className={styles.messages}>
+        <div className={styles.topDiv}>
         <div className={styles.opponent}>
           <h3 style={{textAlign: 'center'}}>Your conversation with {this.showOtherUserName()}</h3>
         </div>
@@ -115,3 +118,5 @@ class DisplayMessages extends Component {
   }
 }
 export default DisplayMessages;
+
+// <div className={styles.messages}>

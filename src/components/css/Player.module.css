@@ -9,6 +9,7 @@
 
 .col:hover {
   transform: scale(1.05);
+  box-shadow: 3px 3px 5px grey;
 }
 
 .cardBody {
@@ -37,7 +38,8 @@
 }
 
 .viewProfile {
-  background-color: #4CAF50;
+  /* background-color: #4CAF50; */
+  background-image: linear-gradient(to right, #4CAF50, #59C657);
   border: none;
   color: white;
   padding: 5px;
@@ -46,8 +48,8 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 12px;
-  box-shadow: 2px 2px 8px 2px lightgrey;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px grey;
 }
 
 .viewProfile:hover {

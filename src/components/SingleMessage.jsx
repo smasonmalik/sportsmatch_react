@@ -10,20 +10,20 @@ class SingleMessage extends React.Component {
 
   showMessageDetails() {
     var dateTime = this.props.created_at
-    
+
     if (this.props.sender_id === this.props.organiser_id) {
       return (
       <div className={styles.userDetails}>
         {this.props.organiser}: <Moment fromNow date={dateTime} />
       </div>
       )
-      
+
     } else {
       return(
         <div>
           <div >{this.props.opponent}: <Moment fromNow date={dateTime} /></div>
         </div>
-      ) 
+      )
     }
   }
 
@@ -34,7 +34,7 @@ class SingleMessage extends React.Component {
           <div className={styles.speechBubbleUser}>
             <p>{this.props.content}</p>
           </div>
-          <p className={styles.name}>{this.showMessageDetails()}</p>
+          <p className={styles.userName}>{this.showMessageDetails()}</p>
         </div>
       )
     } else {
@@ -43,7 +43,9 @@ class SingleMessage extends React.Component {
           <div className={styles.speechBubbleOpponent}>
             <p>{this.props.content}</p>
           </div>
-          <p className={styles.name}>{this.showMessageDetails()}</p>
+          <div>
+            <p className={styles.opponentName}>{this.showMessageDetails()}</p>
+          </div>
         </div>
       )
     }

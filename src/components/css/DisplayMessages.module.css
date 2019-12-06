@@ -18,5 +18,13 @@
 
 .opponent {
   width: 100%;
-  background-color: lightgrey;
+  background-color: #F3F3F3;
+  padding-top: 35px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 5px #C7C7C7;
+}
+
+.topDiv {
+  margin-top: 8%;
 }

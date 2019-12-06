@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
@@ -38,8 +38,6 @@ class App extends Component {
   componentDidMount() {
     this.handleLogInState();
   }
-
-  // window.flash = (message, type="success") => Bus.emit('flash', ({message, type}));
 
   render() {
     return (
