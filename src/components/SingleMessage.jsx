@@ -13,7 +13,7 @@ class SingleMessage extends React.Component {
     
     if (this.props.sender_id === this.props.organiser_id) {
       return (
-      <div>
+      <div className={styles.userDetails}>
         {this.props.organiser}: <Moment fromNow date={dateTime} />
       </div>
       )
@@ -21,7 +21,7 @@ class SingleMessage extends React.Component {
     } else {
       return(
         <div>
-          <div className={styles.senderDetails}>{this.props.opponent}: <Moment fromNow date={dateTime} /></div>
+          <div >{this.props.opponent}: <Moment fromNow date={dateTime} /></div>
         </div>
       ) 
     }

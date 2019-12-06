@@ -10,8 +10,6 @@
   background-color: #508D6D;
   text-decoration: none !important;
   font-family: 'Sulphur Point', sans-serif;
-  /* display: flex;
-  justify-content: left; */
   text-align: left;
 }
 
@@ -19,16 +17,8 @@
   outline: 0;
 }
 
-/* .requestsHeader:hover {
-  color: white;
-  outline: none;
-  padding: 0;
-  
-} */
-
 .cardHeader {
   background-color: #508D6D;
-  /* margin-bottom: 200px; */
 }
 
 .card {
@@ -39,7 +29,6 @@
 .arrow {
   display: flex;
   float: right;
-  /* font-size: 100px; */
 }
 
 .cardDrawer {

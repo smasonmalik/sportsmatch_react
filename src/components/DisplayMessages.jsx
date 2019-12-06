@@ -85,9 +85,9 @@ class DisplayMessages extends Component {
       )
     } else {
       return (
-        <div>
-        <div className={styles.oponent}>
-          <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
+        <div className={styles.messages}>
+        <div className={styles.opponent}>
+          <h3 style={{textAlign: 'center'}}>Your conversation with {this.showOtherUserName()}</h3>
         </div>
           {this.state.messageData.map((message) => (
             <SingleMessage

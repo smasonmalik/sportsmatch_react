@@ -9,16 +9,11 @@
   background-color: #508D6D;
 }
 
-
 .profilePicture {
   border-radius: 5%;
   width: 200px;
   height:200px;
   
-}
-
-.profileText {
-  /* font-weight: bold; */
 }
 
 .profileTextContainer {
