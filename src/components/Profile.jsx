@@ -130,7 +130,7 @@ class Profile extends React.Component {
     if (this.state.player.bio == null || this.state.player.bio.length == 0 ) {
       return (<p>Click 'Edit Profile' below to add in your bio</p>)
     } else {
-      return (<p className="card-text" onClick={this.handleClickBio}>Bio: {this.state.player.bio}</p>)
+      return (<p className="card-text" onClick={this.handleClickBio}><strong>Bio: </strong>{this.state.player.bio}</p>)
     }
   }
 
@@ -138,7 +138,7 @@ class Profile extends React.Component {
     if (localStorage.getItem('jwtToken')) {
       return (
         <div>
-          <div className="container">
+          <div className={`container ${styles.profilePage}`}>
             <div className="row">
               <div className="col-4">
               <h3 className={styles.header}>MY PROFILE</h3>
@@ -160,16 +160,20 @@ class Profile extends React.Component {
           </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">Location: {this.state.player.location}</p>
-            <p className="card-test">Chosen Sport: {this.state.player.sport}</p>
-            <p className="card-text">Gender: {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
-            <p className="card-text">DOB: {this.state.player.dob}</p>
-            <p className="card-text">Ranking: {this.state.player.ability}</p>
-            <p className="card-text">Ranking Points: {this.state.player.rank_points}</p>
+            <p className="card-text"><strong>Location:</strong> {this.state.player.location}</p>
+            <p className="card-test"><strong>Chosen Sport:</strong> {this.state.player.sport}</p>
+            <p className="card-text"><strong>Gender:</strong> {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
+            <p className="card-text"><strong>DOB:</strong> {this.state.player.dob}</p>
+            <p className="card-text"><strong>Ranking:</strong> {this.state.player.ability}</p>
+            <p className="card-text"><strong>FRED Points:</strong> {this.state.player.rank_points}</p>
             {this.getBio()}
             <ul className="list-group list-group-flush">
-              <div>
-                <NavLink to="/profile/edit"><FaPencilAlt /> Edit profile </NavLink>
+              <div >
+                <NavLink  to="/profile/edit">
+                  <button className={`${styles.editLink}`}>
+                    <FaPencilAlt /> Edit profile 
+                  </button>
+                  </NavLink>
               </div>
             </ul>
             

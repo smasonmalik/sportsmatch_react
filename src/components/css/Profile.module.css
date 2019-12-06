@@ -1,3 +1,11 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profilePage {
+  margin-top: 170px;
+}
+
 .profileImage {
   opacity: 0.4;
   filter: alpha(opacity=40);
@@ -23,18 +31,19 @@
   position: relative;
   top: 0px;
   left: 0px;
-  background-color: black;
+  /* background-color: black; */
   /* color: black; */
-  margin: auto;
+  /* margin: auto; */
   visibility: visible;
-  color: gray;
+  color: black;
+  padding-left: 30;
 }
 
 .textBlockHide {
   /* position: absolute; */
   bottom: 0px;
   left: 0px;
-  margin: auto;
+  /* margin: auto; */
   visibility: hidden;
   
 }
@@ -42,8 +51,24 @@
 .header {
   color:gray;
   letter-spacing: 1px;
+  margin-left: 20px;
+  letter-spacing: 2px;
 }
 
 .profilePic {
   width: 10rem;
 }
+
+.editLink {
+  color: white;
+  background-color: grey;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.editLink:hover {
+  background-color: rgb(88, 88, 88);
+}
+
+
