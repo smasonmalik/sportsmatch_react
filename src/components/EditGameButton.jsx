@@ -8,9 +8,16 @@ class EditGameButton extends React.Component {
       displayForm: false
     }
     this.handleClick = this.handleClick.bind(this)
+    this.displayForm = this.displayForm.bind(this)
   }
 
   handleClick() {
+    this.setState(prevState => {
+      return {displayForm: !prevState.displayForm}
+    })
+  }
+
+  displayForm() {
     this.setState(prevState => {
       return {displayForm: !prevState.displayForm}
     })
@@ -21,7 +28,13 @@ class EditGameButton extends React.Component {
       return (
         <div>
           <button className="btn btn-primary" onClick={this.handleClick}>Hide Form</button>
-          <EditGameForm id={this.props.id} handleEdit={this.props.handleEdit}/>
+          <EditGameForm 
+          id={this.props.id} 
+          handleEdit={this.props.handleEdit} 
+          displayForm={this.displayForm}
+          gameTime={this.props.gameTime}
+          gameDate={this.props.gameDate}
+           />
         </div>
       )
     } else {
