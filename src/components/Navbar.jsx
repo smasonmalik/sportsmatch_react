@@ -6,9 +6,9 @@ import styles from './css/Navbar.module.css'
 class Navbar extends React.Component {
   constructor() {
     super()
-    this.state = {
-      currentPath: ''
-    }
+    // this.state = {
+    //   currentPath: ''
+    // }
     this.sessionButton = this.sessionButton.bind(this);
   }
 
@@ -19,26 +19,22 @@ class Navbar extends React.Component {
         );
       }
     }
-
-  handleClick(event) {
-    const { name, value} = event.target
-    this.setState({
-      [name]: value
-    })
-  }
+  //
+  // handleClick(event) {
+  //   const { name, value} = event.target
+  //   this.setState({
+  //     [name]: value
+  //   })
+  // }
 
   render() {
-    const homeClass = this.state.currentPath === 'home' ? styles.active : styles.option
-    const profileClass = this.state.currentPath === 'profile' ? styles.active : styles.option
-    const resultsClass = this.state.currentPath === 'results' ? styles.active : styles.option
-
     return (
       <div className={styles.navDiv}>
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">
           <div style={{textAlign: 'center'}}>
-            <NavLink to="/"><button value='home' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></button></NavLink>
+            <button value='home' name='currentPath' className={styles.button}><img className='main-logo' src="../../sportsmatchlogo.png" alt='SportsMatch'/></button>
           </div>
         </div>
         <div className="col-4"></div>
@@ -47,14 +43,14 @@ class Navbar extends React.Component {
         <nav >
           <div>
             <div className="row">
-              <div className={`col-3 ${homeClass}`}>
-                <NavLink to='/'><button value='home' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-home"></i>{this.props.location}</button></NavLink>
+              <div className={`col-3 ${styles.option}`}>
+                <NavLink to='/'><button value='home' name='currentPath' className={styles.button}><i class="fas fa-home"></i>{this.props.location}</button></NavLink>
               </div>
-              <div className={`col-3 ${profileClass}`}>
-                <NavLink to='/profile'><button value='profile' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-user-alt"></i></button></NavLink>
+              <div className={`col-3 ${styles.option}`}>
+                <NavLink to='/profile'><button value='profile' name='currentPath' className={styles.button}><i class="fas fa-user-alt"></i></button></NavLink>
               </div>
-              <div className={`col-3 ${resultsClass}`}>
-                <NavLink to='/results'><button value='results' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-trophy"></i></button></NavLink>
+              <div className={`col-3 ${styles.option}`}>
+                <NavLink to='/results'><button value='results' name='currentPath' className={styles.button}><i class="fas fa-trophy"></i></button></NavLink>
               </div>
               <div className={`col-3 ${styles.option}`}>
               {this.sessionButton()}

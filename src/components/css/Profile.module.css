@@ -19,6 +19,7 @@ body {
   margin-right: auto;
   overflow-y: scroll;
   max-height: 100vh;
+  background-color: grey;
 }
 
 .pictureContainer {

@@ -28,3 +28,7 @@
 .topDiv {
   margin-top: 8%;
 }
+
+button {
+  background-color: grey;
+}
