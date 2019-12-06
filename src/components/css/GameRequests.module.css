@@ -7,7 +7,7 @@
 
 .requestsHeader {
   color: white;
-  background-color: #508D6D;
+  background-color: #508D6D ;
   text-decoration: none !important;
   font-family: 'Sulphur Point', sans-serif;
   text-align: left;
@@ -43,3 +43,8 @@
 ul {
   list-style: none;
 }
+
+button {
+  background-image: none;
+}
+
