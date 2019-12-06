@@ -57,6 +57,9 @@ class Player extends React.Component {
         <p class="card-text"><strong>{this.props.ability}</strong></p>
         <p class="card-text">{this.props.sport}</p>
         </div>
+        <div class="card-body">
+            <NavLink to={`/player/${this.props.id}`}><button className={styles.viewProfile}>View Profile</button></NavLink>
+        </div>
       </div>
 
 
