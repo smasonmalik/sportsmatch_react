@@ -3,6 +3,7 @@ import axios from "axios";
 import FilterBar from './FilterBar';
 import Player from './Player';
 import Login from './Login'
+import styles from './css/Home.module.css'
 
 class Home extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Home extends Component {
     this.state = {
       players: [],
       distance: 5,
-      ability: '',
+      ability: 'Beginner',
       sport: ''
     };
     this.getPlayers = this.getPlayers.bind(this);
@@ -20,6 +21,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.getLoggedInPlayerInfo()
+    this.getPlayers()
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,13 +32,13 @@ class Home extends Component {
       this.getPlayers()
     }
   };
+
     handleChange(event) {
     const {name, value} = event.target
     this.setState({
       [name]: value
     })
   }
-
   updateDistance = (distance) => {
     this.setState({distance: distance})
   }
@@ -82,17 +84,23 @@ class Home extends Component {
   render() {
       if (localStorage.getItem('jwtToken')) {
         return (
-          <div>
             <div>
-              <FilterBar
-                  distance={this.state.distance}
-                  ability={this.state.ability}
-                  handleChange={this.handleChange}
-                  updateDistance={this.updateDistance}
-              />
-            </div>
-            <div>
+              <div className={styles.topDiv}>
+                <div className={`container ${styles.myContainer}`}>
+                  <h2 className={styles.heading}>Find your next opponent here!</h2>
+                  <div>
+                    <FilterBar
+                        distance={this.state.distance}
+                        ability={this.state.ability}
+                        handleChange={this.handleChange}
+                        updateDistance={this.updateDistance}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={`row ${styles.row}`}>
               {this.state.players.map(player => (
+                <div class="col-sm-6 col-md-4 col-lg-3">
                 <Player
                   key={player.id}
                   id={player.id}
@@ -101,10 +109,12 @@ class Home extends Component {
                   rank_points={player.rank_points}
                   gender={player.gender}
                   bio={player.bio}
+                  sport={player.sport}
                 />
+                </div>
               ))}
             </div>
-          </div>
+            </div>
         )
       } else {
         return(
@@ -114,6 +124,5 @@ class Home extends Component {
         )
       }
   }
-
 }
 export default Home;

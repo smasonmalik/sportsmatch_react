@@ -1,0 +1,54 @@
+.navDiv {
+  position: fixed;
+  top:0;
+  right:0;
+  left:0;
+  background-color: white;
+  z-index: 1;
+}
+
+.option {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.option button {
+  color: white;
+  font-size: 18px;
+}
+
+.option:hover, .option:active, .option:focus {
+  background-color: #508D6D;
+  border-color: #508D6D;
+}
+
+.innerDiv {
+  /* background-color: #357151; */
+  background-image: linear-gradient(#357151, #669E65);
+  box-shadow: 2px 0px 5px black;
+}
+
+.navDiv img {
+  padding: 13px;
+  text-align: center;
+}
+
+.button {
+  background: transparent;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  outline:none;
+  width: 100%
+}
+
+.button:hover, .button:active, .button:focus {
+  outline: none;
+}
+
+.active {
+  background-color: #508D6D;
+  border-color: #508D6D;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

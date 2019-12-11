@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
+import styles from './css/Player.module.css'
 
 class Player extends React.Component {
   constructor(props) {
@@ -38,24 +39,29 @@ class Player extends React.Component {
     if (this.props.bio === null || this.props.bio.length === 0) {
       return <span></span>
     } else if (this.props.bio.length < 20 ) {
-      return (<p className="card-text">{this.props.bio}</p>)
+      return (<p className={`card-text ${styles.bio}`}>{this.props.bio}</p>)
     } else if (this.props.bio.length >= 20 ) {
-      return (<p className="card-text">{this.props.bio.substring(0,20)}...</p>)
+      return (<p className={`card-text ${styles.bio}`}>{this.props.bio.substring(0,20)}...</p>)
     }
   }
 
 
   render() {
     return (
-      <div className="media">
-        <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
-        <div className="media-body">
-          <h5 className="mt-0">{this.props.firstName}</h5>
-          <p className="card-text">{this.props.ability}</p>
-          {this.getBio()}
-          <NavLink className="view-profile btn btn-primary" to={`/player/${this.props.id}`}>View Profile</NavLink>
+
+      <div class={`${styles.card} card`}>
+        <img src={this.state.profile_photo} alt="Profile" style={{height: '16rem'}}></img>
+        <div class="card-body">
+        <h5 class="card-title">{this.props.firstName.charAt(0).toUpperCase() + this.props.firstName.slice(1)}</h5>
+        <p class="card-text"><strong>{this.props.ability}</strong></p>
+        <p class="card-text">{this.props.sport}</p>
+        </div>
+        <div class="card-body">
+            <NavLink to={`/player/${this.props.id}`}><button className={styles.viewProfile}>View Profile</button></NavLink>
         </div>
       </div>
+
+
     )
   }
 }

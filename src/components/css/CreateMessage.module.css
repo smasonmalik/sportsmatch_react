@@ -1,0 +1,16 @@
+.send {
+  width: 100%;
+  margin-left: 8%;
+  box-shadow: 1px 1px 5px #C7C7C7;
+}
+
+.text {
+  width: 98%;
+}
+
+.formDiv {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

@@ -1,0 +1,30 @@
+
+.messages {
+  padding-top: 150px;
+}
+
+.emptyInbox {
+  top: 45%;
+  position: absolute;
+  left:0;
+  right:0;
+}
+
+.heading {
+  text-align: center;
+  font-size: 40px;
+  color: grey;
+}
+
+.opponent {
+  width: 100%;
+  background-color: #F3F3F3;
+  padding-top: 35px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 5px #C7C7C7;
+}
+
+.topDiv {
+  margin-top: 8%;
+}

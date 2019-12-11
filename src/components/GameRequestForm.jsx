@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import styles from './css/GameRequestForm.module.css'
+import FlashMessage from './FlashMessage'
+
 
 class GameRequest extends Component {
   constructor(props) {
@@ -13,46 +16,47 @@ class GameRequest extends Component {
 
   handleNewGame(e) {
     e.preventDefault();
-    let self = this;
-    axios({
-      method: 'post',
-      url: "/api/v1/games/",
-      headers: {
-        "Content-Type": "application/json",
-        "api-token": localStorage.getItem('jwtToken')
-      },
-      data:
-      {
-        organiser_id: parseInt(localStorage.getItem('user_id')),
-        status: "pending",
-        opponent_id: self.props.opponent_id,
-        game_date: document.getElementById("date-input").value,
-        game_time: document.getElementById("time-input").value
-      }})
+    var element = document.getElementById("date-input").value;
+    if(Date.parse(element) >= new Date()) {
+      let self = this;
+      axios({
+        method: 'post',
+        url: "/api/v1/games/",
+        headers: {
+          "Content-Type": "application/json",
+          "api-token": localStorage.getItem('jwtToken')
+        },
+        data:
+        {
+          organiser_id: parseInt(localStorage.getItem('user_id')),
+          status: "pending",
+          opponent_id: self.props.opponent_id,
+          game_date: document.getElementById("date-input").value,
+          game_time: document.getElementById("time-input").value
+        }})
 
-      .then(function(response) {
-        console.log(response);
-      })
-      .then(function() {
-        self.setState({
-          gameRequest: true
+        .then(function(response) {
+          console.log(response);
         })
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
+        .then(function() {
+          self.setState({
+            gameRequest: true
+          })
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+      }
   }
 
   gameDateValidation(e) {
     var element = document.getElementById("date-input");
     if(Date.parse(e.target.value) < new Date()) {
-      // alert('Game date can\'t be in the past')
       element.classList.add("form-control-error");
     } else {
       element.classList.remove("form-control-error");
     }
   }
-
 
   render() {
     var tempDate = new Date();
@@ -73,7 +77,7 @@ class GameRequest extends Component {
       else {
        return (
         <div className="form-container">
-          <h4>Request Game</h4>
+          <h4 className={styles.title}>Request A Game</h4>
           <form
             onSubmit={e => {
               e.preventDefault();
@@ -100,15 +104,22 @@ class GameRequest extends Component {
               className="form-control"
             ></input>
             </div>
+            <div>
+              {this.state.errorMessage ?
+                <FlashMessage
+                  message={this.state.errorMessage}
+                  type="error"
+                /> : null }
+            </div>
             <div className='row'>
               <div className='col'>
-              <div className="form-group">
+              <div className={styles.button}>
               <button
                 name="requestGame"
                 type="submit"
-                className="request-button btn btn-primary"
+                className={`request-button btn ${styles.requestButton}`}
                 onClick={this.handleNewGame}>
-                Request Game
+                Send Request
               </button>
             </div>
               </div>

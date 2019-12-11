@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import SingleGameRequest from './SingleGameRequest'
+import styles from './css/GameRequests.module.css'
+import { IoIosArrowDown } from 'react-icons/io'
 
 class GameRequests extends React.Component {
   constructor(props) {
@@ -40,12 +42,21 @@ class GameRequests extends React.Component {
 
   render() {
     return (<div>
-      <h2 align="center">Game Requests</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
-          <h3>Requests Made</h3>
-          <ul className="list-group list-group-flush">
+      <h2 className={styles.header}>Game Requests</h2>
+
+      <div id="accordion">
+        <div className = {`card ${styles.cardDrawer}`} >
+          <div className = {`${styles.cardHeader}`}  >
+            <h5 className = {`  ${styles.requestsHeader}`} >
+              <button className = {`  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <h3>Requests Made <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
+              </button>
+            </h5>
+          </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+
+        <ul className="list-group list-group-flush">
           {this.state.requests_organiser.map(result => (
             <SingleGameRequest
               key={result.id}
@@ -59,10 +70,19 @@ class GameRequests extends React.Component {
             />
             ))}
           </ul>
-          </div>
-          <div class="col-sm">
-          <h3>Challenges Received</h3>
-            <ul className="list-group list-group-flush">
+    </div>
+  </div>
+  <div class="card">
+    <div className = {`${styles.cardHeader}`} >
+      <h5 className = {`  ${styles.requestsHeader}`}>
+        <button className = {`${styles.requestsHeader}`} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h3>Challenges Received <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+      <ul className = {`list-group list-group-flush ${styles.cardBox}`}>
             {this.state.requests_challenger.map(result => (
               <SingleGameRequest
                 key={result.id}
@@ -76,9 +96,17 @@ class GameRequests extends React.Component {
                 />
               ))}
             </ul>
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
     </div>
     )
   }

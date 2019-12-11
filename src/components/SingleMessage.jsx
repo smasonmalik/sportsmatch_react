@@ -1,32 +1,52 @@
-import React from 'react';
-
+import React from 'react'
+import styles from './css/SingleMessage.module.css'
+import Moment from 'react-moment';
 
 class SingleMessage extends React.Component {
   constructor(props) {
     super(props)
-    this.showName = this.showName.bind(this)
+    this.showMessageDetails = this.showMessageDetails.bind(this)
   }
-  showName() {
+
+  showMessageDetails() {
+    var dateTime = this.props.created_at
+
     if (this.props.sender_id === this.props.organiser_id) {
-      return this.props.organiser
+      return (
+      <div className={styles.userDetails}>
+        {this.props.organiser}: <Moment fromNow date={dateTime} />
+      </div>
+      )
+
     } else {
-      return this.props.opponent
+      return(
+        <div>
+          <div >{this.props.opponent}: <Moment fromNow date={dateTime} /></div>
+        </div>
+      )
     }
   }
+
   render() {
     if (this.props.sender_id === parseInt(localStorage.getItem('user_id'))) {
       return (
-        <li className="list-group-item" style={{textAlign: 'left'}}>
-          <p>{this.props.content}</p>
-          <p style={{color: 'grey'}}>{this.showName()}</p>
-        </li>
+        <div className={styles.speech}>
+          <div className={styles.speechBubbleUser}>
+            <p>{this.props.content}</p>
+          </div>
+          <p className={styles.userName}>{this.showMessageDetails()}</p>
+        </div>
       )
     } else {
       return (
-        <li className="list-group-item" style={{textAlign: 'right'}}>
-          <p>{this.props.content}</p>
-          <p style={{color: 'grey'}}>{this.showName()}</p>
-        </li>
+        <div className={styles.speech}>
+          <div className={styles.speechBubbleOpponent}>
+            <p>{this.props.content}</p>
+          </div>
+          <div>
+            <p className={styles.opponentName}>{this.showMessageDetails()}</p>
+          </div>
+        </div>
       )
     }
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
@@ -36,7 +36,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    document.title = 'SportsMatch';
     this.handleLogInState();
+
   }
 
   render() {

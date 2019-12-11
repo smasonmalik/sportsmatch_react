@@ -6,7 +6,7 @@ import EditImageForm from './EditImageForm'
 import EditBioForm from './EditBioForm'
 import { NavLink, Redirect } from 'react-router-dom'
 import styles from './css/Profile.module.css'
-
+import { FaPencilAlt } from 'react-icons/fa'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -130,19 +130,29 @@ class Profile extends React.Component {
     if (this.state.player.bio == null || this.state.player.bio.length == 0 ) {
       return (<p>Click 'Edit Profile' below to add in your bio</p>)
     } else {
-      return (<p className="card-text" onClick={this.handleClickBio}>Bio: {this.state.player.bio}</p>)
+      return (<p className="card-text" onClick={this.handleClickBio}><strong>Bio: </strong>{this.state.player.bio}</p>)
     }
   }
 
   render() {
     if (localStorage.getItem('jwtToken')) {
       return (
-        <div className="card text-center">
-          <div className="card-header">
-            Profile Page
-          </div>
-          <div id="profile-image-container" className = {`${styles.container}`} style={{width: '10rem'}}>
-            <img id="profile-image" className="align-self-start mr-3 rounded mx-auto d-block" onMouseOver={this.mouseOverImage} onMouseOut={this.mouseOutImage} onClick={this.handleClickImage} src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
+        <div>
+          <div className={`container ${styles.profilePage}`}>
+            <div className="row">
+              <div className="col-4">
+              <h3 className={styles.header}>MY PROFILE</h3>
+              <div className = {`${styles.pictureContainer}`}>
+            <img 
+              id="profile-image" 
+              className="align-self-start mr-3 rounded mx-auto d-block" 
+              onMouseOver={this.mouseOverImage} 
+              onMouseOut={this.mouseOutImage} 
+              onClick={this.handleClickImage} 
+              src={this.state.profile_photo} 
+              alt="Profile" 
+              className = {`${styles.profilePic}`}>
+            </img>
             <div id="edit-profile-image-label" className = {`${styles.textBlockHide}`}>Click To Edit</div>
           </div>
           <div>
@@ -150,20 +160,40 @@ class Profile extends React.Component {
           </div>
           <div className="card-body">
             <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">Location: {this.state.player.location}</p>
-            <p className="card-test">Chosen Sport: {this.state.player.sport}</p>
-            <p className="card-text">Gender: {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
-            <p className="card-text">DOB: {this.state.player.dob}</p>
-            <p className="card-text">Ranking: {this.state.player.ability}</p>
-            <p className="card-text">Ranking Points: {this.state.player.rank_points}</p>
+            <p className="card-text"><strong>Location:</strong> {this.state.player.location}</p>
+            <p className="card-test"><strong>Chosen Sport:</strong> {this.state.player.sport}</p>
+            <p className="card-text"><strong>Gender:</strong> {this.state.player.gender ? this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1) : ''}</p>
+            <p className="card-text"><strong>DOB:</strong> {this.state.player.dob}</p>
+            <p className="card-text"><strong>Ranking:</strong> {this.state.player.ability}</p>
+            <p className="card-text"><strong>FRED Points:</strong> {this.state.player.rank_points}</p>
             {this.getBio()}
             <ul className="list-group list-group-flush">
-              <div>
-                <NavLink to="/profile/edit">Edit Profile</NavLink>
+              <div >
+                <NavLink  to="/profile/edit">
+                  <button className={`${styles.editLink}`}>
+                    <FaPencilAlt /> Edit profile 
+                  </button>
+                  </NavLink>
               </div>
             </ul>
-            <GameRequests handleGameRefresh={this.handleGameRefresh}/>
+            
           </div>
+
+
+              </div>
+              <div className="col-8">
+              <div className = {`container col-12 ${styles.gameRequestContainer}`}>
+          <GameRequests handleGameRefresh={this.handleGameRefresh}/>
+          </div>
+
+              </div>
+            </div>
+
+
+
+          </div>
+         
+          
         </div>
       )
     } else {
@@ -177,3 +207,7 @@ class Profile extends React.Component {
 }
 
 export default Profile
+
+
+{/* <div className = {`container col-6 ${styles.profileContainer}`}>   
+</div> */}

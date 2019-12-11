@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequestForm from './GameRequestForm'
-
+import styles from './css/PlayerProfile.module.css'
 
 class PlayerProfile extends React.Component {
   constructor(props) {
@@ -59,55 +59,67 @@ class PlayerProfile extends React.Component {
       }
     })
     .catch(function(error) {
-      console.log(error)
+      console.log(error.description)
     })
   }
 
   getAgeBracket() {
     if (this.state.playerAge > 16 && this.state.playerAge <= 19) {
-      return (<p className="card-text">16 - 19 years</p>)
+      return (<p className={styles.profileText}><strong>Age: </strong> 16 - 19 </p>)
     } else if (this.state.playerAge > 19 && this.state.playerAge <= 29) {
-      return (<p className="card-text">20 - 29 years</p>)
+      return (<p className={styles.profileText}><strong>Age: </strong> 20 - 29 </p>)
     } else if (this.state.playerAge > 29 && this.state.playerAge <= 39) {
-      return (<p className="card-text">30 - 39 years</p>)
+      return (<p className={styles.profileText}><strong>Age: </strong> 30 - 39 </p>)
     } else if (this.state.playerAge > 39 && this.state.playerAge <= 49) {
-      return (<p className="card-text">40 - 49 years</p>)
+      return (<p className={styles.profileText}><strong>Age: </strong> 40 - 49</p>)
     } else if (this.state.playerAge > 50) {
-      return (<p className="card-text">50+ years</p>)
+      return (<p className={styles.profileText}><strong>Age: </strong> 50+ years</p>)
     } else {
       return <span></span>
     }
   }
 
+
   getGender() {
-    if (this.state.player.gender === "Male" || this.state.player.gender === "Female")
-      return (<p className="card-text">{this.state.player.gender}</p>)
-      else {
-        return <span></span>
-      }
-  }
+     if (this.state.player.gender === "male" || this.state.player.gender === "female")
+       return (<p className={styles.profileText}><strong>Gender: </strong>{this.state.player.gender.charAt(0).toUpperCase() + this.state.player.gender.slice(1)}</p>)
+       else {
+         return <span></span>
+       }
+   }
+
 
   render() {
     return (
-        <div className="card text-center">
-          <div className="card-header">
-            Player Profile
-          </div>
-          <div className="card-body">
-          <img className="align-self-start mr-3 rounded mx-auto d-block" src={this.state.profile_photo} alt="Profile" style={{width: '10rem'}}></img>
-            <h5 className="card-title">{this.state.player.first_name}</h5>
-            <p className="card-text">{this.state.player.ability}</p>
-            <p className="card-text">{this.state.player.bio}</p>
-            <p className="card-text">{this.state.player.location}</p>
-            <p className="card-text">{this.state.player.sport}</p>
-            {this.getGender()}
+      <div className={`container ${styles.playerProfilePage}`}>
+      <div className="row">
+        <div className={`container col-lg-6 col-md-4 col-sm-6 ${styles.profileContainer}`}>
+          
+          <h5 className={styles.profileNameText}>{this.state.player.first_name}</h5>
+          <img className={styles.profilePicture} src={this.state.profile_photo} alt="Profile" ></img>
+          <div className={styles.profileTextContainer}>
             {this.getAgeBracket()}
-            <p className="card-text">{this.state.player.bio}</p>
-            <GameRequestForm opponent_id={this.state.player.id} />
+            <p className={styles.profileText}><strong>Skill Level: </strong> {this.state.player.ability}</p>
+            <p className={styles.profileText}><strong>Location: </strong> {this.state.player.location}</p>
+            <p className={styles.profileText}><strong>Sport: </strong> {this.state.player.sport}</p>
+            {this.getGender()}
+            <p className={styles.profileText}><strong>Bio: </strong> {this.state.player.bio}</p>
           </div>
+          
         </div>
+
+        <div className={`col-lg-3 col-md-4 col-sm-6 ${styles.requestContainer}`}>
+
+          <GameRequestForm opponent_id={this.state.player.id} />
+        </div>
+    </div>
+    </div> 
+
     )
   }
 }
 
 export default PlayerProfile
+
+
+ 

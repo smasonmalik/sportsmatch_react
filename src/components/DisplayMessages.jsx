@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import CreateMessage from './CreateMessage';
 import SingleMessage from './SingleMessage';
+import styles from './css/DisplayMessages.module.css'
 import Location from './Location';
 
 class DisplayMessages extends Component {
@@ -40,16 +41,19 @@ class DisplayMessages extends Component {
       console.log(error)
     })
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.messageSent !== prevState.messageSent) {
       this.getMessages()
     }
   }
+
   handleSubmitMessage() {
     this.setState(prevState => {
       return { messageSent: !prevState.messageSent }
     })
   }
+
   showOtherUserName() {
     if (this.state.messageDetails.organiser_id === parseInt(localStorage.getItem('user_id'))) {
       return this.state.messageDetails.opponent
@@ -69,32 +73,50 @@ class DisplayMessages extends Component {
   }
 
   render() {
-    return (
-      <div>
-      <h3 style={{textAlign: 'center'}}>{this.showOtherUserName()}</h3>
-      <ul className="list-group list-group-flush">
-        {this.state.messageData.map((message) => (
-          <SingleMessage
-            key={message.id}
-            id={message.id}
-            game_id={message.game_id}
-            sender_id={message.sender_id}
-            organiser_id={message.organiser_id}
-            opponent_id={message.opponent_id}
-            content={message.content}
-            organiser={this.state.messageDetails.organiser}
-            opponent={this.state.messageDetails.opponent}
+
+
+    if (this.state.messageData === []) {
+      return (
+        <div className={styles.emptyInbox}>
+          <h4 className={styles.heading}>No previous messages, send a message to start your conversation...</h4>
+          <CreateMessage
+            id={this.state.game_id}
+            organiser_id={this.state.organiser_id}
+            opponent_id={this.state.opponent_id}
           />
-        ))}
-        </ul>
-        <CreateMessage
-          id={this.state.game_id}
-          organiser_id={this.state.organiser_id}
-          opponent_id={this.state.opponent_id}
-        />
-      {this.renderMap()}
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.topDiv}>
+        <div className={styles.opponent}>
+          <h3 style={{textAlign: 'center'}}>Your conversation with {this.showOtherUserName()}</h3>
+        </div>
+          {this.state.messageData.map((message) => (
+            <SingleMessage
+              key={message.id}
+              id={message.id}
+              game_id={message.game_id}
+              sender_id={message.sender_id}
+              organiser_id={message.organiser_id}
+              opponent_id={message.opponent_id}
+              content={message.content}
+              created_at={message.created_at}
+              organiser={this.state.messageDetails.organiser}
+              opponent={this.state.messageDetails.opponent}
+            />
+          ))}
+          {this.renderMap()}
+          <CreateMessage
+            id={this.state.game_id}
+            organiser_id={this.state.organiser_id}
+            opponent_id={this.state.opponent_id}
+          />
+        </div>
+      )
+    }
   }
 }
 export default DisplayMessages;
+
+// <div className={styles.messages}>

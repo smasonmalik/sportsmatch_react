@@ -1,0 +1,78 @@
+.speech {
+    width: 100%;
+    position: relative;
+}
+
+.speechBubbleUser {
+ max-width: 40%;
+ margin-left: 5%;
+ background-color: ;
+ background-image: linear-gradient(to right, #4CAF50, #BCF1AA);
+ padding: 6px;
+ padding-left: 30px;
+ text-align: left;
+ font-size: 20px;
+ color: white;
+ font-family: times;
+ position:relative;
+ border-radius: 5px;
+ box-shadow: 1px 1px 5px grey;
+}
+
+.speechBubbleUser:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #4CAF50;
+  border-top: 10px solid #4CAF50;
+  border-bottom: 10px solid transparent;
+  left: -20px;
+  top: 6px;
+}
+
+.speechBubbleOpponent {
+ max-width: 40%;
+ margin-left: 55%;
+ background-image: linear-gradient(to left, #4875EF, #A8C6F4);
+ padding: 6px;
+ padding-left: 30px;
+ text-align: right;
+ font-size: 20px;
+ color: white;
+ font-family: times;
+ position:relative;
+ border-radius: 5px;
+ box-shadow: 1px 1px 5px grey;
+}
+
+.speechBubbleOpponent:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #4875EF;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #4875EF;
+  border-bottom: 10px solid transparent;
+  right: -20px;
+  top: 6px;
+}
+
+
+.opponentName {
+  color:grey;
+  margin-right: 5%;
+  text-align: right;
+}
+
+.userName {
+  color:grey;
+  margin-left: 5%;
+}
+
+.userDetails {
+  text-align: right;
+  padding-right: 60px
+}

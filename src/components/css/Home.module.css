@@ -1,0 +1,70 @@
+.row {
+  padding: 5%;
+}
+
+.nextArrow {
+  display: block;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  outline: none;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 10%;
+  left: auto;
+  right: 15px;
+  color: grey;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 0px;
+}
+
+.nextArrow:hover {
+  box-shadow: 0 0 11px blue;
+}
+
+.prevArrow {
+  display: block;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  outline: none;
+  transform: translateY(-50%);
+  cursor: pointer;
+  left: 15px;
+  right: auto;
+  width: 10%;
+  color: grey;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 0px;
+}
+
+.prevArrow:hover {
+  box-shadow: 0 0 11px blue;
+}
+
+.myContainer {
+  margin-top: 15%;
+}
+
+.heading {
+  color: #646464;
+  margin-left: 15px;
+}
+
+.topDiv {
+  background-color: lightgrey;
+  padding-bottom: 35px;
+  padding-top: 25px;
+  /* background: #EFEFEF; */
+  background: #F3F3F3
+}
+
+.carousel {
+  padding-top: 20px;
+}

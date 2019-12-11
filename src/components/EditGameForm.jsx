@@ -5,31 +5,42 @@ class EditGameForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      gameEdit: false
+      gameEdit: false,
+      gameDate: this.props.gameDate,
+      gameTime: this.props.gameTime
     }
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
     let self = this;
-    axios({
-      method: 'patch',
-      url: `/api/v1/games/${this.props.id}/edit`,
-      headers: {
-        "Content-Type": "application/json",
-        "api-token": localStorage.getItem('jwtToken')
-      },
-      data:
-      {
-        game_date: document.getElementById("date-input").value,
-        game_time: document.getElementById("time-input").value
-      }})
-      .then(function() {
-        self.props.handleEdit()
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
+    var element = document.getElementById("date-input").value;
+    if(Date.parse(element) >= new Date()) {
+      axios({
+        method: 'patch',
+        url: `/api/v1/games/${this.props.id}/edit`,
+        headers: {
+          "Content-Type": "application/json",
+          "api-token": localStorage.getItem('jwtToken')
+        },
+        data:
+        {
+          game_date: document.getElementById("date-input").value,
+          game_time: document.getElementById("time-input").value
+        }})
+        .then(function() {
+          self.props.handleEdit(
+            document.getElementById("date-input").value, 
+            document.getElementById("time-input").value
+            )
+        })
+        .then(function() {
+          self.props.displayForm()
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    }
   }
 
   render() {
@@ -57,6 +68,8 @@ class EditGameForm extends React.Component {
             name="date"
             type="date"
             required="required"
+            value={this.state.gameDate}
+            onChange={(e) => {this.setState({gameDate: e.target.value})}}
             min={date}
             className="form-control"
           ></input>
@@ -66,6 +79,8 @@ class EditGameForm extends React.Component {
             id="time-input"
             name="time"
             type="time"
+            value={this.state.gameTime}
+            onChange={(e) => {this.setState({gameTime: e.target.value})}}
             required="required"
             className="form-control"
           ></input>

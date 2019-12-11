@@ -1,0 +1,57 @@
+.header {
+  font-weight: bold;
+  font-size: 3rem;
+  font-family: 'Sulphur Point', sans-serif;
+  margin-bottom: 20px;
+}
+
+.requestsHeader {
+  color: white;
+  background-color: #508D6D ;
+  text-decoration: none !important;
+  font-family: 'Sulphur Point', sans-serif;
+  text-align: left;
+}
+
+.requestsHeader:focus {
+  outline: 0;
+}
+
+.cardHeader {
+  background-color: #508D6D;
+  box-shadow: 2px 2px 5px grey;
+  
+}
+
+.cardHeader:hover {
+  transform: scale(1.025);
+  box-shadow: 4px 4px 5px grey;
+}
+
+.card {
+  overflow: none;
+  margin-bottom: 30px;
+}
+
+.arrow {
+  display: flex;
+  float: right;
+}
+
+.cardDrawer {
+  margin-bottom: 10px;
+}
+
+.cardBox {
+  overflow: hidden;
+  background-color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background-image: none;
+}
+

@@ -1,0 +1,56 @@
+.resultWin {
+  background-color: #DAF1D4;
+  border-left: solid 10px #41924B;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  box-shadow: 1px 1px 5px grey;
+}
+
+.resultWin:hover {
+  transform: scale(1.025)
+}
+
+.resultWin:hover, .resultLose:hover, .resultUndecided:hover {
+  transform: scale(1.025);
+  box-shadow: 3px 3px 5px grey;
+}
+
+.resultLose {
+  background-color: #F7DBDB;
+  border-left: solid 10px #D74B4B;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  box-shadow: 1px 1px 5px grey;
+}
+
+.resultUndecided {
+  background-color: #F4F5CB;
+  border-left: solid 10px #EEBF68;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  box-shadow: 1px 1px 5px grey;
+}
+
+.gameDate {
+  color: grey;
+  font-size: small;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.col {
+  text-align: center;
+}
+
+.player {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
