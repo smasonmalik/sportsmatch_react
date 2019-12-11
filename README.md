@@ -1,6 +1,10 @@
 # SportsMatch Frontend
 ## Introduction
-SportsMatch encourages people to be more active by enabling them to find fellow racket sports fans to play a game with. This application serves as the frontend for our final project at Makers Academy. You can find the backend for our project [here](https://github.com/jessmar94/sportsmatch_api).
+SportsMatch encourages people to be more active by enabling them to find fellow racket sports players to organise a game with.
+
+Search for fellow players by ability and distance.<br> With help from in app messaging and map of local sports centres, organise a date and time to play<br>Once you've played, input the final result and move up or down the ranks based on the ranking algorithm - FRED.
+
+ This application serves as the frontend for our final project at Makers Academy. You can find the backend for our project [here](https://github.com/jessmar94/sportsmatch_api).
 
 The team consisted of:
 - [Sid Mason-Malik](https://github.com/smasonmalik)
@@ -10,16 +14,16 @@ The team consisted of:
 - [Dom Tunstill](https://github.com/domtunstill)
 - [Vijay Kurian](https://github.com/kurianvijay)
 
-Technologies used
+Front-end Technologies used
 - React.js
 - HTML
 - CSS
 - jQuery
 - Bootstrap
 - CircleCI
-- Cypress 
+- Cypress
 
-The project has been deployed to [Heroku](https://sportsmatch-app.herokuapp.com/).  
+The project has been deployed to [Heroku](https://sportsmatch-app.herokuapp.com/).
 
 ## Trello
 https://trello.com/b/Twlp2CTz/sportsmatch
@@ -27,8 +31,12 @@ https://trello.com/b/Twlp2CTz/sportsmatch
 ## Documented Learning
 https://github.com/jessmar94/sportsmatch_api/wiki
 
-## How to Install and Run
+## How to Install and Run in Development Mode
 1. Clone this repository.
+2. ```npm install``` to install dependencies
+3. ```npm start``` to run
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+5. Make sure backend API server is running, following setup instructions avilable [here](https://github.com/jessmar94/sportsmatch_api).
 
 ## How to Run Tests
 1. Run the following command in your terminal:
@@ -53,11 +61,21 @@ I want to be able to login and logout.
 As a keen tennis player,
 So I can always keep my information up-to-date,
 I want to be able to update my information on my profile.
-```  
+```
 ```bash
 As a keen tennis player,
 So I can find a fellow racket-sport fan,
 I want to be able to see other players on the platform.
+```
+```bash
+As a advanced abiliy player,
+So I can match with players of a similiar level,
+I want to be able to filter players by ability.
+```
+```bash
+As a player in north London,
+So I can match with local players,
+I want to be able to filter players by distance from my postcode.
 ```
 ```bash
 As a keen tennis player,
@@ -76,8 +94,18 @@ I want to be able to respond to their game request.
 ```
 ```bash
 As a keen tennis player,
+So I can change the game date,
+I want to be able to edit the date and time of organised games.
+```
+```bash
+As a keen tennis player,
 So I can keep track of my wins,
 I want to be able to record who won the game I organised.
+```
+```bash
+As a keen competitive tennis player,
+So I know I am improving,
+I want to be able my ability to change based on my results.
 ```
 ```bash
 As a keen tennis player,
@@ -96,33 +124,5 @@ If we had more time, we would have looked to implement the following features:
 - Ability to register with multiple sports, rather than picking just one.
 - Ability for player to input their availability for other players to see - this would require creating an Availability table.
 - Ability to register the result of a game as a draw.
+- Opponent to confirm game result entered by organiser
 - Add in a weather API to help players pick the best day to play.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
