@@ -48,7 +48,7 @@ class GameRequests extends React.Component {
         <div className = {`card ${styles.cardDrawer}`} >
           <div className = {`${styles.cardHeader}`}  >
             <h5 className = {`  ${styles.requestsHeader}`} >
-              <button className = {`  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              <button id="requests-collapse" className = {`  ${styles.requestsHeader}`}  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <h3>Requests Made <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
               </button>
             </h5>
@@ -75,7 +75,7 @@ class GameRequests extends React.Component {
   <div class="card">
     <div className = {`${styles.cardHeader}`} >
       <h5 className = {`  ${styles.requestsHeader}`}>
-        <button className = {`${styles.requestsHeader}`} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button id="challenges-collapse" className = {`${styles.requestsHeader}`} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         <h3>Challenges Received <span className={styles.arrow}><IoIosArrowDown /></span> </h3>
         </button>
       </h5>
@@ -99,18 +99,17 @@ class GameRequests extends React.Component {
       </div>
     </div>
   </div>
-  
+
 </div>
 
 
 
 
 
-      
+
     </div>
     )
   }
 }
 
 export default GameRequests
-

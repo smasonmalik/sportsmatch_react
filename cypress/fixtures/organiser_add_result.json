@@ -1,0 +1,13 @@
+[
+  {
+    "game_date": "2019-10-10",
+    "organiser_id": 1,
+    "game_id": 2,
+    "first_name": "Sid",
+    "created_at": "2019-11-05T11:14:01.486310",
+    "status": "confirmed",
+    "modified_at": "2019-11-05T11:14:01.486315",
+    "opponent_id": 4,
+    "game_time": "17:00:00"
+  }
+]

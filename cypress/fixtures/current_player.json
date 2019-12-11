@@ -1,0 +1,14 @@
+{
+    "id": 1,
+    "first_name": "Roger",
+    "last_name": "Federer",
+    "email": "rog@fed.con",
+    "gender": "Male",
+    "ability": "Advanced",
+    "dob": "1991-01-01",
+    "location": "Swiss Alps",
+    "profile_image": null,
+    "postcode": "SE233LY",
+    "rank_points": 50,
+    "sport": "Tennis"
+  }

@@ -54,7 +54,7 @@ class SingleGameRequest extends React.Component {
           <div className={`${styles.gameCardOutline}`}>
             <div className={` ${styles.gameConfirmed}`}>
                 <p className={styles.player}><strong>Opponent:</strong> {this.props.opponent_name}</p>
-                <p className={styles.gameDate}><strong>Game Date:</strong> 
+                <p className={styles.gameDate}><strong>Game Date: </strong>
                   <Moment format="ddd Do MMM YYYY">
                   {this.state.game_date}
                 </Moment></p>
@@ -86,7 +86,7 @@ class SingleGameRequest extends React.Component {
           <div className={`${styles.gameCardOutline}`}>
             <div className={` ${styles.gameUnconfirmed}`}>
                 <p className={styles.player}><strong>Opponent:</strong> {this.props.opponent_name}</p>
-                <p className={styles.gameDate}><strong>Game Date:</strong> 
+                <p className={styles.gameDate}><strong>Game Date: </strong> 
                   <Moment format="ddd Do MMM YYYY">
                   {this.state.game_date}
                 </Moment></p>
@@ -110,9 +110,9 @@ class SingleGameRequest extends React.Component {
           </div>
         </li>
       )
-      
+
     }
-    
+
   }
 }
 export default SingleGameRequest

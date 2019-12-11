@@ -65,12 +65,12 @@ class NewResult extends React.Component {
                 id="winner"
                 style={{width: '90%'}}
                 onChange={(event) => this.onChangeWinner(event)}>
-                  <option >Select winner...</option>
+                  <option disabled selected value>Select winner...</option>
                   <option value={organiser_id}>{organiser_name}</option>
                   <option value={opponent_id}>{opponent_name}</option>
               </select>
             </div>
-        <button type="submit" className={`btn custom-button mt-3 ${styles.newResultButton}`} >
+        <button id="add-result" type="submit" className={`btn custom-button mt-3 ${styles.newResultButton}`} >
           Add Result
         </button>
         </form>
