@@ -21,11 +21,11 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-      jobs:
       # checks out code, installs npm dependencies
       # and runs all Cypress tests and records results on Cypress Dashboard
       # cypress/run job comes from "cypress" orb imported above
-      - cypress/run
+      - run:
+        cypress/run
       # - run: # run tests
       #     name: Run Test 
       #     command:
