@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from './Home'
-import FlashMessage from './FlashMessage'
-import styles from './css/Login.module.css'
+import FlashMessage from '../Flash/FlashMessage'
+import styles from '../css/Login.module.css'
 
 class Login extends Component {
   constructor(props) {

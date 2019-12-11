@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import styles from './css/NewResult.module.css'
+import styles from '../css/NewResult.module.css'
 
 class NewResult extends React.Component {
   constructor(props) {

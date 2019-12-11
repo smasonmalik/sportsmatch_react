@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
-import styles from './css/Navbar.module.css'
+import styles from '../css/Navbar.module.css'
 
 class Navbar extends React.Component {
   constructor() {

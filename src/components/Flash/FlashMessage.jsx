@@ -1,6 +1,5 @@
 import React from 'react'
-import styles from './css/FlashMessage.module.css'
-// import Bus from '../Utils/Bus'
+import styles from '../css/FlashMessage.module.css'
 
 class FlashMessage extends React.Component {
   constructor(props) {

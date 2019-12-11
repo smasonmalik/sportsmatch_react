@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './css/SingleMessage.module.css'
+import styles from '../css/SingleMessage.module.css'
 import Moment from 'react-moment';
 
 class SingleMessage extends React.Component {

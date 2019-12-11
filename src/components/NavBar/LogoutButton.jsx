@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter, Link } from "react-router-dom";
-import styles from './css/Navbar.module.css'
+import styles from '../css/Navbar.module.css'
 
 class LogoutButton extends React.Component {
   constructor(props) {

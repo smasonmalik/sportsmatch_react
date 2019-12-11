@@ -3,7 +3,7 @@ import axios from "axios";
 import FilterBar from './FilterBar';
 import Player from './Player';
 import Login from './Login'
-import styles from './css/Home.module.css'
+import styles from '../css/Home.module.css'
 
 class Home extends Component {
   constructor(props) {

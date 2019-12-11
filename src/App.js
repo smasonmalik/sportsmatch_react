@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Signup from './components/Signup';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import Profile from './components/Profile';
+import './App.css';
+import Signup from './components/Signup/Signup';
+import Home from './components/Home/Home';
+import Navbar from './components/NavBar/Navbar';
+import Profile from './components/UsersProfile/Profile';
 import PrivateRoute from './components/PrivateRoute';
-import PlayerProfile from './components/PlayerProfile'
-import EditProfileForm from './components/EditProfileForm'
-import DisplayMessages from './components/DisplayMessages'
-import Results from './components/Results'
-import NewResult from './components/NewResult'
+import PlayerProfile from './components/OpponentProfile/PlayerProfile'
+import EditProfileForm from './components/UsersProfile/EditProfileForm'
+import DisplayMessages from './components/Messages/DisplayMessages'
+import Results from './components/Results/Results'
+import NewResult from './components/Results/NewResult'
 
 class App extends Component {
   constructor() {

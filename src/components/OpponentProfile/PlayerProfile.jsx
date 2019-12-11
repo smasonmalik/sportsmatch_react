@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import GameRequestForm from './GameRequestForm'
-import styles from './css/PlayerProfile.module.css'
+import styles from '../css/PlayerProfile.module.css'
 
 class PlayerProfile extends React.Component {
   constructor(props) {
