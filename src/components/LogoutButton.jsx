@@ -15,7 +15,7 @@ class LogoutButton extends React.Component {
 
   render() {
     return(
-      <Link onClick={this.handleClick} to={'/'}><button className={styles.button}>Logout</button></Link>
+      <Link onClick={this.handleClick} to={'/'}><button id="logout-button" className={styles.button}>Logout</button></Link>
     )
   }
 }
