@@ -50,7 +50,7 @@ class Navbar extends React.Component {
               <div className={`col-3 ${homeClass}`}>
                 <NavLink to='/'><button value='home' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-home"></i>{this.props.location}</button></NavLink>
               </div>
-              <div className={`col-3 ${profileClass}`}>
+              <div id="profile-link" className={`col-3 ${profileClass}`}>
                 <NavLink to='/profile'><button value='profile' name='currentPath' onClick={(e) => this.handleClick(e)} className={styles.button}><i class="fas fa-user-alt"></i></button></NavLink>
               </div>
               <div className={`col-3 ${resultsClass}`}>
