@@ -19,8 +19,9 @@ jobs:
             - ./node_modules
       - run: # run tests
           name: Run Test 
+          # command:
+          #   npm start
           command:
-            npm start
             npx cypress run          
 
 # workflows:         
