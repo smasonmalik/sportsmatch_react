@@ -1,0 +1,14 @@
+{
+    "id": 13,
+    "first_name": "Rafa",
+    "last_name": "Nadal",
+    "email": "rafa@nadal.com",
+    "gender": "male",
+    "ability": "Advanced",
+    "bio":"hello",
+    "dob": "1983-02-01",
+    "location": "Spain",
+    "profile_image": "0 bytes",
+    "postcode": "W1A0AX",
+    "rank_points": 50
+  }

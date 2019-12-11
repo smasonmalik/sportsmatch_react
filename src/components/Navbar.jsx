@@ -46,7 +46,7 @@ class Navbar extends React.Component {
               <div className={`col-3 ${styles.option}`}>
                 <NavLink to='/'><button value='home' name='currentPath' className={styles.button}><i class="fas fa-home"></i>{this.props.location}</button></NavLink>
               </div>
-              <div className={`col-3 ${styles.option}`}>
+              <div id="profile-link" className={`col-3 ${styles.option}`}>
                 <NavLink to='/profile'><button value='profile' name='currentPath' className={styles.button}><i class="fas fa-user-alt"></i></button></NavLink>
               </div>
               <div className={`col-3 ${styles.option}`}>
