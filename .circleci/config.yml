@@ -20,16 +20,9 @@ jobs:
       - run: # run tests
           name: Run Test 
           command: |
-            npm test
-# deploy:
-#     docker:
-#       - image: buildpack-deps:trusty          
-#     steps:
-#       - checkout
-#       - run:
-#           name: Deploy Master to HEROKU
-          # command: git push https://heroku:3274df71-ac24-4dc4-99a1-26849cfafe33@git.heroku.com/infinite-waters-48339.git master
-          
+            npm test          
+orbs:
+  cypress: cypress-io/cypress@1
 
 workflows:         
   version: 2
@@ -42,5 +35,6 @@ workflows:
           filters:
             branches:
               only: master
+      - cypress/run # "run" job comes from "cypress" orb
 
 
