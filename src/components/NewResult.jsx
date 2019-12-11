@@ -70,7 +70,7 @@ class NewResult extends React.Component {
                   <option value={opponent_id}>{opponent_name}</option>
               </select>
             </div>
-        <button type="submit" className={`btn custom-button mt-3 ${styles.newResultButton}`} >
+        <button id="add-result" type="submit" className={`btn custom-button mt-3 ${styles.newResultButton}`} >
           Add Result
         </button>
         </form>

@@ -11,18 +11,16 @@ describe("addResults", function() {
     cy.visit('/results')
     cy.contains('Roger').should('be.visible');
     cy.contains('Sid').should('be.visible');
-    cy.get('.btn custom-button').should('be.visible');
+    cy.get('#add-result').should('be.visible');
     cy.url().should('eq', 'http://localhost:3000/results');
   })
 
-  // it('organiser can add result and see it on results page', function() {
-  //   cy.login()
-  //   cy.visit('/results')
-  //   cy.get('.btn custom-button').click();
-  //   cy.visit('/results/2/new')
-  //   cy.get('#winner').type('Roger')
-  //   cy.get('.btn custom-button mt-3').click();
-  //   cy.contains('Winner: Roger').should('be.visible')
-  //   cy.url().should('eq', 'http://localhost:3000/results');
-  // })
+  it('organiser can add result and see it on results page', function() {
+    cy.login()
+    cy.visit('/results')
+    cy.get('#winner').select('Roger')
+    cy.get('#add-result').click();
+    cy.contains('You Won!').should('be.visible')
+    cy.url().should('eq', 'http://localhost:3000/results');
+  })
 })
