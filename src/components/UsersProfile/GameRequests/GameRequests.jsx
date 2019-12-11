@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import SingleGameRequest from './SingleGameRequest'
-import styles from './css/GameRequests.module.css'
+import styles from '../../css/GameRequests.module.css'
 import { IoIosArrowDown } from 'react-icons/io'
 
 class GameRequests extends React.Component {

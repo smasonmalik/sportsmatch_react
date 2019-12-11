@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import CreateMessage from './CreateMessage';
 import SingleMessage from './SingleMessage';
-import styles from './css/DisplayMessages.module.css'
+import styles from '../css/DisplayMessages.module.css'
 import Location from './Location';
 
 class DisplayMessages extends Component {

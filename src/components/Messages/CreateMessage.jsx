@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import styles from './css/CreateMessage.module.css'
+import styles from '../css/CreateMessage.module.css'
 
 class CreateMessage extends React.Component {
   constructor(props) {

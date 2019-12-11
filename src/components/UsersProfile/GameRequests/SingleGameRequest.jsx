@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import GameStatusButton from './GameStatusButton'
 import EditGameButton from './EditGameButton'
-import styles from './css/SingleGameRequest.module.css'
+import styles from '../../css/SingleGameRequest.module.css'
 import { IoIosMail } from 'react-icons/io'
 import Moment from 'react-moment';
 

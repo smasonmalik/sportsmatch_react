@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import SingleResult from './SingleResult'
-import styles from './css/Results.module.css'
+import styles from '../css/Results.module.css'
 
 class Results extends React.Component {
   constructor(props) {

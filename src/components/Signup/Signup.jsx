@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
-import styles from './css/SignupForm.module.css'
-import FlashMessage from './FlashMessage'
+import styles from '../css/SignupForm.module.css'
+import FlashMessage from '../Flash/FlashMessage'
 
 class Signup extends Component {
   constructor(props) {
