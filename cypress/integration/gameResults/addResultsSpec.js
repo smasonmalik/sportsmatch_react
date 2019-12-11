@@ -9,7 +9,8 @@ describe("addResults", function() {
   it('organiser can see add result button if no result', function() {
     cy.login()
     cy.visit('/results')
-    cy.contains('Roger VS. Sid').should('be.visible');
+    cy.contains('Roger').should('be.visible');
+    cy.contains('Sid').should('be.visible');
     cy.get('.btn custom-button').should('be.visible');
     cy.url().should('eq', 'http://localhost:3000/results');
   })

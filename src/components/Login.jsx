@@ -82,6 +82,7 @@ class Login extends Component {
                   <div style={{textAlign: 'center'}}>
                     <button
                       name="login"
+                      id="login-button"
                       type="submit"
                       className={styles.loginButton}
                       onClick={this.handleLogin}>

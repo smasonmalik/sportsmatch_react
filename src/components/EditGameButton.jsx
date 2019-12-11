@@ -27,7 +27,7 @@ class EditGameButton extends React.Component {
     if (this.state.displayForm) {
       return (
         <div>
-          <button className="btn btn-primary" onClick={this.handleClick}>Hide Form</button>
+          <button id="hide-form" className="btn btn-primary" onClick={this.handleClick}>Hide Form</button>
           <EditGameForm
           id={this.props.id}
           handleEdit={this.props.handleEdit}
@@ -40,7 +40,7 @@ class EditGameButton extends React.Component {
     } else {
       return (
         <div>
-          <button className="edit-game btn btn-primary" onClick={this.handleClick}>Edit Game</button>
+          <button id="edit-game" className="edit-game btn btn-primary" onClick={this.handleClick}>Edit Game</button>
         </div>
       )
     }

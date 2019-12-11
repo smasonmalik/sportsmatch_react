@@ -1,11 +1,11 @@
 Cypress.Commands.add("signup_response", () => {
   cy.route({
       method: 'POST',
-      url: '/api/v1/players/new', 
+      url: '/api/v1/players/new',
       response: {
       "jwt_token": "iamatoken",
       "user_id": 10
-  }       
+  }
   })
 })
 
@@ -29,5 +29,5 @@ Cypress.Commands.add("login", () => {
 
   cy.get('#email-input').type('test@test.com')
   cy.get('#password-input').type('password')
-  cy.get('.login-button').click()
+  cy.get('#login-button').click()
 })
