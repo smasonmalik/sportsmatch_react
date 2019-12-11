@@ -21,7 +21,7 @@ Cypress.Commands.add("signup", () => {
   cy.get('#password-input').type('password')
   cy.get('#password-confirm-input').type('password')
 
-  cy.get('.signup-button').click()
+  cy.get('#signup-button').click()
 })
 
 Cypress.Commands.add("login", () => {
