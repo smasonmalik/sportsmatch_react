@@ -18,11 +18,12 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
+    "test": "cypress run --spec 'cypress/integration/07-ci/*'",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cy:run": "cypress run",
     "stop": "node server.stop.js"
   },
   "eslintConfig": {
